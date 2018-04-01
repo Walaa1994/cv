@@ -8,7 +8,7 @@ body{
 }
 
 .button{
-  width:100px;
+  width:200px;
   background:#3399cc;
   display:block;
   margin:0 auto;
@@ -58,7 +58,7 @@ form{
   padding:6% 4%;
 }
 
-input[type="email"],input[type="password"],input[type="username"]{
+input[type="username"],input[type="email"],input[type="password"],input[type="Confrim Password"]{
   width:92%;
   background:#fff;
   margin-bottom:4%;
@@ -67,6 +67,18 @@ input[type="email"],input[type="password"],input[type="username"]{
   font-family:'Open Sans',sans-serif;
   font-size:95%;
   color:#555;
+}
+#sel{
+  width:92%;
+  background:#fff;
+  margin-bottom:4%;
+  border:1px solid #ccc;
+  padding:4%;
+  font-family:'Open Sans',sans-serif;
+  font-size:95%;
+  color:#555;
+
+
 }
 
 input[type="submit"]{
