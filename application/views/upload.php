@@ -5,7 +5,7 @@
 </head>
 <body>
 
-<form action='<?php echo base_url();?>index.php/User/do_upload' method="post" enctype="multipart/form-data">
+<form action='<?php echo base_url();?>index.php/JobResearcher/do_upload' method="post" enctype="multipart/form-data">
 	
 	<input type="file" name="userFile">
 	<input type="submit" value="upload">
