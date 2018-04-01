@@ -23,40 +23,72 @@ class Register extends CI_Controller {
 		
 		
 		
-
+		
 		$this->load->view('register');
 	}
+
 
 	public function Reg()
 	{
 		$this->load->helper(array('Form','Url','html'));
 		$this->load->library('form_validation');
-		$this->form_validation->set_rules('password','password','trim|required');
 		$this->form_validation->set_rules('username','username','trim|required');
+		$this->form_validation->set_rules('password','password','trim|required');
+		$this->form_validation->set_rules('Cpassword','Cpassword','trim|required|matches[password]');
+		
 		$this->form_validation->set_rules('Email','Email','trim|required');
 		
+		
 		if($this->form_validation->run()==false){
-			$this->sign_in();
+			$this->index();
 
 		}else{
 
-			$user=array(
-				'password'=> $this->input->post('password'),
+			
+				$user=array(
 				'username'=> $this->input->post('username'),
-				'Email'=>    $this->input->post('Email')
+				'password'=> $this->input->post('password'),
+				'Email'=>    $this->input->post('Email'),
+				
+
+
 
 				);
 			$this->load->model('register_model');
 			$this->register_model->add_user($user);
-			redirect('login/index');
+			
+		
+			
+			redirect('Register/login');
 
 
 		}
+	}
+
+
+	public function login()
+	{
 		
 		
+		
+		
+		$this->load->view('login');
+	}
+
+
+
+
+
+	
+	
 		
 
-		
-	}
+
+
+	
+
+
+
+
 
 }
