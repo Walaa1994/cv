@@ -1,37 +1,24 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
+//this class for convert pdf to text
+include(APPPATH.'controllers/pdf2text.php');
 
 class JobResearcher extends CI_Controller {
 
-    //hello my frinds I'm Hamida ^_^
-	/**
-	 * Index Page for this controller.
-	 *
-	 * Maps to the following URL
-	 * 		http://example.com/index.php/welcome
-	 *	- or -
-	 * 		http://example.com/index.php/welcome/index
-	 *	- or -
-	 * Since this controller is set as the default controller in
-	 * config/routes.php, it's displayed at http://example.com/
-	 *
-	 * So any other public methods not prefixed with an underscore will
-	 * map to /index.php/welcome/<method_name>
-	 * @see https://codeigniter.com/user_guide/general/urls.html
-	 */
 	public function index()
 	{
 		
 	}
-
+        
+        public function CVForm()
+	{
+		$this->load->view('cv_form');
+	}
 
 	public function UploadCv()
 	{
 		$this->load->view('upload');
 	}
-
-
-
 
 	public function do_upload(){
 		$config['upload_path'] ='./assets/uploads/';
@@ -45,10 +32,15 @@ class JobResearcher extends CI_Controller {
 		}
 		else{
 			$data = array('uoload_data'=>$this->upload->data());
-
-
 		}
-
-
+	}
+        
+        public function ConvertPdfToText()
+	{
+		$a = new PDF2Text();
+                //this cv.pdf file exisit in the project file (at the same level of application folder)
+		$a->setFilename('cv.pdf');
+		$a->decodePDF();
+		echo $a->output();
 	}
 }
