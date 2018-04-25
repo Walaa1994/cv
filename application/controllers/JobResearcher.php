@@ -10,9 +10,11 @@ class JobResearcher extends CI_Controller {
 		
 	}
         
-        public function CVForm()
+    public function CVForm()
 	{
-		$this->load->view('cv_form');
+		$this->data['pageTitle']='Create Resume';
+		$this->data['subview'] = 'cv_form';
+		$this->load->view('layouts/layout', $this->data);
 	}
 
 	public function UploadCv()
