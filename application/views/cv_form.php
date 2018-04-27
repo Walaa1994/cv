@@ -111,6 +111,16 @@ function submitForm(){
     }*/
     
 }
+
+//add new record
+$(document).ready(function () {
+    //@naresh action dynamic childs
+    var next = 1;
+    $("#AddNewRecord").click(function(e){debugger;
+        $("#more_feild").append($("#education_block").html()+'<hr>');
+       next++;
+    });
+});
 </script>
 </head>
 
@@ -194,58 +204,64 @@ function submitForm(){
     <!-- start phase2 -->  
     <div id="phase2">
         <h3>Education</h3>
-        <div>
-        <p>Certificate Name</p>
-        <input type="cert_name" id="cert_name" name="cert_name"/>
+        <div id="more_feild" >
+            
         </div>
+        <div id="education_block">
+            <div>
+            <p>Certificate Name</p>
+            <input type="cert_name" id="cert_name" name="cert_name[]"/>
+            </div>
 
-        <div>
-        <p>Date of Grants</p>
-        <select id="select" name="grants_day">
-        <option value="0">Day</option>
-        <?php 
-        for ($i = 1; $i <= 31; $i++) {
-        echo "<option value='.$i.'>$i</option>";
-        }?>
-        </select>
+            <div>
+            <p>Date of Grants</p>
+            <select id="select" name="grants_day[]">
+            <option value="0">Day</option>
+            <?php 
+            for ($i = 1; $i <= 31; $i++) {
+            echo "<option value='.$i.'>$i</option>";
+            }?>
+            </select>
 
-        <select id="select" name="grants_month">
-        <option value="0">Month</option>
-        <option value="1">January</option>
-        <option value="2">February</option>
-        <option value="3">March</option>
-        <option value="4">April</option>
-        <option value="5">May</option>
-        <option value="6">June</option>
-        <option value="7">July</option>
-        <option value="8">August</option>
-        <option value="9">September</option>
-        <option value="10">October</option>
-        <option value="11">November</option>
-        <option value="12">December</option>
-        </select>
+            <select id="select" name="grants_month[]">
+            <option value="0">Month</option>
+            <option value="1">January</option>
+            <option value="2">February</option>
+            <option value="3">March</option>
+            <option value="4">April</option>
+            <option value="5">May</option>
+            <option value="6">June</option>
+            <option value="7">July</option>
+            <option value="8">August</option>
+            <option value="9">September</option>
+            <option value="10">October</option>
+            <option value="11">November</option>
+            <option value="12">December</option>
+            </select>
 
-        <?php $year=2019;?>
-        <select id=select name=grants_year>
-        <option value="0">Year</option>
-        <?php 
-        for ($i = 0; $i <= 117; $i++) {
-        $year=$year-1;
-        echo "<option value='.$year.'>$year</option>";
-        }?>
-        </select>
+            <?php $year=2019;?>
+            <select id="select" name="grants_year[]">
+            <option value="0">Year</option>
+            <?php 
+            for ($i = 0; $i <= 117; $i++) {
+            $year=$year-1;
+            echo "<option value='.$year.'>$year</option>";
+            }?>
+            </select>
+            </div>
+
+            <div>
+            <p>Donor</p>
+            <input type="donor" id="donor" name="donor[]"/>
+            </div>
+
+            <div>
+            <p>The Rate (optional)</p>
+            <input type="rate" id="rate" name="rate[]"/>
+            </div>
+
         </div>
-
-        <div>
-        <p>Donor</p>
-        <input type="donor" id="donor" name="donor"/>
-        </div>
-
-        <div>
-        <p>The Rate (optional)</p>
-        <input type="rate" id="rate" name="rate"/>
-        </div>
-
+        <a id="AddNewRecord" class="btn btn-link m-b-10 m-l-5">Add new row</a>
         
         <button id="next" onclick="processPhase2()">Next</button>
         <button id="previous" onclick="backPhase2()">Previous</button>
