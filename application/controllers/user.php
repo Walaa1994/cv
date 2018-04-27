@@ -3,43 +3,82 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class User extends CI_Controller {
 
-    //hello my frinds I'm Hamida ^_^
-	/**
-	 * Index Page for this controller.
-	 *
-	 * Maps to the following URL
-	 * 		http://example.com/index.php/welcome
-	 *	- or -
-	 * 		http://example.com/index.php/welcome/index
-	 *	- or -
-	 * Since this controller is set as the default controller in
-	 * config/routes.php, it's displayed at http://example.com/
-	 *
-	 * So any other public methods not prefixed with an underscore will
-	 * map to /index.php/welcome/<method_name>
-	 * @see https://codeigniter.com/user_guide/general/urls.html
-	 */
 	public function index()
 	{
-		$this->load->view('upload');
+		$this->load->view('register');
 	}
 
-	public function do_upload(){
-		$config['upload_path'] ='./assets/uploads/';
-		$config['allowed_types'] = '*';
-		$config['max_size'] = '0';
 
-		$this->load->library('upload',$config);
-		if(!$this->upload->do_upload('userFile')){
-			$error = array('error'=>$this->upload->display_errors());
+	public function register()
+	{
+            $this->load->helper(array('Form','Url','html'));
+            $this->load->library('form_validation');
+            $this->form_validation->set_rules('username','username','trim|required');
+            $this->form_validation->set_rules('password','password','trim|required');
+            $this->form_validation->set_rules('Cpassword','Cpassword','trim|required|matches[password]');
+            $this->form_validation->set_rules('Email','Email','trim|required');
 
+            if($this->form_validation->run()==false){
+                    $this->index();
+            }
+            else{
+                    $user=array(
+                            'username'=> $this->input->post('username'),
+                            'password'=> $this->input->post('password'),
+                            'Email'=>    $this->input->post('Email'),
+                            );
+                    $this->load->model('User_model');
+                    $this->User_model->add_user($user);
+                    redirect('User/login');
+            }
+	}
+
+
+	public function login()
+	{		
+		$this->load->view('login');
+	}
+
+	public function login_validation(){
+
+		$this->load->library('form_validation');
+		$this->form_validation->set_rules('username','username','trim|required');
+		$this->form_validation->set_rules('password','password','trim|required');
+		if($this->form_validation->run())
+		{
+			$username = $this->input->post('username');
+			$password = $this->input->post('password');
+			$this->load->model('User_model');
+			if($this->User_model->get_user($username, $password)){
+				redirect(base_url() . 'index.php/Welcome/');
+			}
+			else{
+
+				$this->session->set_flashdata('error','invalid username and password');
+				redirect(base_url(). 'index.php/User/login');
+			}
 		}
 		else{
-			$data = array('uoload_data'=>$this->upload->data());
-
-
+			$this->login();
 		}
-
-
 	}
+
+	public function enter(){
+
+		if($this->session->userdata('username') != '')
+		{
+			echo '<h2> welcom - '.$this->session->userdata('username').'</h2>';
+			echo '<label><a href"'.base_url().'index.php/User/logout">logout</a></label>';
+		}
+		else{
+			redirect(base_url(). 'index.php/User/login');
+		}
+	}
+
+	public function logout(){
+
+		$this->session->unset_userdata('username');
+		redirect(base_url() . 'index.php/User/login');
+	}
+
 }
