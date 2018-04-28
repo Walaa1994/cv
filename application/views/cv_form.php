@@ -9,42 +9,20 @@
 form#multiphase > #phase2, #phase3, #phase4, #phase5, #phase6{ display:none; }
 </style>
   <script>
-var fname, lname, gender, country;
 function _(x){
   return document.getElementById(x);
 }
 function processPhase1(){
-  /*fname = _("first_name").value;
-  lname = _("last_name").value;
-  city= _("city").value;
-  email= _("email").value;
-  gender= _("gender").value;
-  if(fname.length > 2 && lname.length > 2 && city.length > 2 && email.length > 2 && gender.length > 0){*/
     _("phase1").style.display = "none";
     _("phase2").style.display = "block";
     _("progressBar").value = 32;
     _("status").innerHTML = "Phase 2 of 6";
-  /*} else {
-      alert("Please fill in the fields"); 
-  }*/
 }
 function processPhase2(){
-    /*degree=_("degree").value;
-    school=_("school").value;
-    fos=_("fos").value;
-    study_city=_("study_city").value;
-    edu_month_from_time=_("edu_month_from").value;    
-    edu_from_year_time=_("edu_year_from").value;
-    edu_month_to_time=_("edu_month_to").value;
-    edu_year_to_time=_("edu_year_to").value;
-  if(degree.length > 0 && school.length > 0 && fos.length > 0 && study_city.length > 0 && edu_month_from != "0" && edu_year_from != "0" && edu_month_to != "0" && edu_year_to != "0"){*/
     _("phase2").style.display = "none";
     _("phase3").style.display = "block";
     _("progressBar").value = 48;
     _("status").innerHTML = "Phase 3 of 6";
-  /*} else {
-      alert("Please fill in the fields"); 
-  }*/
 }
 function processPhase3(){
     _("phase3").style.display = "none";
@@ -94,22 +72,10 @@ function backPhase6(){
     _("progressBar").value = 80;
     _("status").innerHTML = "Phase 5 of 6";
 }
-
 function submitForm(){
-   /* job_title=_("job_title").value;
-    company=_("company").value;
-    work_city=_("work_city").value;
-    work_month=_("work_month").value;
-    work_year=_("work_year").value;
-    if (job_title.length>0 && company.length>0 && work_city.length>0 && work_month!="0" &&work_year!="0") {*/
-        _("multiphase").method = "post";
-        _("multiphase").action = "my_parser.php";
-        _("multiphase").submit();
-    /*} 
-    else {
-        alert("Please fill in the fields"); 
-    }*/
-    
+    _("multiphase").method = "post";
+    _("multiphase").action = '<?php echo base_url();?>index.php/seeker/CVFormInfo';
+    _("multiphase").submit();
 }
 
 //add new record
@@ -152,7 +118,7 @@ $(document).ready(function () {
 
         <div>
         <p>Date of Birth</p>
-        <input type="birth_date" id="birth_date" name="birth_date"/>
+        <input type="date" id="birth_date" name="birth_date"/>
         </div>
 
         <div>
@@ -215,39 +181,7 @@ $(document).ready(function () {
 
             <div>
             <p>Date of Grants</p>
-            <select id="select" name="grants_day[]">
-            <option value="0">Day</option>
-            <?php 
-            for ($i = 1; $i <= 31; $i++) {
-            echo "<option value='.$i.'>$i</option>";
-            }?>
-            </select>
-
-            <select id="select" name="grants_month[]">
-            <option value="0">Month</option>
-            <option value="1">January</option>
-            <option value="2">February</option>
-            <option value="3">March</option>
-            <option value="4">April</option>
-            <option value="5">May</option>
-            <option value="6">June</option>
-            <option value="7">July</option>
-            <option value="8">August</option>
-            <option value="9">September</option>
-            <option value="10">October</option>
-            <option value="11">November</option>
-            <option value="12">December</option>
-            </select>
-
-            <?php $year=2019;?>
-            <select id="select" name="grants_year[]">
-            <option value="0">Year</option>
-            <?php 
-            for ($i = 0; $i <= 117; $i++) {
-            $year=$year-1;
-            echo "<option value='.$year.'>$year</option>";
-            }?>
-            </select>
+            <input type="date" id="grants_date" name="grants_date[]"/>
             </div>
 
             <div>
@@ -284,75 +218,13 @@ $(document).ready(function () {
         <div>
         <p>Time Period</p>
         <p><span>from</span></p>
-        <select id="select" name="time_day_from">
-        <option value="0">Day</option>
-        <?php 
-        for ($i = 1; $i <= 31; $i++) {
-        echo "<option value='.$i.'>$i</option>";
-        }?>
-        </select>
 
-        <select id="select" name="time_month_from">
-        <option value="0">Month</option>
-        <option value="1">January</option>
-        <option value="2">February</option>
-        <option value="3">March</option>
-        <option value="4">April</option>
-        <option value="5">May</option>
-        <option value="6">June</option>
-        <option value="7">July</option>
-        <option value="8">August</option>
-        <option value="9">September</option>
-        <option value="10">October</option>
-        <option value="11">November</option>
-        <option value="12">December</option>
-        </select>
-
-        <?php $year2=2019;?>
-        <select id="select" name="time_year_from">
-        <option value="0">Year</option>
-        <?php 
-        for ($y = 0; $y <= 117; $y++) {
-        $year2=$year2-1;
-        echo "<option value='.$year.'>$year2</option>";
-        }?>
-        </select>
+        <input type="date" id="from_date" name="from_date"/>
 
         <p><span>to</span></p>
 
-        <select id="select" name="time_day_to">
-        <option value="0">Day</option>
-        <?php 
-        for ($i = 1; $i <= 31; $i++) {
-        echo "<option value='.$i.'>$i</option>";
-        }?>
-        </select>
+        <input type="date" id="to_date" name="to_date"/>
 
-        <select id="select" name="time_month_to">
-        <option value="0">Month</option>
-        <option value="1">January</option>
-        <option value="2">February</option>
-        <option value="3">March</option>
-        <option value="4">April</option>
-        <option value="5">May</option>
-        <option value="6">June</option>
-        <option value="7">July</option>
-        <option value="8">August</option>
-        <option value="9">September</option>
-        <option value="10">October</option>
-        <option value="11">November</option>
-        <option value="12">December</option>
-        </select>
-
-        <?php $year2=2019;?>
-        <select id="select" name="time_year_to">
-        <option value="0">Year</option>
-        <?php 
-        for ($y = 0; $y <= 117; $y++) {
-        $year2=$year2-1;
-        echo "<option value='.$year.'>$year2</option>";
-        }?>
-        </select>
         </div>
 
         <div>
@@ -402,7 +274,7 @@ $(document).ready(function () {
         <h3>Personal Interests</h3>
         <div>
         <p>Interest Name</p>
-        <input type="interest_name" id="interest_name" name="company_name"/>
+        <input type="interest_name" id="interest_name" name="interest_name"/>
         </div>
 
         <div>
@@ -440,7 +312,7 @@ $(document).ready(function () {
         <input type="ref_email" id="ref_email" name="ref_email"/>
         </div>
 
-        <button id="next" onclick="submit()">Save</button>
+        <button id="next" onclick="submitForm()">Save</button>
         <button id="previous" onclick="backPhase6()">Previous</button>
     </div>
     <!-- end phase6 -->
