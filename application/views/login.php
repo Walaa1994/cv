@@ -15,7 +15,7 @@
 <div id="login">
   <div id="triangle"></div>
   <h1>Login</h1>
-  <form action="<?php echo base_url();?>index.php/login/login_validation" method="post">
+  <form action="<?php echo base_url();?>index.php/user/login_validation" method="post">
     
   <input type="username" name="username" placeholder="username" />
     <span class="test-danger"><?php echo form_error('username');?></span>
