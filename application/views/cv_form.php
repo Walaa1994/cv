@@ -186,7 +186,7 @@ $(document).ready(function () {
             </div>
 
         </div>
-        <div
+        <div>
         <a id="AddNewRecord" class="btn btn-link m-b-10 m-l-5">Add new row</a>
         </div>
         
