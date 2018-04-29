@@ -82,9 +82,6 @@ $(document).ready(function () {
     });
 });
 </script>
-</head>
-
-<body>
 
 <div id="form">
   <div id="triangle"></div>

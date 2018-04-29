@@ -92,7 +92,9 @@ class Seeker extends CI_Controller {
 
     public function UploadCv()
     {
-        $this->load->view('upload');
+        $this->data['pageTitle']='Upload CV';
+        $this->data['subview'] = 'upload';
+        $this->load->view('layouts/layout', $this->data);
     }
 
     public function DoUpload(){
