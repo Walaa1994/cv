@@ -123,9 +123,9 @@
       <option value="more than 3 year">more than 3 year</option>
       </select>
       </div>
-
-      <button id="next" onclick="processPhase2()">Next</button>
+      
       <button id="previous" onclick="backPhase2()">Previous</button>
+      <button id="next" onclick="processPhase2()">Next</button>
     </div>
     <!-- end phase2 -->
 
@@ -148,9 +148,9 @@
         <option value="5">5</option>
         </select>
         </div>
-
-        <button id="next" onclick="submitForm()">Save</button>
+   
         <button id="previous" onclick="backPhase3()">Previous</button>
+        <button id="next" onclick="submitForm()">Save</button>
     </div>
     <!-- end phase3 -->
   </form>
