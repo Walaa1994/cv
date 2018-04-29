@@ -186,10 +186,12 @@ $(document).ready(function () {
             </div>
 
         </div>
+        <div>
         <a id="AddNewRecord" class="btn btn-link m-b-10 m-l-5">Add new row</a>
+        </div>
         
-        <button id="next" onclick="processPhase2()">Next</button>
         <button id="previous" onclick="backPhase2()">Previous</button>
+        <button id="next" onclick="processPhase2()">Next</button>
     </div>
     <!-- end phase2 -->
 
@@ -227,9 +229,9 @@ $(document).ready(function () {
         <p>Significant Accomplishments</p>
         <textarea id="Accomplishments" name="Accomplishments"></textarea>
         </div>
-
-        <button id="next" onclick="processPhase3()">Next</button>
+        
         <button id="previous" onclick="backPhase3()">Previous</button>
+        <button id="next" onclick="processPhase3()">Next</button>
     </div>
     <!-- end phase3 -->
 
@@ -255,8 +257,8 @@ $(document).ready(function () {
         </select>
         </div>
 
-        <button id="next" onclick="processPhase4()">Next</button>
         <button id="previous" onclick="backPhase4()">Previous</button>
+        <button id="next" onclick="processPhase4()">Next</button>
     </div>
     <!-- end phase4 -->
 
@@ -280,8 +282,8 @@ $(document).ready(function () {
         </select>
         </div>
 
-        <button id="next" onclick="processPhase5()">Next</button>
         <button id="previous" onclick="backPhase5()">Previous</button>
+        <button id="next" onclick="processPhase5()">Next</button>
     </div>
     <!-- end phase5 -->
 
@@ -303,8 +305,8 @@ $(document).ready(function () {
         <input type="ref_email" id="ref_email" name="ref_email"/>
         </div>
 
-        <button id="next" onclick="submitForm()">Save</button>
         <button id="previous" onclick="backPhase6()">Previous</button>
+        <button id="next" onclick="submitForm()">Save</button>
     </div>
     <!-- end phase6 -->
   </form>
