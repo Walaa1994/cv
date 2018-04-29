@@ -15,13 +15,13 @@
 <div id="login">
   <div id="triangle"></div>
   <h1>Login</h1>
-  <form action="<?php echo base_url();?>index.php/login/login_validation" method="post">
+  <form action="<?php echo base_url();?>index.php/User/login_validation" method="post">
     
   <input type="username" name="username" placeholder="username" />
     <span class="test-danger"><?php echo form_error('username');?></span>
     <input type="password" name="password" placeholder="password" />
     <span class="test-danger"><?php echo form_error('password');?></span>
-    <input type="submit" value="login" />
+    <input  type="submit" value="login" />
     <?php
       echo $this->session->flashdata('error');
       ?>

@@ -1,10 +1,5 @@
-<!DOCTYPE html>
-<html>
 
-<head>
- <link href="<?php echo base_url();?>/assets/css/cv.css" rel='stylesheet' type='text/css' />
-  <meta charset="UTF-8">
-  <title>CV Form</title>  
+ <link href="<?php echo base_url();?>/assets/css/cv.css" rel='stylesheet' type='text/css' />  
   <style>
 form#multiphase > #phase2, #phase3, #phase4, #phase5, #phase6{ display:none; }
 </style>
@@ -117,7 +112,7 @@ function submitForm(){
 <body>
 
 <div id="form">
-  <div id="triangle"></div>
+  <div ></div>
   
   <form id="multiphase" onsubmit="return false">
       <progress id="progressBar" value="16" max="100" style="width:250px;"></progress>
@@ -434,6 +429,3 @@ function submitForm(){
   <script src="<?php echo base_url('http://codepen.io/assets/libs/fullpage/jquery.js')?>"></script>
   <script src="<?php echo base_url('assets/bootstrap/js/index')?>"></script>
 
-</body>
-
-</html>

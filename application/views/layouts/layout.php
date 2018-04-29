@@ -11,9 +11,7 @@
 	<div class="container-fluid">
 		<div class="row">
 			<div class="header-nav-wrapper">
-				<div class="logo">
-					<a href="/index.html"><img src=""></a>
-				</div>
+				
 				<div class="primary-nav-wrapper">
 					<?php $this->load->view('includes/navigation');?>
 					

@@ -50,7 +50,7 @@ class User extends CI_Controller {
 			$password = $this->input->post('password');
 			$this->load->model('User_model');
 			if($this->User_model->get_user($username, $password)){
-				redirect(base_url() . 'index.php/Welcome/');
+				redirect(base_url() . 'index.php/home/sekeer_page');
 			}
 			else{
 
