@@ -11,4 +11,8 @@ class Home extends CI_Controller {
 	{
 		$this->load->view('sekeer_page');
 	}
+	function company_page()
+	{
+		$this->load->view('company_page');
+	}
 }

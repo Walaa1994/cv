@@ -8,9 +8,10 @@
 
 </head>
 
-<body>
+<body  style="background: url(<?php echo base_url();?>/assets/images/background.jpg);">
 
-  <span href="http://localhost/cv/index.php/Sign_in" class="button" id="toggle-login">Register</span>
+
+  <span href="<?php echo base_url();?>index.php/User" class="button" id="toggle-login">Register</span>
 
 <div id="login">
   <div id="triangle"></div>

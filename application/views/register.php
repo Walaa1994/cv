@@ -6,7 +6,7 @@
   <link href="<?php echo base_url();?>/assets/css/style.css" rel='stylesheet' type='text/css' />
 </head>
 
-<body>
+<body style="background: url(<?php echo base_url();?>/assets/images/background.jpg);">
 
   <span href="#" class="button" id="toggle-login">jobs web applicatoin</span>
   <div id="login">

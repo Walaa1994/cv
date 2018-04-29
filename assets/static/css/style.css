@@ -186,6 +186,7 @@ a {
 .custom-navbar {
     margin-bottom: 0;
     background-color: #101010;
+    font-family: "Times New Roman", Times, serif;
 }
 
 .custom-navbar .navbar-brand {
@@ -286,7 +287,7 @@ a {
   padding-bottom: 32px;
 }
 #overview p{
-  font-family: "Times New Roman", Times, serif;;
+  font-family: "Times New Roman", Times, serif;
     font-style: normal;
     font-weight: 400;
 }

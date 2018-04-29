@@ -42,7 +42,7 @@
 				<span class="icon icon-bar"></span>
 				<span class="icon icon-bar"></span>
 			</button>
-			<a href="#" class="navbar-brand">Jobs Web Applicatoin</a>
+			<a href="#" class="navbar-brand">Jobs Web applicatoin</a>
 		</div>
 
 	</div>
@@ -55,9 +55,9 @@
 
 			<div class="col-md-12 col-sm-12">
 				
-				<h1 class="wow fadeInUp" data-wow-delay="1.6s">Send us your CV</h1>
-				<a href="<?php echo base_url();?>index.php/Seeker/CVForm" class="btn btn-lg btn-default smoothScroll wow fadeInUp hidden-xs" data-wow-delay="2.3s">Manual</a>
-				<a href="<?php echo base_url();?>index.php/Seeker/UploadCv" class="btn btn-lg btn-danger smoothScroll wow fadeInUp" data-wow-delay="2.3s">PDF</a>
+				<h1 class="wow fadeInUp" data-wow-delay="1.6s">Company</h1>
+				<a href="<?php echo base_url();?>index.php/Company/AddCompany" class="btn btn-lg btn-default smoothScroll wow fadeInUp hidden-xs" data-wow-delay="2.3s">Add Company</a>
+				<a href="<?php echo base_url();?>index.php/Company/AddAnnouncement" class="btn btn-lg btn-danger smoothScroll wow fadeInUp" data-wow-delay="2.3s">Add Announcement</a>
 			</div>
 
 		</div>

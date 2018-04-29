@@ -49,7 +49,7 @@
 				<span class="icon icon-bar"></span>
 				<span class="icon icon-bar"></span>
 			</button>
-			<a href="#" class="navbar-brand">Jobs Web applicatoin</a>
+			<a href="#" class="navbar-brand">Jobs Web Applicatoin</a>
 		</div>
 
 
@@ -78,7 +78,7 @@
 			<div class="col-md-12 col-sm-12">
 				
 				<h1 class="wow fadeInUp" data-wow-delay="1.6s">Our Application</h1>
-				<a href="http://localhost/cv/index.php/User/" class="btn btn-lg btn-danger smoothScroll wow fadeInUp" data-wow-delay="2.3s">REGISTER NOW</a>
+				<a href="<?php echo base_url();?>index.php/User" class="btn btn-lg btn-danger smoothScroll wow fadeInUp" data-wow-delay="2.3s">REGISTER NOW</a>
 			</div>
 
 
