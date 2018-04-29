@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <title>our app</title>
   <link href="<?php echo base_url();?>/assets/css/style.css" rel='stylesheet' type='text/css' />
+
 </head>
 
 <body style="background: url(<?php echo base_url();?>/assets/images/background.jpg);">
@@ -19,6 +20,11 @@
       <input type="password" name="password" placeholder="password" />
       <input type="Password" name="Cpassword" placeholder="Confrim Password" />   
       <input type="email" name="Email" placeholder="Email" />
+      <select id="select" name="seek_com">
+        <option value="">Choose ...</option>
+        <option value="seeker">Seeker</option>
+        <option value="company">Company</option>
+      </select>
       <input type="submit" value="Register" />
     </form>
   </div>
