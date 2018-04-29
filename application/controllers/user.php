@@ -22,13 +22,26 @@ class User extends CI_Controller {
                     $this->index();
             }
             else{
+            	$this->load->model('User_model');
+            	if($this->input->post('seek_com')=='seeker'){
+            		$seeker_id=$this->User_model->add_seeker();
                     $user=array(
                             'username'=> $this->input->post('username'),
                             'password'=> $this->input->post('password'),
                             'Email'=>    $this->input->post('Email'),
-                            );
-                    $this->load->model('User_model');
+                            'seeker_id'=>$seeker_id
+                            );    
                     $this->User_model->add_user($user);
+                }else{
+                	$company_id=$this->User_model->add_company();
+                    $user=array(
+                            'username'=> $this->input->post('username'),
+                            'password'=> $this->input->post('password'),
+                            'Email'=>    $this->input->post('Email'),
+                            'company_id'=>$company_id
+                            );    
+                    $this->User_model->add_user($user);
+                }
                     redirect('User/login');
             }
 	}
@@ -50,7 +63,10 @@ class User extends CI_Controller {
 			$password = $this->input->post('password');
 			$this->load->model('User_model');
 			if($this->User_model->get_user($username, $password)){
-				redirect(base_url() . 'index.php/home/sekeer_page');
+				if($this->session->userdata('seeker_id')!= Null)
+					redirect(base_url() . 'index.php/home/sekeer_page');
+				else
+					redirect(base_url() . 'index.php/home/company_page');
 			}
 			else{
 
