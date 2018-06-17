@@ -29,7 +29,7 @@ form{
 
 input[type="first_name"],input[type="last_name"],input[type="father_name"],input[type="birth_date"],
 input[type="nationality"],input[type="country"],input[type="city"],
-input[type="address"],input[type="email"],input[type="phone"],input[type="cert_name"],
+input[type="address"],input[type="email"],input[type="phone"],input[type="cert_name"],input[type="spe_name"],
 input[type="donor"],input[type="rate"],input[type="company_name"],input[type="company_name"],
 input[type="job_pos"],input[type="skill_name"],input[type="interest_name"],input[type="ref_name"],
 input[type="ref_phone"],input[type="ref_email"],input[type="ar_com_name"],
@@ -68,6 +68,7 @@ input[type="characteristic"]{
   font-size:95%;
   color:#555;
 }
+
 
 input[type="radio"] {
     display:inline-block;
@@ -146,6 +147,14 @@ input[type="submit"]:hover{
 }
 
 input[type="date"]{
+  width: 92%;
+  outline: none;
+  height: 35px;
+  margin-bottom: 20px; 
+  border:1px solid #ccc;  padding: 0 3px;
+  padding: 3.5%;
+}
+input[type="enddate"]{
   width: 92%;
   outline: none;
   height: 35px;

@@ -22,7 +22,6 @@ class Seeker extends CI_Controller {
         //Personal Information
         $first_name = $this->input->post('first_name');
         $last_name = $this->input->post('last_name');
-        $father_name = $this->input->post('father_name');
         $birth_date = $this->input->post('birth_date');
         $nationality = $this->input->post('nationality');
         $marital_state = $this->input->post('marital_state');
@@ -35,21 +34,26 @@ class Seeker extends CI_Controller {
 
         //Education
         $cert_name[] = $this->input->post('cert_name[]');
+        $spe_name[] = $this->input->post('spe_name[]');
         $grants_date[] = $this->input->post('grants_date[]');
+        $endgrants_date[] = $this->input->post('endgrants_date[]');
         $donor[] = $this->input->post('donor[]');
-        $rate[] = $this->input->post('rate[]');
+        $degreeType[] = $this->input->post('degreeType[]');
+        
 
         //Work Experience
         $company_name = $this->input->post('company_name');
         $job_pos = $this->input->post('job_pos');
         $from_date = $this->input->post('from_date');
         $to_date = $this->input->post('to_date');
-        $activity = $this->input->post('activity');
-        $Accomplishments = $this->input->post('Accomplishments');
+        $careerLevel = $this->input->post('careerLevel');
+        $jobType = $this->input->post('jobType');
+        $isCurrent = $this->input->post('isCurrent');
 
         //Personal Skills
         $skill_name = $this->input->post('skill_name');
         $year_exp = $this->input->post('year_exp');
+        $SkillLevel=$this->input->post('SkillLevel');
 
         //Personal Interests
         $interest_name = $this->input->post('interest_name');
@@ -60,32 +64,45 @@ class Seeker extends CI_Controller {
         $ref_phone = $this->input->post('ref_phone');
         $ref_email = $this->input->post('ref_email');
 
-        $result='Personal Information: first name '.$first_name.' last name '.$last_name.' father name '.$father_name.' Date of Birth '.$birth_date.' nationality '.$nationality.' marital state '.$marital_state.' gender '.$gender.' country '.$country.' city '.$city.' address '.$address.' email '.$email.' Phone Number '.$phone.' Education: ';
+        $result='Personal Information: first name '.$first_name.' last name '.$last_name.' Date of Birth '.$birth_date.' nationality '.$nationality.' marital state '.$marital_state.' gender '.$gender.' country '.$country.' city '.$city.' address '.$address.' email '.$email.' Phone Number '.$phone.' Education: ';
 
         $i=0;
         foreach ($cert_name as $value){
             $result.=' certificate name '.$value[$i];
         }
 
+         $i=0;
+        foreach ($spe_name as $value1){
+            $result.=' specialization name '.$value1[$i];
+        }
+
         $i=0;
-        foreach ($grants_date as $value1) {
-           $result.=' Date of Grants '.$value1[$i];
+        foreach ($grants_date as $value2) {
+           $result.=' Date of Grants '.$value2[$i];
            $i++;
         }
 
         $i=0;
-        foreach ($donor as $value2) {
-           $result.=' donor '.$value2[$i];
+        foreach ($endgrants_date as $value3) {
+           $result.=' EndDate of Grants '.$value3[$i];
            $i++;
         }
 
         $i=0;
-        foreach ($rate as $value3) {
-           $result.=' rate '.$value3[$i];
+        foreach ($donor as $value4) {
+           $result.=' donor '.$value4[$i];
            $i++;
         }
 
-        $result.=' Work Experience: company name '.$company_name.' Job Position '.$job_pos.' time period: from date'.$from_date.' to date '.$to_date.' Main activities and responsibilities '.$activity.' Significant Accomplishments '.$Accomplishments.' Skill Name '.$skill_name.' Years of experience '.$year_exp.' Interest Name '.$interest_name.' Degree of interest '.$interest_degree.' References & Referees: Person/Company/Organization Name '.$ref_name.' Phone Number '.$ref_phone.' Email '.$ref_email;
+        $i=0;
+        foreach ($degreeType as $value5) {
+           $result.=' Degree Type '.$value5[$i];
+           $i++;
+        }
+
+        
+
+        $result.=' Work Experience: company name '.$company_name.'careerLevel'.$careerLevel.'jobType'.$jobType.' Job Position '.$job_pos.'isCurrent'.$isCurrent.' time period: from date'.$from_date.' to date '.$to_date.' Skill Name '.$skill_name.'SkillLevel'.$SkillLevel.' Years of experience '.$year_exp.' Interest Name '.$interest_name.' Degree of interest '.$interest_degree.' References & Referees: Person/Company/Organization Name '.$ref_name.' Phone Number '.$ref_phone.' Email '.$ref_email;
         echo $result; 
         //var_dump($cert_name);
     }

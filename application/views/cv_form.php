@@ -103,11 +103,6 @@ $(document).ready(function () {
         </div>
 
         <div>
-        <p>Father Name</p>
-        <input  type="father_name" id="father_name" name="father_name"/>
-        </div>
-
-        <div>
         <p>Date of Birth</p>
         <input type="date" id="birth_date" name="birth_date"/>
         </div>
@@ -119,7 +114,9 @@ $(document).ready(function () {
 
         <div>
         <p id="radio_marital">Marital State</p>
-        <input type="radio" id="marital_state" name="marital_state" value="single" > Single<br>
+        <input type="radio" id="marital_state" name="marital_state" value="Married" > Married<br>
+        <input type="radio" id="marital_state" name="marital_state" value="Divorced" > Divorced<br>
+        <input type="radio" id="marital_state" name="marital_state" value="Single" > Single<br>
         <input type="radio" id="marital_state" name="marital_state" value="married" > Married<br>
         </div>
 
@@ -171,8 +168,18 @@ $(document).ready(function () {
             </div>
 
             <div>
+            <p>Specialization Name</p>
+            <input type="spe_name" id="spe_name" name="spe_name[]"/>
+            </div>
+
+            <div>
             <p>Date of Grants</p>
             <input type="date" id="grants_date" name="grants_date[]"/>
+            </div>
+
+             <div>
+            <p>EndDate of Grants</p>
+            <input type="date" id="endgrants_date" name="endgrants_date[]"/>
             </div>
 
             <div>
@@ -180,11 +187,24 @@ $(document).ready(function () {
             <input type="donor" id="donor" name="donor[]"/>
             </div>
 
-            <div>
-            <p>The Rate (optional)</p>
-            <input type="rate" id="rate" name="rate[]"/>
-            </div>
+          <div >
+          <p>Degree Type</p>
+          <select id="select" name="degreeType[]">
+          <option value="">choose ...</option>
+          <option value="EduHighSchool">EduHighSchool</option>
+          <option value="EduVocational">EduVocational</option>
+          <option value="EduCollegeCoursework">EduCollegeCoursework</option>
+          <option value="EduBachelor">EduBachelorl</option>
+          <option value="EduMaster">EduMaster</option>
+          <option value="EduDoctorate">EduDoctorate</option>
+          <option value="EduAssociate">EduAssociate</option>
+          <option value=" EduProfessional"> EduProfessional</option>
+              
+          </select>
+              
+          </div>
 
+            
         </div>
         <div>
         <a id="AddNewRecord" class="btn btn-link m-b-10 m-l-5">Add new row</a>
@@ -220,14 +240,31 @@ $(document).ready(function () {
 
         </div>
 
-        <div>
-        <p>Main activities and responsibilities</p>
-        <textarea id="activity" name="activity"></textarea>
+        <div >
+          <p>Career Level</p>
+          <select id="select" name="careerLevel">
+           <option value="">choose ...</option>
+          <option value="HighSchool">HighSchool</option>
+          <option value="Student">Student</option>
+          <option value="EntryLvl">EntryLvl</option>
+          <option value="MidCareer">MidCareer</option>
+          <option value="Management">Management</option>
+          <option value="Executive">Executive</option>
+          <option value="SeniorExecutive">SeniorExecutive</option>
+              
+          </select>
+              
+          </div>
+          <div>
+        <p id="radio_jop">Job Type</p>
+        <input type="radio" id="JobType" name="JobType" value="Emplyee" >Emplyee<br>
+        <input type="radio" id="JobType" name="JobType" value="Divorced" > Contractor<br>
+        <input type="radio" id="JobType" name="JobType" value="Single" > Intern<br>
         </div>
-
         <div>
-        <p>Significant Accomplishments</p>
-        <textarea id="Accomplishments" name="Accomplishments"></textarea>
+        <p id="radio_Current">Is Current</p>
+        <input type="radio" id="IsCurrent" name="IsCurrent" value="True" >True<br>
+        <input type="radio" id="IsCurrent" name="IsCurrent" value="False" >False<br>
         </div>
         
         <button id="previous" onclick="backPhase3()">Previous</button>
@@ -254,6 +291,17 @@ $(document).ready(function () {
         <option value="more than 2 year">more than 2 year</option>
         <option value="3 year">3 year</option>
         <option value="more than 3 year">more than 3 year</option>
+        </select>
+        </div>
+        <div>
+        <p>Skill Level</p>
+        <select id="select" name="SkillLevel">
+        <option value="">choose ...</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4 year">4</option>
+        <option value="5">5</option>
         </select>
         </div>
 
