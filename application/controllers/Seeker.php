@@ -1,4 +1,5 @@
 <?php
+libxml_disable_entity_loader(false);
 defined('BASEPATH') OR exit('No direct script access allowed');
 //this class for convert pdf to text
 include(APPPATH.'controllers/pdf2text.php');
@@ -105,6 +106,62 @@ class Seeker extends CI_Controller {
         $result.=' Work Experience: company name '.$company_name.'careerLevel'.$careerLevel.'jobType'.$jobType.' Job Position '.$job_pos.'isCurrent'.$isCurrent.' time period: from date'.$from_date.' to date '.$to_date.' Skill Name '.$skill_name.'SkillLevel'.$SkillLevel.' Years of experience '.$year_exp.' Interest Name '.$interest_name.' Degree of interest '.$interest_degree.' References & Referees: Person/Company/Organization Name '.$ref_name.' Phone Number '.$ref_phone.' Email '.$ref_email;
         echo $result; 
         //var_dump($cert_name);
+
+
+
+    $xml = new DOMDocument("1.0","UTF-8");
+    $xml->load("cv.xml");
+    $rootTag=$xml->getElementsByTagName("document")->item(0);
+    //personalinformation
+    $dataTag=$xml->createElement("PersonalInformation");
+    $first_nameTag=$xml->createElement("first_name",$first_name);
+    $last_nameTag=$xml->createElement("last_name", $last_name);
+    $birth_dateTag=$xml->createElement("birth_date", $birth_date);
+    $nationalityTag=$xml->createElement("nationality", $nationality);
+    $marital_stateTag=$xml->createElement("marital_state", $marital_state);
+    $genderTag=$xml->createElement("gender", $gender);
+    $countryTag=$xml->createElement("country", $country);
+    $cityTag=$xml->createElement("city", $city);
+    $addressTag=$xml->createElement("address", $address);
+    $emailTag=$xml->createElement("email",  $email);
+    $phoneTag=$xml->createElement("phone", $phone);
+    $dataTag->appendChild($first_nameTag);
+    $dataTag->appendChild($last_nameTag);
+    $dataTag->appendChild($birth_dateTag);
+    $dataTag->appendChild($nationalityTag);
+    $dataTag->appendChild($marital_stateTag);
+    $dataTag->appendChild($genderTag);
+    $dataTag->appendChild($countryTag);
+    $dataTag->appendChild($cityTag);
+    $dataTag->appendChild($addressTag);
+    $dataTag->appendChild($emailTag);
+    $dataTag->appendChild($phoneTag);
+    $rootTag->appendChild($dataTag);
+    //Education
+    $EducationTag=$xml->createElement("Education");
+    $cert=array_values($cert_name[0]);
+    $spe=array_values($spe_name[0]);
+    $grants_date=array_values($grants_date[0]);
+    $endgrants_date=array_values($endgrants_date[0]);
+    $donor=array_values($donor[0]);
+    $degreeType=array_values($degreeType[0]);
+    for ($i=0; $i <sizeof($cert) ; $i++) { 
+    $cert_nameTag=$xml->createElement("CertificateName",$cert[$i]);
+    $spe_nameTag=$xml->createElement("SpecializationName",$spe[$i]);
+    $grants_dateTag=$xml->createElement("DateofGrants",$grants_date[$i]);
+    $endgrants_dateTag=$xml->createElement("EndDateofGrants",$endgrants_date[$i]);
+    $donorTag=$xml->createElement("Donor",$donor[$i]);
+    $degreeTypeTag=$xml->createElement("DegreeType",$degreeType[$i]);
+
+    }
+    $EducationTag->appendChild($cert_nameTag);
+    $EducationTag->appendChild($spe_nameTag);
+    $EducationTag->appendChild($grants_dateTag);
+    $EducationTag->appendChild($endgrants_dateTag);
+    $EducationTag->appendChild($donorTag);
+    $EducationTag->appendChild($degreeTypeTag);
+    $rootTag->appendChild($EducationTag);
+    $xml->save("cv.xml");
     }
 
     public function UploadCv()

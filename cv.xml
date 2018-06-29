@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document>
+	
+<PersonalInformation><first_name/><last_name/><birth_date/><nationality/><marital_state/><gender/><country/><city/><address/><email/><phone/></PersonalInformation><Education><CertificateName>infornation technolgy</CertificateName><SpecializationName>software</SpecializationName><DateofGrants>2017-04-13</DateofGrants><EndDateofGrants>2018-06-08</EndDateofGrants><Donor>nn</Donor><DegreeType>EduBachelor</DegreeType></Education></document>
