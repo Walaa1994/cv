@@ -106,8 +106,7 @@ class Seeker extends CI_Controller {
         $result.=' Work Experience: company name '.$company_name.'careerLevel'.$careerLevel.'jobType'.$jobType.' Job Position '.$job_pos.'isCurrent'.$isCurrent.' time period: from date'.$from_date.' to date '.$to_date.' Skill Name '.$skill_name.'SkillLevel'.$SkillLevel.' Years of experience '.$year_exp.' Interest Name '.$interest_name.' Degree of interest '.$interest_degree.' References & Referees: Person/Company/Organization Name '.$ref_name.' Phone Number '.$ref_phone.' Email '.$ref_email;
         echo $result; 
         //var_dump($cert_name);
-
-
+        //test
 
     $xml = new DOMDocument("1.0","UTF-8");
     $xml->load("cv.xml");
