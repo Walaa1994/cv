@@ -7,27 +7,7 @@
 
 </head>
 
-<body style="background: url(<?php echo base_url();?>/assets/images/background.jpg);">
 
-  <span href="#" class="button" id="toggle-login">jobs web applicatoin</span>
-  <div id="login">
-    <div id="triangle"></div>
-    <h1>Register</h1>
-    <form action='<?php echo base_url();?>index.php/User/register' method="post">
-      <?php echo validation_errors();?>
-      
-      <input type="username" name="username" placeholder="username" />
-      <input type="password" name="password" placeholder="password" />
-      <input type="Password" name="Cpassword" placeholder="Confrim Password" />   
-      <input type="email" name="Email" placeholder="Email" />
-      <select id="select" name="seek_com">
-        <option value="">Choose ...</option>
-        <option value="seeker">Seeker</option>
-        <option value="company">Company</option>
-      </select>
-      <input type="submit" value="Register" />
-    </form>
-  </div>
 
   <script src="<?php echo base_url('http://codepen.io/assets/libs/fullpage/jquery.js')?>"></script>
 
