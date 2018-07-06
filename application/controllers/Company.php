@@ -29,9 +29,6 @@ class Company extends CI_Controller {
         $year_exp = $this->input->post('year_exp');
         $characteristic = $this->input->post('characteristic');
         $characteristic_degree = $this->input->post('characteristic_degree');
-
-        $result='Basic Information: Job Title '.$job_title.' Employment Type '.$employment_type.' Working Hours '.$working_hours.' per '.$hours_per.' Salary '.$salary.' per '.$salary_per.' Personal Skills: Skill Name '.$skill_name.' Years of experience '.$year_exp.' Personal Characteristics of The Job: Characteristic '.$characteristic.' Degree of Characteristic '.$characteristic_degree;
-        echo $result;
     }
 
 }
