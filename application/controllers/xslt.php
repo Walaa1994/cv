@@ -19,7 +19,7 @@ class Xslt extends CI_Controller {
 			// Attach the xsl rules
 			$proc->importStyleSheet($xsl);
 			$proc->transformToURI($xml, 'C:\Users\Roula Arab\Desktop\now\result.xml');
-		}
+		} 
 
 		public function xslt_announcement($xml_path="C:\\xampp\\htdocs\\cv\\Announcement_Form.xml"){
 			$xml = new DOMDocument;
