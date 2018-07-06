@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--<?xml-stylesheet type="text/xsl" href="CoreNLP-to-HTML.xsl"?>-->
+<resume>
+    <ID>1</ID>
+
+    <PersonalInfo>
+	   <firstName>Roula</firstName>                    <!--(remove father name) -->
+	   <lastName>Arab</lastName> 
+	   <birthday>1995-10-05</birthday>                 <!--The birthday of this Agent, represented in mm-dd string form, eg. '12-31' -->
+	   <Nationality>Syrian</Nationality>                    
+	   <MaritalStatus>Single</MaritalStatus>           <!-- Married - Divorced - Single - Widowed -->    
+	   <gender>Female</gender>                         <!--Female - Male  -->
+	   <country-name>Syria</country-name>
+	   <locality>Damascus</locality>                   <!-- city -->
+	   <street-address>Ruken Aldeen</street-address>   <!-- Address -->
+	   <Telephone>2712755</Telephone>
+	   <Email>roula.arab95@gmail.com</Email>
+    </PersonalInfo>
+	
+	<Education>
+	    <eduMajor>ITE</eduMajor>                     <!-- Certificate : Major  -->
+		<eduMinor>Software Engineering</eduMinor>    <!-- Certificate : speialization -->
+        <eduStartDate>2013-09-10</eduStartDate>      <!-- new (Education start date (YYYY-MM-DD)
+                                                        May contain only year or year and month) -->
+		<eduGradDate>2018-07-23</eduGradDate>
+        <studiedIn>Damascus University</studiedIn>   <!-- Donor  -->
+		<degreeType>EduBachelor</degreeType>         <!-- new (EduHighSchool :High school or equivalent
+		                                                         EduVocational : Vocational
+																 EduCollegeCoursework :Some college coursework completed 
+		                                                         EduBachelor : Bachelor's degree
+																 EduMaster : Master's degree
+																 EduDoctorate : Doctorate
+																 EduAssociate : Associate degree
+																 EduProfessional : Professional) -->
+		                                               <!-- remove Rate  -->
+	</Education>
+	
+	<Education>
+	    <eduMajor>ITE</eduMajor>                     <!-- Certificate : Major  -->
+		<eduMinor>AI</eduMinor>    <!-- Certificate : speialization -->
+        <eduStartDate>2013-09-10</eduStartDate>      <!-- new (Education start date (YYYY-MM-DD)
+                                                        May contain only year or year and month) -->
+		<eduGradDate>2018-07-23</eduGradDate>
+        <studiedIn>Damascus University</studiedIn>   <!-- Donor  -->
+		<degreeType>EduMaster</degreeType>         <!-- new (EduHighSchool :High school or equivalent
+		                                                         EduVocational : Vocational
+																 EduCollegeCoursework :Some college coursework completed 
+		                                                         EduBachelor : Bachelor's degree
+																 EduMaster : Master's degree
+																 EduDoctorate : Doctorate
+																 EduAssociate : Associate degree
+																 EduProfessional : Professional) -->
+		                                               <!-- remove Rate  -->
+	</Education>
+	
+	<WorkExperience>
+	    <employedIn>Syraitel Telecom</employedIn>    <!-- Company  -->
+		<jobTitle>web developer</jobTitle>            <!-- job Position  -->
+		<startDate>2018-07-25</startDate>
+	    <endDate>2020-05-02</endDate>
+		<careerLevel>MidCareer</careerLevel>         <!-- new (HighSchool : Student (high school)
+		                                                         Student : Student (graduate/undergraduate)
+																 EntryLvl : Entry level (less than 2 years of experience)
+																 MidCareer : Mid-career (2+ years of experience)
+																 Management : Management (manager/director of staff)
+																 Executive : Executive (SVP, EVP, VP)
+																 SeniorExecutive : Senior Executive (president / CEO))-->
+																 
+		<jobType>Emplyee</jobType>                   <!-- new (Emplyee - Contractor - Intern )-->
+		<isCurrent>False</isCurrent>                 <!-- new (True - False)-->
+		<!-- <ActivitiesAndResponsibilities> </ActivitiesAndResponsibilities>
+		<SignificantAccomplishments> </SignificantAccomplishments> -->
+	</WorkExperience>
+	
+	<WorkExperience>
+	    <employedIn>AlBoraq</employedIn>    <!-- Company  -->
+		<jobTitle>QC</jobTitle>            <!-- job Position  -->
+		<startDate>2017-06-1</startDate>
+	    <endDate>2020-05-02</endDate>
+		<careerLevel>MidCareer</careerLevel>         <!-- new (HighSchool : Student (high school)
+		                                                         Student : Student (graduate/undergraduate)
+																 EntryLvl : Entry level (less than 2 years of experience)
+																 MidCareer : Mid-career (2+ years of experience)
+																 Management : Management (manager/director of staff)
+																 Executive : Executive (SVP, EVP, VP)
+																 SeniorExecutive : Senior Executive (president / CEO))-->
+																 
+		<jobType>Emplyee</jobType>                   <!-- new (Emplyee - Contractor - Intern )-->
+		<isCurrent>False</isCurrent>                 <!-- new (True - False)-->
+		<!-- <ActivitiesAndResponsibilities> </ActivitiesAndResponsibilities>
+		<SignificantAccomplishments> </SignificantAccomplishments> -->
+	</WorkExperience>
+	
+	<PersonalSkills>
+	    <skillName>C++</skillName>
+		<skillYearsExperience>4</skillYearsExperience>
+		<skillLevel>5</skillLevel>                       <!-- new (0..5) -->
+	</PersonalSkills> 
+	
+	<PersonalSkills>
+	    <skillName>java</skillName>
+		<skillYearsExperience>4</skillYearsExperience>
+		<skillLevel>5</skillLevel>                       <!-- new (0..5) -->
+	</PersonalSkills> 
+	
+	<Language>                                           <!-- new  -->
+	    <Name>English</Name>
+		<SpokenLevel>4</SpokenLevel>                      <!-- (0..5) -->             
+		<ReadingLevel>5</ReadingLevel>                    <!-- (0..5) -->
+		<WritingLevel>3</WritingLevel>                    <!-- (0..5) -->
+	</Language>
+	
+	<IsActive>True</IsActive>
+	
+	<References>
+	<Name>Ola Arab</Name>
+	<Phone>2712755</Phone>
+	<Email>ola.arab.115@gmail.com</Email>
+	</References> 
+</resume>		 
