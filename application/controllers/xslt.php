@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Xslt extends CI_Controller {
 
-		public function xslt_cv($xml_path="C:\\xampp\\htdocs\\cv\\cvform.xml"){
+		public function xslt_cv($xml_path){
 			$xml = new DOMDocument;
 			$xml->load($xml_path);
 

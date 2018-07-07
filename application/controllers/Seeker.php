@@ -51,9 +51,9 @@ class Seeker extends CI_Controller {
         $to_date = $this->input->post('to_date');
         $careerLevel = $this->input->post('careerLevel');
         $jobType = $this->input->post('JobType');
-        var_dump($jobType);
+        //var_dump($jobType);
         $isCurrent = $this->input->post('IsCurrent');
-        var_dump($isCurrent);
+        //var_dump($isCurrent);
 
         //Personal Skills
         $skill_name = $this->input->post('skill_name');
@@ -77,10 +77,13 @@ class Seeker extends CI_Controller {
         $xml->formatOutput = true;
 
         //append root tag
-        $rootTag = $xml->createElement('document');
+        $rootTag = $xml->createElement('resume');
         $xml->appendChild($rootTag);
         
         //is active
+        $IDTag=$xml->createElement("ID",1);
+        $rootTag->appendChild($IDTag);
+
         $IsActiveTag=$xml->createElement("IsActive",$IsActive);
         $rootTag->appendChild($IsActiveTag);
 
@@ -187,6 +190,8 @@ class Seeker extends CI_Controller {
 
         //end References
         $xml->save('cv.xml') or die('XML Create Error');   
+
+        redirect('/Xslt/xslt_cv/cv.xml');
     }
 
     public function UploadCv()

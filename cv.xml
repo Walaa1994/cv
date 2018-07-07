@@ -1,18 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document>
+<resume>
+  <ID>1</ID>
   <IsActive/>
   <PersonalInfo>
-    <firstName>lolo</firstName>
-    <lastName>bb</lastName>
-    <birthday>2018-07-10</birthday>
+    <firstName>roula</firstName>
+    <lastName>arab</lastName>
+    <birthday>1995-10-05</birthday>
     <Nationality>syrian</Nationality>
-    <MaritalStatus>Married</MaritalStatus>
-    <gender/>
-    <country-name>Syria</country-name>
-    <locality>Damascus</locality>
-    <street-address/>
-    <Email/>
-    <Telephone/>
+    <MaritalStatus>Single</MaritalStatus>
+    <gender>female</gender>
+    <country-name>syria</country-name>
+    <locality>damascus</locality>
+    <street-address>ruken aldin</street-address>
+    <Email>arab.roula@hotmail.com</Email>
+    <Telephone>0991963462</Telephone>
   </PersonalInfo>
   <Education>
     <eduMajor/>
@@ -45,4 +46,4 @@
     <Phone/>
     <Email/>
   </References>
-</document>
+</resume>
