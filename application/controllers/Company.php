@@ -34,7 +34,7 @@ class Company extends CI_Controller {
         $characteristic = $this->input->post('characteristic');
         $characteristic_degree = $this->input->post('characteristic_degree');
         $Language_Name = $this->input->post('Language_Name');
-        $Is_Active = $this->input->post('Is_Active');
+        $Is_Active = $this->input->post('IsActive');
 
         $xml = new DOMDocument("1.0","UTF-8");
         $xml->formatOutput = true;
@@ -42,6 +42,10 @@ class Company extends CI_Controller {
         //append root tag
         $rootTag = $xml->createElement('announcement');
         $xml->appendChild($rootTag);
+
+        //id
+        $IDTag=$xml->createElement("ID",uniqid());
+        $rootTag->appendChild($IDTag);
 
         //the Announcement is active or not
         $IsActiveTag=$xml->createElement("IsActive",$Is_Active);
