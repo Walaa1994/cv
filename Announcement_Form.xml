@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="CoreNLP-to-HTML.xsl"?>
+<announcement>
+    <ID>1</ID>
+	
+	<!--Basic Info-->
+	<BasicInfo>
+	    <jobtitle>web developer</jobtitle>
+		<jobMode>Full-time</jobMode>                  <!-- Full-time  -  Part-time -->
+		<jobType>Emplyee</jobType>                    <!--(Emplyee - Contractor - Intern )-->
+		<Salary>200000</Salary>
+	</BasicInfo>
+	
+    <!-- Personal Info-->
+	
+    <PersonalInfo>
+	    <locality>Damascus</locality>                 <!-- city -->
+    </PersonalInfo>
+	
+	<!--Education-->
+	<Education>
+	    <eduMajor>ITE</eduMajor>                     <!-- Certificate : Major  -->
+		<eduMinor>Software Engineering</eduMinor>    <!-- Certificate : speialization -->
+		<degreeType>EduBachelor</degreeType>         <!--  (EduHighSchool :High school or equivalent
+															 EduVocational : Vocational
+															 EduCollegeCoursework :Some college coursework completed 
+															 EduBachelor : Bachelor's degree
+															 EduMaster : Master's degree
+															 EduDoctorate : Doctorate
+															 EduAssociate : Associate degree
+															 EduProfessional : Professional) -->
+		                                               
+	</Education>
+	
+	<!-- Skills -->
+	
+	<PersonalSkills>
+	    <skillName>C++</skillName>
+		<skillYearsExperience>4</skillYearsExperience>
+	</PersonalSkills> 
+	
+	<!-- Language -->
+	<Language>                                         
+	    <Name>English</Name>
+	</Language>
+	
+	<IsActive>True</IsActive>
+</announcement>		 
