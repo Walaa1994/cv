@@ -1,40 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <resume>
-  <ID>1</ID>
+  <ID>65</ID>
   <IsActive/>
   <PersonalInfo>
-    <firstName>roula</firstName>
-    <lastName>arab</lastName>
-    <birthday>1995-10-05</birthday>
-    <Nationality>syrian</Nationality>
-    <MaritalStatus>Single</MaritalStatus>
-    <gender>female</gender>
-    <country-name>syria</country-name>
-    <locality>damascus</locality>
-    <street-address>ruken aldin</street-address>
-    <Email>arab.roula@hotmail.com</Email>
-    <Telephone>0991963462</Telephone>
+    <firstName/>
+    <lastName/>
+    <birthday/>
+    <Nationality/>
+    <MaritalStatus/>
+    <gender/>
+    <country-name/>
+    <locality/>
+    <street-address/>
+    <Email/>
+    <Telephone/>
   </PersonalInfo>
-  <Education>
-    <eduMajor/>
-    <eduMinor/>
-    <eduStartDate/>
-    <eduGradDate/>
-    <studiedIn/>
-    <degreeType/>
-  </Education>
-  <WorkExperience>
-    <employedIn/>
-    <jobTitle/>
-    <startDate/>
-    <endDate/>
-    <careerLevel/>
-  </WorkExperience>
-  <PersonalSkills>
-    <skillName/>
-    <skillYearsExperience/>
-    <skillLevel/>
-  </PersonalSkills>
   <Language>
     <Name/>
     <SpokenLevel/>
