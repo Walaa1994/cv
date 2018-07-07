@@ -31,6 +31,10 @@ class Company extends CI_Controller {
         $salary_per = $this->input->post('salary_per');
         $skill_name = $this->input->post('skill_name');
         $year_exp = $this->input->post('year_exp');
+<<<<<<< HEAD
+        $characteristic = $this->input->post('characteristic');
+        $characteristic_degree = $this->input->post('characteristic_degree');
+=======
         $Language_Name = $this->input->post('Language_Name');
         $Is_Active = $this->input->post('Is_Active');
 
@@ -112,6 +116,7 @@ class Company extends CI_Controller {
 
     $xml->save("Announcement.xml");
 
+>>>>>>> master
     }
 
 }

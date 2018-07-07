@@ -72,10 +72,15 @@ class Seeker extends CI_Controller {
         $ref_email = $this->input->post('ref_email');
         $IsActive = $this->input->post('IsActive');
 
-
+        //creating xml file
         $xml = new DOMDocument("1.0","UTF-8");
-        $xml->load("cv.xml");
-        $rootTag=$xml->getElementsByTagName("document")->item(0);
+        $xml->formatOutput = true;
+
+        //append root tag
+        $rootTag = $xml->createElement('document');
+        $xml->appendChild($rootTag);
+        
+        //is active
         $IsActiveTag=$xml->createElement("IsActive",$IsActive);
         $rootTag->appendChild($IsActiveTag);
 
@@ -108,7 +113,6 @@ class Seeker extends CI_Controller {
         //Education
         $EducationTag=$xml->createElement("Education"); 
         foreach ($cert_name as $key => $value) {
-            # code...
             $cert_nameTag=$xml->createElement("eduMajor",$value);
             $spe_nameTag=$xml->createElement("eduMinor",$spe_name[$key]);
             $grants_dateTag=$xml->createElement("eduStartDate",$grants_date[$key]);
@@ -125,13 +129,12 @@ class Seeker extends CI_Controller {
         }
 
         $ExperienceTag=$xml->createElement("WorkExperience"); 
-         foreach ($company_name as $key => $value) {
-            # code...
-          $company_nameTag=$xml->createElement("employedIn",$value);
-          $job_posTag=$xml->createElement("jobTitle",$job_pos[$key]);
-          $from_dateTag=$xml->createElement("startDate",$from_date[$key]);
-          $to_dateTag=$xml->createElement("endDate",$to_date[$key]);
-          $careerLevelTag=$xml->createElement("careerLevel",$careerLevel[$key]);
+        foreach ($company_name as $key => $value) {
+            $company_nameTag=$xml->createElement("employedIn",$value);
+            $job_posTag=$xml->createElement("jobTitle",$job_pos[$key]);
+            $from_dateTag=$xml->createElement("startDate",$from_date[$key]);
+            $to_dateTag=$xml->createElement("endDate",$to_date[$key]);
+            $careerLevelTag=$xml->createElement("careerLevel",$careerLevel[$key]);
          // $jobTypeTag=$xml->createElement("JobType",$jobType[$key]);
          // $isCurrentTag=$xml->createElement("isCurrent",$isCurrent[$key]);
 
@@ -140,24 +143,23 @@ class Seeker extends CI_Controller {
             $ExperienceTag->appendChild($from_dateTag);
             $ExperienceTag->appendChild($to_dateTag);
             $ExperienceTag->appendChild($careerLevelTag);
-           // $ExperienceTag->appendChild($jobTypeTag);
-            //$ExperienceTag->appendChild($isCurrentTag);
+          //$ExperienceTag->appendChild($jobTypeTag);
+          //$ExperienceTag->appendChild($isCurrentTag);
             $rootTag->appendChild($ExperienceTag);
         }
+
         //personal skils
         $PersonalSkillsTag=$xml->createElement("PersonalSkills"); 
-         foreach ($skill_name as $key => $value) {
-            # code...
-          $skill_nameTag=$xml->createElement("skillName",$value);
-          $year_expTag=$xml->createElement("skillYearsExperience",$year_exp[$key]);
-          $SkillLevelTag=$xml->createElement("skillLevel",$SkillLevel[$key]);
+        foreach ($skill_name as $key => $value) {
+            $skill_nameTag=$xml->createElement("skillName",$value);
+            $year_expTag=$xml->createElement("skillYearsExperience",$year_exp[$key]);
+            $SkillLevelTag=$xml->createElement("skillLevel",$SkillLevel[$key]);
 
             $PersonalSkillsTag->appendChild($skill_nameTag);
             $PersonalSkillsTag->appendChild($year_expTag);
             $PersonalSkillsTag->appendChild($SkillLevelTag);
             $rootTag->appendChild($PersonalSkillsTag);
-            }
-
+        }
         //end personal skills
 
         //Language
@@ -171,8 +173,8 @@ class Seeker extends CI_Controller {
         $LanguageTag->appendChild($Reading_LevelTag);
         $LanguageTag->appendChild($Writing_LevelTag);
         $rootTag->appendChild($LanguageTag);
-
         //end language
+
         //References
         $ReferencesTag=$xml->createElement("References");
         $ref_nameTag=$xml->createElement("Name", $ref_name);
@@ -183,11 +185,8 @@ class Seeker extends CI_Controller {
         $ReferencesTag->appendChild($ref_emailTag);
         $rootTag->appendChild($ReferencesTag);
 
-
-
         //end References
-        $xml->save("cv.xml");
-    
+        $xml->save('cv.xml') or die('XML Create Error');   
     }
 
     public function UploadCv()
