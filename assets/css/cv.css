@@ -36,7 +36,7 @@ input[type="ref_phone"],input[type="ref_email"],input[type="ar_com_name"],
 input[type="en_com_name"],input[type="com_owner"],input[type="com_city"],input[type="com_governorate"],
 input[type="com_address"],input[type="com_phone"],input[type="com_email"],input[type="com_website"],
 input[type="job_title"],input[type="working_hours"],input[type="Language_Name"],input[type="salary"],input[type="locality"],
-input[type="Languages_Name"]{
+input[type="Languages_Name"],input[type="year_exp"],input[type="salary"]{
   width:92%;
   background:#fff;
   margin-bottom:4%;

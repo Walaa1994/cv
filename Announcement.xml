@@ -1,21 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document>
-<IsActive>True</IsActive>
-<BasicInfo>
-	<jobtitle>developer</jobtitle>
-	<jobMode>full time</jobMode>
-	<jobType>Emplyee</jobType>
-	<Salary>30000</Salary>
-</BasicInfo>
-<PersonalInfo>
-	<locality>damascus</locality>
-</PersonalInfo>
-<Education>
-	<eduMajor>infornation technolgy</eduMajor>
-	<eduMinor>software</eduMinor>
-	<degreeType>EduHighSchool</degreeType>
-</Education>
-<PersonalSkills>
-	<skillName>php</skillName>
-	<skillYearsExperience>less than 1 year</skillYearsExperience>
-</PersonalSkills><Language><Name>english</Name><Name>arabic</Name></Language></document>
+<announcement>
+  <IsActive/>
+  <BasicInfo>
+    <jobtitle>backend developer</jobtitle>
+    <jobMode>full time</jobMode>
+    <jobType>Contractor</jobType>
+    <Salary>50000</Salary>
+  </BasicInfo>
+  <PersonalInfo>
+    <locality>damascus</locality>
+  </PersonalInfo>
+  <Education>
+    <eduMajor>ww</eduMajor>
+    <eduMinor>gg</eduMinor>
+    <degreeType>EduBachelor</degreeType>
+  </Education>
+  <PersonalSkills>
+    <skillName>hvjh</skillName>
+    <skillYearsExperience>5</skillYearsExperience>
+  </PersonalSkills>
+  <Language>
+    <Name>en</Name>
+  </Language>
+</announcement>

@@ -38,8 +38,8 @@ class Seeker extends CI_Controller {
         //Education
         $cert_name = $this->input->post('cert_name');
         $spe_name = $this->input->post('spe_name');
+        $start_date = $this->input->post('start_date');
         $grants_date = $this->input->post('grants_date');
-        $endgrants_date = $this->input->post('endgrants_date');
         $donor = $this->input->post('donor');
         $degreeType = $this->input->post('degreeType');
         
@@ -81,7 +81,7 @@ class Seeker extends CI_Controller {
         $xml->appendChild($rootTag);
         
         //is active
-        $IDTag=$xml->createElement("ID",1);
+        $IDTag=$xml->createElement("ID",$this->session->userdata('u_id'));
         $rootTag->appendChild($IDTag);
 
         $IsActiveTag=$xml->createElement("IsActive",$IsActive);
@@ -124,8 +124,8 @@ class Seeker extends CI_Controller {
             $degreeTypeTag=$xml->createElement("degreeType",$degreeType[$key]);
             $EducationTag->appendChild($cert_nameTag);
             $EducationTag->appendChild($spe_nameTag);
-            $EducationTag->appendChild($grants_dateTag);
-            $EducationTag->appendChild($endgrants_dateTag);
+            $EducationTag->appendChild($start_dateTag);
+            $EducationTag->appendChild($grants_dateTag);  
             $EducationTag->appendChild($donorTag);
             $EducationTag->appendChild($degreeTypeTag);
             $rootTag->appendChild($EducationTag);
