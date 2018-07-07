@@ -1,4 +1,48 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document>
-	
-<PersonalInformation><first_name/><last_name/><birth_date/><nationality/><marital_state/><gender/><country/><city/><address/><email/><phone/></PersonalInformation><Education><CertificateName>infornation technolgy</CertificateName><SpecializationName>software</SpecializationName><DateofGrants>2017-04-13</DateofGrants><EndDateofGrants>2018-06-08</EndDateofGrants><Donor>nn</Donor><DegreeType>EduBachelor</DegreeType></Education></document>
+  <IsActive/>
+  <PersonalInfo>
+    <firstName>lolo</firstName>
+    <lastName>bb</lastName>
+    <birthday>2018-07-10</birthday>
+    <Nationality>syrian</Nationality>
+    <MaritalStatus>Married</MaritalStatus>
+    <gender/>
+    <country-name>Syria</country-name>
+    <locality>Damascus</locality>
+    <street-address/>
+    <Email/>
+    <Telephone/>
+  </PersonalInfo>
+  <Education>
+    <eduMajor/>
+    <eduMinor/>
+    <eduStartDate/>
+    <eduGradDate/>
+    <studiedIn/>
+    <degreeType/>
+  </Education>
+  <WorkExperience>
+    <employedIn/>
+    <jobTitle/>
+    <startDate/>
+    <endDate/>
+    <careerLevel/>
+  </WorkExperience>
+  <PersonalSkills>
+    <skillName/>
+    <skillYearsExperience/>
+    <skillLevel/>
+  </PersonalSkills>
+  <Language>
+    <Name/>
+    <SpokenLevel/>
+    <ReadingLevel/>
+    <WritingLevel/>
+  </Language>
+  <References>
+    <Name/>
+    <Phone/>
+    <Email/>
+  </References>
+</document>
