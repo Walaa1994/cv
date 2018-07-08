@@ -81,7 +81,7 @@ input[type="radio"] {
     height:19px;
     margin:2px 4px 10px 0;
     vertical-align:middle;
-    background:url(check_radio_sheet.png) -38px top no-repeat;
+    /*background:url(check_radio_sheet.png) -38px top no-repeat;*/
     cursor:pointer;
 }
 
