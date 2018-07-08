@@ -12,6 +12,7 @@ class Seeker extends CI_Controller {
         $this->data['subview'] = 'seeker_home';
         $this->load->view('layouts/layout', $this->data);
     }
+    //commite batoul
 
     public function CVForm()
     {
