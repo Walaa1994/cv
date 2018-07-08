@@ -12,10 +12,9 @@ class User_model extends CI_Model {
             foreach ($query->result() as $value) {
             $session_data = array(
                             'u_id'=>$value->u_id,
-                            'seeker_id'=>$value->seeker_id,
-                            'company_id'=>$value->company_id,
                             'username' => $username,
-                            'email'=>$value->Email
+                            'email'=>$value->Email,
+                            'type'=>$value->type
                             );
             $this->session->set_userdata($session_data);
             }
@@ -31,7 +30,7 @@ class User_model extends CI_Model {
         $this->db->insert('user',$user);
     }
 
-    public function add_seeker()
+    /*public function add_seeker()
     {
         $data=array('seeker_id'=>null);
         $this->db->insert('seeker',$data);
@@ -43,7 +42,5 @@ class User_model extends CI_Model {
         $data=array('company_id'=>null);
         $this->db->insert('company',$data);
         return $this->db->insert_id();
-    }
-
-
+    }*/
 }

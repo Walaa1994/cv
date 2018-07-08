@@ -11,39 +11,28 @@ class User extends CI_Controller {
 
 	public function register()
 	{
-            $this->load->helper(array('Form','Url','html'));
-            $this->load->library('form_validation');
-            $this->form_validation->set_rules('username','username','trim|required');
-            $this->form_validation->set_rules('password','password','trim|required');
-            $this->form_validation->set_rules('Cpassword','Cpassword','trim|required|matches[password]');
-            $this->form_validation->set_rules('Email','Email','trim|required');
+        $this->load->helper(array('Form','Url','html'));
+        $this->load->library('form_validation');
+        $this->form_validation->set_rules('username','username','trim|required');
+        $this->form_validation->set_rules('password','password','trim|required');
+        $this->form_validation->set_rules('Cpassword','Cpassword','trim|required|matches[password]');
+        $this->form_validation->set_rules('Email','Email','trim|required');
+        $this->form_validation->set_rules('seek_com','seek_com','trim|required');
 
-            if($this->form_validation->run()==false){
-                    $this->index();
-            }
-            else{
-            	$this->load->model('User_model');
-            	if($this->input->post('seek_com')=='seeker'){
-            		$seeker_id=$this->User_model->add_seeker();
-                    $user=array(
-                            'username'=> $this->input->post('username'),
-                            'password'=> $this->input->post('password'),
-                            'Email'=>    $this->input->post('Email'),
-                            'seeker_id'=>$seeker_id
-                            );    
-                    $this->User_model->add_user($user);
-                }else{
-                	$company_id=$this->User_model->add_company();
-                    $user=array(
-                            'username'=> $this->input->post('username'),
-                            'password'=> $this->input->post('password'),
-                            'Email'=>    $this->input->post('Email'),
-                            'company_id'=>$company_id
-                            );    
-                    $this->User_model->add_user($user);
-                }
-                    redirect('User/login');
-            }
+        if($this->form_validation->run()==false){
+                $this->index();
+        }
+        else{
+        	$this->load->model('User_model');
+            $user=array(
+                    'username'=> $this->input->post('username'),
+                    'password'=> $this->input->post('password'),
+                    'Email'=>    $this->input->post('Email'),
+                    'type'=>$this->input->post('seek_com')
+                    );    
+            $this->User_model->add_user($user);
+            redirect('User/login');
+        }    
 	}
 
 
@@ -61,15 +50,15 @@ class User extends CI_Controller {
 		{
 			$username = $this->input->post('username');
 			$password = $this->input->post('password');
+
 			$this->load->model('User_model');
 			if($this->User_model->get_user($username, $password)){
-				if($this->session->userdata('seeker_id')!= Null)
+				if($this->session->userdata('type')== "seeker")
 					redirect(base_url() . 'index.php/home/sekeer_page');
 				else
 					redirect(base_url() . 'index.php/home/company_page');
 			}
 			else{
-
 				$this->session->set_flashdata('error','invalid username and password');
 				redirect(base_url(). 'index.php/User/login');
 			}
