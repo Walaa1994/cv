@@ -80,7 +80,57 @@ $(document).ready(function () {
         $("#more_feild").append($("#education_block").html()+'<hr>');
        next++;
     });
+
+    //add row
+    var count_education = 1;
+   $('#add_education_info').click(function(){
+    count_education = count_education + 1;
+    var html_code = "<tr id='row"+count_education+"'>";
+     html_code += "<td><input type='cert_name' id='cert_name' name='cert_name[]'/></td>";
+     html_code += "<td><input type='spe_name' id='spe_name' name='spe_name[]'/></td>";
+     html_code += "<td><input type='date' id='start_date' name='start_date[]'/></td>";
+     html_code += "<td><input type='date' id='grants_date' name='grants_date[]'/></td>";
+     html_code += "<td><input type='donor' id='donor' name='donor[]'/></td>";
+     html_code += '<td><select id="select" name="degreeType[]"><option value="">choose ...</option><option value="EduHighSchool">High School</option><option value="EduVocational">Vocational</option><option value="EduCollegeCoursework">College Coursework</option><option value="EduBachelor">Bachelorl</option><option value="EduMaster">Master</option><option value="EduDoctorate">Doctorate</option><option value="EduAssociate">Associate</option><option value=" EduProfessional">Professional</option></select></td>';
+     html_code += "<td><button type='button' name='remove' data-row='row"+count_education+"' class='btn btn-danger btn-xs remove'>-</button></td>";   
+     html_code += "</tr>";  
+     $('#crud_table_education').append(html_code);  
+   });
+       
+     //experiance
+     count_experience=1;
+     $('#add_experience_info').click(function(){debugger;
+        count_experience = count_experience + 1;
+        var html_code = "<tr id='row"+count_experience+"'>";
+         html_code += "<td><input type='company_name' id='company_name' name='company_name[]'/></td>";
+         html_code += "<td><input type='job_pos' id='job_pos' name='job_pos[]'/></td>";
+         html_code += "<td> <input type='date' id='from_date' name='from_date[]'/></td>";
+         html_code += "<td><input type='date' id='to_date' name='to_date[]'/></td>";
+         html_code += '<td><select id="select" name="careerLevel[]"><option value="">choose ...</option><option value="HighSchool">Student (high school)</option><option value="Student">Student (graduate/undergraduate)</option><option value="EntryLvl">Entry level (less than 2 years of experience)</option><option value="MidCareer">Mid-career (2+ years of experience)</option><option value="Management">Management (manager/director of staff)</option><option value="Executive">Executive (SVP, EVP, VP)</option><option value="SeniorExecutive">Senior Executive (president / CEO)</option>  </select></td>';
+         html_code += '<td><select id="select" name="JobType[]"><option value="">choose ...</option><option value="Emplyee">Employee</option><option value="Contractor">Contractor</option><option value="Intern">Intern</option></select></td>';
+         html_code += '<td><select id="select" name="IsCurrent[]"><option value="">choose ...</option><option value="True">ON</option><option value="False">OFF</option></select></td>';
+         html_code += "<td><button type='button' name='remove' data-row='row"+count_experience+"' class='btn btn-danger btn-xs remove'>-</button></td>";   
+         html_code += "</tr>";  
+         $('#crud_table_experience').append(html_code);         
+       });
+
+       //add skills
+       count_skills=1;  
+     $('#add_skill_info').click(function(){debugger;
+          count_skills = count_skills + 1;
+          var html_code = "<tr id='row"+count_skills+"'>";
+           html_code += "<td><input type='skill_name'id='skill_name' name='skill_name[]'/></td>";
+           html_code += "<td><input type='year_exp'id='year_exp' name='year_exp[]'/></td>";
+           html_code += "<td><select id='select' name='SkillLevel[]'><option value=''>choose ...</option><option value='1'>1</option><option value='2'>2</option><option value='3'>3</option><option value='4 year'>4</option>option value='5'>5</option> </select></td>";
+           html_code += "<td><button type='button' name='remove' data-row='row"+count_skills+"' class='btn btn-danger btn-xs remove'>-</button></td>";   
+           html_code += "</tr>";  
+           $('#crud_table_skill').append(html_code);
+         });
 });
+    $(document).on('click', '.remove', function(){
+      var delete_row = $(this).data("row");
+      $('#' + delete_row).remove();
+     });
 </script>
 
 <div id="form">
@@ -204,29 +254,7 @@ $(document).ready(function () {
          <button type="button" name="add" id="add_education_info" class="btn btn-success btn-xs">+</button>
         </div>
       </div>
-      <script>
-        $(document).ready(function(){
-         var count = 1;
-         $('#add_education_info').click(function(){
-          count = count + 1;
-          var html_code = "<tr id='row"+count+"'>";
-           html_code += "<td><input type='cert_name' id='cert_name' name='cert_name[]'/></td>";
-           html_code += "<td><input type='spe_name' id='spe_name' name='spe_name[]'/></td>";
-           html_code += "<td><input type='date' id='start_date' name='start_date[]'/></td>";
-           html_code += "<td><input type='date' id='grants_date' name='grants_date[]'/></td>";
-           html_code += "<td><input type='donor' id='donor' name='donor[]'/></td>";
-           html_code += '<td><select id="select" name="degreeType[]"><option value="">choose ...</option><option value="EduHighSchool">High School</option><option value="EduVocational">Vocational</option><option value="EduCollegeCoursework">College Coursework</option><option value="EduBachelor">Bachelorl</option><option value="EduMaster">Master</option><option value="EduDoctorate">Doctorate</option><option value="EduAssociate">Associate</option><option value=" EduProfessional">Professional</option></select></td>';
-           html_code += "<td><button type='button' name='remove' data-row='row"+count+"' class='btn btn-danger btn-xs remove'>-</button></td>";   
-           html_code += "</tr>";  
-           $('#crud_table_education').append(html_code);  
-         });
-         });
-         $(document).on('click', '.remove', function(){
-          var delete_row = $(this).data("row");
-          $('#' + delete_row).remove();
-         });
-      </script>
-      
+
       <button id="previous" onclick="backPhase2()">Previous</button>
       <button id="next" onclick="processPhase2()">Next</button>
     </div>
@@ -293,30 +321,7 @@ $(document).ready(function () {
       </div>
       </div>
 
-      <script>
-      $(document).ready(function(){
-       var count = 1;
-       $('#add_experience_info').click(function(){
-        count = count + 1;
-        var html_code = "<tr id='row"+count+"'>";
-         html_code += "<td><input type='company_name' id='company_name' name='company_name[]'/></td>";
-         html_code += "<td><input type='job_pos' id='job_pos' name='job_pos[]'/></td>";
-         html_code += "<td> <input type='date' id='from_date' name='from_date[]'/></td>";
-         html_code += "<td><input type='date' id='to_date' name='to_date[]'/></td>";
-         html_code += '<td><select id="select" name="careerLevel[]"><option value="">choose ...</option><option value="HighSchool">Student (high school)</option><option value="Student">Student (graduate/undergraduate)</option><option value="EntryLvl">Entry level (less than 2 years of experience)</option><option value="MidCareer">Mid-career (2+ years of experience)</option><option value="Management">Management (manager/director of staff)</option><option value="Executive">Executive (SVP, EVP, VP)</option><option value="SeniorExecutive">Senior Executive (president / CEO)</option>  </select></td>';
-         html_code += '<td><select id="select" name="JobType[]"><option value="">choose ...</option><option value="Emplyee">Employee</option><option value="Contractor">Contractor</option><option value="Intern">Intern</option></select></td>';
-         html_code += '<td><select id="select" name="IsCurrent[]"><option value="">choose ...</option><option value="True">ON</option><option value="False">OFF</option></select></td>';
-         html_code += "<td><button type='button' name='remove' data-row='row"+count+"' class='btn btn-danger btn-xs remove'>-</button></td>";   
-         html_code += "</tr>";  
-         $('#crud_table_experience').append(html_code);         
-       });
-       });
-      $(document).on('click', '.remove', function(){
-        var delete_row = $(this).data("row");
-        $('#' + delete_row).remove();
-       });
-      </script>
-
+      
       <button id="previous" onclick="backPhase3()">Previous</button>
       <button id="next" onclick="processPhase3()">Next</button>
     </div>
@@ -355,25 +360,6 @@ $(document).ready(function () {
           <button type="button" name="add" id="add_skill_info" class="btn btn-success btn-xs">+</button>
         </div>
       </div>
-      <script>
-        $(document).ready(function(){
-         var count = 1;
-         $('#add_skill_info').click(function(){
-          count = count + 1;
-          var html_code = "<tr id='row"+count+"'>";
-           html_code += "<td><input type='skill_name'id='skill_name' name='skill_name[]'/></td>";
-           html_code += "<td><input type='year_exp'id='year_exp' name='year_exp[]'/></td>";
-           html_code += "<td><select id='select' name='SkillLevel[]'><option value="">choose ...</option><option value='1'>1</option><option value='2'>2</option><option value='3'>3</option><option value='4 year'>4</option>option value='5'>5</option> </select></td>";
-           html_code += "<td><button type='button' name='remove' data-row='row"+count+"' class='btn btn-danger btn-xs remove'>-</button></td>";   
-           html_code += "</tr>";  
-           $('#crud_table_skill').append(html_code);
-         });
-         });
-        $(document).on('click', '.remove', function(){
-          var delete_row = $(this).data("row");
-          $('#' + delete_row).remove();
-         });
-      </script>
       <button id="previous" onclick="backPhase4()">Previous</button>
       <button id="next" onclick="processPhase4()">Next</button>
     </div>
@@ -433,7 +419,7 @@ $(document).ready(function () {
 
     <!-- start phase6 -->
     <div id="phase6">
-      <h3>References & Referees</h3>
+      <h3>References and Referees</h3>
       <div>
       <p>Person/Company/Organization Name</p>
       <input type="ref_name" id="ref_name" name="ref_name"/>
@@ -461,6 +447,6 @@ $(document).ready(function () {
     <!-- end phase6 -->
   </form>
 </div>
-
+<!-- 
   <script src="<?php echo base_url('http://codepen.io/assets/libs/fullpage/jquery.js')?>"></script>
-  <script src="<?php echo base_url('assets/bootstrap/js/index')?>"></script>
+  <script src="<?php echo base_url('assets/bootstrap/js/index')?>"></script> -->
