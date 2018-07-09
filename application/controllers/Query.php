@@ -19,7 +19,7 @@ class Query extends CI_Controller {
 				select ?FirstName  
 				where {
 				  ?resume cv:hasSkill ?q .   
-				  ?q cv:skillName \"php\". 
+				  ?q cv:skillName \"java\". 
 				  ?resume cv:aboutPerson ?person.  
 				  ?person foaf:firstName ?FirstName .
 				} " ;

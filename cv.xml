@@ -3,18 +3,44 @@
   <ID>65</ID>
   <IsActive/>
   <PersonalInfo>
-    <firstName/>
-    <lastName/>
-    <birthday/>
-    <Nationality/>
-    <MaritalStatus/>
-    <gender/>
-    <country-name/>
-    <locality/>
-    <street-address/>
-    <Email/>
-    <Telephone/>
+    <firstName>roula</firstName>
+    <lastName>arab</lastName>
+    <birthday>1995-10-05</birthday>
+    <Nationality>syrian</Nationality>
+    <MaritalStatus>Single</MaritalStatus>
+    <gender>Female</gender>
+    <country-name>syria</country-name>
+    <locality>damascus</locality>
+    <street-address>ruken aldin</street-address>
+    <Email>arab.roula@hotmail.com</Email>
+    <Telephone>0991963462</Telephone>
   </PersonalInfo>
+  <Education>
+    <eduMajor>ITE</eduMajor>
+    <eduMinor>Software Engineering</eduMinor>
+    <eduStartDate>2013-09-01</eduStartDate>
+    <eduGradDate>2018-08-01</eduGradDate>
+    <studiedIn>Damascus University</studiedIn>
+    <degreeType>EduBachelor</degreeType>
+    <eduMajor>ITE</eduMajor>
+    <eduMinor>AI</eduMinor>
+    <eduStartDate>2018-08-02</eduStartDate>
+    <eduGradDate>2020-10-01</eduGradDate>
+    <studiedIn>Damascus University</studiedIn>
+    <degreeType>EduMaster</degreeType>
+  </Education>
+  <WorkExperience>
+    <employedIn/>
+    <jobTitle/>
+    <startDate/>
+    <endDate/>
+    <careerLevel/>
+  </WorkExperience>
+  <PersonalSkills>
+    <skillName>java</skillName>
+    <skillYearsExperience>1</skillYearsExperience>
+    <skillLevel>2</skillLevel>
+  </PersonalSkills>
   <Language>
     <Name/>
     <SpokenLevel/>
