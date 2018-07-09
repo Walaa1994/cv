@@ -115,8 +115,9 @@ class Seeker extends CI_Controller {
         $rootTag->appendChild($dataTag);
 
         //Education
-        $EducationTag=$xml->createElement("Education"); 
+         
         foreach ($cert_name as $key => $value) {
+            $EducationTag=$xml->createElement("Education");
             $cert_nameTag=$xml->createElement("eduMajor",$value);
             $spe_nameTag=$xml->createElement("eduMinor",$spe_name[$key]);
             $start_dateTag=$xml->createElement("eduStartDate",$start_date[$key]);
@@ -131,9 +132,9 @@ class Seeker extends CI_Controller {
             $EducationTag->appendChild($degreeTypeTag);
             $rootTag->appendChild($EducationTag);
         }
-
-        $ExperienceTag=$xml->createElement("WorkExperience"); 
+ 
         foreach ($company_name as $key => $value) {
+            $ExperienceTag=$xml->createElement("WorkExperience");
             $company_nameTag=$xml->createElement("employedIn",$value);
             $job_posTag=$xml->createElement("jobTitle",$job_pos[$key]);
             $from_dateTag=$xml->createElement("startDate",$from_date[$key]);
@@ -152,9 +153,9 @@ class Seeker extends CI_Controller {
             $rootTag->appendChild($ExperienceTag);
         }
 
-        //personal skils
-        $PersonalSkillsTag=$xml->createElement("PersonalSkills"); 
+        //personal skils 
         foreach ($skill_name as $key => $value) {
+            $PersonalSkillsTag=$xml->createElement("PersonalSkills");
             $skill_nameTag=$xml->createElement("skillName",$value);
             $year_expTag=$xml->createElement("skillYearsExperience",$year_exp[$key]);
             $SkillLevelTag=$xml->createElement("skillLevel",$SkillLevel[$key]);
