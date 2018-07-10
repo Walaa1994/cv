@@ -16,17 +16,24 @@ class Query extends CI_Controller {
 				PREFIX cv: <http://rdfs.org/resume-rdf/cv.rdfs#> 
 				PREFIX vcard: <http://www.w3.org/2001/vcard-rdf/3.0#>
 				PREFIX foaf: <http://xmlns.com/foaf/0.1/>
-				select ?FirstName  
+				select ?FirstName  ?LastName
 				where {
 				  ?resume cv:hasSkill ?q .   
 				  ?q cv:skillName \"java\". 
 				  ?resume cv:aboutPerson ?person.  
 				  ?person foaf:firstName ?FirstName .
+				  ?person foaf:lastName ?LastName .
 				} " ;
 
             $this->WriteFile($query);
 			shell_exec("javac -cp  java_RDFStore\\*; java_RDFStore\\Sparql.java");
-			
-		    echo shell_exec("java -cp java_RDFStore\\*;java_RDFStore  Sparql $filename $Dataset_path");			
+
+		    shell_exec("java -cp java_RDFStore\\*;java_RDFStore  Sparql $filename $Dataset_path");	
+
+            $json_path = base_url().'/java_RDFStore/ResultSparql.json';
+		    $str = file_get_contents($json_path);
+
+		    $json = json_decode($str, true);
+		    echo '<pre>' . print_r($json, true) . '</pre>';
 		}
 }
