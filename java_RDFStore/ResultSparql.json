@@ -1,0 +1,17 @@
+{
+  "head": {
+    "vars": [ "FirstName" , "LastName" ]
+  } ,
+  "results": {
+    "bindings": [
+      {
+        "FirstName": { "type": "literal" , "value": "roula" } ,
+        "LastName": { "type": "literal" , "value": "arab" }
+      } ,
+      {
+        "FirstName": { "type": "literal" , "value": "walaa" } ,
+        "LastName": { "type": "literal" , "value": "baghdadi" }
+      }
+    ]
+  }
+}
