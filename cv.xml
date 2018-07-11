@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <resume>
-  <ID>66</ID>
+  <ID>65</ID>
   <IsActive/>
   <PersonalInfo>
-    <firstName>walaa</firstName>
-    <lastName>baghdadi</lastName>
+    <firstName>roula</firstName>
+    <lastName>arab</lastName>
     <birthday/>
-    <Nationality>Syrian</Nationality>
+    <Nationality>syrian</Nationality>
     <MaritalStatus/>
     <gender/>
     <country-name/>
@@ -16,8 +16,8 @@
     <Telephone/>
   </PersonalInfo>
   <Education>
-    <eduMajor/>
-    <eduMinor/>
+    <eduMajor>ITE</eduMajor>
+    <eduMinor>Software Engineering</eduMinor>
     <eduStartDate/>
     <eduGradDate/>
     <studiedIn/>
@@ -32,7 +32,7 @@
   </WorkExperience>
   <PersonalSkills>
     <skillName>java</skillName>
-    <skillYearsExperience/>
+    <skillYearsExperience>2</skillYearsExperience>
     <skillLevel/>
   </PersonalSkills>
   <Language>

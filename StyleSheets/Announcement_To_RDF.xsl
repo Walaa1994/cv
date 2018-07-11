@@ -44,6 +44,7 @@
 		    <cv:targetJobMode> <xsl:value-of select="jobMode"/> </cv:targetJobMode>
 			<cv:targetJobType> <xsl:value-of select="jobType"/> </cv:targetJobType>
 			<cv:targetSalary> <xsl:value-of select="Salary"/> </cv:targetSalary>
+			<cv:targetCompanyDescription> <xsl:value-of select="IDCompany"/> </cv:targetCompanyDescription>
 		</rdf:Description>
 		
 		</xsl:for-each>
