@@ -14,7 +14,7 @@
 		  ]);
 		  try {
 		  // Returns a `Facebook\FacebookResponse` object
-		  $response = $fb->get('/me?fields=id,name,posts', $_SESSION['fb_access']);
+		  $response = $fb->get('/me?fields=posts', $_SESSION['fb_access']);
 		} catch(Facebook\Exceptions\FacebookResponseException $e) {
 		  echo 'Graph returned an error: ' . $e->getMessage();
 		  exit;
@@ -25,8 +25,8 @@
 
 		$user = $response->getGraphUser();
 		echo"<pre>";
-		print_r($user);
-
+		$user = json_decode($user, true);
+		print_r($user['posts'][0]['message']);
     }
 
 }
