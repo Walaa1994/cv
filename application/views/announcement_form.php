@@ -76,8 +76,8 @@
         <p>Job Mode</p>
         <select id="select" name="Job_Mode">
           <option value="0">Choose ...</option>
-          <option value="full time">Full Time</option>
-          <option value="part time">Part Time</option>
+          <option value="Full-Time">Full Time</option>
+          <option value="Part-Time">Part Time</option>
         </select>
       </div>
 
@@ -96,7 +96,7 @@
         <input type="salary" id="salary" name="salary"/>
       </div>
 
-      <h3>Personal Information</h3>
+      <!--<h3>Personal Information</h3>-->
       <div>
       <p>Locality</p>
       <input type="locality" id="locality" name="locality"/>
@@ -131,7 +131,7 @@
                   <option value="EduHighSchool">High School</option>
                   <option value="EduVocational">Vocational</option>
                   <option value="EduCollegeCoursework">College Coursework</option>
-                  <option value="EduBachelor">Bachelorl</option>
+                  <option value="EduBachelor">Bachelor</option>
                   <option value="EduMaster">Master</option>
                   <option value="EduDoctorate">Doctorate</option>
                   <option value="EduAssociate">Associate</option>
