@@ -110,5 +110,12 @@ class Company extends CI_Controller {
 
         redirect('/Xslt/xslt_announcement/Announcement.xml');
     }
+
+    public function create_company()
+    {
+        $this->load->model('user_model');
+        $this->user_model->add_company();
+        echo "company added";
+    }
 }
 

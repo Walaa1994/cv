@@ -10,7 +10,7 @@
 <body>
 <div id="form">
   <div id="triangle"></div>
-  <form id="multiphase" action="<?php echo base_url();?>index.php/login/login_validation" method="post">
+  <form id="multiphase" action="<?php echo base_url();?>index.php/company/create_company" method="post">
     
     <div>
       <p>Company Name (Arabic)</p>
@@ -20,6 +20,11 @@
     <div>
       <p>Company Name (English)</p>
       <input type="en_com_name" id="en_com_name" name="en_com_name"/>
+    </div>
+
+    <div>
+      <p>Company Descriptioin</p>
+      <textarea type="com_desc" id="com_desc" name="com_desc"></textarea> 
     </div>
 
     <!--professional field need modify to select -->
@@ -62,13 +67,13 @@
     </div>
 
     <div>
-      <p>City</p>
-      <input type="com_city" id="com_city" name="com_city"/>
+      <p>Country</p>
+      <input type="com_country" id="com_country" name="com_country"/>
     </div>
 
     <div>
-      <p>Governorate</p>
-      <input type="com_governorate" id="com_governorate" name="com_governorate"/>
+      <p>City</p>
+      <input type="com_city" id="com_city" name="com_city"/>
     </div>
 
     <div>
@@ -76,7 +81,7 @@
       <input type="com_address" id="com_address" name="com_address"/>
     </div>
     <div>
-      <p>phone</p>
+      <p>Phone</p>
       <input type="com_phone" id="com_phone" name="com_phone"/>
     </div>
     <div>

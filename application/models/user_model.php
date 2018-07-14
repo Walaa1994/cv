@@ -30,17 +30,24 @@ class User_model extends CI_Model {
         $this->db->insert('user',$user);
     }
 
-    /*public function add_seeker()
-    {
-        $data=array('seeker_id'=>null);
-        $this->db->insert('seeker',$data);
-        return $this->db->insert_id();
-    }
 
     public function add_company()
     {
-        $data=array('company_id'=>null);
-        $this->db->insert('company',$data);
-        return $this->db->insert_id();
-    }*/
+        $company=array(
+        'user_id' =>$this->session->userdata('u_id'),
+        'ar_name' => $this->input->post('ar_com_name'),
+        'en_name' => $this->input->post('en_com_name'),
+        'description' => $this->input->post('com_desc'),
+        'prof_field' => $this->input->post('com_field'),
+        'foundation_year' => $this->input->post('com_year'),
+        'owner' => $this->input->post('com_owner'),
+        'country' => $this->input->post('com_country'),
+        'city' => $this->input->post('com_city'),
+        'address' => $this->input->post('com_address'),
+        'phone' => $this->input->post('com_phone'),
+        'email' => $this->input->post('com_email'),
+        'website' => $this->input->post('com_website'),
+        );
+        $this->db->insert('company',$company);
+    }
 }
