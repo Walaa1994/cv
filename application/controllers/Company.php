@@ -2,7 +2,14 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Company extends CI_Controller {
-    
+
+    public function CompanyHome()
+    {
+        $this->data['pageTitle']='Company Home';
+        $this->data['subview'] = 'company_home';
+        $this->load->view('layouts/layout', $this->data);
+    }
+
     public function AddCompany()
     {
     	$this->data['pageTitle']='Add Company';
@@ -115,7 +122,7 @@ class Company extends CI_Controller {
     {
         $this->load->model('user_model');
         $this->user_model->add_company();
-        echo "company added";
+        $this->load->view('company_home');
     }
 }
 
