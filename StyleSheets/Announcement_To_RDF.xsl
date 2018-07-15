@@ -33,6 +33,7 @@
 			</xsl:for-each>
 		   
 			<cv:cvIsActive><xsl:value-of select="announcement/IsActive"/></cv:cvIsActive>
+			<cv:cvTitle><xsl:value-of select="announcement/ID"/></cv:cvTitle>
 	    </rdf:Description>
 		
 	    <!-- Basic info -->
