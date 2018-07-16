@@ -325,12 +325,6 @@ class Seeker extends CI_Controller {
 
             }
 
-            else 
-            if($bigfive2 = $this->input->post('bigfive2')==4){
-                return 2;
-        
-
-            }
 
             else 
             if($bigfive2 = $this->input->post('bigfive2')==3){
@@ -373,12 +367,6 @@ class Seeker extends CI_Controller {
 
             }
 
-            else 
-            if($bigfive6 = $this->input->post('bigfive6')==4){
-                return 2;
-        
-
-            }
 
             else 
             if($bigfive6 = $this->input->post('bigfive6')==3){
@@ -421,12 +409,6 @@ class Seeker extends CI_Controller {
 
             }
 
-            else 
-            if($bigfive8 = $this->input->post('bigfive8')==4){
-                return 2;
-        
-
-            }
 
             else 
             if($bigfive8 = $this->input->post('bigfive8')==3){
@@ -469,12 +451,6 @@ class Seeker extends CI_Controller {
 
             }
 
-            else 
-            if($bigfive9 = $this->input->post('bigfive9')==4){
-                return 2;
-        
-
-            }
 
             else 
             if($bigfive9 = $this->input->post('bigfive9')==3){
@@ -515,12 +491,6 @@ class Seeker extends CI_Controller {
 
             }
 
-            else 
-            if($bigfive12 = $this->input->post('bigfive12')==4){
-                return 2;
-        
-
-            }
 
             else 
             if($bigfive12 = $this->input->post('bigfive12')==3){
@@ -551,13 +521,6 @@ class Seeker extends CI_Controller {
             else 
             if($bigfive21 = $this->input->post('bigfive21')==2){
                 return 4;
-        
-
-            }
-
-            else 
-            if($bigfive21 = $this->input->post('bigfive21')==4){
-                return 2;
         
 
             }
@@ -609,12 +572,6 @@ class Seeker extends CI_Controller {
 
             }
 
-            else 
-            if($bigfive23 = $this->input->post('bigfive23')==4){
-                return 2;
-        
-
-            }
 
             else 
             if($bigfive23 = $this->input->post('bigfive23')==3){
@@ -656,12 +613,6 @@ class Seeker extends CI_Controller {
 
             }
 
-            else 
-            if($bigfive24 = $this->input->post('bigfive24')==4){
-                return 2;
-        
-
-            }
 
             else 
             if($bigfive24 = $this->input->post('bigfive24')==3){
@@ -703,12 +654,6 @@ class Seeker extends CI_Controller {
 
             }
 
-            else 
-            if($bigfive27 = $this->input->post('bigfive27')==4){
-                return 2;
-        
-
-            }
 
             else 
             if($bigfive27 = $this->input->post('bigfive27')==3){
@@ -751,12 +696,6 @@ class Seeker extends CI_Controller {
 
             }
 
-            else 
-            if($bigfive31 = $this->input->post('bigfive31')==4){
-                return 2;
-        
-
-            }
 
             else 
             if($bigfive31 = $this->input->post('bigfive31')==3){
@@ -798,12 +737,6 @@ class Seeker extends CI_Controller {
 
             }
 
-            else 
-            if($bigfive34 = $this->input->post('bigfive34')==4){
-                return 2;
-        
-
-            }
 
             else 
             if($bigfive34 = $this->input->post('bigfive34')==3){
@@ -845,12 +778,6 @@ class Seeker extends CI_Controller {
 
             }
 
-            else 
-            if($bigfive35 = $this->input->post('bigfive35')==4){
-                return 2;
-        
-
-            }
 
             else 
             if($bigfive35 = $this->input->post('bigfive35')==3){
@@ -892,12 +819,6 @@ class Seeker extends CI_Controller {
 
             }
 
-            else 
-            if($bigfive37 = $this->input->post('bigfive37')==4){
-                return 2;
-        
-
-            }
 
             else 
             if($bigfive37 = $this->input->post('bigfive37')==3){
@@ -939,13 +860,7 @@ class Seeker extends CI_Controller {
 
             }
 
-            else 
-            if($bigfive41 = $this->input->post('bigfive41')==4){
-                return 2;
-        
-
-            }
-
+            
             else 
             if($bigfive41 = $this->input->post('bigfive41')==3){
                 return 3;
@@ -986,12 +901,6 @@ class Seeker extends CI_Controller {
 
             }
 
-            else 
-            if($bigfive43 = $this->input->post('bigfive43')==4){
-                return 2;
-        
-
-            }
 
             else 
             if($bigfive43 = $this->input->post('bigfive43')==3){
