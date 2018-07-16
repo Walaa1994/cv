@@ -39,6 +39,7 @@
 		    
 		    <cv:hasReferenc rdf:resource="http://rdfs.org/resume-rdf/cv.rdfs/Refernece#{$id}"/>
 			<cv:cvIsActive><xsl:value-of select="resume/IsActive"/></cv:cvIsActive>
+			<cv:cvTitle><xsl:value-of select="resume/ID"/></cv:cvTitle>
 	    </rdf:Description>
 		
 	

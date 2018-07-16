@@ -6,7 +6,7 @@
     <firstName>roula</firstName>
     <lastName>arab</lastName>
     <birthday/>
-    <Nationality>syrian</Nationality>
+    <Nationality/>
     <MaritalStatus/>
     <gender/>
     <country-name/>
@@ -16,8 +16,8 @@
     <Telephone/>
   </PersonalInfo>
   <Education>
-    <eduMajor>ITE</eduMajor>
-    <eduMinor>Software Engineering</eduMinor>
+    <eduMajor/>
+    <eduMinor/>
     <eduStartDate/>
     <eduGradDate/>
     <studiedIn/>
@@ -31,8 +31,8 @@
     <careerLevel/>
   </WorkExperience>
   <PersonalSkills>
-    <skillName>java</skillName>
-    <skillYearsExperience>2</skillYearsExperience>
+    <skillName/>
+    <skillYearsExperience/>
     <skillLevel/>
   </PersonalSkills>
   <Language>

@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <announcement>
-  <ID>5b46338a7a87c</ID>
-  <IsActive>True</IsActive>
+  <ID>5b4a02dcd4be2</ID>
+  <IsActive/>
   <BasicInfo>
     <jobtitle>web developer</jobtitle>
-    <jobMode>Full-Time</jobMode>
+    <jobMode>0</jobMode>
     <jobType>0</jobType>
     <Salary/>
     <IDCompany>68</IDCompany>
