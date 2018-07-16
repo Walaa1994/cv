@@ -166,13 +166,13 @@ $(document).ready(function () {
       <input type="radio" id="marital_state" name="marital_state" value="Married" > Married<br>
       <input type="radio" id="marital_state" name="marital_state" value="Divorced" > Divorced<br>
       <input type="radio" id="marital_state" name="marital_state" value="Single" > Single<br>
-      <input type="radio" id="marital_state" name="marital_state" value="married" > Married<br>
+      <input type="radio" id="marital_state" name="marital_state" value="Widowed" > Widowed<br>
       </div>
 
       <div>
       <p id="radio_gender">Gender</p>
-      <input type="radio" id="gender" name="gender" value="male" > Male<br>
-      <input type="radio" id="gender" name="gender" value="female" > Female<br>        
+      <input type="radio" id="gender" name="gender" value="Male" > Male<br>
+      <input type="radio" id="gender" name="gender" value="Female" > Female<br>        
       </div>
 
       <div>
@@ -240,7 +240,7 @@ $(document).ready(function () {
                 <option value="EduHighSchool">High School</option>
                 <option value="EduVocational">Vocational</option>
                 <option value="EduCollegeCoursework">College Coursework</option>
-                <option value="EduBachelor">Bachelorl</option>
+                <option value="EduBachelor">Bachelor</option>
                 <option value="EduMaster">Master</option>
                 <option value="EduDoctorate">Doctorate</option>
                 <option value="EduAssociate">Associate</option>

@@ -1,4 +1,5 @@
 
+import java.io.ByteArrayOutputStream;
 import static org.apache.jena.assembler.JA.Model;
 import org.apache.jena.query.Dataset;
 import org.apache.jena.query.Query;
@@ -22,7 +23,7 @@ import java.io.IOException;
 
 public class Sparql {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws FileNotFoundException, IOException {
      
      Sparql f=new Sparql(); 
      f.querySparql(args[0], args[1]);
@@ -66,7 +67,7 @@ public Dataset openTDB(String directory){
     return dataset;
 }
 
-public void querySparql(String file_path , String dataset_path ){
+public void querySparql(String file_path , String dataset_path ) throws FileNotFoundException {
     Dataset dataset = openTDB(dataset_path);
     Model def = dataset.getDefaultModel();
     
@@ -75,7 +76,9 @@ public void querySparql(String file_path , String dataset_path ){
 
     QueryExecution qe = QueryExecutionFactory.create(query, def);
     ResultSet results = qe.execSelect();
-    ResultSetFormatter.out(System.out, results, query);
+	FileOutputStream os = new FileOutputStream(new File("java_RDFStore\\ResultSparql.json"));
+    ResultSetFormatter.outputAsJSON(os, results);
+    //ResultSetFormatter.out(System.out, results, query);
    /*try{
    ResultSet results = qe.execSelect();
    while(results != null && results.hasNext()){

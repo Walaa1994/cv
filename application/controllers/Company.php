@@ -2,7 +2,14 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Company extends CI_Controller {
-    
+
+    public function CompanyHome()
+    {
+        $this->data['pageTitle']='Company Home';
+        $this->data['subview'] = 'company_home';
+        $this->load->view('layouts/layout', $this->data);
+    }
+
     public function AddCompany()
     {
     	$this->data['pageTitle']='Add Company';
@@ -47,6 +54,7 @@ class Company extends CI_Controller {
         $IDTag=$xml->createElement("ID",uniqid());
         $rootTag->appendChild($IDTag);
 
+
         //the Announcement is active or not
         $IsActiveTag=$xml->createElement("IsActive",$Is_Active);
         $rootTag->appendChild($IsActiveTag);
@@ -56,11 +64,13 @@ class Company extends CI_Controller {
         $Job_ModeTag=$xml->createElement("jobMode",$Job_Mode);
         $employment_typeTag=$xml->createElement("jobType",$employment_type);
         $salaryTag=$xml->createElement("Salary",$salary);
+        $IDCompanyTag=$xml->createElement("IDCompany",$this->session->userdata('u_id'));
 
         $BasicInfoTag->appendChild($job_titleTag);
         $BasicInfoTag->appendChild($Job_ModeTag);
         $BasicInfoTag->appendChild($employment_typeTag);
         $BasicInfoTag->appendChild($salaryTag);
+        $BasicInfoTag->appendChild($IDCompanyTag);
         $rootTag->appendChild($BasicInfoTag);
         //end basic info
 
@@ -72,8 +82,8 @@ class Company extends CI_Controller {
         //end personal info
 
         //education
-        $EducationTag=$xml->createElement("Education");
         foreach ($cert_name as $key => $value) {
+            $EducationTag=$xml->createElement("Education");
             $cert_nameTag=$xml->createElement("eduMajor", $value);
             $spe_nameTag=$xml->createElement("eduMinor",$spe_name[$key]);
             $degreeTypeTag=$xml->createElement("degreeType",$degreeType[$key]);
@@ -84,9 +94,9 @@ class Company extends CI_Controller {
         }
         //end education
 
-        //skills
-         $PersonalSkillsTag=$xml->createElement("PersonalSkills"); 
+        //skills 
          foreach ($skill_name as $key => $value) {
+            $PersonalSkillsTag=$xml->createElement("PersonalSkills");
             $skill_nameTag=$xml->createElement("skillName",$value);
             $year_expTag=$xml->createElement("skillYearsExperience",$year_exp[$key]);
             $PersonalSkillsTag->appendChild($skill_nameTag);
@@ -96,8 +106,8 @@ class Company extends CI_Controller {
         //endskills
 
         //language
-        $LanguageTag=$xml->createElement("Language");
         foreach ($Language_Name as $key => $value) {
+            $LanguageTag=$xml->createElement("Language");
             $Language_NameTag=$xml->createElement("Name",$value);
             $LanguageTag->appendChild($Language_NameTag);
             $rootTag->appendChild($LanguageTag);
@@ -105,7 +115,14 @@ class Company extends CI_Controller {
         //end language 
         $xml->save('Announcement.xml') or die('XML Create Error');   
 
-        redirect('/Xslt/xslt_cv/Announcement.xml');
+        redirect('/Xslt/xslt_announcement/Announcement.xml');
+    }
+
+    public function create_company()
+    {
+        $this->load->model('user_model');
+        $this->user_model->add_company();
+        $this->load->view('company_home');
     }
 }
 

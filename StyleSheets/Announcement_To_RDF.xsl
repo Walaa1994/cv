@@ -33,6 +33,7 @@
 			</xsl:for-each>
 		   
 			<cv:cvIsActive><xsl:value-of select="announcement/IsActive"/></cv:cvIsActive>
+			<cv:cvTitle><xsl:value-of select="announcement/ID"/></cv:cvTitle>
 	    </rdf:Description>
 		
 	    <!-- Basic info -->
@@ -44,6 +45,7 @@
 		    <cv:targetJobMode> <xsl:value-of select="jobMode"/> </cv:targetJobMode>
 			<cv:targetJobType> <xsl:value-of select="jobType"/> </cv:targetJobType>
 			<cv:targetSalary> <xsl:value-of select="Salary"/> </cv:targetSalary>
+			<cv:targetCompanyDescription> <xsl:value-of select="IDCompany"/> </cv:targetCompanyDescription>
 		</rdf:Description>
 		
 		</xsl:for-each>

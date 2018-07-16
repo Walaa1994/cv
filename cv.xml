@@ -3,8 +3,8 @@
   <ID>65</ID>
   <IsActive/>
   <PersonalInfo>
-    <firstName/>
-    <lastName/>
+    <firstName>roula</firstName>
+    <lastName>arab</lastName>
     <birthday/>
     <Nationality/>
     <MaritalStatus/>
@@ -15,6 +15,26 @@
     <Email/>
     <Telephone/>
   </PersonalInfo>
+  <Education>
+    <eduMajor/>
+    <eduMinor/>
+    <eduStartDate/>
+    <eduGradDate/>
+    <studiedIn/>
+    <degreeType/>
+  </Education>
+  <WorkExperience>
+    <employedIn/>
+    <jobTitle/>
+    <startDate/>
+    <endDate/>
+    <careerLevel/>
+  </WorkExperience>
+  <PersonalSkills>
+    <skillName/>
+    <skillYearsExperience/>
+    <skillLevel/>
+  </PersonalSkills>
   <Language>
     <Name/>
     <SpokenLevel/>

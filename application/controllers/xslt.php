@@ -24,10 +24,10 @@ class Xslt extends CI_Controller {
 
 			 //redirect('/RDFStore/jenaTDB/localhost/cv/RDF_Generated/'.$this->session->userdata('u_id').'.xml');
 			
-			redirect('/RDFStore/jenaTDB/rdf.xml');
+			redirect('/RDFStore/jenaTDB_cv/rdf.xml');
 		} 
 
-		public function xslt_announcement($xml_path="C:\\xampp\\htdocs\\cv\\Announcement_Form.xml"){
+		public function xslt_announcement($xml_path){
 			$xml = new DOMDocument;
 			$xml->load($xml_path);
 
@@ -42,6 +42,8 @@ class Xslt extends CI_Controller {
 
 			// Attach the xsl rules
 			$proc->importStyleSheet($xsl);
-			$proc->transformToURI($xml, 'C:\Users\Roula Arab\Desktop\now\result1.xml');
+			$proc->transformToURI($xml, 'rdf.xml');
+
+			redirect('/RDFStore/jenaTDB_announcement/rdf.xml');
 		}
 }
