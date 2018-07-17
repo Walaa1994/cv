@@ -50,14 +50,9 @@ class User extends CI_Controller {
 		{
 			$username = $this->input->post('username');
 			$password = $this->input->post('password');
-
 			$this->load->model('User_model');
-			if($this->User_model->get_user($username, $password)){
-				if($this->session->userdata('type')== "seeker")
-					redirect(base_url() . 'index.php/home/sekeer_page');
-				else
-					redirect(base_url() . 'index.php/home/company_page');
-			}
+			if($this->User_model->get_user($username, $password))
+				$this->user_page();
 			else{
 				$this->session->set_flashdata('error','invalid username and password');
 				redirect(base_url(). 'index.php/User/login');
@@ -68,6 +63,12 @@ class User extends CI_Controller {
 		}
 	}
 
+	public function user_page(){
+		if($this->session->userdata('type')== "seeker")
+			redirect(base_url() . 'index.php/home/sekeer_page');
+		else
+			redirect(base_url() . 'index.php/home/company_page');
+	}
 	public function enter(){
 
 		if($this->session->userdata('username') != '')
