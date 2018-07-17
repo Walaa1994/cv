@@ -55,17 +55,15 @@
 	    <xsl:for-each  select="resume/PersonalInfo">
 		
 	    <rdf:Description rdf:about="http://rdfs.org/resume-rdf/cv.rdfs/Person#{$id}">
-		<xsl:variable name="gen"><xsl:value-of select="gender"/></xsl:variable>
 		<xsl:variable name="tel"><xsl:value-of select="Telephone"/></xsl:variable>
 		<xsl:variable name="email"><xsl:value-of select="Email"/></xsl:variable>
-		<xsl:variable name="marital"><xsl:value-of select="MaritalStatus"/></xsl:variable>
 		
             <foaf:firstName> <xsl:value-of select="firstName"/> </foaf:firstName>
 			<foaf:lastName> <xsl:value-of select="lastName"/> </foaf:lastName>
 			<foaf:birthday> <xsl:value-of select="birthday"/> </foaf:birthday> 
-			<cv:gender rdf:resource="http://rdfs.org/resume-rdf/base.rdfs#{$gen}"/>
+			<cv:gender> <xsl:value-of select="gender"/></cv:gender>
 			<cv:hasNationality> <xsl:value-of select="Nationality"/> </cv:hasNationality>
-			<cv:maritalStatus rdf:resource="http://rdfs.org/resume-rdf/base.rdfs#{$marital}"/>
+			<cv:maritalStatus><xsl:value-of select="MaritalStatus"/></cv:maritalStatus>
 			
 			<vcard:hasAddress rdf:parseType="Resource">
 			    <vcard:country-name> <xsl:value-of select="country-name"/> </vcard:country-name>
@@ -82,14 +80,14 @@
 	    <!-- education -->
 		<xsl:for-each  select="resume/Education">
 		<xsl:variable name="edudeg"><xsl:value-of select="degreeType"/></xsl:variable>
-		
+
 		<rdf:Description rdf:about="http://rdfs.org/resume-rdf/cv.rdfs/Education#{$id}_{$edudeg}">
             <cv:eduMajor> <xsl:value-of select="eduMajor"/> </cv:eduMajor>
 			<cv:eduMinor> <xsl:value-of select="eduMinor"/> </cv:eduMinor>
 			<cv:eduStartDate> <xsl:value-of select="eduStartDate"/> </cv:eduStartDate>
 			<cv:eduGradDate> <xsl:value-of select="eduGradDate"/> </cv:eduGradDate>
-			<cv:studiedIn> <xsl:value-of select="studiedIn"/> </cv:studiedIn>           <!-- تحتاج لمراجعة -->
-			<cv:degreeType rdf:resource="http://rdfs.org/resume-rdf/base.rdfs#{$edudeg}"/>
+			<cv:studiedIn> <xsl:value-of select="studiedIn"/> </cv:studiedIn>           
+			<cv:degreeType><xsl:value-of select="degreeType"/></cv:degreeType>
 		</rdf:Description>
 		
 		</xsl:for-each>
@@ -100,17 +98,14 @@
 		<xsl:variable name="startdate"><xsl:value-of select="startDate"/></xsl:variable>
 		
 		<rdf:Description rdf:about="http://rdfs.org/resume-rdf/cv.rdfs/WorkHistory#{$id}_{$startdate}">
-		<xsl:variable name="career"><xsl:value-of select="careerLevel"/></xsl:variable>
-		<xsl:variable name="jtype"><xsl:value-of select="jobType"/></xsl:variable>
-		<xsl:variable name="bool"><xsl:value-of select="isCurrent"/></xsl:variable>
 		
-		    <cv:employedIn> <xsl:value-of select="employedIn"/> </cv:employedIn>       <!-- تحتاج لمراجعة -->
+		    <cv:employedIn> <xsl:value-of select="employedIn"/> </cv:employedIn>      
 			<cv:jobTitle> <xsl:value-of select="jobTitle"/> </cv:jobTitle>
 			<cv:startDate> <xsl:value-of select="startDate"/> </cv:startDate>
 			<cv:endDate> <xsl:value-of select="endDate"/> </cv:endDate>
-			<cv:careerLevel rdf:resource="http://rdfs.org/resume-rdf/base.rdfs#{$career}"/>
-			<cv:jobType rdf:resource="http://rdfs.org/resume-rdf/base.rdfs#{$jtype}"/>
-			<cv:isCurrent rdf:resource="http://rdfs.org/resume-rdf/base.rdfs#{$bool}"/>
+			<cv:careerLevel><xsl:value-of select="careerLevel"/></cv:careerLevel>
+			<cv:jobType><xsl:value-of select="jobType"/></cv:jobType>
+			<cv:isCurrent><xsl:value-of select="isCurrent"/></cv:isCurrent>
         </rdf:Description>
 		
 		</xsl:for-each>

@@ -7,8 +7,8 @@
     <lastName>arab</lastName>
     <birthday/>
     <Nationality/>
-    <MaritalStatus/>
-    <gender/>
+    <MaritalStatus>Single</MaritalStatus>
+    <gender>Female</gender>
     <country-name/>
     <locality/>
     <street-address/>
@@ -31,7 +31,7 @@
     <careerLevel/>
   </WorkExperience>
   <PersonalSkills>
-    <skillName/>
+    <skillName>java</skillName>
     <skillYearsExperience/>
     <skillLevel/>
   </PersonalSkills>
