@@ -285,15 +285,52 @@ class Seeker extends CI_Controller {
         $Conscientiousness=round(((($q3+$q8+$q13+$q18+$q23+$q23+$q28+$q33+$q43)/9)*100)/5);
         echo'Conscientiousness= '.$Conscientiousness.'  ';
 
-        $Extroversion=round(((($q1+$q6+$q11+$q16+$q21+$q26+$q31+$q36)/8)*100)/5);
-         echo'Extroversion= '.$Extroversion.'  ';
+        $Extraversion=round(((($q1+$q6+$q11+$q16+$q21+$q26+$q31+$q36)/8)*100)/5);
+         echo'Extraversion= '.$Extraversion.'  ';
 
         $Neuroticism=round(((($q4+$q9+$q14+$q19+$q24+$q29+$q34+$q39)/8)*100)/5);
           echo'Neuroticism= '.$Neuroticism.'  ';
 
+          $id=66;
+          $this->updatesparql($Openness,$Conscientiousness, $Extraversion,$Agreeableness,$Neuroticism,$id);
+
 
   }
 
+    public function updatesparql($one,$two,$three,$four,$five,$id){
+        $Dataset_path="C:\\tdbCV";
+        $filename="savequery.txt";
+        $query="PREFIX cv: <http://rdfs.org/resume-rdf/cv.rdfs#> 
+                PREFIX vcard: <http://www.w3.org/2006/vcard/ns#>
+                PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+                INSERT
+                { 
+                  ?a cv:otherInfoDescription \"$one\".
+                  ?b cv:otherInfoDescription \"$two\".
+                  ?c cv:otherInfoDescription \"$three\".
+                  ?d cv:otherInfoDescription \"$four\".
+                  ?e cv:otherInfoDescription \"$five\".
+                } 
+                where {
+                  ?resume cv:hasOtherInfo ?a.
+                  ?a cv:otherInfoType \"openness\".
+                  ?resume cv:hasOtherInfo ?b.
+                  ?b cv:otherInfoType \"conscientiousness\".
+                  ?resume cv:hasOtherInfo ?c.
+                  ?c cv:otherInfoType \"extraversion\".
+                  ?resume cv:hasOtherInfo ?d.
+                  ?d cv:otherInfoType \"agreeableness\".
+                  ?resume cv:hasOtherInfo ?e.
+                  ?e cv:otherInfoType \"neuroticism\".
+                  ?resume cv:cvTitle \"$id\".
+                }";
+
+            $this->WriteFile($query);
+            shell_exec("javac -cp  java_RDFStore\\*; java_RDFStore\\UpdateSparql.java");
+
+            shell_exec("java -cp java_RDFStore\\*;java_RDFStore  UpdateSparql $filename $Dataset_path");  
+
+        }
 
      public  function Question2()
     {
@@ -1002,6 +1039,12 @@ class Seeker extends CI_Controller {
 
 
 
+        }
+
+         public function WriteFile($txt){
+            $myfile = fopen("savequery.txt", "w") or die("Unable to open file!");
+            fwrite($myfile, $txt);
+            fclose($myfile);
         }
 
        

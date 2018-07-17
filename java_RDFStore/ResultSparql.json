@@ -4,7 +4,10 @@
   } ,
   "results": {
     "bindings": [
-      
+      {
+        "FirstName": { "type": "literal" , "value": "roula" } ,
+        "LastName": { "type": "literal" , "value": "arab" }
+      }
     ]
   }
 }
