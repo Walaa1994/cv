@@ -40,6 +40,12 @@
 		    <cv:hasReferenc rdf:resource="http://rdfs.org/resume-rdf/cv.rdfs/Refernece#{$id}"/>
 			<cv:cvIsActive><xsl:value-of select="resume/IsActive"/></cv:cvIsActive>
 			<cv:cvTitle><xsl:value-of select="resume/ID"/></cv:cvTitle>
+			
+			<cv:hasOtherInfo rdf:resource="http://rdfs.org/resume-rdf/cv.rdfs/OtherInfo#{$id}_openness"/>
+	        <cv:hasOtherInfo rdf:resource="http://rdfs.org/resume-rdf/cv.rdfs/OtherInfo#{$id}_conscientiousness"/>
+			<cv:hasOtherInfo rdf:resource="http://rdfs.org/resume-rdf/cv.rdfs/OtherInfo#{$id}_extraversion"/>
+			<cv:hasOtherInfo rdf:resource="http://rdfs.org/resume-rdf/cv.rdfs/OtherInfo#{$id}_agreeableness"/>
+			<cv:hasOtherInfo rdf:resource="http://rdfs.org/resume-rdf/cv.rdfs/OtherInfo#{$id}_neuroticism"/>
 	    </rdf:Description>
 		
 	
@@ -149,6 +155,29 @@
 		   </cv:referenceBy>
         </rdf:Description>
 		</xsl:for-each>
+		
+		<!-- Other Info -->
+		
+		<rdf:Description rdf:about="http://rdfs.org/resume-rdf/cv.rdfs/OtherInfo#{$id}_openness">
+		    <cv:otherInfoType>openness</cv:otherInfoType>   			
+        </rdf:Description>
+		
+		<rdf:Description rdf:about="http://rdfs.org/resume-rdf/cv.rdfs/OtherInfo#{$id}_conscientiousness">
+		    <cv:otherInfoType>conscientiousness</cv:otherInfoType>    			
+        </rdf:Description>
+		
+		<rdf:Description rdf:about="http://rdfs.org/resume-rdf/cv.rdfs/OtherInfo#{$id}_extraversion">
+		    <cv:otherInfoType>extraversion</cv:otherInfoType>    			
+        </rdf:Description>
+		
+		<rdf:Description rdf:about="http://rdfs.org/resume-rdf/cv.rdfs/OtherInfo#{$id}_agreeableness">
+		    <cv:otherInfoType>agreeableness</cv:otherInfoType>    			
+        </rdf:Description>
+		
+		<rdf:Description rdf:about="http://rdfs.org/resume-rdf/cv.rdfs/OtherInfo#{$id}_neuroticism">
+		    <cv:otherInfoType>neuroticism</cv:otherInfoType>    			
+        </rdf:Description>
+		
 	</rdf:RDF>
 </xsl:template>
 
