@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 
-<title>our application</title>
+<title>cv star soft</title>
 <meta name="description" content="">
 <meta name="author" content="">
 <meta charset="UTF-8">
