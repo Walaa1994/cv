@@ -1,0 +1,114 @@
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+input[type=checkbox]{
+
+    background-color: red;
+}
+
+td {
+    border: 1px solid #f2f2f2;
+    text-align: left;
+    padding: 8px;
+}
+th{
+    border: 1px solid #668cff;
+    text-align: left;
+    padding: 8px;
+    background-color: #668cff;
+}
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+p{
+    color: white;
+}
+h4{
+
+    color: #bfbfbf;
+}
+
+
+#form{
+  width:400px;
+  margin:0 auto;
+  margin-top:110px;
+  margin-bottom:2%;
+  transition:opacity 1s;
+  -webkit-transition:opacity 1s;
+  align:"center";
+}
+#multiphase{
+  width:150%;
+  background:#fff;
+  margin-bottom:4%;
+  border:1px solid #ccc;
+  padding:4%;
+  font-family:'Open Sans',sans-serif;
+  font-size:95%;
+  color:#555;
+}
+.color-filed{
+
+    color: #737373;
+   
+}
+#next:hover{
+  background:#2288bb;
+}
+
+#previous{
+  width:40%;
+  background:#3399cc;
+  border:0;
+  padding:4%;
+  font-family:'Open Sans',sans-serif;
+  font-size:100%;
+  color:#fff;
+  cursor:pointer;
+  transition:background .3s;
+  -webkit-transition:background .3s;
+}
+#next{
+  width:40%;
+  background:#3399cc;
+  border:0;
+  padding:4%;
+  font-family:'Open Sans',sans-serif;
+  font-size:100%;
+  color:#fff;
+  cursor:pointer;
+  transition:background .3s;
+  -webkit-transition:background .3s;
+}
+
+
+input[type='radio']:after {
+        width: 20px;
+        height: 20px;
+        border-radius: 15px;
+        top: -2px;
+        left: -1px;
+        position: relative;
+        background-color: #d1d3d1;
+        content: '';
+        display: inline-block;
+        visibility: visible;
+        border: 2px solid white;
+    }
+
+    input[type='radio']:checked:after {
+        width: 20px;
+        height: 20px;
+        border-radius: 15px;
+        top: -2px;
+        left: -1px;
+        position: relative;
+        background-color: #0DFF92;
+        content: '';
+        display: inline-block;
+        visibility: visible;
+        border: 2px solid white;
+    }
