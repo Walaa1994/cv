@@ -1,6 +1,6 @@
 {
   "head": {
-    "vars": [ "FirstName" , "LastName" ]
+    "vars": [ "FirstName" , "LastName" , "l1" , "locality" ]
   } ,
   "results": {
     "bindings": [
