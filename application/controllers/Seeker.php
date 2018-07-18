@@ -169,16 +169,20 @@ class Seeker extends CI_Controller {
         //end personal skills
 
         //Language
+
+    foreach ($Language_Name as $key => $value) {
         $LanguageTag=$xml->createElement("Language");
-        $Language_NameTag=$xml->createElement("Name", $Language_Name);
-        $Spoken_LevelTag=$xml->createElement("SpokenLevel",$Spoken_Level);
-        $Reading_LevelTag=$xml->createElement("ReadingLevel", $Reading_Level);
-        $Writing_LevelTag=$xml->createElement("WritingLevel", $Writing_Level);
+        $Language_NameTag=$xml->createElement("Name",$value);
+        $Spoken_LevelTag=$xml->createElement("SpokenLevel",$Spoken_Level[$key]);
+        $Reading_LevelTag=$xml->createElement("ReadingLevel",$Reading_Level[$key]);
+        $Writing_LevelTag=$xml->createElement("WritingLevel",$Writing_Level[$key]);
         $LanguageTag->appendChild($Language_NameTag);
         $LanguageTag->appendChild($Spoken_LevelTag);
         $LanguageTag->appendChild($Reading_LevelTag);
         $LanguageTag->appendChild($Writing_LevelTag);
         $rootTag->appendChild($LanguageTag);
+        }
+        
         //end language
 
         //References
@@ -215,19 +219,15 @@ class Seeker extends CI_Controller {
          }
     }
 
-   /* public function BigFiveForm()
+    public function BigFiveForm()
     {
-        $this->data['pageTitle']='The Big Five Personality Test';
+
+        $this->data['pageTitle']='Personal Test Form';
         $this->data['subview'] = 'bigfive_form';
         $this->load->view('layouts/layout', $this->data);
     }
-    */
-
-    public function BigFiveForm()
-    {
-        $this->load->view('bigfive_form');
-    }
-
+     
+    
     public function BigFiveCalcu()
     {
       $q1 = $this->input->post('bigfive1');
@@ -290,6 +290,12 @@ class Seeker extends CI_Controller {
 
         $Neuroticism=round(((($q4+$q9+$q14+$q19+$q24+$q29+$q34+$q39)/8)*100)/5);
           echo'Neuroticism= '.$Neuroticism.'  ';
+
+      echo(max($Agreeableness.'trust, altruism, kindness, affection, and other prosocial behaviors. People who are high in agreeableness tend to be more cooperative while those low in this trait tend to be more competitive and even manipulative',$Openness.'People who are high in this trait tend to be more adventurous and creative. People low in this trait are often much more traditional and may struggle with abstract thinking.,Very creative ,
+          Open to trying new things
+         ,Focused on tackling new challenges
+        ,Happy to think about abstract concepts'
+       ,$Conscientiousness.'Standard features of this dimension include high levels of thoughtfulness, with good impulse control and goal-directed behaviors. Highly conscientiousness tend to be organized and mindful of details , Spend time preparing , Finish important tasks right away , Pay attention to details',$Extroversion.'Extraversion is characterized by excitability, sociability, talkativeness, assertiveness, and high amounts of emotional expressiveness. People who are high in extraversion are outgoing and tend to gain energy in social situations. ',$Neuroticism.'Neuroticism is a trait characterized by sadness, moodiness, and emotional instability. Individuals who are high in this trait tend to experience mood swings, anxiety, irritability and sadness. Those low in this trait tend to be more stable and emotionally resilient') . "<br>");
 
 
   }
