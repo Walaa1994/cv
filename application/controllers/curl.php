@@ -10,7 +10,7 @@ class Curl extends CI_Controller {
         $request_headers[] = 'Content-Type: text/plain;charset=utf-8';
         $request_headers[] = 'Accept: application/json';
         $request_headers[] = 'Content-Language: ar';
-        $request_headers[] = 'Accept-Language: ar';
+        $request_headers[] = 'Accept-Language: en';
 
         $simple_data = 'حبيب القلب و رفيق الدرب و السند ♥️
         ذكرياتنا كلها سوا ما بقدر اتذكر شي من دون ما يكون الك وجود بهالذكرى 👫
@@ -35,7 +35,58 @@ class Curl extends CI_Controller {
         $response2 = curl_exec( $ch2 );
         //var_dump(curl_error($ch2));
         $decoded = json_decode($response2, true);
-        print_r($decoded);
+        echo '<pre>' ;
+        $Openness = $decoded['personality'][0]['percentile'];
+        $Conscientiousness = $decoded['personality'][1]['percentile'];
+        $Extraversion = $decoded['personality'][2]['percentile'];
+        $Agreeableness = $decoded['personality'][3]['percentile'];
+        $neuroticism = $decoded['personality'][4]['percentile'];
+
+        $id=66;
+        $this->updatesparql($Openness,$Conscientiousness, $Extraversion,$Agreeableness,$neuroticism,$id);
+        //print_r($decoded);
     }
+
+    
+    public function updatesparql($one,$two,$three,$four,$five,$id){
+        $Dataset_path="C:\\tdbCV";
+        $filename="savequery.txt";
+        $query="PREFIX cv: <http://rdfs.org/resume-rdf/cv.rdfs#> 
+                PREFIX vcard: <http://www.w3.org/2006/vcard/ns#>
+                PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+                INSERT
+                { 
+                  ?a cv:otherInfoDescription \"$one\".
+                  ?b cv:otherInfoDescription \"$two\".
+                  ?c cv:otherInfoDescription \"$three\".
+                  ?d cv:otherInfoDescription \"$four\".
+                  ?e cv:otherInfoDescription \"$five\".
+                } 
+                where {
+                  ?resume cv:hasOtherInfo ?a.
+                  ?a cv:otherInfoType \"openness\".
+                  ?resume cv:hasOtherInfo ?b.
+                  ?b cv:otherInfoType \"conscientiousness\".
+                  ?resume cv:hasOtherInfo ?c.
+                  ?c cv:otherInfoType \"extraversion\".
+                  ?resume cv:hasOtherInfo ?d.
+                  ?d cv:otherInfoType \"agreeableness\".
+                  ?resume cv:hasOtherInfo ?e.
+                  ?e cv:otherInfoType \"neuroticism\".
+                  ?resume cv:cvTitle \"$id\".
+                }";
+
+            $this->WriteFile($query);
+            shell_exec("javac -cp  java_RDFStore\\*; java_RDFStore\\UpdateSparql.java");
+
+            shell_exec("java -cp java_RDFStore\\*;java_RDFStore  UpdateSparql $filename $Dataset_path");  
+
+        }
+
+    public function WriteFile($txt){
+            $myfile = fopen("savequery.txt", "w") or die("Unable to open file!");
+            fwrite($myfile, $txt);
+            fclose($myfile);
+        }
 }
 ?>

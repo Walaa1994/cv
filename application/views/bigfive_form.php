@@ -51,8 +51,6 @@
     }
   </script>
   <body>
-  <h2>Personality Test</h2>
-
   <div id="form">
   <div id="triangle"></div>
   <form id="multiphase" onsubmit="return false">

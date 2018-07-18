@@ -1,14 +1,14 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Query extends CI_Controller {
+class Query {
 
-        public function WriteFile($txt){
+		public function WriteFile($txt){
             $myfile = fopen("savequery.txt", "w") or die("Unable to open file!");
 			fwrite($myfile, $txt);
 			fclose($myfile);
         }
-		public function querysparql($query,$dataset_path){
+        public function querysparql($query,$Dataset_path){
 		 //$Dataset_path="C:\\tdbAnnouncement";
 		 $filename="savequery.txt";
 	     /*$query="PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>  
@@ -33,6 +33,6 @@ class Query extends CI_Controller {
 		    $str = file_get_contents($json_path);
 
 		    $json = json_decode($str, true);
-		    return '<pre>' . print_r($json, true) . '</pre>';
+		    return $json;
 		}
 }
