@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <resume>
-  <ID>65</ID>
-  <IsActive>True</IsActive>
+  <ID>66</ID>
+  <IsActive/>
   <PersonalInfo>
-    <firstName>walaa</firstName>
-    <lastName>Albaghdadi</lastName>
-    <birthday>2018-07-26</birthday>
-    <Nationality>Syrian</Nationality>
+    <firstName/>
+    <lastName/>
+    <birthday/>
+    <Nationality/>
     <MaritalStatus>Single</MaritalStatus>
     <gender>Female</gender>
-    <country-name>Syria</country-name>
-    <locality>Damascus</locality>
-    <street-address>Qudsia</street-address>
-    <Email>walaa.albaghdadi@hotmail.com</Email>
-    <Telephone>0933172903</Telephone>
+    <country-name/>
+    <locality/>
+    <street-address/>
+    <Email/>
+    <Telephone/>
   </PersonalInfo>
   <Education>
     <eduMajor>ITE</eduMajor>
@@ -31,9 +31,9 @@
     <careerLevel/>
   </WorkExperience>
   <PersonalSkills>
-    <skillName>PHP</skillName>
-    <skillYearsExperience>3</skillYearsExperience>
-    <skillLevel>3</skillLevel>
+    <skillName>java</skillName>
+    <skillYearsExperience/>
+    <skillLevel/>
   </PersonalSkills>
   <Language>
     <Name>english</Name>

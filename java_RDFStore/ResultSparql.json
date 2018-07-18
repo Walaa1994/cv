@@ -5,12 +5,8 @@
   "results": {
     "bindings": [
       {
-        "FirstName": { "type": "literal" , "value": "walaa" } ,
-        "LastName": { "type": "literal" , "value": "Albaghdadi" } ,
-        "id": { "type": "literal" , "value": "65" }
-      } ,
-      {
-        
+        "FirstName": { "type": "literal" , "value": "roula" } ,
+        "LastName": { "type": "literal" , "value": "arab" }
       }
     ]
   }

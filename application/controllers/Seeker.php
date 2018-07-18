@@ -169,16 +169,20 @@ class Seeker extends CI_Controller {
         //end personal skills
 
         //Language
+
+    foreach ($Language_Name as $key => $value) {
         $LanguageTag=$xml->createElement("Language");
-        $Language_NameTag=$xml->createElement("Name", $Language_Name);
-        $Spoken_LevelTag=$xml->createElement("SpokenLevel",$Spoken_Level);
-        $Reading_LevelTag=$xml->createElement("ReadingLevel", $Reading_Level);
-        $Writing_LevelTag=$xml->createElement("WritingLevel", $Writing_Level);
+        $Language_NameTag=$xml->createElement("Name",$value);
+        $Spoken_LevelTag=$xml->createElement("SpokenLevel",$Spoken_Level[$key]);
+        $Reading_LevelTag=$xml->createElement("ReadingLevel",$Reading_Level[$key]);
+        $Writing_LevelTag=$xml->createElement("WritingLevel",$Writing_Level[$key]);
         $LanguageTag->appendChild($Language_NameTag);
         $LanguageTag->appendChild($Spoken_LevelTag);
         $LanguageTag->appendChild($Reading_LevelTag);
         $LanguageTag->appendChild($Writing_LevelTag);
         $rootTag->appendChild($LanguageTag);
+        }
+        
         //end language
 
         //References
@@ -215,19 +219,15 @@ class Seeker extends CI_Controller {
          }
     }
 
-   /* public function BigFiveForm()
-    {
-        $this->data['pageTitle']='The Big Five Personality Test';
-        $this->data['subview'] = 'bigfive_form';
-        $this->load->view('layouts/layout', $this->data);
-    }
-    */
 
     public function BigFiveForm()
     {
-        $this->load->view('bigfive_form');
+        $this->data['pageTitle']='Personal Test Form';
+        $this->data['subview'] = 'bigfive_form';
+        $this->load->view('layouts/layout', $this->data);
     }
-
+     
+    
     public function BigFiveCalcu()
     {
       $q1 = $this->input->post('bigfive1');
@@ -285,15 +285,58 @@ class Seeker extends CI_Controller {
         $Conscientiousness=round(((($q3+$q8+$q13+$q18+$q23+$q23+$q28+$q33+$q43)/9)*100)/5);
         echo'Conscientiousness= '.$Conscientiousness.'  ';
 
-        $Extroversion=round(((($q1+$q6+$q11+$q16+$q21+$q26+$q31+$q36)/8)*100)/5);
-         echo'Extroversion= '.$Extroversion.'  ';
+        $Extraversion=round(((($q1+$q6+$q11+$q16+$q21+$q26+$q31+$q36)/8)*100)/5);
+         echo'Extraversion= '.$Extraversion.'  ';
 
         $Neuroticism=round(((($q4+$q9+$q14+$q19+$q24+$q29+$q34+$q39)/8)*100)/5);
           echo'Neuroticism= '.$Neuroticism.'  ';
 
+          $id=66;
+          $this->updatesparql($Openness,$Conscientiousness, $Extraversion,$Agreeableness,$Neuroticism,$id);
+
+      echo(max($Agreeableness.'trust, altruism, kindness, affection, and other prosocial behaviors. People who are high in agreeableness tend to be more cooperative while those low in this trait tend to be more competitive and even manipulative',$Openness.'People who are high in this trait tend to be more adventurous and creative. People low in this trait are often much more traditional and may struggle with abstract thinking.,Very creative ,
+          Open to trying new things
+         ,Focused on tackling new challenges
+        ,Happy to think about abstract concepts'
+       ,$Conscientiousness.'Standard features of this dimension include high levels of thoughtfulness, with good impulse control and goal-directed behaviors. Highly conscientiousness tend to be organized and mindful of details , Spend time preparing , Finish important tasks right away , Pay attention to details',$Extroversion.'Extraversion is characterized by excitability, sociability, talkativeness, assertiveness, and high amounts of emotional expressiveness. People who are high in extraversion are outgoing and tend to gain energy in social situations. ',$Neuroticism.'Neuroticism is a trait characterized by sadness, moodiness, and emotional instability. Individuals who are high in this trait tend to experience mood swings, anxiety, irritability and sadness. Those low in this trait tend to be more stable and emotionally resilient') . "<br>");
+
 
   }
 
+    public function updatesparql($one,$two,$three,$four,$five,$id){
+        $Dataset_path="C:\\tdbCV";
+        $filename="savequery.txt";
+        $query="PREFIX cv: <http://rdfs.org/resume-rdf/cv.rdfs#> 
+                PREFIX vcard: <http://www.w3.org/2006/vcard/ns#>
+                PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+                INSERT
+                { 
+                  ?a cv:otherInfoDescription \"$one\".
+                  ?b cv:otherInfoDescription \"$two\".
+                  ?c cv:otherInfoDescription \"$three\".
+                  ?d cv:otherInfoDescription \"$four\".
+                  ?e cv:otherInfoDescription \"$five\".
+                } 
+                where {
+                  ?resume cv:hasOtherInfo ?a.
+                  ?a cv:otherInfoType \"openness\".
+                  ?resume cv:hasOtherInfo ?b.
+                  ?b cv:otherInfoType \"conscientiousness\".
+                  ?resume cv:hasOtherInfo ?c.
+                  ?c cv:otherInfoType \"extraversion\".
+                  ?resume cv:hasOtherInfo ?d.
+                  ?d cv:otherInfoType \"agreeableness\".
+                  ?resume cv:hasOtherInfo ?e.
+                  ?e cv:otherInfoType \"neuroticism\".
+                  ?resume cv:cvTitle \"$id\".
+                }";
+
+            $this->WriteFile($query);
+            shell_exec("javac -cp  java_RDFStore\\*; java_RDFStore\\UpdateSparql.java");
+
+            shell_exec("java -cp java_RDFStore\\*;java_RDFStore  UpdateSparql $filename $Dataset_path");  
+
+        }
 
      public  function Question2()
     {
@@ -314,13 +357,6 @@ class Seeker extends CI_Controller {
             else 
             if($bigfive2 = $this->input->post('bigfive2')==2){
                 return 4;
-        
-
-            }
-
-            else 
-            if($bigfive2 = $this->input->post('bigfive2')==4){
-                return 2;
         
 
             }
@@ -374,13 +410,6 @@ class Seeker extends CI_Controller {
             }
 
             else 
-            if($bigfive6 = $this->input->post('bigfive6')==4){
-                return 2;
-        
-
-            }
-
-            else 
             if($bigfive6 = $this->input->post('bigfive6')==3){
                 return 3;
         
@@ -410,13 +439,6 @@ class Seeker extends CI_Controller {
             else 
             if($bigfive8 = $this->input->post('bigfive8')==2){
                 return 4;
-        
-
-            }
-
-            else 
-            if($bigfive8 = $this->input->post('bigfive8')==4){
-                return 2;
         
 
             }
@@ -470,13 +492,6 @@ class Seeker extends CI_Controller {
             }
 
             else 
-            if($bigfive9 = $this->input->post('bigfive9')==4){
-                return 2;
-        
-
-            }
-
-            else 
             if($bigfive9 = $this->input->post('bigfive9')==3){
                 return 3;
         
@@ -504,13 +519,6 @@ class Seeker extends CI_Controller {
             else 
             if($bigfive12 = $this->input->post('bigfive12')==2){
                 return 4;
-        
-
-            }
-
-            else 
-            if($bigfive12 = $this->input->post('bigfive12')==4){
-                return 2;
         
 
             }
@@ -563,13 +571,6 @@ class Seeker extends CI_Controller {
             }
 
             else 
-            if($bigfive21 = $this->input->post('bigfive21')==4){
-                return 2;
-        
-
-            }
-
-            else 
             if($bigfive21 = $this->input->post('bigfive21')==3){
                 return 3;
         
@@ -598,13 +599,6 @@ class Seeker extends CI_Controller {
             else 
             if($bigfive23 = $this->input->post('bigfive23')==2){
                 return 4;
-        
-
-            }
-
-            else 
-            if($bigfive23 = $this->input->post('bigfive23')==4){
-                return 2;
         
 
             }
@@ -657,13 +651,6 @@ class Seeker extends CI_Controller {
             }
 
             else 
-            if($bigfive24 = $this->input->post('bigfive24')==4){
-                return 2;
-        
-
-            }
-
-            else 
             if($bigfive24 = $this->input->post('bigfive24')==3){
                 return 3;
         
@@ -692,13 +679,6 @@ class Seeker extends CI_Controller {
             else 
             if($bigfive27 = $this->input->post('bigfive27')==2){
                 return 4;
-        
-
-            }
-
-            else 
-            if($bigfive27 = $this->input->post('bigfive27')==4){
-                return 2;
         
 
             }
@@ -752,13 +732,6 @@ class Seeker extends CI_Controller {
             }
 
             else 
-            if($bigfive31 = $this->input->post('bigfive31')==4){
-                return 2;
-        
-
-            }
-
-            else 
             if($bigfive31 = $this->input->post('bigfive31')==3){
                 return 3;
         
@@ -787,13 +760,6 @@ class Seeker extends CI_Controller {
             else 
             if($bigfive34 = $this->input->post('bigfive34')==2){
                 return 4;
-        
-
-            }
-
-            else 
-            if($bigfive34 = $this->input->post('bigfive34')==4){
-                return 2;
         
 
             }
@@ -846,13 +812,6 @@ class Seeker extends CI_Controller {
             }
 
             else 
-            if($bigfive35 = $this->input->post('bigfive35')==4){
-                return 2;
-        
-
-            }
-
-            else 
             if($bigfive35 = $this->input->post('bigfive35')==3){
                 return 3;
         
@@ -881,13 +840,6 @@ class Seeker extends CI_Controller {
             else 
             if($bigfive37 = $this->input->post('bigfive37')==2){
                 return 4;
-        
-
-            }
-
-            else 
-            if($bigfive37 = $this->input->post('bigfive37')==4){
-                return 2;
         
 
             }
@@ -940,13 +892,6 @@ class Seeker extends CI_Controller {
             }
 
             else 
-            if($bigfive41 = $this->input->post('bigfive41')==4){
-                return 2;
-        
-
-            }
-
-            else 
             if($bigfive41 = $this->input->post('bigfive41')==3){
                 return 3;
         
@@ -987,13 +932,6 @@ class Seeker extends CI_Controller {
             }
 
             else 
-            if($bigfive43 = $this->input->post('bigfive43')==4){
-                return 2;
-        
-
-            }
-
-            else 
             if($bigfive43 = $this->input->post('bigfive43')==3){
                 return 3;
         
@@ -1003,7 +941,6 @@ class Seeker extends CI_Controller {
 
 
         }
-
        
 
         

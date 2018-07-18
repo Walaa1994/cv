@@ -1,30 +1,17 @@
 
-        PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>  
-        PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
-        PREFIX cv: <http://rdfs.org/resume-rdf/cv.rdfs#> 
-        PREFIX vcard: <http://www.w3.org/2006/vcard/ns#>
-        PREFIX foaf: <http://xmlns.com/foaf/0.1/>
-        select ?FirstName ?LastName ?id
-        where {
-            {
-            ?resume cv:cvTitle ?id.
-            ?resume cv:cvIsActive "True".
-            ?resume cv:hasEducation ?w .
-            ?w cv:eduMajor "ITE".
-            ?w cv:degreeType <http://rdfs.org/resume-rdf/base.rdfs#EduBachelor>.?resume cv:hasSkill ?q1.
-            ?q1 cv:skillName ?l1.
-            FILTER (regex(?l1,"PHP","i")).?resume cv:hasSkill ?q2.
-            ?q2 cv:skillName ?l2.
-            FILTER (regex(?l2,"english","i")).?resume cv:aboutPerson ?person.  
-            ?person foaf:firstName ?FirstName .
-            ?person foaf:lastName  ?LastName .
-            ?person vcard:hasAddress ?address.
-            ?address vcard:locality ?locality.
-            FILTER regex(?locality,"Damascus","i").
-            }
-            union
-            {
-              ?resume cv:hasEducation ?education . 
-              ?education cv:eduMinor "Software Engineering".     
-            }
-        }
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>  
+				PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+				PREFIX cv: <http://rdfs.org/resume-rdf/cv.rdfs#> 
+				PREFIX vcard: <http://www.w3.org/2001/vcard-rdf/3.0#>
+				PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+				prefix xsd: <http://www.w3.org/2001/XMLSchema#>
+				select ?FirstName  ?LastName
+				where {
+				  ?resume cv:hasOtherInfo ?p.
+				  ?p cv:otherInfoType "extraversion".
+				  ?p cv:otherInfoDescription ?percentile.
+				  FILTER(xsd:decimal(?percentile) > 25). 
+				  ?resume cv:aboutPerson ?person.  
+				  ?person foaf:firstName ?FirstName .
+				  ?person foaf:lastName ?LastName .
+				} 

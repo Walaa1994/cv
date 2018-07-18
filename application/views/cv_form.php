@@ -126,6 +126,24 @@ $(document).ready(function () {
            html_code += "</tr>";  
            $('#crud_table_skill').append(html_code);
          });
+
+     //add languages
+       count_languages=1;  
+     $('#add_lang_info').click(function(){debugger;
+          count_languages = count_languages + 1;
+          var html_code = "<tr id='row"+count_languages+"'>";
+
+
+            html_code += "<td><input type='Language_Name' id='Language_Name' name='Language_Name[]'/></td>";
+           html_code += "<td><select id='select' name='Spoken_Level[]'><option value=''>choose ...</option><option value='0'>0</option><option value='1'>1</option><option value='2'>2</option><option value='3'>3</option><option value='4'>4</option><option value='5'>5</option></select></td>";
+           html_code += "<td><select id='select' name='Reading_Level[]'><option value=''>choose ...</option><option value='0'>0</option><option value='1'>1</option><option value='2'>2</option><option value='3'>3</option><option value='4'>4</option><option value='5'>5</option></select></td>";
+           html_code += "<td><select id='select' name='Writing_Level[]'><option value=''>choose ...</option><option value='0'>0</option><option value='1'>1</option><option value='2'>2</option><option value='3'>3</option><option value='4'>4</option><option value='5'>5</option></select></td>";
+           html_code += "<td><button type='button' name='remove' data-row='row"+count_languages+"' class='btn btn-danger btn-xs remove'>-</button></td>";   
+           html_code += "</tr>";  
+           $('#crud_table_lang').append(html_code);
+         });
+
+
 });
     $(document).on('click', '.remove', function(){
       var delete_row = $(this).data("row");
@@ -368,14 +386,19 @@ $(document).ready(function () {
     <!-- start phase5 -->
     <div id="phase5">
       <h3>Languages</h3>
-      <div>
-        <p>Language Name</p>
-        <input type="Language_Name" id="Language_Name" name="Language_Name"/>
-      </div>
+      <div class="table-responsive">
+        <table class="table table-bordered" id="crud_table_lang"/>
+        <tr>
+          <th width="25%">Language Name</th>
+          <th width="25%">SpokenLevel</th>
+          <th width="25%">ReadingLevel</th>
+          <th width="25%">WritingLevel</th>       
+        </tr>
 
-      <div>
-        <p>SpokenLevel</p>
-        <select id="select" name="Spoken_Level">
+       <tr>
+     <td><input type="Language_Name" id="Language_Name" name="Language_Name[]"/></td>
+         <td>
+        <select id="select" name="Spoken_Level[]">
         <option value="">choose ...</option>
         <option value="0">0</option>
         <option value="1">1</option>
@@ -384,11 +407,11 @@ $(document).ready(function () {
         <option value="4">4</option>
         <option value="5">5</option>
         </select>
-      </div>
+        </td>
+     
 
-      <div>
-        <p>ReadingLevel</p>
-        <select id="select" name="Reading_Level">
+         <td> 
+        <select id="select" name="Reading_Level[]">
         <option value="">choose ...</option>
         <option value="0">0</option>
         <option value="1">1</option>
@@ -397,11 +420,11 @@ $(document).ready(function () {
         <option value="4">4</option>
         <option value="5">5</option>
         </select>
-      </div>
+         </td>
+      
 
-      <div>
-        <p>WritingLevel</p>
-        <select id="select" name="Writing_Level">
+         <td>
+        <select id="select" name="Writing_Level[]">
         <option value="">choose ...</option>
         <option value="0">0</option>
         <option value="1">1</option>
@@ -410,7 +433,14 @@ $(document).ready(function () {
         <option value="4">4</option>
         <option value="5">5</option>
         </select>
-      </div>
+         </td>
+         </tr>
+         </table>
+         <div align="right">
+          <button type="button" name="add" id="add_lang_info" class="btn btn-success btn-xs">+</button>
+        </div>
+        </div>
+      
 
       <button id="previous" onclick="backPhase5()">Previous</button>
       <button id="next" onclick="processPhase5()">Next</button>
