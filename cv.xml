@@ -1,10 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <resume>
-<<<<<<< HEAD
   <ID>66</ID>
-=======
-  <ID/>
->>>>>>> BatoulBranch
   <IsActive/>
   <PersonalInfo>
     <firstName/>
@@ -20,12 +16,12 @@
     <Telephone/>
   </PersonalInfo>
   <Education>
-    <eduMajor/>
-    <eduMinor/>
-    <eduStartDate/>
-    <eduGradDate/>
-    <studiedIn/>
-    <degreeType/>
+    <eduMajor>ITE</eduMajor>
+    <eduMinor>Software Engineering</eduMinor>
+    <eduStartDate>2018-07-10</eduStartDate>
+    <eduGradDate>2018-07-01</eduGradDate>
+    <studiedIn>Damascus University</studiedIn>
+    <degreeType>EduBachelor</degreeType>
   </Education>
   <WorkExperience>
     <employedIn/>
@@ -40,7 +36,7 @@
     <skillLevel/>
   </PersonalSkills>
   <Language>
-    <Name/>
+    <Name>english</Name>
     <SpokenLevel/>
     <ReadingLevel/>
     <WritingLevel/>

@@ -51,7 +51,6 @@
     }
   </script>
   <body>
-  
   <div id="form">
   <div id="triangle"></div>
   <form id="multiphase" onsubmit="return false">

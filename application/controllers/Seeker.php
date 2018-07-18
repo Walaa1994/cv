@@ -219,9 +219,9 @@ class Seeker extends CI_Controller {
          }
     }
 
+
     public function BigFiveForm()
     {
-
         $this->data['pageTitle']='Personal Test Form';
         $this->data['subview'] = 'bigfive_form';
         $this->load->view('layouts/layout', $this->data);
@@ -291,16 +291,14 @@ class Seeker extends CI_Controller {
         $Neuroticism=round(((($q4+$q9+$q14+$q19+$q24+$q29+$q34+$q39)/8)*100)/5);
           echo'Neuroticism= '.$Neuroticism.'  ';
 
-<<<<<<< HEAD
           $id=66;
           $this->updatesparql($Openness,$Conscientiousness, $Extraversion,$Agreeableness,$Neuroticism,$id);
-=======
+
       echo(max($Agreeableness.'trust, altruism, kindness, affection, and other prosocial behaviors. People who are high in agreeableness tend to be more cooperative while those low in this trait tend to be more competitive and even manipulative',$Openness.'People who are high in this trait tend to be more adventurous and creative. People low in this trait are often much more traditional and may struggle with abstract thinking.,Very creative ,
           Open to trying new things
          ,Focused on tackling new challenges
         ,Happy to think about abstract concepts'
        ,$Conscientiousness.'Standard features of this dimension include high levels of thoughtfulness, with good impulse control and goal-directed behaviors. Highly conscientiousness tend to be organized and mindful of details , Spend time preparing , Finish important tasks right away , Pay attention to details',$Extroversion.'Extraversion is characterized by excitability, sociability, talkativeness, assertiveness, and high amounts of emotional expressiveness. People who are high in extraversion are outgoing and tend to gain energy in social situations. ',$Neuroticism.'Neuroticism is a trait characterized by sadness, moodiness, and emotional instability. Individuals who are high in this trait tend to experience mood swings, anxiety, irritability and sadness. Those low in this trait tend to be more stable and emotionally resilient') . "<br>");
->>>>>>> BatoulBranch
 
 
   }
@@ -370,7 +368,6 @@ class Seeker extends CI_Controller {
 
             }
 
-
             else 
             if($bigfive2 = $this->input->post('bigfive2')==3){
                 return 3;
@@ -411,7 +408,6 @@ class Seeker extends CI_Controller {
         
 
             }
-
 
             else 
             if($bigfive6 = $this->input->post('bigfive6')==3){
@@ -454,7 +450,6 @@ class Seeker extends CI_Controller {
 
             }
 
-
             else 
             if($bigfive8 = $this->input->post('bigfive8')==3){
                 return 3;
@@ -496,7 +491,6 @@ class Seeker extends CI_Controller {
 
             }
 
-
             else 
             if($bigfive9 = $this->input->post('bigfive9')==3){
                 return 3;
@@ -535,7 +529,6 @@ class Seeker extends CI_Controller {
         
 
             }
-
 
             else 
             if($bigfive12 = $this->input->post('bigfive12')==3){
@@ -617,7 +610,6 @@ class Seeker extends CI_Controller {
 
             }
 
-
             else 
             if($bigfive23 = $this->input->post('bigfive23')==3){
                 return 3;
@@ -658,7 +650,6 @@ class Seeker extends CI_Controller {
 
             }
 
-
             else 
             if($bigfive24 = $this->input->post('bigfive24')==3){
                 return 3;
@@ -698,7 +689,6 @@ class Seeker extends CI_Controller {
         
 
             }
-
 
             else 
             if($bigfive27 = $this->input->post('bigfive27')==3){
@@ -741,7 +731,6 @@ class Seeker extends CI_Controller {
 
             }
 
-
             else 
             if($bigfive31 = $this->input->post('bigfive31')==3){
                 return 3;
@@ -781,7 +770,6 @@ class Seeker extends CI_Controller {
         
 
             }
-
 
             else 
             if($bigfive34 = $this->input->post('bigfive34')==3){
@@ -823,7 +811,6 @@ class Seeker extends CI_Controller {
 
             }
 
-
             else 
             if($bigfive35 = $this->input->post('bigfive35')==3){
                 return 3;
@@ -863,7 +850,6 @@ class Seeker extends CI_Controller {
         
 
             }
-
 
             else 
             if($bigfive37 = $this->input->post('bigfive37')==3){
@@ -905,7 +891,6 @@ class Seeker extends CI_Controller {
 
             }
 
-            
             else 
             if($bigfive41 = $this->input->post('bigfive41')==3){
                 return 3;
@@ -946,7 +931,6 @@ class Seeker extends CI_Controller {
 
             }
 
-
             else 
             if($bigfive43 = $this->input->post('bigfive43')==3){
                 return 3;
@@ -957,13 +941,6 @@ class Seeker extends CI_Controller {
 
 
         }
-
-         public function WriteFile($txt){
-            $myfile = fopen("savequery.txt", "w") or die("Unable to open file!");
-            fwrite($myfile, $txt);
-            fclose($myfile);
-        }
-
        
 
         
