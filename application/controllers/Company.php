@@ -144,6 +144,35 @@ class Company extends CI_Controller {
 
     public function view_announcement($id)
     {
+        /*$query="PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>  
+            PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+            PREFIX cv: <http://rdfs.org/resume-rdf/cv.rdfs#> 
+            PREFIX vcard: <http://www.w3.org/2006/vcard/ns#>
+            PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+            select distinct ?description ?model ?type ?salary ?locality ?eduMajor ?eduMinor ?eduDegree 
+            ?skillName ?skillExperience
+            where {
+                ?ann cv:hasTarget ?target . 
+                ?target cv:targetJobDescription ?description.
+                ?target cv:targetJobMode ?model.
+                ?target cv:targetJobType ?type.
+                ?target cv:targetSalary ?salary.
+                ?ann cv:aboutPerson ?person.
+                ?person vcard:locality ?locality.
+                ?ann cv:cvTitle \"$id\".
+                ?ann cv:hasEducation ?edu.
+                ?edu cv:eduMajor ?eduMajor.
+                ?edu cv:eduMinor ?eduMinor.
+                ?edu cv:degreeType ?eduDegree.
+                ?ann cv:hasSkill ?skill.
+                ?skill cv:skillName ?skillName.
+                ?skills cv:skillYearsExperience ?skillExperience.
+            } " ;
+        $dataset_path="C:\\tdbAnnouncement";
+        $this->load->library('query');
+        $query_result=$this->query->querysparql($query,$dataset_path);
+        echo '<pre>';
+        print_r($query_result);*/
 
         $query="PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>  
             PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
@@ -218,46 +247,52 @@ class Company extends CI_Controller {
         PREFIX cv: <http://rdfs.org/resume-rdf/cv.rdfs#> 
         PREFIX vcard: <http://www.w3.org/2006/vcard/ns#>
         PREFIX foaf: <http://xmlns.com/foaf/0.1/>
-        select ?FirstName ?LastName ?l1 ?locality
+        select ?FirstName ?LastName ?id
         where {
             {
-            ?resume cv:cvIsActive \"true\".
-             ?resume cv:hasEducation ?w .
-             ?resume cv:aboutPerson ?p.
+            ?resume cv:cvTitle ?id.
+            ?resume cv:cvIsActive \"True\".
+            ?resume cv:hasEducation ?w .
             ";
-
-        foreach ($result['basic']['results']['bindings'] as  $value1){
-            $locality=$value1['locality']['value'];
-            $query.="?p vcard:hasAddress ?address.
-            ?address vcard:locality ?locality.
-            FILTER regex(?locality,\"$locality\",\"i\").";
-        }
         foreach ($result['education']['results']['bindings'] as $value2) {
             $eduMajor=$value2['eduMajor']['value'];
-            $eduMinor=$value2['eduMinor']['value'];
             $eduDegree=$value2['eduDegree']['value'];
             $query.="?w cv:eduMajor \"$eduMajor\".
-            ?w cv:degreeType \"$eduDegree\".
-            }
-            union
-            {
-              ?resume cv:hasEducation ?education . 
-              ?education cv:eduMinor \"eduMinor\".     
-            }";
+            ?w cv:degreeType <http://rdfs.org/resume-rdf/base.rdfs#EduBachelor>.";
         }
-        
+
+        $i=1;
         foreach ($result['skills']['results']['bindings'] as $value3){
             $skillName=$value3['skillName']['value'];
-            $query.="?resume cv:hasSkill ?q1.
-            ?q1 cv:skillName ?l1.
-            FILTER (regex(?l1,\"$skillName\",\"i\")).";
+            $query.="?resume cv:hasSkill ?q$i.
+            ?q$i cv:skillName ?l$i.
+            FILTER (regex(?l$i,\"$skillName\",\"i\")).";
+            $i++;
         }
-        
+
         $query.="?resume cv:aboutPerson ?person.  
             ?person foaf:firstName ?FirstName .
             ?person foaf:lastName  ?LastName .
             ?person vcard:hasAddress ?address.
-            }";
+            ";
+
+        foreach ($result['basic']['results']['bindings'] as  $value1){
+            $locality=$value1['locality']['value'];
+            $query.="?address vcard:locality ?locality.
+            FILTER regex(?locality,\"$locality\",\"i\").";
+        }
+
+        foreach ($result['education']['results']['bindings'] as $value2) {
+            $eduMinor=$value2['eduMinor']['value'];
+            $query.="
+            }
+            union
+            {
+              ?resume cv:hasEducation ?education . 
+              ?education cv:eduMinor \"$eduMinor\".     
+            }
+        }";
+        }
         echo "$query";
         $dataset_path="C:\\tdbCV";
         $this->load->library('query');

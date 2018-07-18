@@ -1,10 +1,17 @@
 {
   "head": {
-    "vars": [ "FirstName" , "LastName" , "l1" , "locality" ]
+    "vars": [ "FirstName" , "LastName" , "id" ]
   } ,
   "results": {
     "bindings": [
-      
+      {
+        "FirstName": { "type": "literal" , "value": "walaa" } ,
+        "LastName": { "type": "literal" , "value": "Albaghdadi" } ,
+        "id": { "type": "literal" , "value": "65" }
+      } ,
+      {
+        
+      }
     ]
   }
 }
