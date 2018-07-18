@@ -1,10 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <resume>
+<<<<<<< HEAD
   <ID>66</ID>
+=======
+  <ID/>
+>>>>>>> BatoulBranch
   <IsActive/>
   <PersonalInfo>
-    <firstName>roula</firstName>
-    <lastName>arab</lastName>
+    <firstName/>
+    <lastName/>
     <birthday/>
     <Nationality/>
     <MaritalStatus>Single</MaritalStatus>

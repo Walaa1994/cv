@@ -31,6 +31,9 @@
 
 <body>
 
+<<<<<<< HEAD
+  <span href="<?php echo base_url();?>index.php/User/index" class="button" id="toggle-login">Register</span>
+=======
   
   <div class="limiter">
     <div class="container-login100">
@@ -40,6 +43,7 @@
             login
           </span>
         </div>
+>>>>>>> master
 
         <form class="login100-form validate-form" action="<?php echo base_url();?>index.php/User/login_validation" method="post">
           <div class="wrap-input100 validate-input m-b-26" data-validate="Username is required">
