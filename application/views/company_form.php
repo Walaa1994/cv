@@ -68,7 +68,7 @@ function backPhase6(){
 }
 function submitForm(){
     _("multiphase").method = "post";
-    _("multiphase").action = '<?php echo base_url();?>index.php/company/CVFormInfo';
+    _("multiphase").action = '<?php echo base_url();?>index.php/company/create_company';
     _("multiphase").submit();
 }
 
