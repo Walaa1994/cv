@@ -3,6 +3,9 @@
   <head>
     <?php $this->load->view('includes/header');?>
   </head>
+  <!-- JQuery -->
+    <script type="text/javascript" src="<?php echo base_url();?>/assets/js/jquery-3.3.1.min.js"></script>
+    
   <body id="top">
     <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
     	<a href="contact.html" id="contact-button" class="mdl-button mdl-button--fab mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-color--accent mdl-color-text--accent-contrast mdl-shadow--4dp">
@@ -12,7 +15,7 @@
     		<div class="mdl-layout__header-row site-logo-row">
     			<span class="mdl-layout__title">
         			<div class="site-logo"></div>
-        			<span class="site-description">CV star soft</span>
+        			<!-- <span class="site-description">CV star soft</span> -->
         		</span>
         	</div>
 	        <div class="mdl-layout__header-row site-navigation-row mdl-layout--large-screen-only">
@@ -38,10 +41,10 @@
         </footer>
       </main>
   </div>
+    
       <script src="https://code.getmdl.io/1.3.0/material.min.js" defer></script>
       <!-- SCRIPTS -->
-    <!-- JQuery -->
-    <script type="text/javascript" src="<?php echo base_url();?>/assets/js/jquery-3.3.1.min.js"></script>
+    
     <!-- Bootstrap tooltips -->
     <script type="text/javascript" src="<?php echo base_url();?>/assets/js/popper.min.js"></script>
     <!-- Bootstrap core JavaScript -->
