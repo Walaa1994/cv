@@ -24,6 +24,26 @@ class Home extends CI_Controller {
         $this->load->view('layouts/layout', $this->data);
 	}
 
+	function Company_profile (){
+
+		$this->data['pageTitle']='Home';
+        $this->data['subview'] = 'company_profile';
+        $this->load->view('layouts/layout', $this->data);
+	}
+	function OneAnnouncement_page  (){
+
+		$this->data['pageTitle']='Announcement page';
+        $this->data['subview'] = 'one_announcement-page';
+        $this->load->view('layouts/layout', $this->data);
+	}
+
+	function Announcement_page  (){
+
+		$this->data['pageTitle']='Announcement page';
+        $this->data['subview'] = 'Announcement_page';
+        $this->load->view('layouts/layout', $this->data);
+	}
+
 	function About_Us (){
 
 		$this->data['pageTitle']='About Us';
