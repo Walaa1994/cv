@@ -51,10 +51,6 @@
     }
   </script>
   <body>
-<<<<<<< HEAD
-=======
-  
->>>>>>> BatoulBranch
   <div id="form">
   <div id="triangle"></div>
   <form id="multiphase" onsubmit="return false">
