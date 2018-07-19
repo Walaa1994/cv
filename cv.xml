@@ -7,8 +7,8 @@
     <lastName/>
     <birthday/>
     <Nationality/>
-    <MaritalStatus>Single</MaritalStatus>
-    <gender>Female</gender>
+    <MaritalStatus>Married</MaritalStatus>
+    <gender>Male</gender>
     <country-name/>
     <locality/>
     <street-address/>
@@ -16,12 +16,12 @@
     <Telephone/>
   </PersonalInfo>
   <Education>
-    <eduMajor>ITE</eduMajor>
-    <eduMinor>Software Engineering</eduMinor>
-    <eduStartDate>2018-07-10</eduStartDate>
-    <eduGradDate>2018-07-01</eduGradDate>
-    <studiedIn>Damascus University</studiedIn>
-    <degreeType>EduBachelor</degreeType>
+    <eduMajor/>
+    <eduMinor/>
+    <eduStartDate/>
+    <eduGradDate/>
+    <studiedIn/>
+    <degreeType/>
   </Education>
   <WorkExperience>
     <employedIn/>
@@ -31,12 +31,12 @@
     <careerLevel/>
   </WorkExperience>
   <PersonalSkills>
-    <skillName>java</skillName>
+    <skillName/>
     <skillYearsExperience/>
     <skillLevel/>
   </PersonalSkills>
   <Language>
-    <Name>english</Name>
+    <Name/>
     <SpokenLevel/>
     <ReadingLevel/>
     <WritingLevel/>

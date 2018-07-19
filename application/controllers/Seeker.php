@@ -8,7 +8,7 @@ class Seeker extends CI_Controller {
 
     public function index()
     {
-		$this->data['pageTitle']='Seeker Home';
+    $this->data['pageTitle']='Seeker Home';
         $this->data['subview'] = 'seeker_home';
         $this->load->view('layouts/layout', $this->data);
     }
@@ -219,9 +219,9 @@ class Seeker extends CI_Controller {
          }
     }
 
-
     public function BigFiveForm()
     {
+
         $this->data['pageTitle']='Personal Test Form';
         $this->data['subview'] = 'bigfive_form';
         $this->load->view('layouts/layout', $this->data);

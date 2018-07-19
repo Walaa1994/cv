@@ -86,13 +86,13 @@ $(document).ready(function () {
    $('#add_education_info').click(function(){
     count_education = count_education + 1;
     var html_code = "<tr id='row"+count_education+"'>";
-     html_code += "<td><input type='cert_name' id='cert_name' name='cert_name[]'/></td>";
-     html_code += "<td><input type='spe_name' id='spe_name' name='spe_name[]'/></td>";
-     html_code += "<td><input type='date' id='start_date' name='start_date[]'/></td>";
-     html_code += "<td><input type='date' id='grants_date' name='grants_date[]'/></td>";
-     html_code += "<td><input type='donor' id='donor' name='donor[]'/></td>";
+     html_code += "<td><input type='text' id='cert_name' name='cert_name[]' class='form-control'/></td>";
+     html_code += "<td><input type='text' id='spe_name' name='spe_name[]' class='form-control'/></td>";
+     html_code += "<td><input type='date' id='start_date' name='start_date[]' class='form-control'/></td>";
+     html_code += "<td><input type='date' id='grants_date' name='grants_date[]' class='form-control'/></td>";
+     html_code += "<td><input type='text' id='donor' name='donor[]' class='form-control'/></td>";
      html_code += '<td><select id="select" name="degreeType[]"><option value="">choose ...</option><option value="EduHighSchool">High School</option><option value="EduVocational">Vocational</option><option value="EduCollegeCoursework">College Coursework</option><option value="EduBachelor">Bachelorl</option><option value="EduMaster">Master</option><option value="EduDoctorate">Doctorate</option><option value="EduAssociate">Associate</option><option value=" EduProfessional">Professional</option></select></td>';
-     html_code += "<td><button type='button' name='remove' data-row='row"+count_education+"' class='btn btn-danger btn-xs remove'>-</button></td>";   
+     html_code += "<td><a class='btn-floating btn-sm btn-danger my-0 waves-effect waves-light remove'  name='remove' data-row='row"+count_education+"'><i class='fa fa-times'></i></a></td>";   
      html_code += "</tr>";  
      $('#crud_table_education').append(html_code);  
    });
@@ -102,14 +102,14 @@ $(document).ready(function () {
      $('#add_experience_info').click(function(){debugger;
         count_experience = count_experience + 1;
         var html_code = "<tr id='row"+count_experience+"'>";
-         html_code += "<td><input type='company_name' id='company_name' name='company_name[]'/></td>";
-         html_code += "<td><input type='job_pos' id='job_pos' name='job_pos[]'/></td>";
-         html_code += "<td> <input type='date' id='from_date' name='from_date[]'/></td>";
-         html_code += "<td><input type='date' id='to_date' name='to_date[]'/></td>";
+         html_code += "<td><input type='text' id='company_name' name='company_name[]' class='form-control'/></td>";
+         html_code += "<td><input type='text' id='job_pos' name='job_pos[]' class='form-control'/></td>";
+         html_code += "<td> <input type='date' id='from_date' name='from_date[]' class='form-control'/></td>";
+         html_code += "<td><input type='date' id='to_date' name='to_date[]' class='form-control'/></td>";
          html_code += '<td><select id="select" name="careerLevel[]"><option value="">choose ...</option><option value="HighSchool">Student (high school)</option><option value="Student">Student (graduate/undergraduate)</option><option value="EntryLvl">Entry level (less than 2 years of experience)</option><option value="MidCareer">Mid-career (2+ years of experience)</option><option value="Management">Management (manager/director of staff)</option><option value="Executive">Executive (SVP, EVP, VP)</option><option value="SeniorExecutive">Senior Executive (president / CEO)</option>  </select></td>';
          html_code += '<td><select id="select" name="JobType[]"><option value="">choose ...</option><option value="Emplyee">Employee</option><option value="Contractor">Contractor</option><option value="Intern">Intern</option></select></td>';
          html_code += '<td><select id="select" name="IsCurrent[]"><option value="">choose ...</option><option value="True">ON</option><option value="False">OFF</option></select></td>';
-         html_code += "<td><button type='button' name='remove' data-row='row"+count_experience+"' class='btn btn-danger btn-xs remove'>-</button></td>";   
+         html_code += "<td><a class='btn-floating btn-sm btn-danger my-0 waves-effect waves-light remove'  name='remove' data-row='row"+count_experience+"'><i class='fa fa-times'></i></a></td>";   
          html_code += "</tr>";  
          $('#crud_table_experience').append(html_code);         
        });
@@ -119,10 +119,10 @@ $(document).ready(function () {
      $('#add_skill_info').click(function(){debugger;
           count_skills = count_skills + 1;
           var html_code = "<tr id='row"+count_skills+"'>";
-           html_code += "<td><input type='skill_name'id='skill_name' name='skill_name[]'/></td>";
-           html_code += "<td><input type='year_exp'id='year_exp' name='year_exp[]'/></td>";
+           html_code += "<td><input type='text'id='skill_name' name='skill_name[]' class='form-control'/></td>";
+           html_code += "<td><input type='text'id='year_exp' name='year_exp[]' class='form-control'/></td>";
            html_code += "<td><select id='select' name='SkillLevel[]'><option value=''>choose ...</option><option value='1'>1</option><option value='2'>2</option><option value='3'>3</option><option value='4 year'>4</option>option value='5'>5</option> </select></td>";
-           html_code += "<td><button type='button' name='remove' data-row='row"+count_skills+"' class='btn btn-danger btn-xs remove'>-</button></td>";   
+           html_code += "<td><a class='btn-floating btn-sm btn-danger my-0 waves-effect waves-light remove'  name='remove' data-row='row"+count_skills+"'><i class='fa fa-times'></i></a></td>";   
            html_code += "</tr>";  
            $('#crud_table_skill').append(html_code);
          });
@@ -134,11 +134,11 @@ $(document).ready(function () {
           var html_code = "<tr id='row"+count_languages+"'>";
 
 
-            html_code += "<td><input type='Language_Name' id='Language_Name' name='Language_Name[]'/></td>";
+            html_code += "<td><input type='text' id='Language_Name' name='Language_Name[]' class='form-control'/></td>";
            html_code += "<td><select id='select' name='Spoken_Level[]'><option value=''>choose ...</option><option value='0'>0</option><option value='1'>1</option><option value='2'>2</option><option value='3'>3</option><option value='4'>4</option><option value='5'>5</option></select></td>";
            html_code += "<td><select id='select' name='Reading_Level[]'><option value=''>choose ...</option><option value='0'>0</option><option value='1'>1</option><option value='2'>2</option><option value='3'>3</option><option value='4'>4</option><option value='5'>5</option></select></td>";
            html_code += "<td><select id='select' name='Writing_Level[]'><option value=''>choose ...</option><option value='0'>0</option><option value='1'>1</option><option value='2'>2</option><option value='3'>3</option><option value='4'>4</option><option value='5'>5</option></select></td>";
-           html_code += "<td><button type='button' name='remove' data-row='row"+count_languages+"' class='btn btn-danger btn-xs remove'>-</button></td>";   
+           html_code += "<td><a class='btn-floating btn-sm btn-danger my-0 waves-effect waves-light remove'  name='remove' data-row='row"+count_languages+"'><i class='fa fa-times'></i></a></td>";   
            html_code += "</tr>";  
            $('#crud_table_lang').append(html_code);
          });
@@ -150,333 +150,519 @@ $(document).ready(function () {
       $('#' + delete_row).remove();
      });
 </script>
-
-<div id="form">
-  <div id="triangle"></div>
-  <form id="multiphase" onsubmit="return false">
-      <progress id="progressBar" value="16" max="100" style="width:250px;"></progress>
-      <h3 id="status">Phase 1 of 6</h3>
-    <!-- start phase1 -->
-    <div id="phase1">
-      <h3>Personal Information</h3>
-      <div>
-      <p>First Name</p>
-      <input type="first_name" id="first_name" name="first_name"/>
-      </div>
-
-      <div>
-      <p>Last Name</p>
-      <input type="last_name" id="last_name" name="last_name"/>
-      </div>
-
-      <div>
-      <p>Date of Birth</p>
-      <input type="date" id="birth_date" name="birth_date"/>
-      </div>
-
-      <div>
-      <p>Nationality</p>
-      <input type="nationality" id="nationality" name="nationality"/>
-      </div>
-
-      <div>
-      <p id="radio_marital">Marital State</p>
-      <input type="radio" id="marital_state" name="marital_state" value="Married" > Married<br>
-      <input type="radio" id="marital_state" name="marital_state" value="Divorced" > Divorced<br>
-      <input type="radio" id="marital_state" name="marital_state" value="Single" > Single<br>
-      <input type="radio" id="marital_state" name="marital_state" value="Widowed" > Widowed<br>
-      </div>
-
-      <div>
-      <p id="radio_gender">Gender</p>
-      <input type="radio" id="gender" name="gender" value="Male" > Male<br>
-      <input type="radio" id="gender" name="gender" value="Female" > Female<br>        
-      </div>
-
-      <div>
-      <p>Country</p>
-      <input type="country" id="country" name="country"/>
-      </div>
-
-      <div>
-      <p>City</p>
-      <input type="city" id="city" name="city"/>
-      </div>
-
-      <div>
-      <p>Address</p>
-      <input type="address" id="address" name="address"/>
-      </div>
-
-      <div>
-      <p>Email</p>
-      <input type="email" id="email" name="email"/>
-      </div>
-
-      <div>
-      <p>Phone Number</p>
-      <input type="phone" id="phone" name="phone"/>
-      </div>
-
-      <button id="next" onclick="processPhase1()">Next</button>
+<div class="mdl-grid site-max-width">
+  <div class="mdl-cell mdl-cell--12-col mdl-card mdl-shadow--4dp welcome-card portfolio-card">
+    <div class="mdl-card__title">
+      <h2 class="mdl-card__title-text">Are you already have CV?</h2>
     </div>
-    <!-- end phase1 -->
-  
-    <!-- start phase2 -->  
-    <div id="phase2">
-      <h3>Education</h3>
-      <div class="table-responsive">
-        <table class="table table-bordered" id="crud_table_education">
-          <tr>
-            <th width="20%">Certificate Name</th>
-            <th width="10%">Specialization Name</th>
-            <th width="20%">Start Date</th>
-            <th width="10%">Date of Grants</th>
-            <th width="10%">Donor</th>
-            <th width="25%">Degree Type</th>
-            <th width="5%"></th>
-          </tr>
-          <tr> 
-            <td>
-              <input type="cert_name" id="cert_name" name="cert_name[]"/>
-            </td>
-            <td>
-              <input type="spe_name" id="spe_name" name="spe_name[]"/>
-            </td>
-            <td>
-              <input type="date" id="start_date" name="start_date[]"/>
-            </td>
-            <td>
-              <input type="date" id="grants_date" name="grants_date[]"/>      
-            </td>
-            <td>
-              <input type="donor" id="donor" name="donor[]"/>
-            </td>
-            <td>
-              <select id="select" name="degreeType[]">
-                <option value="">choose ...</option>
-                <option value="EduHighSchool">High School</option>
-                <option value="EduVocational">Vocational</option>
-                <option value="EduCollegeCoursework">College Coursework</option>
-                <option value="EduBachelor">Bachelor</option>
-                <option value="EduMaster">Master</option>
-                <option value="EduDoctorate">Doctorate</option>
-                <option value="EduAssociate">Associate</option>
-                <option value=" EduProfessional">Professional</option>
+    <div class="mdl-card__supporting-text">
+      you can upload your cv and all data extract and re-stract with professional cv.
+    </div>
+    <div class="mdl-card__actions mdl-card-">
+      <!-- cv Form -->
+      <div id="Form">
+        <!-- <div id="triangle"></div> -->
+        <form id="multiphase" onsubmit="return false">
+            <progress id="progressBar" value="16" max="100" style="width:250px;"></progress>
+            <h3 id="status">Phase 1 of 6</h3>
+          <!-- start phase1 -->
+          <div id="phase1">
+            <h3>Personal Information</h3>
+            <div class="row">
+                <!--Grid column-->
+                <div class="col-md-10 mb-4">
+                    <div class="md-form">
+                        <input type="text" id="first_name" class="form-control">
+                        <label for="first_name" class="">First Name</label>
+                    </div>
+                </div>
+                <!--Grid column-->
+            </div>
+
+            <div class="row">
+                <!--Grid column-->
+                <div class="col-md-10 mb-4">
+                    <div class="md-form">
+                        <input type="text" id="last_name" class="form-control">
+                        <label for="last_name" class="">Last Name</label>
+                    </div>
+                </div>
+                <!--Grid column-->
+            </div>
+
+            <div class="row">
+                <!--Grid column-->
+                <div class="col-md-10 mb-4">
+                    <div class="md-form">
+                        <input type="date" id="birth_date" class="form-control">
+                        <label for="birth_date" class="">Date of Birth</label>
+                    </div>
+                </div>
+                <!--Grid column-->
+            </div>
+
+
+            <div class="row">
+                <!--Grid column-->
+                <div class="col-md-10 mb-4">
+                    <div class="md-form">
+                        <input type="text" id="Nationality" class="form-control">
+                        <label for="Nationality" class="">Nationality</label>
+                    </div>
+                </div>
+                <!--Grid column-->
+            </div>
+
+            <div class="row">
+              <div class="col-md-10 mb-4">
+                <p id="radio_marital">Marital State</p>
+                    <fieldset class="form-check">
+                        <input class="form-check-input" name="marital_state" type="radio" id="radio1" checked="checked" value="Married">
+                        <label class="form-check-label" for="radio1">Married</label>
+                    </fieldset>
+
+                    <fieldset class="form-check">
+                        <input class="form-check-input" name="marital_state" type="radio" id="radio2" value="Divorced">
+                        <label class="form-check-label" for="radio2">Divorced</label>
+                    </fieldset>
+
+                    <fieldset class="form-check">
+                        <input class="form-check-input" name="marital_state" type="radio" id="radio3" value="Single">
+                        <label class="form-check-label" for="radio3">Single</label>
+                    </fieldset>
+
+                    <fieldset class="form-check">
+                        <input class="form-check-input" name="marital_state" type="radio" id="radio2"  value="Widowed" >
+                        <label class="form-check-label" for="radio2">Widowed</label>
+                    </fieldset>
+
+                </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-10 mb-4">
+                <p id="radio_gender">Gender</p>
+                <fieldset class="form-check">
+                  <input class="form-check-input" name="gender" type="radio" id="Male" checked="checked" value="Male">
+                  <label class="form-check-label" for="Male">Male</label>
+                </fieldset>
+
+                <fieldset class="form-check">
+                  <input class="form-check-input" name="gender" type="radio" id="Female" value="Female">
+                  <label class="form-check-label" for="Female">Female</label>
+                </fieldset>
+              </div>
+            </div>
+
+            <div class="row">
+
+                <!--Grid column-->
+                <div class="col-md-10 mb-4">
+                    <div class="md-form">
+                        <input type="text" id="Country" class="form-control">
+                        <label for="Country" class="">Country</label>
+                    </div>
+                </div>
+                <!--Grid column-->
+            </div>
+              
+            <div class="row">
+
+                <!--Grid column-->
+                <div class="col-md-10 mb-4">
+                    <div class="md-form">
+                        <input type="text" id="City" class="form-control">
+                        <label for="City" class="">City</label>
+                    </div>
+                </div>
+                <!--Grid column-->
+            </div>
+
+            <div class="row">
+
+                <!--Grid column-->
+                <div class="col-md-10 mb-4">
+                    <div class="md-form">
+                        <input type="text" id="address" class="form-control">
+                        <label for="address" class="">Address</label>
+                    </div>
+                </div>
+                <!--Grid column-->
+            </div>
+            
+            <div class="row">
+
+                <!--Grid column-->
+                <div class="col-md-10 mb-4">
+                    <div class="md-form">
+                        <input type="email" id="email" class="form-control">
+                        <label for="email" class="">Email</label>
+                    </div>
+                </div>
+                <!--Grid column-->
+            </div>
+            
+            <div class="row">
+                <!--Grid column-->
+                <div class="col-md-10 mb-4">
+                    <div class="md-form">
+                        <input type="text" id="phone" class="form-control">
+                        <label for="phone" class="">Phone Number</label>
+                    </div>
+                </div>
+                <!--Grid column-->
+            </div>
+            <!-- <button class="btn peach-gradient btn-sm waves-effect waves-light">
+                Next
+            </button> -->
+            <div style="margin: 0 auto;">
+              <a type="button" class="btn-floating my-1 btn-ins waves-effect waves-light">
+                  
+              </a>
+              <a type="button" class="btn-floating my-1 btn-ins waves-effect waves-light" onclick="processPhase1()">
+                  <i class="fa fa-forward"></i>
+              </a>
+            </div>
+          </div>
+          <!-- end phase1 -->
+        
+          <!-- start phase2 -->  
+          <div id="phase2">
+            <h3>Education</h3>
+            <div class="table-responsive">
+              <table class="table table-bordered" id="crud_table_education">
+                <tr>
+                  <th width="20%">Certificate Name</th>
+                  <th width="10%">Specialization Name</th>
+                  <th width="10%">Start Date</th>
+                  <th width="10%">Date of Grants</th>
+                  <th width="10%">Donor</th>
+                  <th width="35%">Degree Type</th>
+                  <th width="5%"></th>
+                </tr>
+                <tr> 
+                  <td>
+                      <input type="text" id="Nationality" class="form-control" name="cert_name[]">
+                  </td>
+                  <td>
+                    <input type="text" id="spe_name" name="spe_name[]" class="form-control"/>
+                  </td>
+                  <td>
+                    <input type="date" id="start_date" name="start_date[]" class="form-control"/>
+                  </td>
+                  <td>
+                    <input type="date" id="grants_date" name="grants_date[]" class="form-control"/>      
+                  </td>
+                  <td>
+                    <input type="text" id="donor" name="donor[]" class="form-control"/>
+                  </td>
+                  <td>
+                    <select id="" name="degreeType[]" class="form-control">
+                      <option value="">choose ...</option>
+                      <option value="EduHighSchool">High School</option>
+                      <option value="EduVocational">Vocational</option>
+                      <option value="EduCollegeCoursework">College Coursework</option>
+                      <option value="EduBachelor">Bachelor</option>
+                      <option value="EduMaster">Master</option>
+                      <option value="EduDoctorate">Doctorate</option>
+                      <option value="EduAssociate">Associate</option>
+                      <option value=" EduProfessional">Professional</option>
+                    </select>
+                  </td>
+                  <td></td>
+                </tr>
+              </table>
+
+              <div align="right">
+                <a class="btn-floating btn-sm  btn-success my-0 waves-effect waves-light" name="add" id="add_education_info">
+                  <i class="fa fa-plus"></i>
+                </a>
+              </div>
+            </div>
+
+            <div>
+              <a type="button" class="btn-floating my-1 btn-ins waves-effect waves-light"  onclick="backPhase2()">
+                  <i class="fa fa-backward"></i>
+              </a>
+              <a type="button" class="btn-floating my-1 btn-ins waves-effect waves-light" onclick="processPhase2()">
+                  <i class="fa fa-forward"></i>
+              </a>
+            </div>
+
+          </div>
+          <!-- end phase2 -->
+
+          <!-- start phase3 --> 
+          <div id="phase3">
+            <h3>Work Experience</h3>
+            <div class="table-responsive">
+            <table class="table table-bordered" id="crud_table_experience">
+            <tr>
+              <th width="20%">Company Name</th>
+              <th width="20%">Job Position</th>
+              <th width="10%">from</th>
+              <th width="10%">to</th>
+              <th width="20%">CareerLevel</th>
+              <th width="15%">Job Type</th>
+              <th width="5%">Is Current</th>
+              <th width="5%"></th>
+            </tr>
+            <tr> 
+              <td>
+                <input type="text" id="company_name" class="form-control" name="company_name[]"/>
+              </td>
+              <td>
+                <input type="text" id="job_pos" class="form-control" name="job_pos[]"/>
+              </td>
+              <td>
+                <input type="date" id="from_date" class="form-control" name="from_date[]"/>
+              </td>  
+              <td>
+                <input type="date" id="to_date" class="form-control" name="to_date[]"/>
+              </td>
+              <td>
+                <select id="select" class="form-control" name="careerLevel[]">
+                  <option value="">choose ...</option>
+                  <option value="HighSchool">Student (high school)</option>
+                  <option value="Student">Student (graduate/undergraduate)</option>
+                  <option value="EntryLvl">Entry level (less than 2 years of experience)</option>
+                  <option value="MidCareer">Mid-career (2+ years of experience)</option>
+                  <option value="Management">Management (manager/director of staff)</option>
+                  <option value="Executive">Executive (SVP, EVP, VP)</option>
+                  <option value="SeniorExecutive">Senior Executive (president / CEO)</option>  
+                </select>
+              </td>
+              <td>
+                <select id="select" name="JobType[]" class="form-control">
+                  <option value="">choose ...</option>
+                  <option value="Emplyee">Employee</option>
+                  <option value="Contractor">Contractor</option>
+                  <option value="Intern">Intern</option>
+                </select>
+              </td>
+              <td>
+                <select id="select" name="IsCurrent[]" class="form-control">
+                  <option value="">choose ...</option>
+                  <option value="True">ON</option>
+                  <option value="False">OFF</option>
+                </select>
+              </td>
+              <td></td>
+            </tr>
+            </table>
+            <div align="right">
+              <a class="btn-floating btn-sm  btn-success my-0 waves-effect waves-light" name="add" id="add_experience_info">
+                <i class="fa fa-plus"></i>
+              </a>
+            </div>
+
+            </div>
+
+            <div>
+              <a type="button" class="btn-floating my-1 btn-ins waves-effect waves-light" onclick="backPhase3()">
+                  <i class="fa fa-backward"></i>
+              </a>
+              <a type="button" class="btn-floating my-1 btn-ins waves-effect waves-light" onclick="processPhase3()">
+                  <i class="fa fa-forward"></i>
+              </a>
+            </div>
+
+          </div>
+          <!-- end phase3 -->
+
+          <!-- start phase4 -->
+          <div id="phase4">
+            <h3>Personal Skills</h3>
+            <div class="table-responsive">
+              <table class="table table-bordered" id="crud_table_skill"/>
+              <tr>
+                <th width="40%">Skill Name</th>
+                <th width="30%">Years of experience</th>
+                <th width="30%">Skill Level</th>       
+                <th width="5%"></th>
+              </tr>
+              <tr>
+                <td>
+                  <input type="text" id="skill_name" name="skill_name[]"  class="form-control"/>
+                </td>
+                <td>
+                  <input type="text" id="year_exp" name="year_exp[]"  class="form-control"/>
+                </td>
+                <td>
+                  <select id="select" name="SkillLevel[]"  class="form-control">
+                  <option value="">choose ...</option>
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                  </select>
+                </td>
+                <td></td>
+              </tr>
+              </table>
+              <div align="right">
+                <a class="btn-floating btn-sm  btn-success my-0 waves-effect waves-light" name="add" id="add_skill_info">
+                  <i class="fa fa-plus"></i>
+                </a>
+              </div>
+            </div>
+
+
+            <div>
+              <a type="button" class="btn-floating my-1 btn-ins waves-effect waves-light" onclick="backPhase4()">
+                  <i class="fa fa-backward"></i>
+              </a>
+              <a type="button" class="btn-floating my-1 btn-ins waves-effect waves-light" onclick="processPhase4()">
+                  <i class="fa fa-forward"></i>
+              </a>
+            </div>
+
+          </div>
+          <!-- end phase4 -->
+
+          <!-- start phase5 -->
+          <div id="phase5">
+            <h3>Languages</h3>
+            <div class="table-responsive">
+              <table class="table table-bordered" id="crud_table_lang"/>
+              <tr>
+                <th width="25%">Language Name</th>
+                <th width="25%">SpokenLevel</th>
+                <th width="25%">ReadingLevel</th>
+                <th width="25%">WritingLevel</th>       
+                <th width="5%"></th>
+              </tr>
+
+             <tr>
+           <td><input type="text" id="Language_Name" name="Language_Name[]"  class="form-control"/></td>
+               <td>
+              <select id="select" name="Spoken_Level[]">
+              <option value="">choose ...</option>
+              <option value="0">0</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
               </select>
-            </td>
-          </tr>
-        </table>
+              </td>
+           
 
-        <div align="right">
-         <button type="button" name="add" id="add_education_info" class="btn btn-success btn-xs">+</button>
-        </div>
+               <td>  
+              <select id="select" name="Reading_Level[]">
+              <option value="">choose ...</option>
+              <option value="0">0</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              </select>
+               </td>
+            
+
+               <td>
+              <select id="select" name="Writing_Level[]">
+              <option value="">choose ...</option>
+              <option value="0">0</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              </select>
+               </td>
+               <td></td>
+               </tr>
+               </table>
+               <div align="right">
+                <a class="btn-floating btn-sm  btn-success my-0 waves-effect waves-light" name="add" id="add_lang_info">
+                  <i class="fa fa-plus"></i>
+                </a>
+              </div>
+              </div>
+            
+
+            <div>
+              <a type="button" class="btn-floating my-1 btn-ins waves-effect waves-light" onclick="backPhase5()">
+                  <i class="fa fa-backward"></i>
+              </a>
+              <a type="button" class="btn-floating my-1 btn-ins waves-effect waves-light" onclick="processPhase5()">
+                  <i class="fa fa-forward"></i>
+              </a>
+            </div>
+
+          </div>
+          <!-- end phase5 -->
+
+          <!-- start phase6 -->
+          <div id="phase6">
+            <h3>References and Referees</h3>
+
+            <div class="row">
+                <!--Grid column-->
+                <div class="col-md-10 mb-4">
+                    <div class="md-form">
+                        <input type="text" id="ref_name" class="form-control">
+                        <label for="ref_name" class="">Person/Company/Organization Name</label>
+                    </div>
+                </div>
+                <!--Grid column-->
+            </div>
+
+            <div class="row">
+                <!--Grid column-->
+                <div class="col-md-10 mb-4">
+                    <div class="md-form">
+                        <input type="text" id="ref_phone" class="form-control">
+                        <label for="ref_phone" class="">Phone Number (Optional)</label>
+                    </div>
+                </div>
+                <!--Grid column-->
+            </div>
+
+            <div class="row">
+                <!--Grid column-->
+                <div class="col-md-10 mb-4">
+                    <div class="md-form">
+                        <input type="text" id="ref_email" class="form-control">
+                        <label for="ref_email" class="">Email (Optional)</label>
+                    </div>
+                </div>
+                <!--Grid column-->
+            </div>
+            
+            <div class="row">
+              <div class="col-md-10 mb-4">
+                <p id="radio_active">Is Active</p>
+                <fieldset class="form-check">
+                  <input class="form-check-input" name="IsActive" type="radio" id="IsActive" checked="checked" value="True">
+                  <label class="form-check-label" for="Male">ON</label>
+                </fieldset>
+
+                <fieldset class="form-check">
+                  <input class="form-check-input" name="IsActive" type="radio" id="IsActive" value="False">
+                  <label class="form-check-label" for="IsActive">OFF</label>
+                </fieldset>
+              </div>
+            </div>
+
+            <div>
+              <a type="button" class="btn-floating my-1 btn-ins waves-effect waves-light" onclick="backPhase6()">
+                  <i class="fa fa-backward"></i>
+              </a>
+              <a type="button" class="btn-floating my-1 btn-ins waves-effect waves-light" onclick="submitForm()">
+                  <i class="fa fa-save"></i>
+              </a>
+            </div>
+
+          </div>
+          <!-- end phase6 -->
+        </form>
+
       </div>
 
-      <button id="previous" onclick="backPhase2()">Previous</button>
-      <button id="next" onclick="processPhase2()">Next</button>
     </div>
-    <!-- end phase2 -->
-
-    <!-- start phase3 --> 
-    <div id="phase3">
-      <h3>Work Experience</h3>
-      <div class="table-responsive">
-      <table class="table table-bordered" id="crud_table_experience">
-      <tr>
-        <th width="20%">Company Name</th>
-        <th width="20%">Job Position</th>
-        <th width="10%">from</th>
-        <th width="10%">to</th>
-        <th width="20%">CareerLevel</th>
-        <th width="15%">Job Type</th>
-        <th width="5%">Is Current</th>
-      </tr>
-      <tr> 
-        <td>
-          <input type="company_name" id="company_name" name="company_name[]"/>
-        </td>
-        <td>
-          <input type="job_pos" id="job_pos" name="job_pos[]"/>
-        </td>
-        <td>
-          <input type="date" id="from_date" name="from_date[]"/>
-        </td>  
-        <td>
-          <input type="date" id="to_date" name="to_date[]"/>
-        </td>
-        <td>
-          <select id="select" name="careerLevel[]">
-            <option value="">choose ...</option>
-            <option value="HighSchool">Student (high school)</option>
-            <option value="Student">Student (graduate/undergraduate)</option>
-            <option value="EntryLvl">Entry level (less than 2 years of experience)</option>
-            <option value="MidCareer">Mid-career (2+ years of experience)</option>
-            <option value="Management">Management (manager/director of staff)</option>
-            <option value="Executive">Executive (SVP, EVP, VP)</option>
-            <option value="SeniorExecutive">Senior Executive (president / CEO)</option>  
-          </select>
-        </td>
-        <td>
-          <select id="select" name="JobType[]">
-            <option value="">choose ...</option>
-            <option value="Emplyee">Employee</option>
-            <option value="Contractor">Contractor</option>
-            <option value="Intern">Intern</option>
-          </select>
-        </td>
-        <td>
-          <select id="select" name="IsCurrent[]">
-            <option value="">choose ...</option>
-            <option value="True">ON</option>
-            <option value="False">OFF</option>
-          </select>
-        </td>
-      </tr>
-      </table>
-      <div align="right">
-        <button type="button" name="add" id="add_experience_info" class="btn btn-success btn-xs">+</button>
-      </div>
-      </div>
-
-      
-      <button id="previous" onclick="backPhase3()">Previous</button>
-      <button id="next" onclick="processPhase3()">Next</button>
-    </div>
-    <!-- end phase3 -->
-
-    <!-- start phase4 -->
-    <div id="phase4">
-      <h3>Personal Skills</h3>
-      <div class="table-responsive">
-        <table class="table table-bordered" id="crud_table_skill"/>
-        <tr>
-          <th width="40%">Skill Name</th>
-          <th width="30%">Years of experience</th>
-          <th width="30%">Skill Level</th>       
-        </tr>
-        <tr>
-          <td>
-            <input type="skill_name" id="skill_name" name="skill_name[]"/>
-          </td>
-          <td>
-            <input type="year_exp" id="year_exp" name="year_exp[]"/>
-          </td>
-          <td>
-            <select id="select" name="SkillLevel[]">
-            <option value="">choose ...</option>
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-            </select>
-          </td>
-        </tr>
-        </table>
-        <div align="right">
-          <button type="button" name="add" id="add_skill_info" class="btn btn-success btn-xs">+</button>
-        </div>
-      </div>
-      <button id="previous" onclick="backPhase4()">Previous</button>
-      <button id="next" onclick="processPhase4()">Next</button>
-    </div>
-    <!-- end phase4 -->
-
-    <!-- start phase5 -->
-    <div id="phase5">
-      <h3>Languages</h3>
-      <div class="table-responsive">
-        <table class="table table-bordered" id="crud_table_lang"/>
-        <tr>
-          <th width="25%">Language Name</th>
-          <th width="25%">SpokenLevel</th>
-          <th width="25%">ReadingLevel</th>
-          <th width="25%">WritingLevel</th>       
-        </tr>
-
-       <tr>
-     <td><input type="Language_Name" id="Language_Name" name="Language_Name[]"/></td>
-         <td>
-        <select id="select" name="Spoken_Level[]">
-        <option value="">choose ...</option>
-        <option value="0">0</option>
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-        <option value="4">4</option>
-        <option value="5">5</option>
-        </select>
-        </td>
-     
-
-         <td> 
-        <select id="select" name="Reading_Level[]">
-        <option value="">choose ...</option>
-        <option value="0">0</option>
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-        <option value="4">4</option>
-        <option value="5">5</option>
-        </select>
-         </td>
-      
-
-         <td>
-        <select id="select" name="Writing_Level[]">
-        <option value="">choose ...</option>
-        <option value="0">0</option>
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-        <option value="4">4</option>
-        <option value="5">5</option>
-        </select>
-         </td>
-         </tr>
-         </table>
-         <div align="right">
-          <button type="button" name="add" id="add_lang_info" class="btn btn-success btn-xs">+</button>
-        </div>
-        </div>
-      
-
-      <button id="previous" onclick="backPhase5()">Previous</button>
-      <button id="next" onclick="processPhase5()">Next</button>
-    </div>
-    <!-- end phase5 -->
-
-    <!-- start phase6 -->
-    <div id="phase6">
-      <h3>References and Referees</h3>
-      <div>
-      <p>Person/Company/Organization Name</p>
-      <input type="ref_name" id="ref_name" name="ref_name"/>
-      </div>
-
-      <div>
-      <p>Phone Number (Optional)</p>
-      <input type="ref_phone" id="ref_phone" name="ref_phone"/>
-      </div>
-
-      <div>
-      <p>Email (Optional)</p>
-      <input type="ref_email" id="ref_email" name="ref_email"/>
-      </div>
-
-      <div>
-      <p id="radio_active">Is Active</p>
-      <input type="radio" id="IsActive" name="IsActive" value="True" >ON<br>
-      <input type="radio" id="IsActive" name="IsActive" value="False">OFF<br>        
-      </div>
-
-      <button id="previous" onclick="backPhase6()">Previous</button>
-      <button id="next" onclick="submitForm()">Save</button>
-    </div>
-    <!-- end phase6 -->
-  </form>
+  </div>
 </div>
-<!-- 
-  <script src="<?php echo base_url('http://codepen.io/assets/libs/fullpage/jquery.js')?>"></script>
-  <script src="<?php echo base_url('assets/bootstrap/js/index')?>"></script> -->

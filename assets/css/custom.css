@@ -1,0 +1,5 @@
+.welcome-card > .cpmoany-profile-cover {
+  color: #fff;
+  height: 290px;
+  background: url("../img/Company-data.jpg") center/cover;
+}
