@@ -17,6 +17,10 @@ class Home extends CI_Controller {
 	{
 		$this->load->view('company_page');
 	}
+<<<<<<< HEAD
+=======
+	function seeker_profile (){
+>>>>>>> BatoulBranch
 
 	function seeker_profile (){
 		$this->data['pageTitle']='Home';
@@ -24,6 +28,29 @@ class Home extends CI_Controller {
         $this->load->view('layouts/layout', $this->data);
 	}
 
+<<<<<<< HEAD
+=======
+	function Company_profile (){
+
+		$this->data['pageTitle']='Home';
+        $this->data['subview'] = 'company_profile';
+        $this->load->view('layouts/layout', $this->data);
+	}
+	function OneAnnouncement_page  (){
+
+		$this->data['pageTitle']='Announcement page';
+        $this->data['subview'] = 'one_announcement-page';
+        $this->load->view('layouts/layout', $this->data);
+	}
+
+	function Announcement_page  (){
+
+		$this->data['pageTitle']='Announcement page';
+        $this->data['subview'] = 'Announcement_page';
+        $this->load->view('layouts/layout', $this->data);
+	}
+
+>>>>>>> BatoulBranch
 	function About_Us (){
 
 		$this->data['pageTitle']='About Us';
