@@ -285,11 +285,16 @@ class Seeker extends CI_Controller {
         $Conscientiousness=round(((($q3+$q8+$q13+$q18+$q23+$q23+$q28+$q33+$q43)/9)*100)/5);
         echo'Conscientiousness= '.$Conscientiousness.'  ';
 
-        $Extroversion=round(((($q1+$q6+$q11+$q16+$q21+$q26+$q31+$q36)/8)*100)/5);
-         echo'Extroversion= '.$Extroversion.'  ';
+        $Extraversion=round(((($q1+$q6+$q11+$q16+$q21+$q26+$q31+$q36)/8)*100)/5);
+         echo'Extraversion= '.$Extraversion.'  ';
 
         $Neuroticism=round(((($q4+$q9+$q14+$q19+$q24+$q29+$q34+$q39)/8)*100)/5);
           echo'Neuroticism= '.$Neuroticism.'  ';
+
+
+          $id=66;
+          $this->updatesparql($Openness,$Conscientiousness, $Extraversion,$Agreeableness,$Neuroticism,$id);
+
 
       echo(max($Agreeableness.'trust, altruism, kindness, affection, and other prosocial behaviors. People who are high in agreeableness tend to be more cooperative while those low in this trait tend to be more competitive and even manipulative',$Openness.'People who are high in this trait tend to be more adventurous and creative. People low in this trait are often much more traditional and may struggle with abstract thinking.,Very creative ,
           Open to trying new things
@@ -300,6 +305,40 @@ class Seeker extends CI_Controller {
 
   }
 
+    public function updatesparql($one,$two,$three,$four,$five,$id){
+        $Dataset_path="C:\\tdbCV";
+        $filename="savequery.txt";
+        $query="PREFIX cv: <http://rdfs.org/resume-rdf/cv.rdfs#> 
+                PREFIX vcard: <http://www.w3.org/2006/vcard/ns#>
+                PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+                INSERT
+                { 
+                  ?a cv:otherInfoDescription \"$one\".
+                  ?b cv:otherInfoDescription \"$two\".
+                  ?c cv:otherInfoDescription \"$three\".
+                  ?d cv:otherInfoDescription \"$four\".
+                  ?e cv:otherInfoDescription \"$five\".
+                } 
+                where {
+                  ?resume cv:hasOtherInfo ?a.
+                  ?a cv:otherInfoType \"openness\".
+                  ?resume cv:hasOtherInfo ?b.
+                  ?b cv:otherInfoType \"conscientiousness\".
+                  ?resume cv:hasOtherInfo ?c.
+                  ?c cv:otherInfoType \"extraversion\".
+                  ?resume cv:hasOtherInfo ?d.
+                  ?d cv:otherInfoType \"agreeableness\".
+                  ?resume cv:hasOtherInfo ?e.
+                  ?e cv:otherInfoType \"neuroticism\".
+                  ?resume cv:cvTitle \"$id\".
+                }";
+
+            $this->WriteFile($query);
+            shell_exec("javac -cp  java_RDFStore\\*; java_RDFStore\\UpdateSparql.java");
+
+            shell_exec("java -cp java_RDFStore\\*;java_RDFStore  UpdateSparql $filename $Dataset_path");  
+
+        }
 
      public  function Question2()
     {
@@ -331,7 +370,10 @@ class Seeker extends CI_Controller {
 
             }
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> master
             else 
             if($bigfive2 = $this->input->post('bigfive2')==3){
                 return 3;
@@ -373,7 +415,10 @@ class Seeker extends CI_Controller {
 
             }
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> master
             else 
             if($bigfive6 = $this->input->post('bigfive6')==3){
                 return 3;
@@ -415,7 +460,10 @@ class Seeker extends CI_Controller {
 
             }
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> master
             else 
             if($bigfive8 = $this->input->post('bigfive8')==3){
                 return 3;
@@ -457,7 +505,10 @@ class Seeker extends CI_Controller {
 
             }
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> master
             else 
             if($bigfive9 = $this->input->post('bigfive9')==3){
                 return 3;
@@ -497,7 +548,10 @@ class Seeker extends CI_Controller {
 
             }
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> master
             else 
             if($bigfive12 = $this->input->post('bigfive12')==3){
                 return 3;
@@ -578,7 +632,10 @@ class Seeker extends CI_Controller {
 
             }
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> master
             else 
             if($bigfive23 = $this->input->post('bigfive23')==3){
                 return 3;
@@ -619,7 +676,10 @@ class Seeker extends CI_Controller {
 
             }
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> master
             else 
             if($bigfive24 = $this->input->post('bigfive24')==3){
                 return 3;
@@ -660,7 +720,10 @@ class Seeker extends CI_Controller {
 
             }
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> master
             else 
             if($bigfive27 = $this->input->post('bigfive27')==3){
                 return 3;
@@ -702,7 +765,10 @@ class Seeker extends CI_Controller {
 
             }
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> master
             else 
             if($bigfive31 = $this->input->post('bigfive31')==3){
                 return 3;
@@ -743,7 +809,10 @@ class Seeker extends CI_Controller {
 
             }
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> master
             else 
             if($bigfive34 = $this->input->post('bigfive34')==3){
                 return 3;
@@ -784,7 +853,10 @@ class Seeker extends CI_Controller {
 
             }
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> master
             else 
             if($bigfive35 = $this->input->post('bigfive35')==3){
                 return 3;
@@ -825,7 +897,10 @@ class Seeker extends CI_Controller {
 
             }
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> master
             else 
             if($bigfive37 = $this->input->post('bigfive37')==3){
                 return 3;
@@ -866,7 +941,10 @@ class Seeker extends CI_Controller {
 
             }
 
+<<<<<<< HEAD
             
+=======
+>>>>>>> master
             else 
             if($bigfive41 = $this->input->post('bigfive41')==3){
                 return 3;
@@ -907,7 +985,10 @@ class Seeker extends CI_Controller {
 
             }
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> master
             else 
             if($bigfive43 = $this->input->post('bigfive43')==3){
                 return 3;
@@ -918,7 +999,6 @@ class Seeker extends CI_Controller {
 
 
         }
-
        
 
         
