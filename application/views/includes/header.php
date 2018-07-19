@@ -16,5 +16,7 @@
     <link href="<?php echo base_url();?>/assets/css/bootstrap.min.css" rel="stylesheet">
     <!-- Material Design Bootstrap -->
     <link href="<?php echo base_url();?>/assets/css/mdb.min.css" rel="stylesheet">
+
+    <link href="<?php echo base_url();?>/assets/css/compiled-4.5.7.min.css" rel="stylesheet">
     <!-- Your custom styles (optional) -->
 <!--     <link href="<?php echo base_url();?>/assets/css/style.min.css" rel="stylesheet"> -->

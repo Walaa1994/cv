@@ -48,16 +48,16 @@ input[type="Languages_Name"],input[type="year_exp"],input[type="salary"]{
 }
 
 #multiphase{
-  width:150%;
+  /*width:150%;*/
   background:#fff;
   margin-bottom:4%;
-  border:1px solid #ccc;
+  /*border:1px solid #ccc;*/
   padding:4%;
   font-family:'Open Sans',sans-serif;
   font-size:95%;
   color:#555;
 }
-
+/*
 #select{
   width:92%;
   background:#fff;
@@ -67,7 +67,7 @@ input[type="Languages_Name"],input[type="year_exp"],input[type="salary"]{
   font-family:'Open Sans',sans-serif;
   font-size:95%;
   color:#555;
-}
+}*/
 
 #cosearch{
   margin-left: 418px;
@@ -75,21 +75,24 @@ input[type="Languages_Name"],input[type="year_exp"],input[type="salary"]{
   height: 35px;
 }
 
-input[type="radio"] {
+/*input[type="radio"] {
     display:inline-block;
     width:19px;
     height:19px;
     margin:2px 4px 10px 0;
     vertical-align:middle;
-    /*background:url(check_radio_sheet.png) -38px top no-repeat;*/
-    cursor:pointer;
-}
 
-input[type="text"]{
+    cursor:pointer;
+}*/
+
+/*input[type="text"]{
   height: 34px;
   width: 220px;
-}
+}*/
 
+.row div{
+    margin: 0 auto;
+}
 
 #radio_gender{
   margin-top: 20px;
