@@ -1,10 +1,13 @@
 {
   "head": {
-    "vars": [ "FirstName" , "LastName" ]
+    "vars": [ "FirstName" , "LastName" , "id" ]
   } ,
   "results": {
     "bindings": [
-      
+      {
+        "FirstName": { "type": "literal" , "value": "roula" } ,
+        "LastName": { "type": "literal" , "value": "arab" }
+      }
     ]
   }
 }

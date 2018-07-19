@@ -67,7 +67,7 @@
 		<rdf:Description rdf:about="http://rdfs.org/resume-rdf/cv.rdfs/Education#{$id}_{$edudeg}">
             <cv:eduMajor> <xsl:value-of select="eduMajor"/> </cv:eduMajor>
 			<cv:eduMinor> <xsl:value-of select="eduMinor"/> </cv:eduMinor>          
-			<cv:degreeType rdf:resource="http://rdfs.org/resume-rdf/base.rdfs#{$edudeg}"/>
+			<cv:degreeType><xsl:value-of select="degreeType"/></cv:degreeType>
 		</rdf:Description>
 		
 		</xsl:for-each>

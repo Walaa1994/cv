@@ -8,3 +8,19 @@
   <button type="submit" class="btn btn-primary" id="Function Name in controller">Search</button>
   <input type="text" name="query_text">
 </div>
+<div>
+<div id="form">
+  <div id="triangle"></div>
+  <?php
+  foreach ($result['results']['bindings'] as  $value) {?>
+  <form id="multiphase" action=<?php echo base_url().'index.php/company/view_announcement/'.$value['id']['value'];?> method="post">
+  	<?php 
+  	echo $value['job']['value'];
+  	?>
+  	<input type="submit" value="View Announcement" />
+  </form>
+  <?php } ?>
+
+</div>
+</div>
+</div>

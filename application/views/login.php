@@ -30,11 +30,14 @@
 
 
 <body>
+<<<<<<< HEAD
+=======
 
 <<<<<<< HEAD
   <span href="<?php echo base_url();?>index.php/User/index" class="button" id="toggle-login">Register</span>
 =======
   
+>>>>>>> BatoulBranch
   <div class="limiter">
     <div class="container-login100">
       <div class="wrap-login100">
