@@ -74,6 +74,13 @@ function submitForm(){
 
 //add new record
 $(document).ready(function () {
+
+  //date time picker
+  $('#birth_date').bootstrapMaterialDatePicker({ weekStart : 0, time: false });
+
+  //select field
+  $('.mdb-select').material_select();
+
     //@naresh action dynamic childs
     var next = 1;
     $("#AddNewRecord").click(function(e){debugger;
@@ -172,7 +179,7 @@ $(document).ready(function () {
                 <!--Grid column-->
                 <div class="col-md-10 mb-4">
                     <div class="md-form">
-                        <input type="text" id="first_name" class="form-control">
+                        <input type="text" id="first_name" name="first_name" class="form-control">
                         <label for="first_name" class="">First Name</label>
                     </div>
                 </div>
@@ -183,7 +190,7 @@ $(document).ready(function () {
                 <!--Grid column-->
                 <div class="col-md-10 mb-4">
                     <div class="md-form">
-                        <input type="text" id="last_name" class="form-control">
+                        <input type="text" id="last_name" name="last_name" class="form-control">
                         <label for="last_name" class="">Last Name</label>
                     </div>
                 </div>
@@ -194,7 +201,7 @@ $(document).ready(function () {
                 <!--Grid column-->
                 <div class="col-md-10 mb-4">
                     <div class="md-form">
-                        <input type="date" id="birth_date" class="form-control">
+                        <input type="text" id="birth_date" name="birth_date" class="form-control">
                         <label for="birth_date" class="">Date of Birth</label>
                     </div>
                 </div>
@@ -206,7 +213,7 @@ $(document).ready(function () {
                 <!--Grid column-->
                 <div class="col-md-10 mb-4">
                     <div class="md-form">
-                        <input type="text" id="Nationality" class="form-control">
+                        <input type="text" id="Nationality" name="Nationality" class="form-control">
                         <label for="Nationality" class="">Nationality</label>
                     </div>
                 </div>
@@ -382,7 +389,7 @@ $(document).ready(function () {
                     <input type="text" id="donor" name="donor[]" class="form-control"/>
                   </td>
                   <td>
-                    <select id="" name="degreeType[]" class="form-control">
+                    <select id="degreeType" name="degreeType[]" class="mdb-select colorful-select dropdown-primary">
                       <option value="">choose ...</option>
                       <option value="EduHighSchool">High School</option>
                       <option value="EduVocational">Vocational</option>
@@ -598,6 +605,7 @@ $(document).ready(function () {
               <option value="5">5</option>
               </select>
                </td>
+               
                <td></td>
                </tr>
                </table>
