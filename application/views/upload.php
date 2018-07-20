@@ -13,7 +13,6 @@
             </div>
         </div>
     </div>
-	<input  type="file" name="userFile">
 	<input  type="submit" value="upload" class="btn btn-success waves-effect waves-light">
 </form>
 </div>

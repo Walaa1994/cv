@@ -79,7 +79,9 @@ $(document).ready(function () {
   $('#birth_date').bootstrapMaterialDatePicker({ weekStart : 0, time: false });
 
   //select field
-  $('.mdb-select').material_select();
+  //$('.mdb-select').material_select();
+
+  $(".mdb-select").formSelect();
 
     //@naresh action dynamic childs
     var next = 1;
@@ -98,7 +100,7 @@ $(document).ready(function () {
      html_code += "<td><input type='date' id='start_date' name='start_date[]' class='form-control'/></td>";
      html_code += "<td><input type='date' id='grants_date' name='grants_date[]' class='form-control'/></td>";
      html_code += "<td><input type='text' id='donor' name='donor[]' class='form-control'/></td>";
-     html_code += '<td><select id="select" name="degreeType[]"><option value="">choose ...</option><option value="EduHighSchool">High School</option><option value="EduVocational">Vocational</option><option value="EduCollegeCoursework">College Coursework</option><option value="EduBachelor">Bachelorl</option><option value="EduMaster">Master</option><option value="EduDoctorate">Doctorate</option><option value="EduAssociate">Associate</option><option value=" EduProfessional">Professional</option></select></td>';
+     html_code += '<td><select id="select" name="degreeType[]" class="mdb-select colorful-select dropdown-primary"><option value="">choose ...</option><option value="EduHighSchool">High School</option><option value="EduVocational">Vocational</option><option value="EduCollegeCoursework">College Coursework</option><option value="EduBachelor">Bachelorl</option><option value="EduMaster">Master</option><option value="EduDoctorate">Doctorate</option><option value="EduAssociate">Associate</option><option value=" EduProfessional">Professional</option></select></td>';
      html_code += "<td><a class='btn-floating btn-sm btn-danger my-0 waves-effect waves-light remove'  name='remove' data-row='row"+count_education+"'><i class='fa fa-times'></i></a></td>";   
      html_code += "</tr>";  
      $('#crud_table_education').append(html_code);  
@@ -113,9 +115,9 @@ $(document).ready(function () {
          html_code += "<td><input type='text' id='job_pos' name='job_pos[]' class='form-control'/></td>";
          html_code += "<td> <input type='date' id='from_date' name='from_date[]' class='form-control'/></td>";
          html_code += "<td><input type='date' id='to_date' name='to_date[]' class='form-control'/></td>";
-         html_code += '<td><select id="select" name="careerLevel[]"><option value="">choose ...</option><option value="HighSchool">Student (high school)</option><option value="Student">Student (graduate/undergraduate)</option><option value="EntryLvl">Entry level (less than 2 years of experience)</option><option value="MidCareer">Mid-career (2+ years of experience)</option><option value="Management">Management (manager/director of staff)</option><option value="Executive">Executive (SVP, EVP, VP)</option><option value="SeniorExecutive">Senior Executive (president / CEO)</option>  </select></td>';
-         html_code += '<td><select id="select" name="JobType[]"><option value="">choose ...</option><option value="Emplyee">Employee</option><option value="Contractor">Contractor</option><option value="Intern">Intern</option></select></td>';
-         html_code += '<td><select id="select" name="IsCurrent[]"><option value="">choose ...</option><option value="True">ON</option><option value="False">OFF</option></select></td>';
+         html_code += '<td><select id="select" name="careerLevel[]" class="mdb-select colorful-select dropdown-primary"><option value="">choose ...</option><option value="HighSchool">Student (high school)</option><option value="Student">Student (graduate/undergraduate)</option><option value="EntryLvl">Entry level (less than 2 years of experience)</option><option value="MidCareer">Mid-career (2+ years of experience)</option><option value="Management">Management (manager/director of staff)</option><option value="Executive">Executive (SVP, EVP, VP)</option><option value="SeniorExecutive">Senior Executive (president / CEO)</option>  </select></td>';
+         html_code += '<td><select id="select" name="JobType[]" class="mdb-select colorful-select dropdown-primary"><option value="">choose ...</option><option value="Emplyee">Employee</option><option value="Contractor">Contractor</option><option value="Intern">Intern</option></select></td>';
+         html_code += '<td><select id="select" name="IsCurrent[]" class="mdb-select colorful-select dropdown-primary"><option value="">choose ...</option><option value="True">ON</option><option value="False">OFF</option></select></td>';
          html_code += "<td><a class='btn-floating btn-sm btn-danger my-0 waves-effect waves-light remove'  name='remove' data-row='row"+count_experience+"'><i class='fa fa-times'></i></a></td>";   
          html_code += "</tr>";  
          $('#crud_table_experience').append(html_code);         
@@ -128,7 +130,7 @@ $(document).ready(function () {
           var html_code = "<tr id='row"+count_skills+"'>";
            html_code += "<td><input type='text'id='skill_name' name='skill_name[]' class='form-control'/></td>";
            html_code += "<td><input type='text'id='year_exp' name='year_exp[]' class='form-control'/></td>";
-           html_code += "<td><select id='select' name='SkillLevel[]'><option value=''>choose ...</option><option value='1'>1</option><option value='2'>2</option><option value='3'>3</option><option value='4 year'>4</option>option value='5'>5</option> </select></td>";
+           html_code += "<td><select id='select' name='SkillLevel[]' class='mdb-select colorful-select dropdown-primary'><option value=''>choose ...</option><option value='1'>1</option><option value='2'>2</option><option value='3'>3</option><option value='4 year'>4</option>option value='5'>5</option> </select></td>";
            html_code += "<td><a class='btn-floating btn-sm btn-danger my-0 waves-effect waves-light remove'  name='remove' data-row='row"+count_skills+"'><i class='fa fa-times'></i></a></td>";   
            html_code += "</tr>";  
            $('#crud_table_skill').append(html_code);
@@ -142,9 +144,9 @@ $(document).ready(function () {
 
 
             html_code += "<td><input type='text' id='Language_Name' name='Language_Name[]' class='form-control'/></td>";
-           html_code += "<td><select id='select' name='Spoken_Level[]'><option value=''>choose ...</option><option value='0'>0</option><option value='1'>1</option><option value='2'>2</option><option value='3'>3</option><option value='4'>4</option><option value='5'>5</option></select></td>";
-           html_code += "<td><select id='select' name='Reading_Level[]'><option value=''>choose ...</option><option value='0'>0</option><option value='1'>1</option><option value='2'>2</option><option value='3'>3</option><option value='4'>4</option><option value='5'>5</option></select></td>";
-           html_code += "<td><select id='select' name='Writing_Level[]'><option value=''>choose ...</option><option value='0'>0</option><option value='1'>1</option><option value='2'>2</option><option value='3'>3</option><option value='4'>4</option><option value='5'>5</option></select></td>";
+           html_code += "<td><select id='select' name='Spoken_Level[]' class='mdb-select colorful-select dropdown-primary'><option value=''>choose ...</option><option value='0'>0</option><option value='1'>1</option><option value='2'>2</option><option value='3'>3</option><option value='4'>4</option><option value='5'>5</option></select></td>";
+           html_code += "<td><select id='select' name='Reading_Level[]' class='mdb-select colorful-select dropdown-primary'><option value=''>choose ...</option><option value='0'>0</option><option value='1'>1</option><option value='2'>2</option><option value='3'>3</option><option value='4'>4</option><option value='5'>5</option></select></td>";
+           html_code += "<td><select id='select' name='Writing_Level[]' class='mdb-select colorful-select dropdown-primary'><option value=''>choose ...</option><option value='0'>0</option><option value='1'>1</option><option value='2'>2</option><option value='3'>3</option><option value='4'>4</option><option value='5'>5</option></select></td>";
            html_code += "<td><a class='btn-floating btn-sm btn-danger my-0 waves-effect waves-light remove'  name='remove' data-row='row"+count_languages+"'><i class='fa fa-times'></i></a></td>";   
            html_code += "</tr>";  
            $('#crud_table_lang').append(html_code);
@@ -213,7 +215,7 @@ $(document).ready(function () {
                 <!--Grid column-->
                 <div class="col-md-10 mb-4">
                     <div class="md-form">
-                        <input type="text" id="Nationality" name="Nationality" class="form-control">
+                        <input type="text" id="Nationality" name="nationality" class="form-control">
                         <label for="Nationality" class="">Nationality</label>
                     </div>
                 </div>
@@ -266,7 +268,7 @@ $(document).ready(function () {
                 <!--Grid column-->
                 <div class="col-md-10 mb-4">
                     <div class="md-form">
-                        <input type="text" id="Country" class="form-control">
+                        <input type="text" id="Country" name="country" class="form-control">
                         <label for="Country" class="">Country</label>
                     </div>
                 </div>
@@ -278,7 +280,7 @@ $(document).ready(function () {
                 <!--Grid column-->
                 <div class="col-md-10 mb-4">
                     <div class="md-form">
-                        <input type="text" id="City" class="form-control">
+                        <input type="text" id="City" name="city" class="form-control">
                         <label for="City" class="">City</label>
                     </div>
                 </div>
@@ -290,7 +292,7 @@ $(document).ready(function () {
                 <!--Grid column-->
                 <div class="col-md-10 mb-4">
                     <div class="md-form">
-                        <input type="text" id="address" class="form-control">
+                        <input type="text" id="address" name="address" class="form-control">
                         <label for="address" class="">Address</label>
                     </div>
                 </div>
@@ -302,7 +304,7 @@ $(document).ready(function () {
                 <!--Grid column-->
                 <div class="col-md-10 mb-4">
                     <div class="md-form">
-                        <input type="email" id="email" class="form-control">
+                        <input type="email" name="email" id="email" class="form-control">
                         <label for="email" class="">Email</label>
                     </div>
                 </div>
@@ -313,12 +315,37 @@ $(document).ready(function () {
                 <!--Grid column-->
                 <div class="col-md-10 mb-4">
                     <div class="md-form">
-                        <input type="text" id="phone" class="form-control">
+                        <input type="text" id="phone" name="phone" class="form-control">
                         <label for="phone" class="">Phone Number</label>
                     </div>
                 </div>
                 <!--Grid column-->
             </div>
+
+          <div class="row">
+              <div class="col-md-10 mb-4">
+                  <div class="md-form">
+                      <div class="file-field">
+                         <div class="btn btn-primary btn-sm float-left waves-effect waves-light">
+                            <span>Choose file</span>
+                              <input type="file"  name="userFile">
+                          </div>
+                      <div class="file-path-wrapper">
+                              <input class="file-path validate" type="text" placeholder="Upload your file">
+                      </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+
+           
+
+
+
+
+
+           
+
             <!-- <button class="btn peach-gradient btn-sm waves-effect waves-light">
                 Next
             </button> -->
@@ -428,7 +455,7 @@ $(document).ready(function () {
                 <input type="date" id="to_date" class="form-control" name="to_date[]"/>
               </td>
               <td>
-                <select id="select" class="form-control" name="careerLevel[]">
+                <select id="select" class="mdb-select colorful-select dropdown-primary" name="careerLevel[]">
                   <option value="">choose ...</option>
                   <option value="HighSchool">Student (high school)</option>
                   <option value="Student">Student (graduate/undergraduate)</option>
@@ -440,7 +467,7 @@ $(document).ready(function () {
                 </select>
               </td>
               <td>
-                <select id="select" name="JobType[]" class="form-control">
+                <select id="select" name="JobType[]" class="mdb-select colorful-select dropdown-primary">
                   <option value="">choose ...</option>
                   <option value="Emplyee">Employee</option>
                   <option value="Contractor">Contractor</option>
@@ -448,7 +475,7 @@ $(document).ready(function () {
                 </select>
               </td>
               <td>
-                <select id="select" name="IsCurrent[]" class="form-control">
+                <select id="select" name="IsCurrent[]" class="mdb-select colorful-select dropdown-primary">
                   <option value="">choose ...</option>
                   <option value="True">ON</option>
                   <option value="False">OFF</option>
@@ -496,7 +523,7 @@ $(document).ready(function () {
                   <input type="text" id="year_exp" name="year_exp[]"  class="form-control"/>
                 </td>
                 <td>
-                  <select id="select" name="SkillLevel[]"  class="form-control">
+                  <select id="select" name="SkillLevel[]" class="mdb-select colorful-select dropdown-primary">
                   <option value="">choose ...</option>
                   <option value="1">1</option>
                   <option value="2">2</option>
@@ -544,7 +571,7 @@ $(document).ready(function () {
              <tr>
            <td><input type="text" id="Language_Name" name="Language_Name[]"  class="form-control"/></td>
                <td>
-              <select id="select" name="Spoken_Level[]">
+              <select id="select" name="Spoken_Level[]" class="mdb-select colorful-select dropdown-primary">
               <option value="">choose ...</option>
               <option value="0">0</option>
               <option value="1">1</option>
@@ -557,7 +584,7 @@ $(document).ready(function () {
            
 
                <td>  
-              <select id="select" name="Reading_Level[]">
+              <select id="select" name="Reading_Level[]" class="mdb-select colorful-select dropdown-primary">
               <option value="">choose ...</option>
               <option value="0">0</option>
               <option value="1">1</option>
@@ -570,7 +597,7 @@ $(document).ready(function () {
             
 
                <td>
-              <select id="select" name="Writing_Level[]">
+              <select id="select" name="Writing_Level[]" class="mdb-select colorful-select dropdown-primary">
               <option value="">choose ...</option>
               <option value="0">0</option>
               <option value="1">1</option>
@@ -612,7 +639,7 @@ $(document).ready(function () {
                 <!--Grid column-->
                 <div class="col-md-10 mb-4">
                     <div class="md-form">
-                        <input type="text" id="ref_name" class="form-control">
+                        <input type="text" id="ref_name" name="ref_name" class="form-control">
                         <label for="ref_name" class="">Person/Company/Organization Name</label>
                     </div>
                 </div>
@@ -623,7 +650,7 @@ $(document).ready(function () {
                 <!--Grid column-->
                 <div class="col-md-10 mb-4">
                     <div class="md-form">
-                        <input type="text" id="ref_phone" class="form-control">
+                        <input type="text" id="ref_phone" name="ref_phone" class="form-control">
                         <label for="ref_phone" class="">Phone Number (Optional)</label>
                     </div>
                 </div>
@@ -634,7 +661,7 @@ $(document).ready(function () {
                 <!--Grid column-->
                 <div class="col-md-10 mb-4">
                     <div class="md-form">
-                        <input type="text" id="ref_email" class="form-control">
+                        <input type="text" id="ref_email" name="ref_email" class="form-control">
                         <label for="ref_email" class="">Email (Optional)</label>
                     </div>
                 </div>
@@ -674,3 +701,7 @@ $(document).ready(function () {
     </div>
   </div>
 </div>
+
+
+<!-- Compiled and minified JavaScript -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>

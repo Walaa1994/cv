@@ -8,9 +8,9 @@
 
   <body id="top">
     <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
-    	<a href="contact.html" id="contact-button" class="mdl-button mdl-button--fab mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-color--accent mdl-color-text--accent-contrast mdl-shadow--4dp">
+    	<!-- <a href="contact.html" id="contact-button" class="mdl-button mdl-button--fab mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-color--accent mdl-color-text--accent-contrast mdl-shadow--4dp">
     		<i class="material-icons">mail</i>
-    	</a>
+    	</a> -->
   		<header class="mdl-layout__header mdl-layout__header--waterfall site-header">
     		<div class="mdl-layout__header-row site-logo-row">
     			<span class="mdl-layout__title">
@@ -51,18 +51,19 @@
     <script type="text/javascript" src="<?php echo base_url();?>/assets/js/bootstrap.min.js"></script>
     <!-- MDB core JavaScript -->
     <script type="text/javascript" src="<?php echo base_url();?>/assets/js/mdb.min.js"></script>
+     <script type="text/javascript" src="<?php echo base_url();?>/assets/js/index.js"></script>
 
     <!-- datetime picker -->
     <script type="text/javascript" src="<?php echo base_url();?>/assets/js/moment.js"></script>
     <script type="text/javascript" src="<?php echo base_url();?>/assets/js/moment-with-locales.js"></script>
     <script type="text/javascript" src="<?php echo base_url();?>/assets/js/bootstrap-material-datetimepicker.js"></script>
     
-<!--     <script type="text/javascript" src="<?php echo base_url();?>/assets/js/forms.js"></script> -->
+     <script type="text/javascript" src="<?php echo base_url();?>/assets/js/forms.js"></script> 
+ 
+    <script type="text/javascript" src="<?php echo base_url();?>/assets/js/materialize.js"></script> 
+ <!--   <script type="text/javascript" src="<?php echo base_url();?>/assets/js/materialize.min.js"></script>
 
-    <!-- <script type="text/javascript" src="<?php echo base_url();?>/assets/js/materialize.js"></script> -->
-    <!-- <script type="text/javascript" src="<?php echo base_url();?>/assets/js/materialize.min.js"></script> -->
-
-    
+     -->
     </div>
   </body>
 </html>
