@@ -86,22 +86,81 @@ class Home extends CI_Controller {
 		//print_r($edu_result);
 
        foreach ($edu_result['results']['bindings'] as  $value) {
-       	$eduMajor=$value['eduMajor']['value'];
-       	$eduMinor=$value['eduMinor']['value'];
-       	$eduStartDate=$value['eduStartDate']['value'];
-       	$eduGradDate=$value['eduGradDate']['value'];
-       	$studiedIn=$value['studiedIn']['value'];
-       	$degreeType=$value['degreeType']['value'];
+       	$eduMajor[]=$value['eduMajor']['value'];
+       	$eduMinor[]=$value['eduMinor']['value'];
+       	$eduStartDate[]=$value['eduStartDate']['value'];
+       	$eduGradDate[]=$value['eduGradDate']['value'];
+       	$studiedIn[]=$value['studiedIn']['value'];
+       	$degreeType[]=$value['degreeType']['value'];
+       }
 
-       	$this->data['eduMajor']=$eduMajor;
+       $this->data['eduMajor']=$eduMajor;
        	$this->data['eduMinor']=$eduMinor;
        	$this->data['eduStartDate']=$eduStartDate;
         $this->data['eduGradDate']=$eduGradDate;
         $this->data['studiedIn']=$studiedIn;
         $this->data['degreeType']=$degreeType;
+
+       $workHistory="PREFIX cv: <http://rdfs.org/resume-rdf/cv.rdfs#> 
+					PREFIX vcard: <http://www.w3.org/2006/vcard/ns#>
+					PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+					select ?employedIn ?jobTitle ?startDate ?endDate ?careerLevel ?jobType ?isCurrent 
+					where {
+					 ?resume cv:hasWorkHistory ?q .
+					 ?q cv:employedIn ?employedIn.
+					 ?q cv:jobTitle ?jobTitle.
+					 ?q cv:startDate ?startDate.
+					 ?q cv:endDate ?endDate.
+					 ?q cv:careerLevel ?careerLevel.
+					 ?q cv:jobType ?jobType.
+					 ?q cv:isCurrent ?isCurrent.
+					}";
+		$this->load->library('query');
+		$work_result=$this->query->querysparql($workHistory,$Dataset_path);
+		//echo '<pre>';
+		//print_r($work_result);
+		foreach ($work_result['results']['bindings'] as  $value) {
+       	$employedIn[]=$value['employedIn']['value'];
+       	$jobTitle[]=$value['jobTitle']['value'];
+       	$startDate[]=$value['startDate']['value'];
+       	$endDate[]=$value['endDate']['value'];
+       	$careerLevel[]=$value['careerLevel']['value'];
+       	$jobType[]=$value['jobType']['value'];
+       	$isCurrent[]=$value['isCurrent']['value'];
        }
 
-       $workHistory="";
+
+       	$this->data['employedIn']=$employedIn;
+       	$this->data['jobTitle']=$jobTitle;
+       	$this->data['startDate']=$startDate;
+        $this->data['endDate']=$endDate;
+        $this->data['careerLevel']=$careerLevel;
+        $this->data['jobType']=$jobType;
+        $this->data['isCurrent']=$isCurrent;
+
+
+       $skills="PREFIX cv: <http://rdfs.org/resume-rdf/cv.rdfs#> 
+					PREFIX vcard: <http://www.w3.org/2006/vcard/ns#>
+					PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+					select ?skillName ?skillYearsExperience ?skillLevel  
+					where {
+					 ?resume cv:hasSkill ?q .
+					 ?q cv:skillName ?skillName.
+					 ?q cv:skillYearsExperience ?skillYearsExperience.
+					 ?q cv:skillLevel ?skillLevel.
+					}";
+		$this->load->library('query');
+		$skills_result=$this->query->querysparql($skills,$Dataset_path);
+
+		foreach ($skills_result['results']['bindings'] as  $value) {
+       	$skillName[]=$value['skillName']['value'];
+       	$skillYearsExperience[]=$value['skillYearsExperience']['value'];
+       	$skillLevel[]=$value['skillLevel']['value'];
+       }
+
+        $this->data['skillName']=$skillName;
+       	$this->data['skillYearsExperience']=$skillYearsExperience;
+       	$this->data['skillLevel']=$skillLevel;
 
 		$this->data['pageTitle']='Home';
         $this->data['subview'] = 'seeker_profile';
