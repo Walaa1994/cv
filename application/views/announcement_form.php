@@ -3,6 +3,10 @@
 form#multiphase > #phase2, #phase3, #phase4{ display:none; }
 </style>
   <script>
+ $(document).ready(function () {
+ $(".mdb-select").formSelect();
+  });
+                   
 function _(x){
   return document.getElementById(x);
 }
@@ -92,10 +96,12 @@ $(document).ready(function () {
      //html_code += "<td><input type='date' id='start_date' name='start_date[]' class='form-control'/></td>";
      //html_code += "<td><input type='date' id='grants_date' name='grants_date[]' class='form-control'/></td>";
      //html_code += "<td><input type='text' id='donor' name='donor[]' class='form-control'/></td>";
-     html_code += '<td><select id="select" name="degreeType[]"><option value="">choose ...</option><option value="EduHighSchool">High School</option><option value="EduVocational">Vocational</option><option value="EduCollegeCoursework">College Coursework</option><option value="EduBachelor">Bachelorl</option><option value="EduMaster">Master</option><option value="EduDoctorate">Doctorate</option><option value="EduAssociate">Associate</option><option value=" EduProfessional">Professional</option></select></td>';
+     html_code += '<td><select name="degreeType[]" class="form-control mdb-select colorful-select dropdown-primary"><option value="">choose ...</option><option value="EduHighSchool">High School</option><option value="EduVocational">Vocational</option><option value="EduCollegeCoursework">College Coursework</option><option value="EduBachelor">Bachelor</option><option value="EduMaster">Master</option><option value="EduDoctorate">Doctorate</option><option value="EduAssociate">Associate</option><option value=" EduProfessional">Professional</option></select></td>';
      html_code += "<td><a class='btn-floating btn-sm btn-danger my-0 waves-effect waves-light remove'  name='remove' data-row='row"+count_education+"'><i class='fa fa-times'></i></a></td>";   
      html_code += "</tr>";
-     $('#crud_table_education').append(html_code);  
+     $('#crud_table_education').append(html_code);
+      $(".mdb-select").formSelect();
+  
    });
        
      //experiance
@@ -112,7 +118,8 @@ $(document).ready(function () {
          html_code += '<td><select id="select" name="IsCurrent[]"><option value="">choose ...</option><option value="True">ON</option><option value="False">OFF</option></select></td>';
          html_code += "<td><a class='btn-floating btn-sm btn-danger my-0 waves-effect waves-light remove'  name='remove' data-row='row"+count_experience+"'><i class='fa fa-times'></i></a></td>";   
          html_code += "</tr>";  
-         $('#crud_table_experience').append(html_code);         
+         $('#crud_table_experience').append(html_code);  
+
        });
 
        //add skills
@@ -173,40 +180,57 @@ $(document).ready(function () {
                 <!--Grid column-->
                 <div class="col-md-10 mb-4">
                     <div class="md-form">
-                        <input type="text" id="job_title" class="form-control">
+                        <input type="text" id="job_title" name="job_title" class="form-control">
                         <label for="job_title" class="">Job Title</label>
                     </div>
                 </div>
                 <!--Grid column-->
             </div>
+      <div class="row">
+              <div class="col-md-10 mb-4">
+                <p id="radio_marital">Job Mode</p>
+                    <fieldset class="form-check">
+                        <input class="form-check-input" name="Job_Mode" type="radio" id="radio1" checked="checked" value="Full Time">
+                        <label class="form-check-label" for="radio1">Full Time</label>
+                    </fieldset>
 
-            <div class="row">
-                <!--Grid column-->
-                <div class="col-md-10 mb-4">
-                    <div class="md-form">
-                        <input type="text" id="Job_Mode" class="form-control">
-                        <label for="Job_Mode" class="">Job Mode</label>                        
-                    </div>
+                    <fieldset class="form-check">
+                        <input class="form-check-input" name="Job_Mode" type="radio" id="radio2" value="Part Time">
+                        <label class="form-check-label" for="radio2">Part Time</label>
+                    </fieldset>
+
                 </div>
-                <!--Grid column-->
             </div>
 
+
             <div class="row">
-                <!--Grid column-->
-                <div class="col-md-10 mb-4">
-                    <div class="md-form">
-                        <input type="text" id="employment_type" class="form-control">
-                        <label for="employment_type" class="">Employment Type</label>
-                    </div>
+              <div class="col-md-10 mb-4">
+                <p id="radio_marital">Employment Type</p>
+                    <fieldset class="form-check">
+                        <input class="form-check-input" name="employment_type" type="radio" id="radio1" checked="checked" value="Employee">
+                        <label class="form-check-label" for="radio1">Employee</label>
+                    </fieldset>
+
+                    <fieldset class="form-check">
+                        <input class="form-check-input" name="employment_type" type="radio" id="radio2" value="Contractor">
+                        <label class="form-check-label" for="radio2">Contractor</label>
+                    </fieldset>
+
+                    <fieldset class="form-check">
+                        <input class="form-check-input" name="employment_type" type="radio" id="radio3" value="Intern">
+                        <label class="form-check-label" for="radio3">Intern</label>
+                    </fieldset>
+
                 </div>
-                <!--Grid column-->
             </div>
+
+            
 
             <div class="row">
                 <!--Grid column-->
                 <div class="col-md-10 mb-4">
                     <div class="md-form">
-                        <input type="text" id="salary" class="form-control">
+                        <input type="text" id="salary" name="salary" class="form-control">
                         <label for="salary" class="">Salary</label>
                     </div>
                 </div>
@@ -217,7 +241,7 @@ $(document).ready(function () {
                 <!--Grid column-->
                 <div class="col-md-10 mb-4">
                     <div class="md-form">
-                        <input type="text" id="locality" class="form-control">
+                        <input type="text" id="locality" name="locality" class="form-control">
                         <label for="locality" class="">Locality</label>
                     </div>
                 </div>
@@ -257,7 +281,7 @@ $(document).ready(function () {
                     <input type="text" id="spe_name" name="spe_name[]" class="form-control"/>
                   </td>
                   <td>
-                    <select id="" name="degreeType[]" class="form-control">
+                    <select  name="degreeType[]" class="form-control mdb-select colorful-select dropdown-primary">
                       <option value="">choose ...</option>
                       <option value="EduHighSchool">High School</option>
                       <option value="EduVocational">Vocational</option>
@@ -348,23 +372,25 @@ $(document).ready(function () {
               </tr>
 
               <tr>
-                <div class="row">
-                <div class="col-md-10 mb-4">
-                  <p id="radio_active">Is Active</p>
-                  <fieldset class="form-check">
-                    <input class="form-check-input" name="IsActive" type="radio" id="IsActive" checked="checked" value="True">
-                    <label class="form-check-label" for="IsActive">ON</label>
-                  </fieldset>
-
-                  <fieldset class="form-check">
-                    <input class="form-check-input" name="IsActive" type="radio" id="IsActive" value="False">
-                    <label class="form-check-label" for="IsActive">OFF</label>
-                  </fieldset>
-                </div>
-              </div>
+               
               </tr>
               </table>
+
+
               </div>
+              <div class="row">
+              <div class="col-md-10 mb-4">
+                <p id="radio_active">Is Active</p>
+                <div class="switch">
+                    <label>
+                        Off
+                        <input type="checkbox" checked="checked" name="IsActive" >
+                        <span class="lever"></span> On
+                    </label>
+                </div>
+              </div>
+            </div>
+
 
              <div>
               <a type="button" class="btn-floating my-1 btn-ins waves-effect waves-light" onclick="backPhase4()">
