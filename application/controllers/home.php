@@ -316,12 +316,82 @@ class Home extends CI_Controller {
         $this->load->view('layouts/layout', $this->data);
 	}
 
-	function sekeer_home()
-	{
+	function sekeer_home(){
+
 		$this->data['pageTitle']='Home';
+        $this->data['subview'] = 'seeker_home';
+        $this->data['result'] = '';
+        $this->load->view('layouts/layout', $this->data);
+	}
+
+	function seeker_search(){
+		$query="PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>  
+				PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+				PREFIX cv: <http://rdfs.org/resume-rdf/cv.rdfs#> 
+				PREFIX vcard: <http://www.w3.org/2006/vcard/ns#>
+				PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+				prefix xsd: <http://www.w3.org/2001/XMLSchema#>
+				select ?company ?id ?description
+				where {
+				    ?ann cv:cvIsActive \"True\".
+				    ?ann cv:cvTitle ?id.
+				    ?ann cv:hasTarget ?target. 
+	    			?target cv:targetJobDescription ?description.
+	    			?target cv:targetCompanyDescription ?company.
+	    		";	
+	    $job_title=$this->input->post('job_title');
+		if ($job_title!=null) {
+			$query.="FILTER (regex(?description,\"$job_title\",\"i\")).";
+		}
+		$job_mode=$this->input->post('job_mode');
+		if ($job_mode!=null) {
+			$query.="?target cv:targetJobMode \"$job_mode\".";
+		}
+		$job_type=$this->input->post('job_type');
+		if ($job_type!=null) {
+			$query.="?target cv:targetJobType \"$job_type\".";
+		}
+		$salary=$this->input->post('salary');
+		if ($salary!=null) {
+			$query.="?target cv:targetSalary ?salary.
+	    			FILTER(xsd:integer(?salary) >= $salary).";
+		}
+		$locality=$this->input->post('locality');
+		if ($locality!=null) {
+			$query.="?ann cv:aboutPerson ?address.
+				    ?address vcard:locality ?locality.
+					FILTER regex(?locality,\"$locality\",\"i\").";
+		}
+	    $query.="}";
+	    /*$query="PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>  
+			PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+			PREFIX cv: <http://rdfs.org/resume-rdf/cv.rdfs#> 
+			PREFIX vcard: <http://www.w3.org/2006/vcard/ns#>
+			PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+			prefix xsd: <http://www.w3.org/2001/XMLSchema#>
+			select ?s ?p ?o 
+			where {
+				?s ?p ?o.}";*/
+		/*echo '<pre>';
+		echo "$query";*/
+		$dataset_path="C:\\tdbAnnouncement";
+        $this->load->library('query');
+        $this->data['result']=$this->query->querysparql($query,$dataset_path);
+        /*echo '<pre>';
+        print_r($this->data['result']);*/
+        foreach ($this->data['result']['results']['bindings'] as $key => $value){ 
+        	$id=$value['company']['value'];
+        	$this->load->model('user_model');
+        	$en_name=$this->user_model->get_company($id)->en_name;
+        	$this->data['result']['results']['bindings'][$key]['company']['value']= $en_name;    
+        }
+        /*echo '<pre>';
+        print_r($this->data['result']);*/
+        $this->data['pageTitle']='seeker_home';
         $this->data['subview'] = 'seeker_home';
         $this->load->view('layouts/layout', $this->data);
 	}
+
 	function cv_view()
 	{
 		$this->data['pageTitle']='Cv View';
