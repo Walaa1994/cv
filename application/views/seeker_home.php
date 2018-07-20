@@ -1,8 +1,55 @@
-                    <form class="form-inline">
+                    <script>
+                      
+                      $(document).ready(function () {
+                          $(".mdb-select").formSelect();
+                        });
+                    </script>
+
+                      <!--<form class="form-inline">
                       <div class="md-form my-0">
                           <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
                       </div>
                     </form>
+                    -->
+                     <div class="col-md-10 mb-4">
+                    <div class="md-form">
+                        <input type="text" id="job_title" class="form-control">
+                        <label for="job_title" class="">Job Title</label>
+                    </div>
+                </div
+
+
+                    <div>
+                    <select class="mdb-select colorful-select dropdown-primary">
+                     <option>Full Time</option>
+                     <option>Part Time</option>
+                     </select>
+                      <select class="mdb-select colorful-select dropdown-primary">
+                     <option>Employee</option>
+                     <option>Contractor</option>
+                     <option>inter</option>
+                     </select>
+
+                  
+                </div>
+                <div class="col-md-10 mb-4">
+                    <div class="md-form">
+                        <input type="text" id="salary" class="form-control">
+                        <label for="salary" class="">Salary</label>
+                    </div>
+                </div>
+                <div class="col-md-10 mb-4">
+                    <div class="md-form">
+                        <input type="text" id="locality" class="form-control">
+                        <label for="locality" class="">Locality</label>
+                    </div>
+                </div>
+
+                    <div class="mdl-card__actions  mdl-card--border">
+                      <a href="#" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-button--accent">
+                         search
+                      </a>
+                    </div>
              <div class="row">
                 <div class="col-md-6">
 
