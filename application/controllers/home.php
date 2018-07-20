@@ -211,8 +211,12 @@ class Home extends CI_Controller {
         $this->load->view('layouts/layout', $this->data);
 	}
 
-	function Find_CV($value='')
+	function Find_CV()
 	{
+		$dataJson = $this->input->post('result');
+        $result = json_decode(htmlspecialchars_decode($dataJson), true);
+        echo '<pre>';
+        print_r($result);
 		$query="PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>  
         PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
         PREFIX cv: <http://rdfs.org/resume-rdf/cv.rdfs#> 
