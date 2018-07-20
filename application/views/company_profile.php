@@ -1,7 +1,7 @@
 <div class="mdl-grid site-max-width">
 	<div class="mdl-cell mdl-cell--12-col mdl-card mdl-shadow--4dp welcome-card portfolio-card">
     <div class="cpmoany-profile-cover">
-      <h2 class="mdl-card__title-text">Are you already have A Company?</h2>
+      
     </div>
     <div class="mdl-card__supporting-text">
       you can add your company and all infomation .
@@ -15,7 +15,10 @@
 </div>
 
 <section class="section--center mdl-grid site-max-width">
-  
+  <header class="section__play-btn mdl-cell mdl-cell--3-col-desktop mdl-cell--2-col-tablet mdl-cell--4-col-phone mdl-color--teal-100 mdl-color-text--white  mdl-shadow--4dp" style="background-color: #DCDDE2!important;">
+  <img src="<?php echo base_url();?>/assets/img/company-icon.png">
+   <!--  <i class="fa fa-building fa-5x" style="color: black" aria-hidden="true"></i> -->
+  </header>
   <div class="mdl-card mdl-cell mdl-cell--9-col-desktop mdl-cell--6-col-tablet mdl-cell--4-col-phone  mdl-shadow--4dp">
     <div class="mdl-card__title">
         <h2 class="mdl-card__title-text">Your Name</h2>
@@ -23,7 +26,6 @@
     <div class="mdl-card__supporting-text">
       Efficiently unleash cross-media information without cross-media value. Quickly maximize timely deliverables for real-time schemas. Dramatically maintain clicks-and-mortar solutions without functional solutions.
     </div>
-    
   </div>
 </section>
 <section class="section--center mdl-grid site-max-width">

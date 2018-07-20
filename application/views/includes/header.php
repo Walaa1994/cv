@@ -7,7 +7,7 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css" rel="stylesheet">
     <link href="<?php echo base_url();?>/assets/styles/main.css" rel="stylesheet">
-     <link href="<?php echo base_url();?>/assets/css/custom.css" rel="stylesheet">
+    <link href="<?php echo base_url();?>/assets/css/custom.css" rel="stylesheet">
     
 
     <!-- Font Awesome -->
@@ -18,5 +18,14 @@
     <link href="<?php echo base_url();?>/assets/css/mdb.min.css" rel="stylesheet">
 
     <link href="<?php echo base_url();?>/assets/css/compiled-4.5.7.min.css" rel="stylesheet">
+
+    <!-- datetime picker -->
+    <link href="<?php echo base_url();?>/assets/css/bootstrap-material-datetimepicker.css" rel="stylesheet">
+
+    <link href="<?php echo base_url();?>/assets/css/materialize.css" rel="stylesheet">
+
+    <!-- <link href="<?php echo base_url();?>/assets/css/materialize.min.css" rel="stylesheet"> -->
+    
+        
     <!-- Your custom styles (optional) -->
 <!--     <link href="<?php echo base_url();?>/assets/css/style.min.css" rel="stylesheet"> -->

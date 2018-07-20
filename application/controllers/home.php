@@ -79,7 +79,13 @@ class Home extends CI_Controller {
 	function sekeer_home()
 	{
 		$this->data['pageTitle']='Home';
-        $this->data['subview'] = 'sekeer_home';
+        $this->data['subview'] = 'seeker_home';
+        $this->load->view('layouts/layout', $this->data);
+	}
+	function cv_view()
+	{
+		$this->data['pageTitle']='Cv View';
+        $this->data['subview'] = 'cv-view';
         $this->load->view('layouts/layout', $this->data);
 	}
 }
