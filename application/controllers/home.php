@@ -38,7 +38,25 @@ class Home extends CI_Controller {
 	}
 
 	function Announcement_page  (){
-
+		$id=$this->session->userdata('u_id');
+		$this->load->model('user_model');
+		$this->data['company_id']=$this->user_model->get_company($id);
+		//print_r($this->data['company_id']);
+        $query="PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>  
+            PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+            PREFIX cv: <http://rdfs.org/resume-rdf/cv.rdfs#> 
+            PREFIX vcard: <http://www.w3.org/2006/vcard/ns#>
+            PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+            select ?job ?id
+            where {
+                ?ann cv:hasTarget ?w . 
+                ?w cv:targetCompanyDescription \"$id\".
+                ?w cv:targetJobDescription ?job.
+                ?ann cv:cvTitle ?id.
+            } " ;
+        $dataset_path="C:\\tdbAnnouncement";
+        $this->load->library('query');
+        $this->data['result']=$this->query->querysparql($query,$dataset_path);
 		$this->data['pageTitle']='Announcement page';
         $this->data['subview'] = 'Announcement_page';
         $this->load->view('layouts/layout', $this->data);
