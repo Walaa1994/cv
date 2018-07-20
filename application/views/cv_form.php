@@ -73,6 +73,7 @@ function submitForm(){
 }
 
 //add new record
+
 $(document).ready(function () {
 
   //date time picker
@@ -82,7 +83,11 @@ $(document).ready(function () {
   //$('.mdb-select').material_select();
 
   $(".mdb-select").formSelect();
-
+/*
+   $(document).on("load", ".mdb-select" , function() {
+        $(".mdb-select").formSelect();
+    });
+*/
     //@naresh action dynamic childs
     var next = 1;
     $("#AddNewRecord").click(function(e){debugger;
@@ -103,7 +108,8 @@ $(document).ready(function () {
      html_code += '<td><select id="select" name="degreeType[]" class="mdb-select colorful-select dropdown-primary"><option value="">choose ...</option><option value="EduHighSchool">High School</option><option value="EduVocational">Vocational</option><option value="EduCollegeCoursework">College Coursework</option><option value="EduBachelor">Bachelorl</option><option value="EduMaster">Master</option><option value="EduDoctorate">Doctorate</option><option value="EduAssociate">Associate</option><option value=" EduProfessional">Professional</option></select></td>';
      html_code += "<td><a class='btn-floating btn-sm btn-danger my-0 waves-effect waves-light remove'  name='remove' data-row='row"+count_education+"'><i class='fa fa-times'></i></a></td>";   
      html_code += "</tr>";  
-     $('#crud_table_education').append(html_code);  
+     $('#crud_table_education').append(html_code); 
+     $(".mdb-select").formSelect(); 
    });
        
      //experiance
@@ -120,7 +126,8 @@ $(document).ready(function () {
          html_code += '<td><select id="select" name="IsCurrent[]" class="mdb-select colorful-select dropdown-primary"><option value="">choose ...</option><option value="True">ON</option><option value="False">OFF</option></select></td>';
          html_code += "<td><a class='btn-floating btn-sm btn-danger my-0 waves-effect waves-light remove'  name='remove' data-row='row"+count_experience+"'><i class='fa fa-times'></i></a></td>";   
          html_code += "</tr>";  
-         $('#crud_table_experience').append(html_code);         
+         $('#crud_table_experience').append(html_code);  
+         $(".mdb-select").formSelect();        
        });
 
        //add skills
@@ -134,6 +141,7 @@ $(document).ready(function () {
            html_code += "<td><a class='btn-floating btn-sm btn-danger my-0 waves-effect waves-light remove'  name='remove' data-row='row"+count_skills+"'><i class='fa fa-times'></i></a></td>";   
            html_code += "</tr>";  
            $('#crud_table_skill').append(html_code);
+           $(".mdb-select").formSelect(); 
          });
 
      //add languages
@@ -150,6 +158,7 @@ $(document).ready(function () {
            html_code += "<td><a class='btn-floating btn-sm btn-danger my-0 waves-effect waves-light remove'  name='remove' data-row='row"+count_languages+"'><i class='fa fa-times'></i></a></td>";   
            html_code += "</tr>";  
            $('#crud_table_lang').append(html_code);
+           $(".mdb-select").formSelect(); 
          });
 
 
@@ -671,15 +680,23 @@ $(document).ready(function () {
             <div class="row">
               <div class="col-md-10 mb-4">
                 <p id="radio_active">Is Active</p>
-                <fieldset class="form-check">
+                <div class="switch">
+                    <label>
+                        Off
+                        <input type="checkbox" checked="checked" name="IsActive" >
+                        <span class="lever"></span> On
+                    </label>
+                </div>
+                <!-- <fieldset class="form-check">
                   <input class="form-check-input" name="IsActive" type="radio" id="IsActive" checked="checked" value="True">
                   <label class="form-check-label" for="Male">ON</label>
                 </fieldset>
 
                 <fieldset class="form-check">
-                  <input class="form-check-input" name="IsActive" type="radio" id="IsActive" value="False">
-                  <label class="form-check-label" for="IsActive">OFF</label>
-                </fieldset>
+                 <input class="form-check-input" name="IsActive" type="radio" id="IsActive" value="False">
+                  <label class="form-check-label" for="IsActive">OFF</label> 
+                  
+                </fieldset> -->
               </div>
             </div>
 
@@ -704,4 +721,4 @@ $(document).ready(function () {
 
 
 <!-- Compiled and minified JavaScript -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script> -->
