@@ -51,16 +51,17 @@
     <script type="text/javascript" src="<?php echo base_url();?>/assets/js/bootstrap.min.js"></script>
     <!-- MDB core JavaScript -->
     <script type="text/javascript" src="<?php echo base_url();?>/assets/js/mdb.min.js"></script>
+     <script type="text/javascript" src="<?php echo base_url();?>/assets/js/index.js"></script>
 
     <!-- datetime picker -->
     <script type="text/javascript" src="<?php echo base_url();?>/assets/js/moment.js"></script>
     <script type="text/javascript" src="<?php echo base_url();?>/assets/js/moment-with-locales.js"></script>
     <script type="text/javascript" src="<?php echo base_url();?>/assets/js/bootstrap-material-datetimepicker.js"></script>
     
-<!--     <script type="text/javascript" src="<?php echo base_url();?>/assets/js/forms.js"></script> -->
+     <script type="text/javascript" src="<?php echo base_url();?>/assets/js/forms.js"></script> 
 
-    <!-- <script type="text/javascript" src="<?php echo base_url();?>/assets/js/materialize.js"></script> -->
-    <!-- <script type="text/javascript" src="<?php echo base_url();?>/assets/js/materialize.min.js"></script> -->
+    <script type="text/javascript" src="<?php echo base_url();?>/assets/js/materialize.js"></script> 
+    <script type="text/javascript" src="<?php echo base_url();?>/assets/js/materialize.min.js"></script>
 
     
     </div>
