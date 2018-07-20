@@ -1,13 +1,52 @@
- <link href="<?php echo base_url();?>/assets/css/cv.css" rel='stylesheet' type='text/css' />
-  <style>
-form#multiphase > #phase2, #phase3, #phase4, #phase5, #phase6{ display:none; }
-</style>
+<form class="form-inline">
+                            <div class="md-form my-0">
+                                <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+                            </div>
+                        </form>
 
-  <script src="<?php echo base_url('http://codepen.io/assets/libs/fullpage/jquery.js')?>"></script>
-  <script src="<?php echo base_url('assets/bootstrap/js/index')?>"></script>
+ <div class="row">
+                <div class="col-md-6">
 
- <!--Search buttom-->
-  <div id="cosearch">
-  <button type="submit" class="btn btn-primary" id="Function Name in controller">Search</button>
-  <input type="text" name="query_text">
-</div>
+                    <!-- Card -->
+                    <div class="card card-image mb-3" style="background-image: url('https://mdbootstrap.com/img/Photos/Categories/Components/img(10).jpg');">
+
+                        <!-- Content -->
+                        <div class="text-white text-center d-flex align-items-center rgba-black-strong py-5 px-4">
+                            <div>
+                                <h5 class="pink-text">
+                                    <i class="fa fa-bullhorn"></i> Marketing</h5>
+                                <h3 class="card-title pt-2">
+                                    <strong>This is card title</strong>
+                                </h3>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellat fugiat, laboriosam, voluptatem,
+                                    optio vero odio nam sit officia accusamus minus error nisi architecto nulla ipsum dignissimos.
+                                    Odit sed qui, dolorum!.</p>
+                                <a href="<?php echo(site_url('Home/OneAnnouncement_page'));?>" class="btn btn-pink waves-effect waves-light">
+                                    <i class="fa fa-clone left"></i> View More</a>
+                            </div>
+                        </div>
+                        <!-- Content -->
+                    </div>
+                    <!-- Card -->
+
+                </div>
+
+                <div class="col-md-6">
+                    <div class="card card-image mb-3" style="background-image: url('https://mdbootstrap.com/img/Photos/Categories/Components/img(10).jpg');">
+                        <div class="text-white text-center d-flex align-items-center rgba-indigo-strong py-5 px-4">
+                            <div>
+                                <h5 class="orange-text">
+                                    <i class="fa fa-bullhorn"></i> Software</h5>
+                                <h3 class="card-title pt-2">
+                                    <strong>This is card title</strong>
+                                </h3>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellat fugiat, laboriosam, voluptatem,
+                                    optio vero odio nam sit officia accusamus minus error nisi architecto nulla ipsum dignissimos.
+                                    Odit sed qui, dolorum!.</p>
+                                <a href="<?php echo(site_url('Home/OneAnnouncement_page'));?>" class="btn btn-deep-orange waves-effect waves-light">
+                                    <i class="fa fa-clone left"></i> View More</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
