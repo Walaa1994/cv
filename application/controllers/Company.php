@@ -34,9 +34,7 @@ class Company extends CI_Controller {
         $cert_name = $this->input->post('cert_name');
         $spe_name = $this->input->post('spe_name');
         $degreeType = $this->input->post('degreeType');
-        $hours_per = $this->input->post('hours_per');
         $salary = $this->input->post('salary');
-        $salary_per = $this->input->post('salary_per');
         $skill_name = $this->input->post('skill_name');
         $year_exp = $this->input->post('year_exp');
         $characteristic = $this->input->post('characteristic');

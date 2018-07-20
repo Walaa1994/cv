@@ -52,16 +52,19 @@
         </div>
         <div class="mdl-card__supporting-text">
           <ul>
+          <?php 
+            foreach($eduMajor as $key => $value) {?>
             <li>
               <?php
-               echo "Certificate : ".$eduMajor; echo "<br>";
-               echo "Specialization  : ".$eduMinor; echo "<br>";
-               echo "Start Date: ".$eduStartDate; echo "<br>";
-               echo "Date of Grants : ".$eduGradDate; echo "<br>";
-               echo "Donor : ".$studiedIn; echo "<br>";
-               echo "Degree Type : ".$degreeType; echo "<br>";
+               echo "Certificate : ".$value; echo "<br>";
+               echo "Specialization  : ".$eduMinor[$key]; echo "<br>";
+               echo "Start Date: ".$eduStartDate[$key]; echo "<br>";
+               echo "Date of Grants : ".$eduGradDate[$key]; echo "<br>";
+               echo "Donor : ".$studiedIn[$key]; echo "<br>";
+               echo "Degree Type : ".$degreeType[$key]; echo "<br>";
               ?>  
             </li>
+            <?php }?>
           </ul>
         </div>
     </div>
@@ -74,12 +77,20 @@
         </div>
         <div class="mdl-card__supporting-text">
             <ul>
+            <?php 
+            foreach($employedIn as $key => $value) {?>
             <li>
-              Enim labore aliqua consequat ut quis ad occaecat aliquip incididunt.  
+              <?php
+               echo "Company : ".$value; echo "<br>";
+               echo "Job Position : ".$jobTitle[$key]; echo "<br>";
+               echo "From : ".$startDate[$key]; echo "<br>";
+               echo "To : ".$endDate[$key]; echo "<br>";
+               echo "Career Level : ".$careerLevel[$key]; echo "<br>";
+               echo "Job Type : ".$jobType[$key]; echo "<br>";
+               echo "Is Current : ".$isCurrent[$key]; echo "<br>";
+              ?>
             </li>
-            <li>
-              Enim labore aliqua consequat ut quis ad occaecat aliquip incididunt.
-            </li>
+            <?php }?>
           </ul>
         </div>
     </div>
@@ -92,12 +103,17 @@
         </div>
         <div class="mdl-card__supporting-text">
             <ul>
+             <?php 
+            foreach($skillName as $key => $value) {?>
             <li>
-              Enim labore aliqua consequat ut quis ad occaecat aliquip incididunt.  
+              <?php
+              echo "Skill Name : ".$value; echo "<br>";
+              echo "Years of experience : ".$skillYearsExperience[$key]; echo "<br>";
+              echo "Skill Level : ".$skillLevel[$key]; echo "<br>";
+
+              ?>  
             </li>
-            <li>
-              Enim labore aliqua consequat ut quis ad occaecat aliquip incididunt.
-            </li>
+            <?php }?>
           </ul>
         </div>
     </div>
