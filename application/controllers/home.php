@@ -26,6 +26,7 @@ class Home extends CI_Controller {
 			PREFIX foaf: <http://xmlns.com/foaf/0.1/>
 			select ?FirstName ?LastName ?Birthday ?Gender ?Nationality ?MaritalStatus ?Phone ?Email ?Country ?City ?Street
 			where {
+			  ?resume cv:cvTitle \"$id\".
 			  ?resume cv:aboutPerson ?person.  
 			  ?person foaf:firstName ?FirstName .
 			  ?person foaf:lastName  ?LastName .
@@ -72,6 +73,7 @@ class Home extends CI_Controller {
 					PREFIX foaf: <http://xmlns.com/foaf/0.1/>
 					select ?eduMajor ?eduMinor ?eduStartDate ?eduGradDate ?studiedIn ?degreeType 
 					where {
+					 ?resume cv:cvTitle \"$id\".
 					 ?resume cv:hasEducation ?q .
 					 ?q cv:eduMajor ?eduMajor.
 					 ?q cv:eduMinor ?eduMinor.
@@ -106,6 +108,7 @@ class Home extends CI_Controller {
 					PREFIX foaf: <http://xmlns.com/foaf/0.1/>
 					select ?employedIn ?jobTitle ?startDate ?endDate ?careerLevel ?jobType ?isCurrent 
 					where {
+					 ?resume cv:cvTitle \"$id\".
 					 ?resume cv:hasWorkHistory ?q .
 					 ?q cv:employedIn ?employedIn.
 					 ?q cv:jobTitle ?jobTitle.
@@ -144,6 +147,7 @@ class Home extends CI_Controller {
 					PREFIX foaf: <http://xmlns.com/foaf/0.1/>
 					select ?skillName ?skillYearsExperience ?skillLevel  
 					where {
+					 ?resume cv:cvTitle \"$id\".
 					 ?resume cv:hasSkill ?q .
 					 ?q cv:skillName ?skillName.
 					 ?q cv:skillYearsExperience ?skillYearsExperience.
