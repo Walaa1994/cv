@@ -19,6 +19,90 @@ class Home extends CI_Controller {
 	}
 
 	function seeker_profile (){
+		$id=$this->session->userdata('u_id');
+		$Dataset_path="C:\\tdbCV";
+		$personalInfo="PREFIX cv: <http://rdfs.org/resume-rdf/cv.rdfs#> 
+			PREFIX vcard: <http://www.w3.org/2006/vcard/ns#>
+			PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+			select ?FirstName ?LastName ?Birthday ?Gender ?Nationality ?MaritalStatus ?Phone ?Email ?Country ?City ?Street
+			where {
+			  ?resume cv:aboutPerson ?person.  
+			  ?person foaf:firstName ?FirstName .
+			  ?person foaf:lastName  ?LastName .
+			  ?person foaf:birthday  ?Birthday .
+			  ?person cv:gender ?Gender .
+			  ?person cv:hasNationality ?Nationality .
+			  ?person cv:maritalStatus ?MaritalStatus .
+			  ?person foaf:phone ?Phone .
+			  ?person foaf:mbox ?Email .
+			  ?person vcard:hasAddress ?c .
+			  ?c vcard:country-name ?Country .
+			  ?c vcard:locality ?City .
+			  ?c vcard:street-address ?Street .
+			}    ";
+		$this->load->library('query');
+		$query_result=$this->query->querysparql($personalInfo,$Dataset_path);
+		$first_name=$query_result['results']['bindings'][0]['FirstName']['value'];
+		$last_name=$query_result['results']['bindings'][0]['LastName']['value'];
+		$birthday=$query_result['results']['bindings'][0]['Birthday']['value'];
+		$gender=$query_result['results']['bindings'][0]['Gender']['value'];
+		$Nationality=$query_result['results']['bindings'][0]['Nationality']['value'];
+		$MaritalStatus=$query_result['results']['bindings'][0]['MaritalStatus']['value'];
+		$Phone=$query_result['results']['bindings'][0]['Phone']['value'];
+		$Email=$query_result['results']['bindings'][0]['Email']['value'];
+		$Country=$query_result['results']['bindings'][0]['Country']['value'];
+		$City=$query_result['results']['bindings'][0]['City']['value'];
+		$Street=$query_result['results']['bindings'][0]['Street']['value'];
+		//echo '<pre>';
+		//print_r($query_result);
+		$this->data['first_name']=$first_name;
+		$this->data['last_name']=$last_name;
+		$this->data['birthday']=$birthday;
+		$this->data['gender']=$gender;
+		$this->data['Nationality']=$Nationality;
+		$this->data['MaritalStatus']=$MaritalStatus;
+		$this->data['Phone']=$Phone;
+		$this->data['Email']=$Email;
+		$this->data['Country']=$Country;
+		$this->data['City']=$City;
+		$this->data['Street']=$Street;
+
+        $Education ="PREFIX cv: <http://rdfs.org/resume-rdf/cv.rdfs#> 
+					PREFIX vcard: <http://www.w3.org/2006/vcard/ns#>
+					PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+					select ?eduMajor ?eduMinor ?eduStartDate ?eduGradDate ?studiedIn ?degreeType 
+					where {
+					 ?resume cv:hasEducation ?q .
+					 ?q cv:eduMajor ?eduMajor.
+					 ?q cv:eduMinor ?eduMinor.
+					 ?q cv:eduStartDate ?eduStartDate.
+					 ?q cv:eduGradDate ?eduGradDate.
+					 ?q cv:studiedIn ?studiedIn.
+					 ?q cv:degreeType ?degreeType.
+					}";
+		$this->load->library('query');
+		$edu_result=$this->query->querysparql($Education,$Dataset_path);
+		//echo '<pre>';
+		//print_r($edu_result);
+
+       foreach ($edu_result['results']['bindings'] as  $value) {
+       	$eduMajor=$value['eduMajor']['value'];
+       	$eduMinor=$value['eduMinor']['value'];
+       	$eduStartDate=$value['eduStartDate']['value'];
+       	$eduGradDate=$value['eduGradDate']['value'];
+       	$studiedIn=$value['studiedIn']['value'];
+       	$degreeType=$value['degreeType']['value'];
+
+       	$this->data['eduMajor']=$eduMajor;
+       	$this->data['eduMinor']=$eduMinor;
+       	$this->data['eduStartDate']=$eduStartDate;
+        $this->data['eduGradDate']=$eduGradDate;
+        $this->data['studiedIn']=$studiedIn;
+        $this->data['degreeType']=$degreeType;
+       }
+
+       $workHistory="";
+
 		$this->data['pageTitle']='Home';
         $this->data['subview'] = 'seeker_profile';
         $this->load->view('layouts/layout', $this->data);
