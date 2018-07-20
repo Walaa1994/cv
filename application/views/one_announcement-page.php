@@ -19,7 +19,13 @@
                       <!-- Text -->
                       <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus, ex, recusandae. Facere modi sunt, quod quibusdam dignissimos neque rem nihil ratione est placeat vel, natus non quos laudantium veritatis sequi.Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam.</p>
 
-                      <hr>
+                    
+
+                    <div class="mdl-card__actions  mdl-card--border">
+                      <a href="#" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-button--accent">
+                         Find Cvs
+                      </a>
+                    </div>
 
                       
 
