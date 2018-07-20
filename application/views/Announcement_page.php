@@ -12,20 +12,9 @@
                                 <h3 class="card-title pt-2">
                                     <strong><?php echo $company_id->en_name; ?></strong>
                                 </h3>
-<<<<<<< HEAD
-<<<<<<< HEAD
                                 <p><?php echo $value['job']['value'];?></p>
-                                <a class="btn btn-pink waves-effect waves-light">
-=======
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellat fugiat, laboriosam, voluptatem,
-                                    optio vero odio nam sit officia accusamus minus error nisi architecto nulla ipsum dignissimos.
-                                    Odit sed qui, dolorum!.</p>
+
                                 <a href="<?php echo(site_url('Home/OneAnnouncement_page'));?>"  class="btn btn-pink waves-effect waves-light">
->>>>>>> master
-=======
-                                <p><?php echo $value['job']['value'];?></p>
-                                <a class="btn btn-pink waves-effect waves-light">
->>>>>>> 16015451a2896faf3c09001e056d7f83eb3ee497
                                     <i class="fa fa-clone left"></i> View More</a>
                             </div>
                         </div>
