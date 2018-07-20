@@ -213,7 +213,7 @@ $(document).ready(function () {
                 <!--Grid column-->
                 <div class="col-md-10 mb-4">
                     <div class="md-form">
-                        <input type="text" id="Nationality" name="Nationality" class="form-control">
+                        <input type="text" id="Nationality" name="nationality" class="form-control">
                         <label for="Nationality" class="">Nationality</label>
                     </div>
                 </div>
@@ -266,7 +266,7 @@ $(document).ready(function () {
                 <!--Grid column-->
                 <div class="col-md-10 mb-4">
                     <div class="md-form">
-                        <input type="text" id="Country" class="form-control">
+                        <input type="text" id="Country" name="country" class="form-control">
                         <label for="Country" class="">Country</label>
                     </div>
                 </div>
@@ -278,7 +278,7 @@ $(document).ready(function () {
                 <!--Grid column-->
                 <div class="col-md-10 mb-4">
                     <div class="md-form">
-                        <input type="text" id="City" class="form-control">
+                        <input type="text" id="City" name="city" class="form-control">
                         <label for="City" class="">City</label>
                     </div>
                 </div>
@@ -290,7 +290,7 @@ $(document).ready(function () {
                 <!--Grid column-->
                 <div class="col-md-10 mb-4">
                     <div class="md-form">
-                        <input type="text" id="address" class="form-control">
+                        <input type="text" id="address" name="address" class="form-control">
                         <label for="address" class="">Address</label>
                     </div>
                 </div>
@@ -302,7 +302,7 @@ $(document).ready(function () {
                 <!--Grid column-->
                 <div class="col-md-10 mb-4">
                     <div class="md-form">
-                        <input type="email" id="email" class="form-control">
+                        <input type="email" name="email" id="email" class="form-control">
                         <label for="email" class="">Email</label>
                     </div>
                 </div>
@@ -313,7 +313,7 @@ $(document).ready(function () {
                 <!--Grid column-->
                 <div class="col-md-10 mb-4">
                     <div class="md-form">
-                        <input type="text" id="phone" class="form-control">
+                        <input type="text" id="phone" name="phone" class="form-control">
                         <label for="phone" class="">Phone Number</label>
                     </div>
                 </div>
@@ -637,7 +637,7 @@ $(document).ready(function () {
                 <!--Grid column-->
                 <div class="col-md-10 mb-4">
                     <div class="md-form">
-                        <input type="text" id="ref_name" class="form-control">
+                        <input type="text" id="ref_name" name="ref_name" class="form-control">
                         <label for="ref_name" class="">Person/Company/Organization Name</label>
                     </div>
                 </div>
@@ -648,7 +648,7 @@ $(document).ready(function () {
                 <!--Grid column-->
                 <div class="col-md-10 mb-4">
                     <div class="md-form">
-                        <input type="text" id="ref_phone" class="form-control">
+                        <input type="text" id="ref_phone" name="ref_phone" class="form-control">
                         <label for="ref_phone" class="">Phone Number (Optional)</label>
                     </div>
                 </div>
@@ -659,7 +659,7 @@ $(document).ready(function () {
                 <!--Grid column-->
                 <div class="col-md-10 mb-4">
                     <div class="md-form">
-                        <input type="text" id="ref_email" class="form-control">
+                        <input type="text" id="ref_email" name="ref_email" class="form-control">
                         <label for="ref_email" class="">Email (Optional)</label>
                     </div>
                 </div>

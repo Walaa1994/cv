@@ -50,4 +50,12 @@ class User_model extends CI_Model {
         );
         $this->db->insert('company',$company);
     }
+
+    public function get_company($company_id)
+    {
+        $this->db->select('en_name');
+        $this->db->where('user_id',$company_id);
+        $query = $this->db->get('company');
+        return  $query->row();
+    }
 }
