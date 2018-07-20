@@ -58,4 +58,20 @@ class User_model extends CI_Model {
         $query = $this->db->get('company');
         return  $query->row();
     }
+
+    public function edit_image($id,$path_name) 
+    {
+        if($id) {
+            $data = array(
+                'Image'    => $path_name
+            );
+
+            $this->db->where('u_id', $id);
+            $sql1 = $this->db->update('user', $data);
+
+            return $sql1;
+        }
+            
+    }
+
 }

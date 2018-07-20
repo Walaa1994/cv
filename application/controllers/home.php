@@ -56,6 +56,7 @@ class Home extends CI_Controller {
 		$Street=$query_result['results']['bindings'][0]['Street']['value'];
 		//echo '<pre>';
 		//print_r($query_result);
+		if(!($first_name==null))
 		$this->data['first_name']=$first_name;
 		$this->data['last_name']=$last_name;
 		$this->data['birthday']=$birthday;

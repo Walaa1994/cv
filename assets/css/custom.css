@@ -3,3 +3,7 @@
   height: 290px;
   background: url("../img/Company-data.jpg") center/cover;
 }
+
+.mdl-color--teal-100{
+	background-color: #ffffff !important;
+}
