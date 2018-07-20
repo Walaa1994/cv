@@ -15,7 +15,7 @@
                                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellat fugiat, laboriosam, voluptatem,
                                     optio vero odio nam sit officia accusamus minus error nisi architecto nulla ipsum dignissimos.
                                     Odit sed qui, dolorum!.</p>
-                                <a class="btn btn-pink waves-effect waves-light">
+                                <a href="<?php echo(site_url('Home/OneAnnouncement_page'));?>"  class="btn btn-pink waves-effect waves-light">
                                     <i class="fa fa-clone left"></i> View More</a>
                             </div>
                         </div>
@@ -37,7 +37,7 @@
                                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellat fugiat, laboriosam, voluptatem,
                                     optio vero odio nam sit officia accusamus minus error nisi architecto nulla ipsum dignissimos.
                                     Odit sed qui, dolorum!.</p>
-                                <a class="btn btn-deep-orange waves-effect waves-light">
+                                <a href="<?php echo(site_url('Home/OneAnnouncement_page'));?>" class="btn btn-deep-orange waves-effect waves-light">
                                     <i class="fa fa-clone left"></i> View More</a>
                             </div>
                         </div>

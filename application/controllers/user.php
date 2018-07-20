@@ -69,6 +69,13 @@ class User extends CI_Controller {
 		else
 			redirect(base_url() . 'index.php/home/Company_profile');
 	}
+
+	public function user_home(){
+		if($this->session->userdata('type')== "seeker")
+			redirect(base_url() . 'index.php/home/sekeer_home');
+		else
+			redirect(base_url() . 'index.php/home/Announcement_page');
+	}
 	public function enter(){
 
 		if($this->session->userdata('username') != '')
