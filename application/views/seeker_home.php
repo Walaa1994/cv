@@ -9,8 +9,7 @@
         <input type="text" id="job_title" name="job_title" class="form-control">
         <label for="job_title" class="">Job Title</label>
     </div>
-    </div
-
+  </div>
 
     <div>
     <select name="job_mode" class="mdb-select colorful-select dropdown-primary">
