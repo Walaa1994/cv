@@ -24,10 +24,15 @@
   </header>
   <div class="mdl-card mdl-cell mdl-cell--9-col-desktop mdl-cell--6-col-tablet mdl-cell--4-col-phone  mdl-shadow--4dp">
     <div class="mdl-card__title">
-        <h2 class="mdl-card__title-text">Your Name</h2>
+        <h2 class="mdl-card__title-text"><?php echo $first_name." ".$last_name; ?></h2>
     </div>
     <div class="mdl-card__supporting-text">
-      Efficiently unleash cross-media information without cross-media value. Quickly maximize timely deliverables for real-time schemas. Dramatically maintain clicks-and-mortar solutions without functional solutions.
+     <?php echo $gender.' - '.$birthday; echo "<br>";
+           echo "Nationality : ".$Nationality; echo "<br>";
+           echo "Marital Status : ".$MaritalStatus; echo "<br>";
+           echo $Phone; echo "<br>";
+           echo $Email; echo "<br>";
+           echo "Address : ".$Country."-".$City."-".$Street; ?>
     </div>
     <div class="mdl-card__actions  mdl-card--border">
       <a href="#" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-button--accent">
@@ -48,10 +53,14 @@
         <div class="mdl-card__supporting-text">
           <ul>
             <li>
-              Enim labore aliqua consequat ut quis ad occaecat aliquip incididunt.  
-            </li>
-            <li>
-              Enim labore aliqua consequat ut quis ad occaecat aliquip incididunt.
+              <?php
+               echo "Certificate : ".$eduMajor; echo "<br>";
+               echo "Specialization  : ".$eduMinor; echo "<br>";
+               echo "Start Date: ".$eduStartDate; echo "<br>";
+               echo "Date of Grants : ".$eduGradDate; echo "<br>";
+               echo "Donor : ".$studiedIn; echo "<br>";
+               echo "Degree Type : ".$degreeType; echo "<br>";
+              ?>  
             </li>
           </ul>
         </div>
