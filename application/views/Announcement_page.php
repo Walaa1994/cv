@@ -13,6 +13,7 @@
                                     <strong><?php echo $company_id->en_name; ?></strong>
                                 </h3>
 <<<<<<< HEAD
+<<<<<<< HEAD
                                 <p><?php echo $value['job']['value'];?></p>
                                 <a class="btn btn-pink waves-effect waves-light">
 =======
@@ -21,6 +22,10 @@
                                     Odit sed qui, dolorum!.</p>
                                 <a href="<?php echo(site_url('Home/OneAnnouncement_page'));?>"  class="btn btn-pink waves-effect waves-light">
 >>>>>>> master
+=======
+                                <p><?php echo $value['job']['value'];?></p>
+                                <a class="btn btn-pink waves-effect waves-light">
+>>>>>>> 16015451a2896faf3c09001e056d7f83eb3ee497
                                     <i class="fa fa-clone left"></i> View More</a>
                             </div>
                         </div>
