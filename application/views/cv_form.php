@@ -319,6 +319,31 @@ $(document).ready(function () {
                 </div>
                 <!--Grid column-->
             </div>
+
+          <div class="row">
+              <div class="col-md-10 mb-4">
+                  <div class="md-form">
+                      <div class="file-field">
+                         <div class="btn btn-primary btn-sm float-left waves-effect waves-light">
+                            <span>Choose file</span>
+                              <input type="file"  name="userFile">
+                          </div>
+                      <div class="file-path-wrapper">
+                              <input class="file-path validate" type="text" placeholder="Upload your file">
+                      </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+
+           
+
+
+
+
+
+           
+
             <!-- <button class="btn peach-gradient btn-sm waves-effect waves-light">
                 Next
             </button> -->
