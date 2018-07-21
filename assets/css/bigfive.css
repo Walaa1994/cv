@@ -30,7 +30,7 @@ h4{
     color: #bfbfbf;
 }
 
-
+/*
 #form{
   width:400px;
   margin:0 auto;
@@ -39,8 +39,8 @@ h4{
   transition:opacity 1s;
   -webkit-transition:opacity 1s;
   align:"center";
-}
-#multiphase{
+}*/
+/*#multiphase{
   width:150%;
   background:#fff;
   margin-bottom:4%;
@@ -49,7 +49,7 @@ h4{
   font-family:'Open Sans',sans-serif;
   font-size:95%;
   color:#555;
-}
+}*/
 .color-filed{
 
     color: #737373;
