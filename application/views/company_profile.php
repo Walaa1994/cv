@@ -10,6 +10,9 @@
       <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-button--accent" href="<?php echo(site_url('Company/AddCompany'));?>" target="_blank">
         Add Company Information
       </a>
+      <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-button--accent" href="<?php echo(site_url('Company/AddAnnouncement'));?>" target="_blank">
+        Add Announcement .
+      </a>
     </div>
   </div>
 </div>

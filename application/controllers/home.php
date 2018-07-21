@@ -179,9 +179,10 @@ class Home extends CI_Controller {
         /*echo '<pre>';
         print_r($result);*/
         $this->data['companyProfile']=$result;
+
 		$this->data['pageTitle']='Home';
         $this->data['subview'] = 'company_profile';
-        $this->load->view('layouts/layout', $this->data);
+        $this->load->view('layouts/layout', $this->data);*/
 	}
 	function OneAnnouncement_page  ($id,$company_name=null){
 		/*$query="PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>  
