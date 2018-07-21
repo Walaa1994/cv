@@ -30,6 +30,7 @@
 			}		
 		}
 		$this->WriteFile($posts_str,"posts.txt");
+		redirect('curl');
     }
 
     public function WriteFile($txt,$file_path){

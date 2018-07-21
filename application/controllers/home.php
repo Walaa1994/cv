@@ -219,12 +219,14 @@ class Home extends CI_Controller {
         return $result;
     }
 
-	function seeker_profile (){
-		
-        $this->seeker_data();
+	function seeker_profile ($warning_message=null){
+    if ($warning_message!=null) {
+        $this->data['warning_message']=$warning_message;
+		}
+    $this->seeker_data();
 		$this->data['pageTitle']='Home';
-        $this->data['subview'] = 'seeker_profile';
-        $this->load->view('layouts/layout', $this->data);
+    $this->data['subview'] = 'seeker_profile';
+    $this->load->view('layouts/layout', $this->data);
 	}
 
 	function Company_profile (){
