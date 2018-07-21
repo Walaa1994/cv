@@ -247,7 +247,14 @@ class Seeker extends CI_Controller {
         $this->data['subview'] = 'bigfive_form';
         $this->load->view('layouts/layout', $this->data);
     }
-     
+    
+    public function ErrorBigFiveAPI($error_message)
+    {
+        $this->data['error_message']=$error_message;
+        $this->data['pageTitle']='Create Resume';
+        $this->data['subview'] = 'error_page';
+        $this->load->view('layouts/layout', $this->data);
+    }
     
     public function BigFiveCalcu()
     {

@@ -18,7 +18,10 @@ class Home extends CI_Controller {
 		$this->load->view('company_page');
 	}
 
-	function seeker_profile (){
+	function seeker_profile ($warning_message=null){
+		if ($warning_message!=null) {
+			$this->data['warning_message']=$warning_message;
+		}
 		$id=$this->session->userdata('u_id');
 		$Dataset_path="C:\\tdbCV";
 		$personalInfo="PREFIX cv: <http://rdfs.org/resume-rdf/cv.rdfs#> 
