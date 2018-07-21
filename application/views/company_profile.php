@@ -22,13 +22,23 @@
   <img src="<?php echo base_url();?>/assets/img/company-icon.png">
    <!--  <i class="fa fa-building fa-5x" style="color: black" aria-hidden="true"></i> -->
   </header>
-  <?php foreach ($companyProfile as  $value) { ?>
   <div class="mdl-card mdl-cell mdl-cell--9-col-desktop mdl-cell--6-col-tablet mdl-cell--4-col-phone  mdl-shadow--4dp">
     <div class="mdl-card__title">
-        <h2 class="mdl-card__title-text"><?php echo $value['en_name'];?></h2>
+        <h2 class="mdl-card__title-text">
+        <?php if ($companyProfile!=null) 
+                  echo $companyProfile[0]['en_name'];
+              else 
+                  echo "Company English Name";
+         ?>
+         </h2>
     </div>
     <div class="mdl-card__supporting-text">
-      <?php echo $value['ar_name']; ?>
+      <?php if ($companyProfile!=null) {
+        echo $companyProfile[0]['ar_name'];
+      } else {
+        echo "Company Arabic Name";
+      }
+        ?>
     </div>
   </div>
 </section>
@@ -44,13 +54,28 @@
         <div class="mdl-card__supporting-text">
           <ul>
             <li>
-              City : <?php echo $value['city'];?> .  
+              City : <?php 
+              if ($companyProfile!=null)
+                 echo $companyProfile[0]['city'];
+              else
+                echo "Company City";
+                 ?>.  
             </li>
             <li>
-              Country : <?php echo $value['country'];?>.
+              Country : <?php if ($companyProfile!=null) {
+                echo $companyProfile[0]['country'];
+              } else {
+                echo "Company Country";
+              }
+               ?>.
             </li>
             <li>
-              Address : <?php echo $value['address'];?>.
+              Address : <?php if ($companyProfile!=null) {
+                echo $companyProfile[0]['address'];
+              } else {
+                echo "Company Address";
+              }
+               ?>.
             </li>
           </ul>
         </div>
@@ -65,7 +90,12 @@
         <div class="mdl-card__supporting-text">
             <ul>
             <li>
-             Descriptioin : <?php echo $value['description'];?>.  
+             Descriptioin : <?php if ($companyProfile!=null) {
+               echo $companyProfile[0]['description'];
+             } else {
+               echo "Company Description";
+             }
+              ?>.  
             </li>
             
           </ul>
@@ -81,16 +111,25 @@
         <div class="mdl-card__supporting-text">
             <ul>
             <li>
-              Professional Field of The Company : <?php echo $value['prof_field'];?>.  
+              Professional Field of The Company : <?php if ($companyProfile!=null) {
+                echo $companyProfile[0]['prof_field'];
+              } else {
+                echo "Company Professional Field ";
+              }
+               ?>.  
             </li>
             <li>
-              The Year of Foundation : <?php echo $value['foundation_year'];?>.
+              The Year of Foundation : <?php if ($companyProfile!=null) {
+                echo $companyProfile[0]['foundation_year'];
+              } else {
+                echo "Company Foundation Year";
+              }
+               ?>.
             </li>
           </ul>
         </div>
     </div>
 </section>
-<?php } ?>
 
 
 
