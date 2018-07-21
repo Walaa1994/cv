@@ -530,6 +530,7 @@ class Home extends CI_Controller {
 	{
 		$this->data['pageTitle']='Cv View';
         $this->data['subview'] = 'cv-view';
+        $this->data['result'] = array('yyy','hh','kk','bb','vvv');
         $this->load->view('layouts/layout', $this->data);
 	}
 }

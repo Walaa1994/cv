@@ -76,7 +76,7 @@ class User extends CI_Controller {
 		if($this->session->userdata('type')== "seeker")
 			redirect(base_url() . 'index.php/home/sekeer_home');
 		else
-			redirect(base_url() . 'index.php/home/Announcement_page');
+			redirect(base_url() . 'index.php/Company/CompanyHome');
 	}
 	public function enter(){
 
