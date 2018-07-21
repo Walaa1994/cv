@@ -190,12 +190,12 @@ $(document).ready(function () {
               <div class="col-md-10 mb-4">
                 <p id="radio_marital">Job Mode</p>
                     <fieldset class="form-check">
-                        <input class="form-check-input" name="Job_Mode" type="radio" id="radio1" checked="checked" value="Full Time">
+                        <input class="form-check-input" name="Job_Mode" type="radio" id="radio1" checked="checked" value="Full-Time">
                         <label class="form-check-label" for="radio1">Full Time</label>
                     </fieldset>
 
                     <fieldset class="form-check">
-                        <input class="form-check-input" name="Job_Mode" type="radio" id="radio2" value="Part Time">
+                        <input class="form-check-input" name="Job_Mode" type="radio" id="radio2" value="Part- Time">
                         <label class="form-check-label" for="radio2">Part Time</label>
                     </fieldset>
 
@@ -207,18 +207,18 @@ $(document).ready(function () {
               <div class="col-md-10 mb-4">
                 <p id="radio_marital">Employment Type</p>
                     <fieldset class="form-check">
-                        <input class="form-check-input" name="employment_type" type="radio" id="radio1" checked="checked" value="Employee">
-                        <label class="form-check-label" for="radio1">Employee</label>
+                        <input class="form-check-input" name="employment_type" type="radio" id="radio3" checked="checked" value="Emplyee">
+                        <label class="form-check-label" for="radio3">Employee</label>
                     </fieldset>
 
                     <fieldset class="form-check">
-                        <input class="form-check-input" name="employment_type" type="radio" id="radio2" value="Contractor">
-                        <label class="form-check-label" for="radio2">Contractor</label>
+                        <input class="form-check-input" name="employment_type" type="radio" id="radio4" value="Contractor">
+                        <label class="form-check-label" for="radio4">Contractor</label>
                     </fieldset>
 
                     <fieldset class="form-check">
-                        <input class="form-check-input" name="employment_type" type="radio" id="radio3" value="Intern">
-                        <label class="form-check-label" for="radio3">Intern</label>
+                        <input class="form-check-input" name="employment_type" type="radio" id="radio5" value="Intern">
+                        <label class="form-check-label" for="radio5">Intern</label>
                     </fieldset>
 
                 </div>

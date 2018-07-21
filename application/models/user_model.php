@@ -58,4 +58,12 @@ class User_model extends CI_Model {
         $query = $this->db->get('company');
         return  $query->row();
     }
+
+    public function get_company_profile($company_id)
+    {
+        $this->db->select('*');
+        $this->db->where('user_id',$company_id);
+        $query = $this->db->get('company');
+        return  $query->result_array();
+    }
 }

@@ -19,12 +19,13 @@
   <img src="<?php echo base_url();?>/assets/img/company-icon.png">
    <!--  <i class="fa fa-building fa-5x" style="color: black" aria-hidden="true"></i> -->
   </header>
+  <?php foreach ($companyProfile as  $value) { ?>
   <div class="mdl-card mdl-cell mdl-cell--9-col-desktop mdl-cell--6-col-tablet mdl-cell--4-col-phone  mdl-shadow--4dp">
     <div class="mdl-card__title">
-        <h2 class="mdl-card__title-text">Your Name</h2>
+        <h2 class="mdl-card__title-text"><?php echo $value['en_name'];?></h2>
     </div>
     <div class="mdl-card__supporting-text">
-      Efficiently unleash cross-media information without cross-media value. Quickly maximize timely deliverables for real-time schemas. Dramatically maintain clicks-and-mortar solutions without functional solutions.
+      <?php echo $value['ar_name']; ?>
     </div>
   </div>
 </section>
@@ -40,13 +41,13 @@
         <div class="mdl-card__supporting-text">
           <ul>
             <li>
-              City.  
+              City : <?php echo $value['city'];?> .  
             </li>
             <li>
-              Country.
+              Country : <?php echo $value['country'];?>.
             </li>
             <li>
-              Address.
+              Address : <?php echo $value['address'];?>.
             </li>
           </ul>
         </div>
@@ -61,7 +62,7 @@
         <div class="mdl-card__supporting-text">
             <ul>
             <li>
-             Descriptioin.  
+             Descriptioin : <?php echo $value['description'];?>.  
             </li>
             
           </ul>
@@ -77,16 +78,16 @@
         <div class="mdl-card__supporting-text">
             <ul>
             <li>
-              Professional Field of The Company.  
+              Professional Field of The Company : <?php echo $value['prof_field'];?>.  
             </li>
             <li>
-              The Year of Foundation.
+              The Year of Foundation : <?php echo $value['foundation_year'];?>.
             </li>
           </ul>
         </div>
     </div>
 </section>
-
+<?php } ?>
 
 
 
