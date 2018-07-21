@@ -7,64 +7,66 @@ function _(x){
   return document.getElementById(x);
 }
 function processPhase1(){
+    debugger;
     _("phase1").style.display = "none";
     _("phase2").style.display = "block";
-    _("progressBar").value = 32;
-    _("status").innerHTML = "Phase 2 of 6";
+    $("#progressBar").attr("aria-valuenow","20") ;
+    $("#progressBar").css("width","20%");
+    //_("status").innerHTML = "Phase 2 of 6";
 }
 function processPhase2(){
     _("phase2").style.display = "none";
     _("phase3").style.display = "block";
-    _("progressBar").value = 48;
-    _("status").innerHTML = "Phase 3 of 6";
+    $("#progressBar").attr("aria-valuenow","40") ;
+    $("#progressBar").css("width","40%");
 }
 function processPhase3(){
     _("phase3").style.display = "none";
     _("phase4").style.display = "block";
-    _("progressBar").value = 64;
-    _("status").innerHTML = "Phase 4 of 6";
+    $("#progressBar").attr("aria-valuenow","60") ;
+    $("#progressBar").css("width","60%");
 }
 function processPhase4(){
     _("phase4").style.display = "none";
     _("phase5").style.display = "block";
-    _("progressBar").value = 80;
-    _("status").innerHTML = "Phase 5 of 6";
+    $("#progressBar").attr("aria-valuenow","80") ;
+    $("#progressBar").css("width","80%");
 }
 function processPhase5(){
     _("phase5").style.display = "none";
     _("phase6").style.display = "block";
-    _("progressBar").value = 100;
-    _("status").innerHTML = "Phase 6 of 6";
+    $("#progressBar").attr("aria-valuenow","100") ;
+    $("#progressBar").css("width","100%");
 }
 function backPhase2(){
     _("phase2").style.display = "none";
     _("phase1").style.display = "block";
-    _("progressBar").value = 16;
-    _("status").innerHTML = "Phase 1 of 6";
+    $("#progressBar").attr("aria-valuenow","0") ;
+    $("#progressBar").css("width","0%");
 }
 function backPhase3(){
     _("phase3").style.display = "none";
     _("phase2").style.display = "block";
-    _("progressBar").value = 32;
-    _("status").innerHTML = "Phase 2 of 6";
+    $("#progressBar").attr("aria-valuenow","20") ;
+    $("#progressBar").css("width","20%");
 }
 function backPhase4(){
     _("phase4").style.display = "none";
     _("phase3").style.display = "block";
-    _("progressBar").value = 48;
-    _("status").innerHTML = "Phase 3 of 6";
+    $("#progressBar").attr("aria-valuenow","40") ;
+    $("#progressBar").css("width","40%");
 }
 function backPhase5(){
     _("phase5").style.display = "none";
     _("phase4").style.display = "block";
-    _("progressBar").value = 64;
-    _("status").innerHTML = "Phase 4 of 6";
+    $("#progressBar").attr("aria-valuenow","60") ;
+    $("#progressBar").css("width","60%");
 }
 function backPhase6(){
     _("phase6").style.display = "none";
     _("phase5").style.display = "block";
-    _("progressBar").value = 80;
-    _("status").innerHTML = "Phase 5 of 6";
+    $("#progressBar").attr("aria-valuenow","80") ;
+    $("#progressBar").css("width","80%");
 }
 function submitForm(){
     _("multiphase").method = "post";
@@ -184,8 +186,11 @@ $(document).ready(function () {
          <?php
          $attributes = array('id' => 'multiphase', 'onsubmit' => 'return false');
           echo form_open_multipart('', $attributes);?>
-            <progress id="progressBar" value="16" max="100" style="width:250px;"></progress>
-            <h3 id="status">Phase 1 of 6</h3>
+          <div class="my-2 progress">
+            <div class="progress-bar" id="progressBar" role="progressbar" style="width: 0;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+        </div>
+            <!-- <progress id="progressBar" value="16" max="100" style="width:250px;"></progress> -->
+            <!-- <h3 id="status">Phase 1 of 6</h3> -->
           <!-- start phase1 -->
           <div id="phase1">
             <h3>Personal Information</h3>
