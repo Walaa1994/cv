@@ -29,34 +29,33 @@
       <div class="row" id="advance_search" style="margin-top: 0px;display: none;">
     <div class="col-md-3 mb-3">
           <select class="mdb-select colorful-select dropdown-primary">
-           <option>Full Time</option>
-           <option>Part Time</option>
-           </select>
+          <option value="Full-Time">Full Time</option>
+          <option value="Part-Time">Part Time</option>
+          </select>
          </div>
          <div class="col-md-3 mb-3">
             <select class="mdb-select colorful-select dropdown-primary">
-             <option>Employee</option>
-             <option>Contractor</option>
-             <option>inter</option>
-           </select>
+            <option value="">Choose..</option>
+            <option value="Emplyee">Employee</option>
+            <option value="Contractor">Contractor</option>
+            <option value="Inter">Inter</option>
+            </select>
          </div>
         <div class="col-md-3 mb-3">
           <div class="md-form">
-              <input type="text" id="salary" class="form-control">
+              <input type="text" name="salary" id="salary" class="form-control">
               <label for="salary" class="">Salary</label>
           </div>
         </div>
+
         <div class="col-md-3 mb-3">
           <div class="md-form">
-              <input type="text" id="locality" class="form-control">
+              <input type="text" name="locality" id="locality" class="form-control">
               <label for="locality" class="">Locality</label>
           </div>
         </div>
       </div>
       </div>
-    <!-- <div class="mdl-card__actions  mdl-card--border">
-      <input type="submit" value="Find CVs" />
-    </div> -->
 </form>
 
   <?php $this->load->view('announcement_search',$result);?>

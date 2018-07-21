@@ -18,6 +18,7 @@ class User extends CI_Controller {
         $this->form_validation->set_rules('Cpassword','Cpassword','trim|required|matches[password]');
         $this->form_validation->set_rules('Email','Email','trim|required');
         $this->form_validation->set_rules('seek_com','seek_com','trim|required');
+        $data['img']=base_url().'/assets/UserPhoto/default_photo.jpg';
 
         if($this->form_validation->run()==false){
                 $this->index();
@@ -28,7 +29,8 @@ class User extends CI_Controller {
                     'username'=> $this->input->post('username'),
                     'password'=> $this->input->post('password'),
                     'Email'=>    $this->input->post('Email'),
-                    'type'=>$this->input->post('seek_com')
+                    'type'=>$this->input->post('seek_com'),
+                    'Image'=>$data['img']
                     );    
             $this->User_model->add_user($user);
             redirect('User/login');
@@ -91,6 +93,7 @@ class User extends CI_Controller {
 	public function logout(){
 
 		$this->session->unset_userdata('username');
+		$this->session->unset_userdata('user_photo');
 		redirect(base_url() . 'index.php/User/login');
 	}
 

@@ -7,7 +7,7 @@
       <div class="view view-cascade gradient-card-header blue-gradient">
 
         <!-- Title -->
-        <h2 class="card-header-title mb-3"><?php echo $company->en_name;?></h2>
+        <h2 class="card-header-title mb-3"><?php echo $company;?></h2>
         <!-- Subtitle -->
         <?php foreach ($result['basic']['results']['bindings'] as  $value1){ ?>
         <p class="card-header-subtitle mb-0"><?php echo $value1['description']['value'];?></p>
@@ -36,13 +36,14 @@
 
             ?>
             </p>
-
+      <?php if ($flag) {?>
       <div class="mdl-card__actions  mdl-card--border">
         <form action="<?php echo base_url().'index.php/home/Find_CV';?>" method="post">
         <input id="result" name="result" type="hidden" value="<?php echo htmlspecialchars(json_encode($result));?>"> 
         <input type="submit" value="Find CVs" />
         </form> 
       </div>
+      <?php } ?>
       </div>
 
     </div>
