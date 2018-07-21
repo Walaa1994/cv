@@ -176,14 +176,14 @@ class Home extends CI_Controller {
         $company_id=$this->session->userdata('u_id');
         $this->load->model('user_model');
         $result=$this->user_model->get_company_profile($company_id);
-        echo '<pre>';
-        print_r($result);
-        /*$this->data['companyProfile']=$result;
+        /*echo '<pre>';
+        print_r($result);*/
+        $this->data['companyProfile']=$result;
 		$this->data['pageTitle']='Home';
         $this->data['subview'] = 'company_profile';
-        $this->load->view('layouts/layout', $this->data);*/
+        $this->load->view('layouts/layout', $this->data);
 	}
-	function OneAnnouncement_page  ($id){
+	function OneAnnouncement_page  ($id,$company_name=null){
 		/*$query="PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>  
             PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
             PREFIX cv: <http://rdfs.org/resume-rdf/cv.rdfs#> 
@@ -213,11 +213,18 @@ class Home extends CI_Controller {
         $query_result=$this->query->querysparql($query,$dataset_path);
         echo '<pre>';
         print_r($query_result);*/
-
-        $com_id=$this->session->userdata('u_id');
-		$this->load->model('user_model');
-		$this->data['company']=$this->user_model->get_company($com_id);
-
+        if ($company_name!=null) {
+        	$this->data['flag']= false;
+        	$this->data['company']=$company_name;
+        }
+        else
+        {
+        	$this->data['flag']=true;
+	        $com_id=$this->session->userdata('u_id');
+			$this->load->model('user_model');
+			$com=$this->user_model->get_company($com_id);
+			$this->data['company']=$com->en_name;
+		}
         $query="PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>  
             PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
             PREFIX cv: <http://rdfs.org/resume-rdf/cv.rdfs#> 
@@ -404,6 +411,7 @@ class Home extends CI_Controller {
 	function tt(){
 		echo $this->input->post('koko');
 	}
+
 	function seeker_search(){
 		$query="PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>  
 				PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
@@ -452,13 +460,13 @@ class Home extends CI_Controller {
 			select ?s ?p ?o 
 			where {
 				?s ?p ?o.}";*/
-		echo '<pre>';
-		echo "$query";
+		/*echo '<pre>';
+		echo "$query";*/
 		$dataset_path="C:\\tdbAnnouncement";
         $this->load->library('query');
         $this->data['result']=$this->query->querysparql($query,$dataset_path);
-        echo '<pre>';
-        print_r($this->data['result']);
+        /*echo '<pre>';
+        print_r($this->data['result']);*/
         foreach ($this->data['result']['results']['bindings'] as $key => $value){ 
         	$id=$value['company']['value'];
         	$this->load->model('user_model');
@@ -467,9 +475,9 @@ class Home extends CI_Controller {
         }
         /*echo '<pre>';
         print_r($this->data['result']);*/
-        /*$this->data['pageTitle']='seeker_home';
+        $this->data['pageTitle']='seeker_home';
         $this->data['subview'] = 'seeker_home';
-        $this->load->view('layouts/layout', $this->data);*/
+        $this->load->view('layouts/layout', $this->data);
 	}
 
 	function cv_view()

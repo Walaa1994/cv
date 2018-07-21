@@ -40,7 +40,7 @@
     </div>
 
     <div class="mdl-card__actions  mdl-card--border">
-      <input type="submit" value="Find CVs" />
+      <input type="submit" value="Find Announcement" />
     </div>
 </form>
 
