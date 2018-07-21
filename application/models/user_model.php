@@ -14,7 +14,8 @@ class User_model extends CI_Model {
                             'u_id'=>$value->u_id,
                             'username' => $username,
                             'email'=>$value->Email,
-                            'type'=>$value->type
+                            'type'=>$value->type,
+                            'user_photo'=>$value->Image
                             );
             $this->session->set_userdata($session_data);
             }
