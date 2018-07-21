@@ -19,6 +19,6 @@ class RDFStore extends CI_Controller {
 			
 		    shell_exec("java -cp java_RDFStore\\*;java_RDFStore  RDFStore $rdf_path $Dataset_path");
 		    
-		    redirect('/company/CompanyHome');			
+		    redirect('/home/Company_profile');			
 		}
 }
