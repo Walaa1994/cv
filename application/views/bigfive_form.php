@@ -1,12 +1,4 @@
-<!DOCTYPE html>
-<html>
-
-<head>
 <link href="<?php echo base_url();?>/assets/css/bigfive.css" rel='stylesheet' type='text/css' />
-
-  <meta charset="UTF-8">
-  <title>Personal Test Form</title>
-
   <style>
     form#multiphase > #phase2, #phase3{ display:none; }
 
@@ -50,7 +42,16 @@
         _("multiphase").submit();
     }
   </script>
-  <body>
+ <div class="mdl-grid site-max-width">
+  <div class="mdl-cell mdl-cell--12-col mdl-card mdl-shadow--4dp welcome-card portfolio-card">
+    <div class="mdl-card__title">
+      <h2 class="mdl-card__title-text"></h2>
+    </div>
+    <div class="mdl-card__supporting-text">
+<!--       you can upload your cv and all data extract and re-stract with professional cv. -->
+    </div>
+    <div class="mdl-card__actions mdl-card-">
+      <!-- cv Form -->
   <div id="form">
   <div id="triangle"></div>
   <form id="multiphase" onsubmit="return false">
@@ -69,12 +70,22 @@
 
   <tr>
     <td>Is talkative</td>
-      <td><input type="radio" class="option-input radio" name="bigfive1" value="1"  required="required">
-      <input type="radio" id="bigfive1" name="bigfive1" value="2">
+      <td>
+      
+            <input type="radio" class="form-check-input" name="bigfive1" value="1" id="radio1" required="required">
+            <label class="form-check-label" for="radio1"></label>
+       
+      <input type="radio"  id="radio2" class="form-check-input" name="bigfive1" value="2">
+      <label class="form-check-label" for="radio2"></label>
+      
       </td>
-    <td><input type="radio" id="bigfive1" name="bigfive1" value="3"> </td>
-    <td><input type="radio" id="bigfive1" name="bigfive1" value="4">
-        <input type="radio" id="bigfive1" name="bigfive1" value="5"></td>
+
+    <td>
+<input type="radio" id="radio3" class="form-check-input" name="bigfive1" value="3"> <label class="form-check-label" for="radio3"></label> </td>
+    <td>
+<input type="radio" id="radio4" class="form-check-input" name="bigfive1" value="4">
+<label class="form-check-label" for="radio4"></label>
+<input type="radio" id="radio5" class="form-check-input" name="bigfive1" value="5"><label class="form-check-label" for="radio5"></label></td>
   </tr>
   
 
@@ -425,7 +436,7 @@
 
   <tr>
     <td> Is sometimes shy, inhibited  </td>
-      <td><input type="radio" class="option-input radio" name="bigfive31" value="1"  required="required">
+      <td><input type="radio" class="form-check-input" name="bigfive31" value="1"  required="required">
       <input type="radio" id="bigfive31" name="bigfive31" value="2">
       </td>
     <td><input type="radio" id="bigfive31" name="bigfive31" value="3"> </td>
@@ -579,4 +590,6 @@
     <!-- end phase3 -->
   </form>
 </div>
-</body>
+</div>
+</div>
+</div>
