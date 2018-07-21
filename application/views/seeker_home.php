@@ -46,6 +46,7 @@
               <label for="salary" class="">Salary</label>
           </div>
         </div>
+
         <div class="col-md-3 mb-3">
           <div class="md-form">
               <input type="text" id="locality" class="form-control">
