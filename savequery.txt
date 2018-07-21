@@ -1,12 +1,11 @@
-PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>  
-            PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
-            PREFIX cv: <http://rdfs.org/resume-rdf/cv.rdfs#> 
-            PREFIX vcard: <http://www.w3.org/2006/vcard/ns#>
-            PREFIX foaf: <http://xmlns.com/foaf/0.1/>
-            select ?job ?id
-            where {
-                ?ann cv:hasTarget ?w . 
-                ?w cv:targetCompanyDescription "".
-                ?w cv:targetJobDescription ?job.
-                ?ann cv:cvTitle ?id.
-            } 
+PREFIX cv: <http://rdfs.org/resume-rdf/cv.rdfs#> 
+                    PREFIX vcard: <http://www.w3.org/2006/vcard/ns#>
+                    PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+                    select ?skillName ?skillYearsExperience ?skillLevel  
+                    where {
+                     ?resume cv:cvTitle "65".
+                     ?resume cv:hasSkill ?q .
+                     ?q cv:skillName ?skillName.
+                     ?q cv:skillYearsExperience ?skillYearsExperience.
+                     ?q cv:skillLevel ?skillLevel.
+                    }

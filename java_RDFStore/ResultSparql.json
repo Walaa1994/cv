@@ -1,12 +1,18 @@
 {
   "head": {
-    "vars": [ "FirstName" , "LastName" , "id" ]
+    "vars": [ "skillName" , "skillYearsExperience" , "skillLevel" ]
   } ,
   "results": {
     "bindings": [
       {
-        "FirstName": { "type": "literal" , "value": "roula" } ,
-        "LastName": { "type": "literal" , "value": "arab" }
+        "skillName": { "type": "literal" , "value": "c++" } ,
+        "skillYearsExperience": { "type": "literal" , "value": "2" } ,
+        "skillLevel": { "type": "literal" , "value": "3" }
+      } ,
+      {
+        "skillName": { "type": "literal" , "value": "php" } ,
+        "skillYearsExperience": { "type": "literal" , "value": "3" } ,
+        "skillLevel": { "type": "literal" , "value": "3" }
       }
     ]
   }
