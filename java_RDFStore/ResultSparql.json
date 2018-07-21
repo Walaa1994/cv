@@ -4,11 +4,7 @@
   } ,
   "results": {
     "bindings": [
-      {
-        "skillName": { "type": "literal" , "value": "" } ,
-        "skillYearsExperience": { "type": "literal" , "value": "" } ,
-        "skillLevel": { "type": "literal" , "value": "" }
-      }
+      
     ]
   }
 }

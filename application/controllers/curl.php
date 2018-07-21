@@ -42,7 +42,7 @@ class Curl extends CI_Controller {
         $Agreeableness = $decoded['personality'][3]['percentile'];
         $neuroticism = $decoded['personality'][4]['percentile'];
 
-        $id=66;
+        $id=$this->session->userdata('u_id');
         $this->updatesparql($Openness,$Conscientiousness, $Extraversion,$Agreeableness,$neuroticism,$id);
         //print_r($decoded);
     }
