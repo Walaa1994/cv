@@ -194,8 +194,33 @@ class Seeker extends CI_Controller {
         $ReferencesTag->appendChild($ref_phoneTag);
         $ReferencesTag->appendChild($ref_emailTag);
         $rootTag->appendChild($ReferencesTag);
-
         //end References
+
+        $config['upload_path']          = './assets/UserPhoto/';
+        $config['allowed_types']        = 'gif|jpg|png|jpeg';
+        $config['max_size']       = '2000';
+        $config['max_width']      = '2000';
+        $config['m_checkstatus(conn, identifier)ax_height']     = '2000';
+
+        $newname=$this->session->userdata('username');
+        $config['file_name'] = $newname;
+        $config['overwrite'] = TRUE;
+        $this->load->library('upload', $config);
+        $id = $this->session->userdata('u_id');
+                if ( $this->upload->do_upload('userfile'))
+                {             
+                  $file_data = $this->upload->data();
+                  $data['img'] = base_url().'/assets/UserPhoto/' .$file_data['file_name'];
+                }
+                else
+                {
+                  $data['img']=base_url().'/assets/UserPhoto/default_photo.jpg';
+                }
+                    
+          $this->load->model('user_model');
+          $this->user_model->edit_image($id,$data['img']);
+          $this->session->set_userdata('user_photo',$data['img']);
+        
         $xml->save('cv.xml') or die('XML Create Error');   
 
         redirect('/Xslt/xslt_cv/cv.xml');

@@ -20,11 +20,18 @@
 
 <section class="section--center mdl-grid site-max-width">
   <header class="section__play-btn mdl-cell mdl-cell--3-col-desktop mdl-cell--2-col-tablet mdl-cell--4-col-phone mdl-color--teal-100 mdl-color-text--white  mdl-shadow--4dp">
-    <i class="fa fa-user fa-5x" aria-hidden="true"></i>
+    <!--<i  aria-hidden="true"></i>-->
+    <div  >
+        <img src="<?php echo $this->session->userdata('user_photo')?>" alt="image" class="img_float_l img_frame"/>
+    </div>
+
   </header>
   <div class="mdl-card mdl-cell mdl-cell--9-col-desktop mdl-cell--6-col-tablet mdl-cell--4-col-phone  mdl-shadow--4dp">
     <div class="mdl-card__title">
-        <h2 class="mdl-card__title-text"><?php echo $first_name." ".$last_name; ?></h2>
+        <h2 class="mdl-card__title-text">
+        <?php 
+           echo $first_name." ".$last_name;
+        ?></h2>
     </div>
     <div class="mdl-card__supporting-text">
      <?php echo $gender.' - '.$birthday; echo "<br>";
