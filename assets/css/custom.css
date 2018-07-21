@@ -3,3 +3,11 @@
   height: 290px;
   background: url("../img/Company-data.jpg") center/cover;
 }
+
+
+.welcome-card > .bigfive-cover {
+  color: #fff;
+  height: 290px;
+  background: url("../img/bigfive-5.jpg") center/cover;
+
+}

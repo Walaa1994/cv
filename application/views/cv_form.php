@@ -180,7 +180,10 @@ $(document).ready(function () {
       <!-- cv Form -->
       <div id="Form">
         <!-- <div id="triangle"></div> -->
-        <form id="multiphase" onsubmit="return false">
+        <!-- <form id="multiphase" onsubmit="return false"> -->
+         <?php
+         $attributes = array('id' => 'multiphase', 'onsubmit' => 'return false');
+          echo form_open_multipart('', $attributes);?>
             <progress id="progressBar" value="16" max="100" style="width:250px;"></progress>
             <h3 id="status">Phase 1 of 6</h3>
           <!-- start phase1 -->
@@ -335,13 +338,15 @@ $(document).ready(function () {
               <div class="col-md-10 mb-4">
                   <div class="md-form">
                       <div class="file-field">
+                       
                          <div class="btn btn-primary btn-sm float-left waves-effect waves-light">
                             <span>Choose file</span>
-                              <input type="file"  name="userFile">
+                              <input type="file"  name="userfile">
                           </div>
                       <div class="file-path-wrapper">
                               <input class="file-path validate" type="text" placeholder="Upload your file">
                       </div>
+                      
                       </div>
                   </div>
               </div>

@@ -56,6 +56,7 @@ class Home extends CI_Controller {
 		$Street=$query_result['results']['bindings'][0]['Street']['value'];
 		//echo '<pre>';
 		//print_r($query_result);
+		if(!($first_name==null))
 		$this->data['first_name']=$first_name;
 		$this->data['last_name']=$last_name;
 		$this->data['birthday']=$birthday;
@@ -172,10 +173,15 @@ class Home extends CI_Controller {
 	}
 
 	function Company_profile (){
-
+        $company_id=$this->session->userdata('u_id');
+        $this->load->model('user_model');
+        $result=$this->user_model->get_company_profile($company_id);
+        echo '<pre>';
+        print_r($result);
+        /*$this->data['companyProfile']=$result;
 		$this->data['pageTitle']='Home';
         $this->data['subview'] = 'company_profile';
-        $this->load->view('layouts/layout', $this->data);
+        $this->load->view('layouts/layout', $this->data);*/
 	}
 	function OneAnnouncement_page  ($id){
 		/*$query="PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>  

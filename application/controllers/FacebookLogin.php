@@ -6,7 +6,9 @@
 
      public function index(){
 
-        $this->load->view('FacebookLogin');
+        $this->data['pageTitle']='Home';
+        $this->data['subview'] = 'FacebookLogin';
+        $this->load->view('layouts/layout', $this->data);
 
     }
 
