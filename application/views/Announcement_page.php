@@ -8,7 +8,7 @@
                         <div class="text-white text-center d-flex align-items-center rgba-black-strong py-5 px-4">
                             <div>
                                 <h5 class="pink-text">
-                                    <i class="fa fa-bullhorn"></i> Marketing</h5>
+                                    <i class="fa fa-bullhorn"></i> Announcement</h5>
                                 <h3 class="card-title pt-2">
                                     <strong><?php echo $company->en_name; ?></strong>
                                 </h3>

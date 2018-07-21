@@ -396,14 +396,11 @@ class Home extends CI_Controller {
 	function test(){
 		$this->data['pageTitle']='Home';
         $this->data['subview'] = 'blank';
-        $this->data['result'] = '';
+        $this->data['result']  = array('koko' =>1 ,'toto'=>2, 'fofo'=>3,'kk'=>1,'a'=>2, 'z'=>3,'b'=>1);
         $this->load->view('layouts/layout', $this->data);
 		/*$this->load->view('blank');*/
 	}
-
-	function tt(){
-		echo $this->input->post('koko');
-	}
+    
 	function seeker_search(){
 		$query="PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>  
 				PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
