@@ -21,12 +21,6 @@ class Seeker extends CI_Controller {
         $this->load->view('layouts/layout', $this->data);
     }
 
-    public function CV_search()
-    {
-        $this->data['pageTitle']='CV Search';
-        $this->data['subview'] = 'cv-search';
-        $this->load->view('layouts/layout', $this->data);
-    }
     public function CVFormInfo()
     {
         //Personal Information

@@ -6,6 +6,7 @@ class Company extends CI_Controller {
 
     public function CompanyHome()
     {
+        $this->data['result'] = array('yyy','hh','kk','bb','vvv');
         $this->data['pageTitle']='Company Home';
         $this->data['subview'] = 'company_home';
         $this->load->view('layouts/layout', $this->data);
