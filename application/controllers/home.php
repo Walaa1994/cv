@@ -356,7 +356,7 @@ class Home extends CI_Controller {
 		    $eduMajor=$value2['eduMajor']['value'];
 		    $eduDegree=$value2['eduDegree']['value'];
 		    $query.="?w cv:eduMajor \"$eduMajor\".
-		    ?w cv:degreeType <http://rdfs.org/resume-rdf/base.rdfs#EduBachelor>.";
+		    ?w cv:degreeType \"$eduDegree\".";
         }
 
         $i=1;
