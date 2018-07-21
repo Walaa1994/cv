@@ -381,10 +381,11 @@ $(document).ready(function () {
               <div class="row">
               <div class="col-md-10 mb-4">
                 <p id="radio_active">Is Active</p>
+                <input type="hidden" value="False" name="IsActive" />
                 <div class="switch">
                     <label>
                         Off
-                        <input type="checkbox" checked="checked" name="IsActive" >
+                        <input type="checkbox" checked="checked" value="True" name="IsActive" >
                         <span class="lever"></span> On
                     </label>
                 </div>

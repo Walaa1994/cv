@@ -387,6 +387,17 @@ class Home extends CI_Controller {
         $this->load->view('layouts/layout', $this->data);
 	}
 
+	function test(){
+		$this->data['pageTitle']='Home';
+        $this->data['subview'] = 'blank';
+        $this->data['result'] = '';
+        $this->load->view('layouts/layout', $this->data);
+		/*$this->load->view('blank');*/
+	}
+
+	function tt(){
+		echo $this->input->post('koko');
+	}
 	function seeker_search(){
 		$query="PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>  
 				PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
@@ -435,13 +446,13 @@ class Home extends CI_Controller {
 			select ?s ?p ?o 
 			where {
 				?s ?p ?o.}";*/
-		/*echo '<pre>';
-		echo "$query";*/
+		echo '<pre>';
+		echo "$query";
 		$dataset_path="C:\\tdbAnnouncement";
         $this->load->library('query');
         $this->data['result']=$this->query->querysparql($query,$dataset_path);
-        /*echo '<pre>';
-        print_r($this->data['result']);*/
+        echo '<pre>';
+        print_r($this->data['result']);
         foreach ($this->data['result']['results']['bindings'] as $key => $value){ 
         	$id=$value['company']['value'];
         	$this->load->model('user_model');
@@ -450,9 +461,9 @@ class Home extends CI_Controller {
         }
         /*echo '<pre>';
         print_r($this->data['result']);*/
-        $this->data['pageTitle']='seeker_home';
+        /*$this->data['pageTitle']='seeker_home';
         $this->data['subview'] = 'seeker_home';
-        $this->load->view('layouts/layout', $this->data);
+        $this->load->view('layouts/layout', $this->data);*/
 	}
 
 	function cv_view()
