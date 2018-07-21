@@ -218,10 +218,6 @@ class Seeker extends CI_Controller {
                   $file_data = $this->upload->data();
                   $data['img'] = base_url().'/assets/UserPhoto/' .$file_data['file_name'];
                 }
-                else
-                {
-                  $data['img']=base_url().'/assets/UserPhoto/default_photo.jpg';
-                }
                     
           $this->load->model('user_model');
           $this->user_model->edit_image($id,$data['img']);

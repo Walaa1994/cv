@@ -20,7 +20,6 @@
 
 <section class="section--center mdl-grid site-max-width">
   <header class="section__play-btn mdl-cell mdl-cell--3-col-desktop mdl-cell--2-col-tablet mdl-cell--4-col-phone mdl-color--teal-100 mdl-color-text--white  mdl-shadow--4dp">
-    <!--<i  aria-hidden="true"></i>-->
     <div  >
         <img src="<?php echo $this->session->userdata('user_photo')?>" alt="image" class="img_float_l img_frame"/>
     </div>
@@ -29,7 +28,7 @@
   <div class="mdl-card mdl-cell mdl-cell--9-col-desktop mdl-cell--6-col-tablet mdl-cell--4-col-phone  mdl-shadow--4dp">
     <div class="mdl-card__title">
         <h2 class="mdl-card__title-text">
-        <?php 
+        <?php
            echo $first_name." ".$last_name;
         ?></h2>
     </div>
@@ -60,6 +59,7 @@
         <div class="mdl-card__supporting-text">
           <ul>
           <?php 
+           if($eduMajor!="Certificate : "){
             foreach($eduMajor as $key => $value) {?>
             <li>
               <?php
@@ -71,7 +71,16 @@
                echo "Degree Type : ".$degreeType[$key]; echo "<br>";
               ?>  
             </li>
-            <?php }?>
+            <?php } }
+              else {
+                echo $eduMajor; echo "<br>";
+                echo $eduMinor; echo "<br>";
+                echo $eduStartDate; echo "<br>";
+                echo $eduGradDate; echo "<br>";
+                echo $studiedIn; echo "<br>";
+                echo $degreeType; echo "<br>";
+              }
+            ?>
           </ul>
         </div>
     </div>
@@ -85,6 +94,7 @@
         <div class="mdl-card__supporting-text">
             <ul>
             <?php 
+            if($employedIn !="Company : "){
             foreach($employedIn as $key => $value) {?>
             <li>
               <?php
@@ -97,7 +107,17 @@
                echo "Is Current : ".$isCurrent[$key]; echo "<br>";
               ?>
             </li>
-            <?php }?>
+            <?php } }
+            else {
+                echo $employedIn."<br>";
+                echo $jobTitle."<br>";
+                echo $startDate."<br>";
+                echo $endDate."<br>";
+                echo $careerLevel."<br>";
+                echo $jobType."<br>";
+                echo $isCurrent."<br>";
+              }
+            ?>
           </ul>
         </div>
     </div>
@@ -111,6 +131,7 @@
         <div class="mdl-card__supporting-text">
             <ul>
              <?php 
+             if($skillName!="Skill Name : "){
             foreach($skillName as $key => $value) {?>
             <li>
               <?php
@@ -120,7 +141,12 @@
 
               ?>  
             </li>
-            <?php }?>
+            <?php } }
+            else {
+                echo $skillName."<br>";
+                echo $skillYearsExperience."<br>";
+                echo $skillLevel."<br>";
+                }?>
           </ul>
         </div>
     </div>

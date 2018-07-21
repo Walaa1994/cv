@@ -43,31 +43,47 @@ class Home extends CI_Controller {
 			}    ";
 		$this->load->library('query');
 		$query_result=$this->query->querysparql($personalInfo,$Dataset_path);
-		$first_name=$query_result['results']['bindings'][0]['FirstName']['value'];
-		$last_name=$query_result['results']['bindings'][0]['LastName']['value'];
-		$birthday=$query_result['results']['bindings'][0]['Birthday']['value'];
-		$gender=$query_result['results']['bindings'][0]['Gender']['value'];
-		$Nationality=$query_result['results']['bindings'][0]['Nationality']['value'];
-		$MaritalStatus=$query_result['results']['bindings'][0]['MaritalStatus']['value'];
-		$Phone=$query_result['results']['bindings'][0]['Phone']['value'];
-		$Email=$query_result['results']['bindings'][0]['Email']['value'];
-		$Country=$query_result['results']['bindings'][0]['Country']['value'];
-		$City=$query_result['results']['bindings'][0]['City']['value'];
-		$Street=$query_result['results']['bindings'][0]['Street']['value'];
-		//echo '<pre>';
-		//print_r($query_result);
-		if(!($first_name==null))
-		$this->data['first_name']=$first_name;
-		$this->data['last_name']=$last_name;
-		$this->data['birthday']=$birthday;
-		$this->data['gender']=$gender;
-		$this->data['Nationality']=$Nationality;
-		$this->data['MaritalStatus']=$MaritalStatus;
-		$this->data['Phone']=$Phone;
-		$this->data['Email']=$Email;
-		$this->data['Country']=$Country;
-		$this->data['City']=$City;
-		$this->data['Street']=$Street;
+    
+        if($query_result['results']['bindings']!= null)
+		{
+            $first_name=$query_result['results']['bindings'][0]['FirstName']['value'];
+    		$last_name=$query_result['results']['bindings'][0]['LastName']['value'];
+    		$birthday=$query_result['results']['bindings'][0]['Birthday']['value'];
+    		$gender=$query_result['results']['bindings'][0]['Gender']['value'];
+    		$Nationality=$query_result['results']['bindings'][0]['Nationality']['value'];
+    		$MaritalStatus=$query_result['results']['bindings'][0]['MaritalStatus']['value'];
+    		$Phone=$query_result['results']['bindings'][0]['Phone']['value'];
+    		$Email=$query_result['results']['bindings'][0]['Email']['value'];
+    		$Country=$query_result['results']['bindings'][0]['Country']['value'];
+    		$City=$query_result['results']['bindings'][0]['City']['value'];
+    		$Street=$query_result['results']['bindings'][0]['Street']['value'];
+        
+		
+    		$this->data['first_name']=$first_name;
+    		$this->data['last_name']=$last_name;
+    		$this->data['birthday']=$birthday;
+    		$this->data['gender']=$gender;
+    		$this->data['Nationality']=$Nationality;
+    		$this->data['MaritalStatus']=$MaritalStatus;
+    		$this->data['Phone']=$Phone;
+    		$this->data['Email']=$Email;
+    		$this->data['Country']=$Country;
+    		$this->data['City']=$City;
+    		$this->data['Street']=$Street;
+        }
+        else{
+            $this->data['first_name']="Full ";
+            $this->data['last_name']="Name  ";
+            $this->data['birthday']="Birthday : ";
+            $this->data['gender']="Gender ";
+            $this->data['Nationality']=" ";
+            $this->data['MaritalStatus']=" ";
+            $this->data['Phone']="Phone :";
+            $this->data['Email']="Email :";
+            $this->data['Country']="Country";
+            $this->data['City']="City";
+            $this->data['Street']="Street";
+        }
 
         $Education ="PREFIX cv: <http://rdfs.org/resume-rdf/cv.rdfs#> 
 					PREFIX vcard: <http://www.w3.org/2006/vcard/ns#>
@@ -85,24 +101,34 @@ class Home extends CI_Controller {
 					}";
 		$this->load->library('query');
 		$edu_result=$this->query->querysparql($Education,$Dataset_path);
-		//echo '<pre>';
-		//print_r($edu_result);
 
-       foreach ($edu_result['results']['bindings'] as  $value) {
-       	$eduMajor[]=$value['eduMajor']['value'];
-       	$eduMinor[]=$value['eduMinor']['value'];
-       	$eduStartDate[]=$value['eduStartDate']['value'];
-       	$eduGradDate[]=$value['eduGradDate']['value'];
-       	$studiedIn[]=$value['studiedIn']['value'];
-       	$degreeType[]=$value['degreeType']['value'];
+       if($edu_result['results']['bindings']!= null)
+        {
+           foreach ($edu_result['results']['bindings'] as  $value)
+            {
+           	$eduMajor[]=$value['eduMajor']['value'];
+           	$eduMinor[]=$value['eduMinor']['value'];
+           	$eduStartDate[]=$value['eduStartDate']['value'];
+           	$eduGradDate[]=$value['eduGradDate']['value'];
+           	$studiedIn[]=$value['studiedIn']['value'];
+           	$degreeType[]=$value['degreeType']['value'];
+           }
+
+           $this->data['eduMajor']=$eduMajor;
+           $this->data['eduMinor']=$eduMinor;
+           $this->data['eduStartDate']=$eduStartDate;
+           $this->data['eduGradDate']=$eduGradDate;
+           $this->data['studiedIn']=$studiedIn;
+           $this->data['degreeType']=$degreeType;
        }
-
-       $this->data['eduMajor']=$eduMajor;
-       	$this->data['eduMinor']=$eduMinor;
-       	$this->data['eduStartDate']=$eduStartDate;
-        $this->data['eduGradDate']=$eduGradDate;
-        $this->data['studiedIn']=$studiedIn;
-        $this->data['degreeType']=$degreeType;
+       else{
+           $this->data['eduMajor']="Certificate : ";
+           $this->data['eduMinor']="Specialization :";
+           $this->data['eduStartDate']="Start Date: ";
+           $this->data['eduGradDate']="Date of Grants : ";
+           $this->data['studiedIn']="Donor : ";
+           $this->data['degreeType']="Degree Type : ";
+       }
 
        $workHistory="PREFIX cv: <http://rdfs.org/resume-rdf/cv.rdfs#> 
 					PREFIX vcard: <http://www.w3.org/2006/vcard/ns#>
@@ -121,27 +147,39 @@ class Home extends CI_Controller {
 					}";
 		$this->load->library('query');
 		$work_result=$this->query->querysparql($workHistory,$Dataset_path);
-		//echo '<pre>';
-		//print_r($work_result);
-		foreach ($work_result['results']['bindings'] as  $value) {
-       	$employedIn[]=$value['employedIn']['value'];
-       	$jobTitle[]=$value['jobTitle']['value'];
-       	$startDate[]=$value['startDate']['value'];
-       	$endDate[]=$value['endDate']['value'];
-       	$careerLevel[]=$value['careerLevel']['value'];
-       	$jobType[]=$value['jobType']['value'];
-       	$isCurrent[]=$value['isCurrent']['value'];
-       }
-
-
-       	$this->data['employedIn']=$employedIn;
-       	$this->data['jobTitle']=$jobTitle;
-       	$this->data['startDate']=$startDate;
-        $this->data['endDate']=$endDate;
-        $this->data['careerLevel']=$careerLevel;
-        $this->data['jobType']=$jobType;
-        $this->data['isCurrent']=$isCurrent;
-
+        //echo '<pre>';
+        //print_r($work_result);
+		
+        if($work_result['results']['bindings']!= null)
+        {
+    		foreach ($work_result['results']['bindings'] as  $value)
+             {
+           	$employedIn[]=$value['employedIn']['value'];
+           	$jobTitle[]=$value['jobTitle']['value'];
+           	$startDate[]=$value['startDate']['value'];
+           	$endDate[]=$value['endDate']['value'];
+           	$careerLevel[]=$value['careerLevel']['value'];
+           	$jobType[]=$value['jobType']['value'];
+           	$isCurrent[]=$value['isCurrent']['value'];
+            }
+           	$this->data['employedIn']=$employedIn;
+            //print_r($this->data['employedIn']) ;
+           	$this->data['jobTitle']=$jobTitle;
+           	$this->data['startDate']=$startDate;
+            $this->data['endDate']=$endDate;
+            $this->data['careerLevel']=$careerLevel;
+            $this->data['jobType']=$jobType;
+            $this->data['isCurrent']=$isCurrent;
+        }
+        else{
+            $this->data['employedIn']="Company : ";
+            $this->data['jobTitle']="Job Position : ";
+            $this->data['startDate']="From : ";
+            $this->data['endDate']="To : ";
+            $this->data['careerLevel']="Career Level : ";
+            $this->data['jobType']="Job Type : ";
+            $this->data['isCurrent']="Is Current : ";
+        }
 
        $skills="PREFIX cv: <http://rdfs.org/resume-rdf/cv.rdfs#> 
 					PREFIX vcard: <http://www.w3.org/2006/vcard/ns#>
@@ -157,15 +195,22 @@ class Home extends CI_Controller {
 		$this->load->library('query');
 		$skills_result=$this->query->querysparql($skills,$Dataset_path);
 
-		foreach ($skills_result['results']['bindings'] as  $value) {
-       	$skillName[]=$value['skillName']['value'];
-       	$skillYearsExperience[]=$value['skillYearsExperience']['value'];
-       	$skillLevel[]=$value['skillLevel']['value'];
-       }
-
-        $this->data['skillName']=$skillName;
-       	$this->data['skillYearsExperience']=$skillYearsExperience;
-       	$this->data['skillLevel']=$skillLevel;
+        if($skills_result['results']['bindings']!= null)
+        {
+    		foreach ($skills_result['results']['bindings'] as  $value) {
+           	$skillName[]=$value['skillName']['value'];
+           	$skillYearsExperience[]=$value['skillYearsExperience']['value'];
+           	$skillLevel[]=$value['skillLevel']['value'];
+           }
+            $this->data['skillName']=$skillName;
+           	$this->data['skillYearsExperience']=$skillYearsExperience;
+           	$this->data['skillLevel']=$skillLevel;
+        }
+        else{
+            $this->data['skillName']="Skill Name : ";
+            $this->data['skillYearsExperience']="Years of experience : ";
+            $this->data['skillLevel']="Skill Level : ";
+        }
 
 		$this->data['pageTitle']='Home';
         $this->data['subview'] = 'seeker_profile';
@@ -182,7 +227,7 @@ class Home extends CI_Controller {
 
 		$this->data['pageTitle']='Home';
         $this->data['subview'] = 'company_profile';
-        $this->load->view('layouts/layout', $this->data);*/
+        $this->load->view('layouts/layout', $this->data);
 	}
 	function OneAnnouncement_page  ($id,$company_name=null){
 		/*$query="PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>  
