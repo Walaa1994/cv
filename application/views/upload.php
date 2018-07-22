@@ -4,7 +4,7 @@
       <h1 class="mdl-card__title-text">Upload your CV</h1>
     </div>
     <div class="mdl-card__media">
-      <img class="article-image" src="<?php echo base_url();?>/assets/img/about.jpg" border="0" alt="About">
+      <img class="article-image" src="<?php echo base_url();?>/assets/img/upload.banner.jpg" border="0" alt="About">
     </div>
     <div class="mdl-grid site-copy">
         <div class="mdl-cell mdl-cell--12-col">

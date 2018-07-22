@@ -25,6 +25,12 @@ class Company extends CI_Controller {
         $this->data['subview'] = 'announcement_form';
         $this->load->view('layouts/layout', $this->data);
     }
+    function oneAnnouncement()
+    {
+        $this->data['pageTitle']='Home';
+        $this->data['subview'] = 'AnnouncementOne';
+        $this->load->view('layouts/layout', $this->data);
+    }
 
     public function AnnouncementInfo()
     {

@@ -3,7 +3,11 @@ PREFIX cv: <http://rdfs.org/resume-rdf/cv.rdfs#>
 					PREFIX foaf: <http://xmlns.com/foaf/0.1/>
 					select ?skillName ?skillYearsExperience ?skillLevel  
 					where {
+<<<<<<< HEAD
 					 ?resume cv:cvTitle "".
+=======
+					 ?resume cv:cvTitle "78".
+>>>>>>> BatoulBranch
 					 ?resume cv:hasSkill ?q .
 					 ?q cv:skillName ?skillName.
 					 ?q cv:skillYearsExperience ?skillYearsExperience.
