@@ -19,9 +19,13 @@ class Home extends CI_Controller {
     }
 
     //function that hold all data ... Enas
-    function seeker_data()
+    function seeker_data($seeker_id=null)
     {
-        $id=$this->session->userdata('u_id');
+    	if ($seeker_id != null) {
+    		$id=$seeker_id;
+    	} else {
+    		$id=$this->session->userdata('u_id');
+    	}
         $Dataset_path="C:\\tdbCV";
         $personalInfo="PREFIX cv: <http://rdfs.org/resume-rdf/cv.rdfs#> 
             PREFIX vcard: <http://www.w3.org/2006/vcard/ns#>
@@ -351,14 +355,14 @@ class Home extends CI_Controller {
     {
         $dataJson = $this->input->post('result');
         $result = json_decode(htmlspecialchars_decode($dataJson), true);
-        echo '<pre>';
-        print_r($result);
-        $query="PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>  
+        /*echo '<pre>';
+        print_r($result);*/
+		$query="PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>  
         PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
         PREFIX cv: <http://rdfs.org/resume-rdf/cv.rdfs#> 
         PREFIX vcard: <http://www.w3.org/2006/vcard/ns#>
         PREFIX foaf: <http://xmlns.com/foaf/0.1/>
-        select ?FirstName ?LastName ?id
+        select ?id
         where {
             {
             ?resume cv:cvTitle ?id.
@@ -383,8 +387,6 @@ class Home extends CI_Controller {
         }
 
         $query.="?resume cv:aboutPerson ?person.  
-            ?person foaf:firstName ?FirstName .
-            ?person foaf:lastName  ?LastName .
             ?person vcard:hasAddress ?address.";
 
         foreach ($result['basic']['results']['bindings'] as  $value1){
@@ -405,13 +407,24 @@ class Home extends CI_Controller {
         }";
         }
 
-        echo "$query";
+        //echo "$query";
         $dataset_path="C:\\tdbCV";
         $this->load->library('query');
         $query_result=$this->query->querysparql($query,$dataset_path);
-        echo '<pre>';
-        print_r($query_result);
-    }
+        /*echo '<pre>';
+        print_r($query_result);*/
+        foreach ($query_result['results']['bindings'] as $value) {
+        	if (array_key_exists("id",$value))
+        		$user_result[]=$this->seeker_data($value['id']['value']);
+        }
+        /*echo '<pre>';
+        print_r($result); */ 
+        $this->data['result']=$user_result;
+        $this->data['pageTitle']='Cv View';
+        $this->data['subview'] = 'cv-view';
+        $this->load->view('layouts/layout', $this->data); 
+
+	}
 
     function Announcement_page  (){
         $id=$this->session->userdata('u_id');
@@ -544,7 +557,6 @@ class Home extends CI_Controller {
     {
         $this->data['pageTitle']='Cv View';
         $this->data['subview'] = 'cv-view';
-        $this->data['result'] = array('yyy','hh','kk','bb','vvv');
         $this->load->view('layouts/layout', $this->data);
     }
 
