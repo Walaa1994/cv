@@ -109,7 +109,6 @@ class myPDF extends FPDF{
 
 		foreach($skillName as $key => $value)
 		{
-		    //$this->fpdf->initialize('P','mm','A4');
 		    $this->SetFont('Times','',16);
 			$this->SetTextColor(0,0,0);
 			$this->Cell(50,10,'Skill Name :',0,0,'L');	
@@ -125,31 +124,34 @@ class myPDF extends FPDF{
 		}
 	}
 
-	//not work yet by rola
-	/*function cvLanguage($Name,$SpokenLevel,$ReadingLevel,$WritingLevel){
+	function cvLanguage($langName,$langspeaking,$langReading,$langwriting){
 	
 		$this->SetFont('Courier','',22);
 		$this->SetTextColor(10,28,99);
 		$this->Cell(276,25,'Language',0,0,'C');
 		$this->Ln();
-		$this->SetFont('Times','',16);
-		$this->SetTextColor(0,0,0);
-		$this->Cell(20,10,'Name :',0,0,'L');	
-		$this->Cell(10,10,$Name,0,0,'L');
-		$this->Ln();
-		$this->Cell(40,10,'Spoken Level :',0,0,'L');	
-		$this->Cell(10,10,$SpokenLevel,0,0,'L');
-		$this->Ln();
-		$this->Cell(40,10,'Reading Level :',0,0,'L');	
-		$this->Cell(10,10,$ReadingLevel,0,0,'L');
-		$this->Ln();
-		$this->Cell(40,10,'Writing Level :',0,0,'L');	
-		$this->Cell(10,10,$WritingLevel,0,0,'L');
-		$this->Ln();
+
+		foreach($langName as $key => $value)
+		{
+			$this->SetFont('Times','',16);
+			$this->SetTextColor(0,0,0);
+			$this->Cell(20,10,'Name :',0,0,'L');	
+			$this->Cell(10,10,$value,0,0,'L');
+			$this->Ln();
+			$this->Cell(40,10,'Spoken Level :',0,0,'L');	
+			$this->Cell(10,10,$langspeaking[$key],0,0,'L');
+			$this->Ln();
+			$this->Cell(40,10,'Reading Level :',0,0,'L');	
+			$this->Cell(10,10,$langReading[$key],0,0,'L');
+			$this->Ln();
+			$this->Cell(40,10,'Writing Level :',0,0,'L');	
+			$this->Cell(10,10,$langwriting[$key],0,0,'L');
+			$this->Ln();
+			$this->Ln();
+		}
 	}
 
-	//not work yet by rola
-	function cvReference(){
+	function cvReference($name,$Phone,$Email){
 	
 		$this->SetFont('Courier','',22);
 		$this->SetTextColor(10,28,99);
@@ -158,15 +160,15 @@ class myPDF extends FPDF{
 		$this->SetFont('Times','',16);
 		$this->SetTextColor(0,0,0);
 		$this->Cell(20,10,'Name :',0,0,'L');	
-		$this->Cell(10,10,$xml->References->Name,0,0,'L');
+		$this->Cell(10,10,$name,0,0,'L');
 		$this->Ln();
 		$this->Cell(20,10,'Phone :',0,0,'L');	
-		$this->Cell(10,10,$xml->References->Phone,0,0,'L');
+		$this->Cell(10,10,$Phone,0,0,'L');
 		$this->Ln();
 		$this->Cell(20,10,'Email :',0,0,'L');	
-		$this->Cell(10,10,$xml->References->Email,0,0,'L');
+		$this->Cell(10,10,$Email,0,0,'L');
 		$this->Ln();
-	}*/
+	}
 
 	// Page footer
 	function Footer(){
@@ -192,8 +194,8 @@ $pdf->cvPersonalInfo($birthday,$Nationality,$MaritalStatus,$gender,$Phone,$Email
 $pdf->cvEDU($eduMajor,$eduMinor,$eduStartDate,$eduGradDate,$studiedIn,$degreeType);
 $pdf->cvWork($employedIn,$jobTitle,$startDate,$endDate,$careerLevel,$jobType);
 $pdf->cvSkills($skillName,$skillYearsExperience,$skillLevel);
-//$pdf->cvLanguage($Name,$SpokenLevel,$ReadingLevel,$WritingLevel);
-//$pdf->cvReference();
+$pdf->cvLanguage($langName,$langspeaking,$langReading,$langwriting);
+$pdf->cvReference($name,$Phone,$Email);
 $pdf->Output();
 
 ?>
