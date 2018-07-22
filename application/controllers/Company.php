@@ -122,7 +122,7 @@ class Company extends CI_Controller {
     {
         $this->load->model('user_model');
         $this->user_model->add_company();
-        $this->load->view('company_home');
+        $this->load->view('company_profile');
     }
 }
 
