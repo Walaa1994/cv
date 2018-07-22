@@ -19,7 +19,7 @@
                     </h3>
                         <p class="pb-3"><?php echo $value['description']['value'];?></p>
 
-                        <a href="<?php echo(site_url('Home/OneAnnouncement_page/'.$value['id']['value'].'/'. $value['company']['value']));?>"  class="btn btn-pink waves-effect waves-light">
+                        <a href="<?php echo(site_url('company/oneAnnouncement/'.$value['id']['value'].'/'. $value['company']['value']));?>"  class="btn btn-pink waves-effect waves-light">
 
                             <i class="fa fa-clone left"></i> Read More</a>
                             </div>
