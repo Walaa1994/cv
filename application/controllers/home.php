@@ -218,6 +218,75 @@ class Home extends CI_Controller {
             $this->data['skillLevel']="Skill Level : ";
         }
 
+        $lang="PREFIX cv: <http://rdfs.org/resume-rdf/cv.rdfs#> 
+                    PREFIX vcard: <http://www.w3.org/2006/vcard/ns#>
+                    PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+                    select ?skillName ?skillLevel ?lngSkillLevelReading ?lngSkillLevelWritten  
+                    where {
+                     ?resume cv:cvTitle \"$id\".
+                     ?resume cv:hasSkill ?q .
+                     ?q cv:skillName ?skillName.
+                     ?q cv:skillLevel ?skillLevel.
+                     ?q cv:lngSkillLevelReading ?lngSkillLevelReading.
+                     ?q cv:lngSkillLevelWritten ?lngSkillLevelWritten.
+                    }";
+
+        $this->load->library('query');
+        $lang_result=$this->query->querysparql($lang,$Dataset_path);
+
+        if($lang_result['results']['bindings']!= null)
+        {
+            foreach ($lang_result['results']['bindings'] as  $value) {
+            $langName[]=$value['skillName']['value'];
+            $langspeaking[]=$value['skillLevel']['value'];
+            $langReading[]=$value['lngSkillLevelReading']['value'];
+            $langwriting[]=$value['lngSkillLevelWritten']['value'];
+           }
+            $this->data['langName']=$langName;
+            $this->data['langspeaking']=$langspeaking;
+            $this->data['langReading']=$langReading;
+            $this->data['langwriting']=$langwriting;
+        }
+        else{
+            $this->data['langName']="Language Name : ";
+            $this->data['langspeaking']="Speaking Level : ";
+            $this->data['langReading']="Reading Level : ";
+            $this->data['langwriting']="Writing Level : ";
+        }
+
+        $refernce="PREFIX cv: <http://rdfs.org/resume-rdf/cv.rdfs#> 
+                    PREFIX vcard: <http://www.w3.org/2006/vcard/ns#>
+                    PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+                    select ?name ?phone ?mbox  
+                    where {
+                     ?resume cv:cvTitle \"$id\".
+                     ?resume cv:hasReferenc ?q .
+                     ?q cv:referenceBy ?y.
+                     ?y foaf:name ?name.
+                     ?y foaf:phone ?phone.
+                     ?y foaf:mbox ?mbox.
+                    }";
+
+        $this->load->library('query');
+        $ref_result=$this->query->querysparql($refernce,$Dataset_path);
+        if($ref_result['results']['bindings']!= null)
+        {
+    
+            $name=$ref_result['results']['bindings'][0]['name']['value'];
+            echo $name ;
+            $phone=$ref_result['results']['bindings'][0]['phone']['value'];
+            $mbox=$ref_result['results']['bindings'][0]['mbox']['value'];
+           
+            $this->data['name']=$name;
+            $this->data['phone']=$phone;
+            $this->data['mbox']=$mbox;
+        }
+        else{
+            $this->data['name']="Name : ";
+            $this->data['phone']="Phone : ";
+            $this->data['mbox']="Email : ";
+        }
+
         //merg all data in one array and return it
         $result[] = $this->data;
         return $result;
@@ -230,7 +299,7 @@ class Home extends CI_Controller {
         $this->seeker_data();
         $this->data['pageTitle']='Home';
         $this->data['subview'] = 'seeker_profile';
-        $this->load->view('layouts/layout', $this->data);
+        //$this->load->view('layouts/layout', $this->data);
     }
 
     function Company_profile (){
