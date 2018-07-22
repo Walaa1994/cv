@@ -46,6 +46,8 @@
 			<cv:hasOtherInfo rdf:resource="http://rdfs.org/resume-rdf/cv.rdfs/OtherInfo#{$id}_extraversion"/>
 			<cv:hasOtherInfo rdf:resource="http://rdfs.org/resume-rdf/cv.rdfs/OtherInfo#{$id}_agreeableness"/>
 			<cv:hasOtherInfo rdf:resource="http://rdfs.org/resume-rdf/cv.rdfs/OtherInfo#{$id}_neuroticism"/>
+
+			<cv:hasTarget rdf:resource="http://rdfs.org/resume-rdf/cv.rdfs/Target#{$id}"/>
 	    </rdf:Description>
 		
 	
@@ -172,6 +174,14 @@
 		<rdf:Description rdf:about="http://rdfs.org/resume-rdf/cv.rdfs/OtherInfo#{$id}_neuroticism">
 		    <cv:otherInfoType>neuroticism</cv:otherInfoType>    			
         </rdf:Description>
+
+        <xsl:for-each  select="resume/Target">
+		
+	    <rdf:Description rdf:about="http://rdfs.org/resume-rdf/cv.rdfs/Target#{$id}">
+	    	<cv:targetJobDescription> <xsl:value-of select="jobposition"/> </cv:targetJobDescription>
+		</rdf:Description>
+		
+		</xsl:for-each>
 		
 	</rdf:RDF>
 </xsl:template>
