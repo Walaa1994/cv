@@ -1,20 +1,23 @@
+<?php if ($result != null) {?>
  <div class="row">
+  <?php $index=1;
+    foreach ($result['results']['bindings'] as  $value) {
+            ?>
  
-                <div class="col-md-6">
-                <?php foreach ($result['results']['bindings'] as  $value) {?>
+              <div class="col-md-6 mb-md-0 mb-4">
                     <!-- Card -->
-                    <div class="card card-image mb-3" style="background-image: url('https://mdbootstrap.com/img/Photos/Categories/Components/img(10).jpg');">
+                    <div class="card card-image mb-3" style="background-image: url('<?php echo base_url();?>/assets/img/bg_anno.jpg');">
 
                         <!-- Content -->
-                        <div class="text-white text-center d-flex align-items-center rgba-black-strong py-5 px-4">
+                        <div class="text-white text-center align-items-center py-5 px-4 rounded " style="background-color: ##dddee075;">
                             <div>
-                                <h5 class="pink-text">
+                                <h5 class="black-text">
                                     <i class="fa fa-bullhorn"></i> Announcement</h5>
-                                <h3 class="card-title pt-2">
+                                <h3 style="color: #696969" class="py-3 font-weight-bold">
                                     <strong><?php echo $company->en_name; ?></strong>
                                 </h3>
 
-                                <p><?php echo $value['job']['value'];?></p>
+                                <p style="color: #696969"><?php echo $value['job']['value'];?></p>
 
                                 <a href="<?php echo(site_url('Home/OneAnnouncement_page/'.$value['id']['value']));?>"  class="btn btn-pink waves-effect waves-light">
 
@@ -24,9 +27,17 @@
                         <!-- Content -->
                     </div>
                     <!-- Card -->
-                    <?php } ?>
+                
 
                 </div>
+                 <?php
+    if ($index %2 ==0) {
+            echo "</div><div class='row'>";
+        }
+        $index++;
+     } ?>
+</div>
+ <?php } ?>
          
                 <!-- card 2 
                 <div class="col-md-6">
@@ -48,4 +59,4 @@
                     </div>
                 </div>
                 -->
-            </div>
+      
