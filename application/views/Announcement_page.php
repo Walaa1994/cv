@@ -1,4 +1,5 @@
  <div class="row">
+ 
                 <div class="col-md-6">
                 <?php foreach ($result['results']['bindings'] as  $value) {?>
                     <!-- Card -->
@@ -26,6 +27,7 @@
                     <?php } ?>
 
                 </div>
+         
                 <!-- card 2 
                 <div class="col-md-6">
                     <div class="card card-image mb-3" style="background-image: url('https://mdbootstrap.com/img/Photos/Categories/Components/img(10).jpg');">

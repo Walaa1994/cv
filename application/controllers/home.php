@@ -13,6 +13,8 @@ class Home extends CI_Controller {
         $this->data['subview'] = 'sekeer_page';
         $this->load->view('layouts/layout', $this->data);
 	}
+
+    
 	function company_page()
 	{
 		$this->load->view('company_page');
@@ -402,6 +404,7 @@ class Home extends CI_Controller {
 	function Announcement_page  (){
 		$id=$this->session->userdata('u_id');
 		$this->load->model('user_model');
+        
 		$this->data['company']=$this->user_model->get_company($id);
 		//print_r($this->data['company_id']);
         $query="PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>  
@@ -446,14 +449,14 @@ class Home extends CI_Controller {
         $this->load->view('layouts/layout', $this->data);
 	}
 
-	function test(){
+	/*function test(){
 		$this->data['pageTitle']='Home';
         $this->data['subview'] = 'blank';
         $this->data['result'] = '';
-        $this->load->view('layouts/layout', $this->data);
+        $this->load->view('layouts/layout', $this->data);*/
 		/*$this->load->view('blank');*/
-	}
-
+	/*}
+*/
 	function tt(){
 		echo $this->input->post('koko');
 	}

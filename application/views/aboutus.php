@@ -1,10 +1,10 @@
 <div class="mdl-grid site-max-width">
   <div class="mdl-cell mdl-cell--12-col mdl-card mdl-shadow--4dp page-content">
     <div class="mdl-card__title">
-      <h1 class="mdl-card__title-text">About</h1>
+      <h1 class="mdl-card__title-text"></h1>
     </div>
     <div class="mdl-card__media">
-      <img class="article-image" src="<?php echo base_url();?>/assets/img/about.jpg" border="0" alt="About">
+      <img class="article-image" src="<?php echo base_url();?>/assets/img/about-us.jpg" border="0" alt="About">
     </div>
     <div class="mdl-grid site-copy">
       <div class="mdl-cell mdl-cell--12-col">

@@ -1,13 +1,10 @@
 {
   "head": {
-    "vars": [ "FirstName" , "LastName" , "id" ]
+    "vars": [ "skillName" , "skillYearsExperience" , "skillLevel" ]
   } ,
   "results": {
     "bindings": [
-      {
-        "FirstName": { "type": "literal" , "value": "roula" } ,
-        "LastName": { "type": "literal" , "value": "arab" }
-      }
+      
     ]
   }
 }
