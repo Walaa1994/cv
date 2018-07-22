@@ -247,7 +247,14 @@ class Seeker extends CI_Controller {
         $this->data['subview'] = 'bigfive_form';
         $this->load->view('layouts/layout', $this->data);
     }
-     
+    
+    public function ErrorBigFiveAPI($error_message)
+    {
+        $this->data['error_message']=$error_message;
+        $this->data['pageTitle']='Create Resume';
+        $this->data['subview'] = 'error_page';
+        $this->load->view('layouts/layout', $this->data);
+    }
     
     public function BigFiveCalcu()
     {
@@ -312,7 +319,7 @@ class Seeker extends CI_Controller {
         $Neuroticism=round(((($q4+$q9+$q14+$q19+$q24+$q29+$q34+$q39)/8)*100)/5);
           echo'Neuroticism= '.$Neuroticism.'  ';
 
-          $id=66;
+          $id=$this->session->userdata('u_id');
           $this->updatesparql($Openness,$Conscientiousness, $Extraversion,$Agreeableness,$Neuroticism,$id);
 
       echo(max($Agreeableness.'trust, altruism, kindness, affection, and other prosocial behaviors. People who are high in agreeableness tend to be more cooperative while those low in this trait tend to be more competitive and even manipulative',$Openness.'People who are high in this trait tend to be more adventurous and creative. People low in this trait are often much more traditional and may struggle with abstract thinking.,Very creative ,

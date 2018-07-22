@@ -22,7 +22,21 @@
 		$user = $response->getGraphUser();
 		echo"<pre>";
 		$user = json_decode($user, true);
-		print_r($user['posts'][0]['message']);
+		//print_r($user['posts']);
+		$posts_str='';
+		foreach ($user['posts'] as $value) {
+			if (array_key_exists('message', $value)) {
+				$posts_str.=$value['message']." ";
+			}		
+		}
+		$this->WriteFile($posts_str,"posts.txt");
+		redirect('curl');
     }
+
+    public function WriteFile($txt,$file_path){
+            $myfile = fopen($file_path, "w") or die("Unable to open file!");
+			fwrite($myfile, $txt);
+			fclose($myfile);
+        }
 }
 ?>
