@@ -299,7 +299,7 @@ class Home extends CI_Controller {
         $this->seeker_data();
         $this->data['pageTitle']='Home';
         $this->data['subview'] = 'seeker_profile';
-        //$this->load->view('layouts/layout', $this->data);
+        $this->load->view('layouts/layout', $this->data);
     }
 
     function Company_profile (){
