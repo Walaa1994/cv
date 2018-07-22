@@ -11,13 +11,15 @@
       <!-- cv Form -->
       <div id="Form">
         <!-- <div id="triangle"></div> -->
-          <form id="multiphase" action="<?php echo base_url();?>index.php/company/create_company" method="post">
+          <form id="multiphase" action="<?php echo base_url();?>index.php/home/Company_profile" method="post">
             <div id="phase1">
               <div class="row">
                   <!--Grid column-->
                   <div class="col-md-10 mb-4">
                       <div class="md-form">
-                          <input type="text" id="ar_com_name" name="ar_com_name" class="form-control">
+
+                          <input type="text" name="ar_com_name" id="ar_com_name" class="form-control">
+
                           <label for="ar_com_name" class="">Company Name (Arabic)</label>
                       </div>
                   </div>
@@ -28,7 +30,9 @@
                   <!--Grid column-->
                   <div class="col-md-10 mb-4">
                       <div class="md-form">
-                          <input type="text" id="en_com_name" name="en_com_name" class="form-control">
+
+                          <input type="text" name="en_com_name" id="en_com_name" class="form-control">
+
                           <label for="en_com_name" class="">Company Name (English)</label>
                       </div>
                   </div>

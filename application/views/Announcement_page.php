@@ -19,7 +19,7 @@
 
                                 <p style="color: #696969"><?php echo $value['job']['value'];?></p>
 
-                                <a href="<?php echo(site_url('Home/OneAnnouncement_page/'.$value['id']['value']));?>"  class="btn btn-pink waves-effect waves-light">
+                                <a href="<?php echo(site_url('company/oneAnnouncement/'.$value['id']['value']));?>"  class="btn btn-pink waves-effect waves-light">
 
                                     <i class="fa fa-clone left"></i> View More</a>
                             </div>
