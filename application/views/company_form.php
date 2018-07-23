@@ -11,7 +11,7 @@
       <!-- cv Form -->
       <div id="Form">
         <!-- <div id="triangle"></div> -->
-          <form id="multiphase" action="<?php echo base_url();?>index.php/home/Company_profile" method="post">
+          <form id="multiphase" action="<?php echo base_url();?>index.php/Company/create_company" method="post">
             <div id="phase1">
               <div class="row">
                   <!--Grid column-->

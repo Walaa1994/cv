@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <announcement>
-  <ID>5b4f5f88709f6</ID>
+  <ID>5b53d79dc8d29</ID>
   <IsActive>True</IsActive>
   <BasicInfo>
-    <jobtitle>backend developer</jobtitle>
-    <jobMode>Full-Time</jobMode>
-    <jobType>Emplyee</jobType>
-    <Salary>200000</Salary>
-    <IDCompany>63</IDCompany>
+    <jobtitle>web developer</jobtitle>
+    <jobMode>Part- Time</jobMode>
+    <jobType>Contractor</jobType>
+    <Salary>80000</Salary>
+    <IDCompany>79</IDCompany>
   </BasicInfo>
   <PersonalInfo>
-    <locality>Damascus</locality>
+    <locality>damascus</locality>
   </PersonalInfo>
   <Education>
-    <eduMajor>ITE</eduMajor>
-    <eduMinor>Software Engineering</eduMinor>
+    <eduMajor>infornation technolgy</eduMajor>
+    <eduMinor>software</eduMinor>
     <degreeType>EduBachelor</degreeType>
   </Education>
   <PersonalSkills>
-    <skillName>PHP</skillName>
+    <skillName>php</skillName>
     <skillYearsExperience>3</skillYearsExperience>
   </PersonalSkills>
   <Language>

@@ -1,0 +1,39 @@
+.welcome-card > .cpmoany-profile-cover {
+  color: #fff;
+  height: 290px;
+  background: url("../img/Company-data.jpg") center/cover;
+}
+
+
+.welcome-card > .bigfive-cover {
+  color: #fff;
+  height: 290px;
+  background: url("../img/bigfive-5.jpg") center/cover;
+
+}
+
+.welcome-card > .company-cover {
+  color: #fff;
+  height: 290px;
+  background: url("../img/addcompany.jpg") center/cover;
+
+}
+.welcome-card > .announcement-cover {
+  color: #fff;
+  height: 290px;
+  background: url("../img/announcement.jpg") center/cover;
+
+}
+.welcome-card > .seeker-cover {
+  color: #fff;
+  height: 290px;
+  background: url("../img/sekeer.jpg") center/cover;
+
+}
+
+
+
+
+
+
+
