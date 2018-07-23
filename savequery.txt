@@ -1,20 +1,9 @@
 PREFIX cv: <http://rdfs.org/resume-rdf/cv.rdfs#> 
-            PREFIX vcard: <http://www.w3.org/2006/vcard/ns#>
-            PREFIX foaf: <http://xmlns.com/foaf/0.1/>
-            select ?FirstName ?LastName ?Birthday ?Gender ?Nationality ?MaritalStatus ?Phone ?Email ?Country ?City ?Street
-            where {
-              ?resume cv:cvTitle "78".
-              ?resume cv:aboutPerson ?person.  
-              ?person foaf:firstName ?FirstName .
-              ?person foaf:lastName  ?LastName .
-              ?person foaf:birthday  ?Birthday .
-              ?person cv:gender ?Gender .
-              ?person cv:hasNationality ?Nationality .
-              ?person cv:maritalStatus ?MaritalStatus .
-              ?person foaf:phone ?Phone .
-              ?person foaf:mbox ?Email .
-              ?person vcard:hasAddress ?c .
-              ?c vcard:country-name ?Country .
-              ?c vcard:locality ?City .
-              ?c vcard:street-address ?Street .
-            }    
+                    PREFIX vcard: <http://www.w3.org/2006/vcard/ns#>
+                    PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+                    select ?jobposition  
+                    where {
+                     ?resume cv:cvTitle "64".
+                     ?resume cv:hasTarget ?q .
+                     ?q cv:targetJobDescription ?jobposition.
+                    }
