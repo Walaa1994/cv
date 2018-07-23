@@ -273,7 +273,6 @@ class Home extends CI_Controller {
         {
     
             $name=$ref_result['results']['bindings'][0]['name']['value'];
-            echo $name ;
             $phone=$ref_result['results']['bindings'][0]['phone']['value'];
             $mbox=$ref_result['results']['bindings'][0]['mbox']['value'];
            
@@ -287,6 +286,28 @@ class Home extends CI_Controller {
             $this->data['mbox']="Email : ";
         }
 
+        $Target="PREFIX cv: <http://rdfs.org/resume-rdf/cv.rdfs#> 
+                    PREFIX vcard: <http://www.w3.org/2006/vcard/ns#>
+                    PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+                    select ?jobposition  
+                    where {
+                     ?resume cv:cvTitle \"$id\".
+                     ?resume cv:hasTarget ?q .
+                     ?q cv:targetJobDescription ?jobposition.
+                    }";
+        $this->load->library('query');
+        $target_result=$this->query->querysparql($Target,$Dataset_path);
+
+        if($target_result['results']['bindings']!= null)
+        {
+    
+            $jobposition=$target_result['results']['bindings'][0]['jobposition']['value']; 
+           
+            $this->data['jobposition']=$jobposition;
+        }
+        else{
+            $this->data['jobposition']=" ";
+        }
         //merg all data in one array and return it
         $result[] = $this->data;
         return $result;
