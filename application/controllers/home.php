@@ -64,7 +64,7 @@ class Home extends CI_Controller {
             $City=$query_result['results']['bindings'][0]['City']['value'];
             $Street=$query_result['results']['bindings'][0]['Street']['value'];
         
-        
+        	$this->data['id']=$id;
             $this->data['first_name']=$first_name;
             $this->data['last_name']=$last_name;
             $this->data['birthday']=$birthday;
@@ -556,9 +556,9 @@ class Home extends CI_Controller {
     }
 
     //to download cv as pdf
-    function downloadCV()
+    function downloadCV($id)
     {
-        $this->seeker_data();
+        $this->seeker_data($id);
         $this->load->library('fpdf_gen');
         $this->load->view('cv',$this->data);
     }
