@@ -4,11 +4,7 @@
   } ,
   "results": {
     "bindings": [
-      {
-        "name": { "type": "literal" , "value": "maha alhalabi" } ,
-        "phone": { "type": "uri" , "value": "tel:0938572244" } ,
-        "mbox": { "type": "uri" , "value": "mailto:maha.alhalabi22@gmail.com" }
-      }
+      
     ]
   }
 }

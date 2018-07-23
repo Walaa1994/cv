@@ -13,27 +13,35 @@
     function processPhase1(){
         _("phase1").style.display = "none";
         _("phase2").style.display = "block";
-        _("progressBar").value = 66;
-        _("status").innerHTML = "Phase 2 of 3";
+        $("#progressBar").attr("aria-valuenow","66") ;
+        $("#progressBar").css("width","66%");
+        /*_("progressBar").value = 66;
+        _("status").innerHTML = "Phase 2 of 3";*/
     }
     function processPhase2(){
         _("phase2").style.display = "none";
         _("phase3").style.display = "block";
-        _("progressBar").value = 100;
-        _("status").innerHTML = "Phase 3 of 3";
+        $("#progressBar").attr("aria-valuenow","100") ;
+        $("#progressBar").css("width","100%");
+      /*  _("progressBar").value = 100;
+        _("status").innerHTML = "Phase 3 of 3";*/
     }
     
     function backPhase2(){
         _("phase2").style.display = "none";
         _("phase1").style.display = "block";
-        _("progressBar").value = 33;
-        _("status").innerHTML = "Phase 1 of 3";
+        $("#progressBar").attr("aria-valuenow","0") ;
+        $("#progressBar").css("width","0%");
+       /* _("progressBar").value = 33;
+        _("status").innerHTML = "Phase 1 of 3";*/
     }
     function backPhase3(){
         _("phase3").style.display = "none";
         _("phase2").style.display = "block";
-        _("progressBar").value = 66;
-        _("status").innerHTML = "Phase 2 of 3";
+        $("#progressBar").attr("aria-valuenow","33") ;
+        $("#progressBar").css("width","33%");
+       /* _("progressBar").value = 66;
+        _("status").innerHTML = "Phase 2 of 3";*/
     }
    
     function submitForm(){
@@ -54,9 +62,12 @@
       <!-- cv Form -->
   <div id="form">
   <div id="triangle"></div>
-  <form id="multiphase" onsubmit="return false">
-      <progress id="progressBar" value="33" max="100" style="width:250px;"></progress>
-      <h3 id="status">Phase 1 of 3</h3>
+  <?php
+         $attributes = array('id' => 'multiphase', 'onsubmit' => 'return false');
+          echo form_open_multipart('', $attributes);?>
+          <div class="my-2 progress">
+            <div class="progress-bar" id="progressBar" role="progressbar" style="width: 0;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+        </div>
     <!-- start phase1 -->
     <div id="phase1">
     <table>

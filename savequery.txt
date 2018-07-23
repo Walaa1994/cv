@@ -3,7 +3,7 @@ PREFIX cv: <http://rdfs.org/resume-rdf/cv.rdfs#>
                     PREFIX foaf: <http://xmlns.com/foaf/0.1/>
                     select ?name ?phone ?mbox  
                     where {
-                     ?resume cv:cvTitle "80".
+                     ?resume cv:cvTitle "81".
                      ?resume cv:hasReferenc ?q .
                      ?q cv:referenceBy ?y.
                      ?y foaf:name ?name.

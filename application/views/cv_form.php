@@ -686,6 +686,17 @@ $(document).ready(function () {
                 </div>
                 <!--Grid column-->
             </div>
+             <!-- job position -->
+             <div class="row">
+                <!--Grid column-->
+                <div class="col-md-10 mb-4">
+                    <div class="md-form">
+                        <input type="text" id="job_postion" name="job_postion" class="form-control">
+                        <label for="job_postion" class="">Job Postion</label>
+                    </div>
+                </div>
+                <!--Grid column-->
+            </div>
             
             <div class="row">
               <div class="col-md-10 mb-4">
@@ -710,6 +721,9 @@ $(document).ready(function () {
                 </fieldset> -->
               </div>
             </div>
+           
+
+
 
             <div>
               <a type="button" class="btn-floating my-1 btn-ins waves-effect waves-light" onclick="backPhase6()">

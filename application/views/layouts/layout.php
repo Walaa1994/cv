@@ -42,7 +42,8 @@
       </main>
   </div>
     
-      <script src="https://code.getmdl.io/1.3.0/material.min.js" defer></script>
+      <!--<script src="https://code.getmdl.io/1.3.0/material.min.js" defer></script>-->
+      <script type="text/javascript" src="<?php echo base_url();?>/assets/js/material.min.js"></script>
       <!-- SCRIPTS -->
     
     <!-- Bootstrap tooltips -->

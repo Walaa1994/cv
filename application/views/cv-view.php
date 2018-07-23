@@ -14,7 +14,7 @@
                 <div class="face front">
                     <!-- Image-->
                     <div class="card-up">
-                        <img src="https://mdbootstrap.com/images/reg/reg%20(35).jpg" class="img-fluid">
+                        <img src="<?php echo base_url();?>/assets/img/background.jpg" class="img-fluid">
                     </div>
                     <!--Avatar-->
                     <div class="avatar"><img src="https://mdbootstrap.com/wp-content/uploads/2015/10/team-avatar-2.jpg" class="img-circle img-responsive">
