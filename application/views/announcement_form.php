@@ -178,7 +178,7 @@ $(document).ready(function () {
 </script>
 <div class="mdl-grid site-max-width">
   <div class="mdl-cell mdl-cell--12-col mdl-card mdl-shadow--4dp welcome-card portfolio-card">
-    <div class="mdl-card__title">
+    <div class="announcement-cover">
       <!--<h2 class="mdl-card__title-text">Are you already have CV?</h2>-->
     </div>
     <div class="mdl-card__supporting-text">

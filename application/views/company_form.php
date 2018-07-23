@@ -1,7 +1,7 @@
  <link href="<?php echo base_url();?>/assets/css/cv.css" rel='stylesheet' type='text/css' />
 <div class="mdl-grid site-max-width">
   <div class="mdl-cell mdl-cell--12-col mdl-card mdl-shadow--4dp welcome-card portfolio-card">
-    <div class="mdl-card__title">
+    <div class="company-cover">
       <!--<h2 class="mdl-card__title-text">Are you already have CV?</h2>-->
     </div>
     <div class="mdl-card__supporting-text">
