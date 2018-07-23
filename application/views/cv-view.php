@@ -22,9 +22,7 @@
                     <!--Content-->
                     <div class="card-block">
                         <h4><?php echo $value1['first_name']." ".$value1['last_name'];?></h4>
-                        <?php foreach ($value1['jobTitle'] as $value2) {?>
-                        <strong><?php echo $value2; ?></strong>
-                        <?php }?>
+                        <p><strong><?php echo $value1['jobposition']; ?></strong></p>
                         <!--Triggering button-->
                         <a class="rotate-btn" id="rotate-btn-<?php echo $index ?>" data-card="card-<?php echo $index ?>">
                         <i class="fa fa-repeat"></i> Click here to rotate</a>
@@ -54,9 +52,7 @@
                     <p>Job Type: <?php echo $value1['degreeType'][$last];?></p>
                     <p>Is Current: <?php echo $value1['degreeType'][$last];?></p>
                     <?php } ?>
-                    <div class="row">
-                        <button type="button" class="btn btn-primary btn-rounded waves-effect waves-light">Open PDF</button>
-                    </div>   
+                    <a href="<?php echo(site_url('home/downloadCV/'.$value1['id']));?>"  class="btn btn-pink waves-effect waves-light"> <i class="fa fa-clone left"></i>Open CV PDF</a>  
                     <hr>
                     <!--Social Icons-->
                     <!--Triggering button-->
