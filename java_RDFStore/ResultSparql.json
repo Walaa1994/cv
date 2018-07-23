@@ -1,6 +1,6 @@
 {
   "head": {
-    "vars": [ "skillName" , "skillYearsExperience" , "skillLevel" ]
+    "vars": [ "name" , "phone" , "mbox" ]
   } ,
   "results": {
     "bindings": [
