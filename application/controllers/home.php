@@ -21,11 +21,11 @@ class Home extends CI_Controller {
     //function that hold all data ... Enas
     function seeker_data($seeker_id=null)
     {
-    	if ($seeker_id != null) {
-    		$id=$seeker_id;
-    	} else {
-    		$id=$this->session->userdata('u_id');
-    	}
+      if ($seeker_id != null) {
+        $id=$seeker_id;
+      } else {
+        $id=$this->session->userdata('u_id');
+      }
         $Dataset_path="C:\\tdbCV";
         $personalInfo="PREFIX cv: <http://rdfs.org/resume-rdf/cv.rdfs#> 
             PREFIX vcard: <http://www.w3.org/2006/vcard/ns#>
@@ -321,7 +321,7 @@ class Home extends CI_Controller {
         $result = json_decode(htmlspecialchars_decode($dataJson), true);
         /*echo '<pre>';
         print_r($result);*/
-		$query="PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>  
+    $query="PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>  
         PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
         PREFIX cv: <http://rdfs.org/resume-rdf/cv.rdfs#> 
         PREFIX vcard: <http://www.w3.org/2006/vcard/ns#>
@@ -378,8 +378,8 @@ class Home extends CI_Controller {
         /*echo '<pre>';
         print_r($query_result);*/
         foreach ($query_result['results']['bindings'] as $value) {
-        	if (array_key_exists("id",$value))
-        		$user_result[]=$this->seeker_data($value['id']['value']);
+          if (array_key_exists("id",$value))
+            $user_result[]=$this->seeker_data($value['id']['value']);
         }
         /*echo '<pre>';
         print_r($result); */ 
@@ -388,7 +388,7 @@ class Home extends CI_Controller {
         $this->data['subview'] = 'cv-view';
         $this->load->view('layouts/layout', $this->data); 
 
-	}
+  }
 
     function Announcement_page  (){
         $id=$this->session->userdata('u_id');

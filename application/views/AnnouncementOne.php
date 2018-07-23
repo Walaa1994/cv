@@ -4,7 +4,10 @@
             <div class="col-lg-5 mb-lg-0 mb-5">
               <!--Image-->
               <img src="<?php echo base_url();?>/assets/img/join-our-team.jpg" alt="Sample project image" class="img-fluid rounded z-depth-1">
-              <h5 class="font-weight-bold mb-3">Company: <?php echo $company;?></h5>
+
+            
+            <div class="row"> <h5 class="font-weight-bold mb-3">Company: <?php echo $company;?></h5></div>
+
             </div>
             <!-- Grid column -->
 

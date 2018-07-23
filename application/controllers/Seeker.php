@@ -71,6 +71,7 @@ class Seeker extends CI_Controller {
         $ref_name = $this->input->post('ref_name');
         $ref_phone = $this->input->post('ref_phone');
         $ref_email = $this->input->post('ref_email');
+        $job_postion = $this->input->post('job_postion');
         $IsActive = $this->input->post('IsActive');
 
         //creating xml file
@@ -195,6 +196,13 @@ class Seeker extends CI_Controller {
         $ReferencesTag->appendChild($ref_emailTag);
         $rootTag->appendChild($ReferencesTag);
         //end References
+
+        //job position
+        $TargetTag=$xml->createElement("Target");
+        $job_postionTag=$xml->createElement("jobposition", $job_postion);
+        $TargetTag->appendChild($job_postionTag);
+         $rootTag->appendChild($TargetTag);
+        //end job postion
 
         $config['upload_path']          = './assets/UserPhoto/';
         $config['allowed_types']        = 'gif|jpg|png|jpeg';

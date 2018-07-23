@@ -22,18 +22,42 @@
         <h3 class="mdl-cell mdl-cell--12-col mdl-typography--headline">Team</h3>
         <div class="mdl-grid">
           <div class="mdl-cell mdl-cell--4-col">
-            <div class="demo-card-image mdl-card mdl-shadow--2dp person1">
+            <div class="demo-card-image mdl-card mdl-shadow--2dp enas">
               <div class="mdl-card__title mdl-card--expand"></div>
               <div class="mdl-card__actions">
-                <span class="demo-card-image__filename">John Doe</span>
+                <span class="demo-card-image__filename">Enas Alhalabi</span>
               </div>
             </div>
           </div>
           <div class="mdl-cell mdl-cell--4-col">
-            <div class="demo-card-image mdl-card mdl-shadow--2dp person2">
+            <div class="demo-card-image mdl-card mdl-shadow--2dp batoul">
               <div class="mdl-card__title mdl-card--expand"></div>
               <div class="mdl-card__actions">
-                <span class="demo-card-image__filename">Gary Doe</span>
+                <span class="demo-card-image__filename">Batoul Alsharef</span>
+              </div>
+            </div>
+          </div>
+          <div class="mdl-cell mdl-cell--4-col">
+            <div class="demo-card-image mdl-card mdl-shadow--2dp hamida">
+              <div class="mdl-card__title mdl-card--expand"></div>
+              <div class="mdl-card__actions">
+                <span class="demo-card-image__filename">Hamida Abo Rashed</span>
+              </div>
+            </div>
+          </div>
+          <div class="mdl-cell mdl-cell--4-col">
+            <div class="demo-card-image mdl-card mdl-shadow--2dp rola">
+              <div class="mdl-card__title mdl-card--expand"></div>
+              <div class="mdl-card__actions">
+                <span class="demo-card-image__filename">Roula Arab</span>
+              </div>
+            </div>
+          </div>
+          <div class="mdl-cell mdl-cell--4-col">
+            <div class="demo-card-image mdl-card mdl-shadow--2dp walaa">
+              <div class="mdl-card__title mdl-card--expand"></div>
+              <div class="mdl-card__actions">
+                <span class="demo-card-image__filename">Walaa Albaghdadi</span>
               </div>
             </div>
           </div>
