@@ -1,12 +1,10 @@
 {
   "head": {
-    "vars": [ "jobposition" ]
+    "vars": [ "skillName" , "skillYearsExperience" , "skillLevel" ]
   } ,
   "results": {
     "bindings": [
-      {
-        "jobposition": { "type": "literal" , "value": "web developer" }
-      }
+      
     ]
   }
 }
