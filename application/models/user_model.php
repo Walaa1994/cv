@@ -83,4 +83,13 @@ class User_model extends CI_Model {
             
     }
 
+    public function get_user_image($id)
+    {
+        $this->db->select('Image');
+        $this->db->where('u_id', $id);
+        $query = $this->db->get('user');
+        return  $query->row();
+    }
+    
+
 }

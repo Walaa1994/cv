@@ -19,9 +19,13 @@ class Home extends CI_Controller {
     }
 
     //function that hold all data ... Enas
-    function seeker_data()
+    function seeker_data($seeker_id=null)
     {
+      if ($seeker_id != null) {
+        $id=$seeker_id;
+      } else {
         $id=$this->session->userdata('u_id');
+      }
         $Dataset_path="C:\\tdbCV";
         $personalInfo="PREFIX cv: <http://rdfs.org/resume-rdf/cv.rdfs#> 
             PREFIX vcard: <http://www.w3.org/2006/vcard/ns#>
@@ -214,6 +218,100 @@ class Home extends CI_Controller {
             $this->data['skillLevel']="Skill Level : ";
         }
 
+        $lang="PREFIX cv: <http://rdfs.org/resume-rdf/cv.rdfs#> 
+                    PREFIX vcard: <http://www.w3.org/2006/vcard/ns#>
+                    PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+                    select ?skillName ?skillLevel ?lngSkillLevelReading ?lngSkillLevelWritten  
+                    where {
+                     ?resume cv:cvTitle \"$id\".
+                     ?resume cv:hasSkill ?q .
+                     ?q cv:skillName ?skillName.
+                     ?q cv:skillLevel ?skillLevel.
+                     ?q cv:lngSkillLevelReading ?lngSkillLevelReading.
+                     ?q cv:lngSkillLevelWritten ?lngSkillLevelWritten.
+                    }";
+
+        $this->load->library('query');
+        $lang_result=$this->query->querysparql($lang,$Dataset_path);
+
+        if($lang_result['results']['bindings']!= null)
+        {
+            foreach ($lang_result['results']['bindings'] as  $value) {
+            $langName[]=$value['skillName']['value'];
+            $langspeaking[]=$value['skillLevel']['value'];
+            $langReading[]=$value['lngSkillLevelReading']['value'];
+            $langwriting[]=$value['lngSkillLevelWritten']['value'];
+           }
+            $this->data['langName']=$langName;
+            $this->data['langspeaking']=$langspeaking;
+            $this->data['langReading']=$langReading;
+            $this->data['langwriting']=$langwriting;
+        }
+        else{
+            $this->data['langName']="Language Name : ";
+            $this->data['langspeaking']="Speaking Level : ";
+            $this->data['langReading']="Reading Level : ";
+            $this->data['langwriting']="Writing Level : ";
+        }
+
+        $refernce="PREFIX cv: <http://rdfs.org/resume-rdf/cv.rdfs#> 
+                    PREFIX vcard: <http://www.w3.org/2006/vcard/ns#>
+                    PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+                    select ?name ?phone ?mbox  
+                    where {
+                     ?resume cv:cvTitle \"$id\".
+                     ?resume cv:hasReferenc ?q .
+                     ?q cv:referenceBy ?y.
+                     ?y foaf:name ?name.
+                     ?y foaf:phone ?phone.
+                     ?y foaf:mbox ?mbox.
+                    }";
+
+        $this->load->library('query');
+        $ref_result=$this->query->querysparql($refernce,$Dataset_path);
+        if($ref_result['results']['bindings']!= null)
+        {
+    
+            $name=$ref_result['results']['bindings'][0]['name']['value'];
+            $phone=$ref_result['results']['bindings'][0]['phone']['value'];
+            $mbox=$ref_result['results']['bindings'][0]['mbox']['value'];
+           
+            $this->data['name']=$name;
+            $this->data['phone']=$phone;
+            $this->data['mbox']=$mbox;
+        }
+        else{
+            $this->data['name']="Name : ";
+            $this->data['phone']="Phone : ";
+            $this->data['mbox']="Email : ";
+        }
+
+        $Target="PREFIX cv: <http://rdfs.org/resume-rdf/cv.rdfs#> 
+                    PREFIX vcard: <http://www.w3.org/2006/vcard/ns#>
+                    PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+                    select ?jobposition  
+                    where {
+                     ?resume cv:cvTitle \"$id\".
+                     ?resume cv:hasTarget ?q .
+                     ?q cv:targetJobDescription ?jobposition.
+                    }";
+        $this->load->library('query');
+        $target_result=$this->query->querysparql($Target,$Dataset_path);
+
+        if($target_result['results']['bindings']!= null)
+        {
+    
+            $jobposition=$target_result['results']['bindings'][0]['jobposition']['value']; 
+           
+            $this->data['jobposition']=$jobposition;
+        }
+        else{
+            $this->data['jobposition']=" ";
+        }
+        $this->load->model('user_model');
+        $res=$this->user_model->get_user_image($id);
+        $this->data['image']=$res->Image;
+
         //merg all data in one array and return it
         $result[] = $this->data;
         return $result;
@@ -242,123 +340,19 @@ class Home extends CI_Controller {
         $this->load->view('layouts/layout', $this->data);
     }
 
-    function OneAnnouncement_page  ($id,$company_name=null){
-        /*$query="PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>  
-            PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
-            PREFIX cv: <http://rdfs.org/resume-rdf/cv.rdfs#> 
-            PREFIX vcard: <http://www.w3.org/2006/vcard/ns#>
-            PREFIX foaf: <http://xmlns.com/foaf/0.1/>
-            select distinct ?description ?model ?type ?salary ?locality ?eduMajor ?eduMinor ?eduDegree 
-            ?skillName ?skillExperience
-            where {
-                ?ann cv:hasTarget ?target . 
-                ?target cv:targetJobDescription ?description.
-                ?target cv:targetJobMode ?model.
-                ?target cv:targetJobType ?type.
-                ?target cv:targetSalary ?salary.
-                ?ann cv:aboutPerson ?person.
-                ?person vcard:locality ?locality.
-                ?ann cv:cvTitle \"$id\".
-                ?ann cv:hasEducation ?edu.
-                ?edu cv:eduMajor ?eduMajor.
-                ?edu cv:eduMinor ?eduMinor.
-                ?edu cv:degreeType ?eduDegree.
-                ?ann cv:hasSkill ?skill.
-                ?skill cv:skillName ?skillName.
-                ?skills cv:skillYearsExperience ?skillExperience.
-            } " ;
-        $dataset_path="C:\\tdbAnnouncement";
-        $this->load->library('query');
-        $query_result=$this->query->querysparql($query,$dataset_path);
-        echo '<pre>';
-        print_r($query_result);*/
-        if ($company_name!=null) {
-            $this->data['flag']= false;
-            $this->data['company']=$company_name;
-        }
-        else
-        {
-            $this->data['flag']=true;
-            $com_id=$this->session->userdata('u_id');
-            $this->load->model('user_model');
-            $com=$this->user_model->get_company($com_id);
-            $this->data['company']=$com->en_name;
-        }
-
-        $query="PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>  
-            PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
-            PREFIX cv: <http://rdfs.org/resume-rdf/cv.rdfs#> 
-            PREFIX vcard: <http://www.w3.org/2006/vcard/ns#>
-            PREFIX foaf: <http://xmlns.com/foaf/0.1/>
-            select ?description ?mode ?type ?salary ?locality
-            where {
-                ?ann cv:hasTarget ?target . 
-                ?target cv:targetJobDescription ?description.
-                ?target cv:targetJobMode ?mode.
-                ?target cv:targetJobType ?type.
-                ?target cv:targetSalary ?salary.
-                ?ann cv:aboutPerson ?person.
-                ?person vcard:locality ?locality.
-                ?ann cv:cvTitle \"$id\".
-            } " ;
-        //echo "$query";
-        $dataset_path="C:\\tdbAnnouncement";
-        $this->load->library('query');
-        $query_result['basic']=$this->query->querysparql($query,$dataset_path);
-
-        $query="PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>  
-        PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
-        PREFIX cv: <http://rdfs.org/resume-rdf/cv.rdfs#> 
-        PREFIX vcard: <http://www.w3.org/2006/vcard/ns#>
-        PREFIX foaf: <http://xmlns.com/foaf/0.1/>
-        select ?eduMajor ?eduMinor ?eduDegree 
-        where {
-            ?ann cv:hasEducation ?edu.
-            ?edu cv:eduMajor ?eduMajor.
-            ?edu cv:eduMinor ?eduMinor.
-            ?edu cv:degreeType ?eduDegree.
-            ?ann cv:cvTitle \"$id\".
-        } " ;
-        $dataset_path="C:\\tdbAnnouncement";
-        $this->load->library('query');
-        $query_result['education']=$this->query->querysparql($query,$dataset_path);
-
-        $query="PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>  
-        PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
-        PREFIX cv: <http://rdfs.org/resume-rdf/cv.rdfs#> 
-        PREFIX vcard: <http://www.w3.org/2006/vcard/ns#>
-        PREFIX foaf: <http://xmlns.com/foaf/0.1/>
-        select DISTINCT ?skillName ?skillExperience
-        where {
-            ?ann cv:hasSkill ?skill.
-            ?skill cv:skillName ?skillName.
-            ?skills cv:skillYearsExperience ?skillExperience.
-            ?ann cv:cvTitle \"$id\".
-        } " ;
-        $dataset_path="C:\\tdbAnnouncement";
-        $this->load->library('query');
-        $query_result['skills']=$this->query->querysparql($query,$dataset_path);
-
-        /*echo '<pre>';
-        print_r($query_result);*/
-        $this->data['result']=$query_result;
-        $this->data['pageTitle']='Announcement page';
-        $this->data['subview'] = 'one_announcement-page';
-        $this->load->view('layouts/layout', $this->data);
-    }
-
     function Find_CV()
     {
         $dataJson = $this->input->post('result');
         $result = json_decode(htmlspecialchars_decode($dataJson), true);
-        echo '<pre>';
-        print_r($result);
-        $query="PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>  
+        /*echo '<pre>';
+        print_r($result);*/
+
+    	$query="PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>  
         PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
         PREFIX cv: <http://rdfs.org/resume-rdf/cv.rdfs#> 
         PREFIX vcard: <http://www.w3.org/2006/vcard/ns#>
         PREFIX foaf: <http://xmlns.com/foaf/0.1/>
-        select ?FirstName ?LastName ?id
+        select ?id
         where {
             {
             ?resume cv:cvTitle ?id.
@@ -383,14 +377,17 @@ class Home extends CI_Controller {
         }
 
         $query.="?resume cv:aboutPerson ?person.  
-            ?person foaf:firstName ?FirstName .
-            ?person foaf:lastName  ?LastName .
             ?person vcard:hasAddress ?address.";
 
         foreach ($result['basic']['results']['bindings'] as  $value1){
             $locality=$value1['locality']['value'];
+            $jobTitle=$value1['description']['value'];
             $query.="?address vcard:locality ?locality.
-            FILTER regex(?locality,\"$locality\",\"i\").";
+            FILTER regex(?locality,\"$locality\",\"i\").
+            ?resume cv:hasTarget ?target.
+		    ?target cv:targetJobDescription ?jobposition.
+		    FILTER regex(?jobposition,\"$jobTitle\",\"i\").
+            ";
         }
 
         foreach ($result['education']['results']['bindings'] as $value2) {
@@ -405,13 +402,24 @@ class Home extends CI_Controller {
         }";
         }
 
-        echo "$query";
+        //echo "$query";
         $dataset_path="C:\\tdbCV";
         $this->load->library('query');
         $query_result=$this->query->querysparql($query,$dataset_path);
-        echo '<pre>';
-        print_r($query_result);
-    }
+        /*echo '<pre>';
+        print_r($query_result);*/
+        foreach ($query_result['results']['bindings'] as $value) {
+          if (array_key_exists("id",$value))
+            $user_result[]=$this->seeker_data($value['id']['value']);
+        }
+        /*echo '<pre>';
+        print_r($result); */ 
+        $this->data['result']=$user_result;
+        $this->data['pageTitle']='Cv View';
+        $this->data['subview'] = 'cv-view';
+        $this->load->view('layouts/layout', $this->data); 
+
+  }
 
     function Announcement_page  (){
         $id=$this->session->userdata('u_id');
@@ -544,7 +552,6 @@ class Home extends CI_Controller {
     {
         $this->data['pageTitle']='Cv View';
         $this->data['subview'] = 'cv-view';
-        $this->data['result'] = array('yyy','hh','kk','bb','vvv');
         $this->load->view('layouts/layout', $this->data);
     }
 
