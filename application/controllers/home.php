@@ -287,6 +287,10 @@ class Home extends CI_Controller {
             $this->data['mbox']="Email : ";
         }
 
+        $this->load->model('user_model');
+        $res=$this->user_model->get_user_image($id);
+        $this->data['image']=$res->Image;
+
         //merg all data in one array and return it
         $result[] = $this->data;
         return $result;
@@ -358,6 +362,9 @@ class Home extends CI_Controller {
             $jobTitle=$value1['description']['value'];
             $query.="?address vcard:locality ?locality.
             FILTER regex(?locality,\"$locality\",\"i\").
+            ?resume cv:hasTarget ?target.
+		    ?target cv:targetJobDescription ?jobposition.
+		    FILTER regex(?jobposition,\"$jobTitle\",\"i\").
             ";
         }
 
@@ -373,22 +380,22 @@ class Home extends CI_Controller {
         }";
         }
 
-        echo "$query";
+        //echo "$query";
         $dataset_path="C:\\tdbCV";
         $this->load->library('query');
         $query_result=$this->query->querysparql($query,$dataset_path);
-        echo '<pre>';
-        print_r($query_result);
+        /*echo '<pre>';
+        print_r($query_result);*/
         foreach ($query_result['results']['bindings'] as $value) {
           if (array_key_exists("id",$value))
             $user_result[]=$this->seeker_data($value['id']['value']);
         }
         /*echo '<pre>';
         print_r($result); */ 
-        /*$this->data['result']=$user_result;
+        $this->data['result']=$user_result;
         $this->data['pageTitle']='Cv View';
         $this->data['subview'] = 'cv-view';
-        $this->load->view('layouts/layout', $this->data); */
+        $this->load->view('layouts/layout', $this->data); 
 
   }
 
