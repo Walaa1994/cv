@@ -1,10 +1,17 @@
 {
   "head": {
-    "vars": [ "skillName" , "skillYearsExperience" , "skillLevel" ]
+    "vars": [ "skillName" , "skillExperience" ]
   } ,
   "results": {
     "bindings": [
-      
+      {
+        "skillName": { "type": "literal" , "value": "php" } ,
+        "skillExperience": { "type": "literal" , "value": "3" }
+      } ,
+      {
+        "skillName": { "type": "literal" , "value": "english" } ,
+        "skillExperience": { "type": "literal" , "value": "3" }
+      }
     ]
   }
 }
