@@ -7,10 +7,10 @@
       you can add your company and all infomation .
     </div>
     <div class="mdl-card__actions mdl-card--border">
-      <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-button--accent" href="<?php echo(site_url('Company/AddCompany'));?>" target="_blank">
+      <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-button--accent" href="<?php echo(site_url('Company/AddCompany'));?>">
         Add Company Information
       </a>
-      <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-button--accent" href="<?php echo(site_url('Company/AddAnnouncement'));?>" target="_blank">
+      <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-button--accent" href="<?php echo(site_url('Company/AddAnnouncement'));?>">
         Add Announcement .
       </a>
     </div>
@@ -158,7 +158,7 @@
                     </div>
                     <!-- Card -->
                      <div class="mdl-card__actions mdl-card--border">
-                        <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-button--accent" href="<?php echo(site_url('Home/Announcement_page'));?>" target="_blank">
+                        <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-button--accent" href="<?php echo(site_url('Home/Announcement_page'));?>" >
                         View More
        
                          </a>

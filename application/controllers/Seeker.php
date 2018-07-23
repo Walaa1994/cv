@@ -141,16 +141,16 @@ class Seeker extends CI_Controller {
             $from_dateTag=$xml->createElement("startDate",$from_date[$key]);
             $to_dateTag=$xml->createElement("endDate",$to_date[$key]);
             $careerLevelTag=$xml->createElement("careerLevel",$careerLevel[$key]);
-         // $jobTypeTag=$xml->createElement("JobType",$jobType[$key]);
-         // $isCurrentTag=$xml->createElement("isCurrent",$isCurrent[$key]);
+            $jobTypeTag=$xml->createElement("JobType",$jobType[$key]);
+            $isCurrentTag=$xml->createElement("isCurrent",$isCurrent[$key]);
 
             $ExperienceTag->appendChild($company_nameTag);
             $ExperienceTag->appendChild($job_posTag);
             $ExperienceTag->appendChild($from_dateTag);
             $ExperienceTag->appendChild($to_dateTag);
             $ExperienceTag->appendChild($careerLevelTag);
-          //$ExperienceTag->appendChild($jobTypeTag);
-          //$ExperienceTag->appendChild($isCurrentTag);
+            $ExperienceTag->appendChild($jobTypeTag);
+            $ExperienceTag->appendChild($isCurrentTag);
             $rootTag->appendChild($ExperienceTag);
         }
 

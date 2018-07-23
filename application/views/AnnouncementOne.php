@@ -1,14 +1,24 @@
 <div class="row">
+<div class="col-lg-5 mb-lg-0 mb-5">
 
             <!-- Grid column -->
-            <div class="col-lg-5 mb-lg-0 mb-5">
+            <?php if ($flag) {?>
+            
               <!--Image-->
+              <img src="<?php echo base_url();?>/assets/img/job.jpg" alt="Sample project image" class="img-fluid rounded z-depth-1">
+              </form>
+               
+            
+              <?php } ?>
+              <?php if (!$flag){ ?>
+              
               <img src="<?php echo base_url();?>/assets/img/join-our-team.jpg" alt="Sample project image" class="img-fluid rounded z-depth-1">
+            
 
             
-            <div class="row"> <h5 class="font-weight-bold mb-3">Company: <?php echo $company;?></h5></div>
-
-            </div>
+            <?php } ?>
+             <div class="row"> <h5 class="font-weight-bold mb-3">Company: <?php echo $company;?></h5></div>
+             </div>
             <!-- Grid column -->
 
             <!-- Grid column -->
@@ -21,7 +31,7 @@
                 <div class="col-md-11 col-10">
                   <h5 class="font-weight-bold mb-3">Basic Information</h5>
                   <?php foreach ($result['basic']['results']['bindings'] as  $value1){ ?>
-                  <p class="grey-text mb-0">Job Mode: <?php echo $value1['description']['value']; ?></p>
+                  <p class="grey-text mb-0">Job Title: <?php echo $value1['description']['value']; ?></p>
                   <p class="grey-text mb-0">Job Mode: <?php echo $value1['mode']['value']; ?></p>
                   <p class="grey-text mb-0">Employment Type: <?php echo $value1['type']['value']; ?></p>
                    <p class="grey-text mb-0">Salary: <?php echo $value1['salary']['value']; ?> SYP</p>
