@@ -151,7 +151,7 @@ class myPDF extends FPDF{
 		}
 	}
 
-	function cvReference($name,$Phone,$Email){
+	function cvReference($name,$Phone,$mbox){
 	
 		$this->SetFont('Courier','',22);
 		$this->SetTextColor(10,28,99);
@@ -166,7 +166,7 @@ class myPDF extends FPDF{
 		$this->Cell(10,10,$Phone,0,0,'L');
 		$this->Ln();
 		$this->Cell(20,10,'Email :',0,0,'L');	
-		$this->Cell(10,10,$Email,0,0,'L');
+		$this->Cell(10,10,$mbox,0,0,'L');
 		$this->Ln();
 	}
 
@@ -195,7 +195,7 @@ $pdf->cvEDU($eduMajor,$eduMinor,$eduStartDate,$eduGradDate,$studiedIn,$degreeTyp
 $pdf->cvWork($employedIn,$jobTitle,$startDate,$endDate,$careerLevel,$jobType);
 $pdf->cvSkills($skillName,$skillYearsExperience,$skillLevel);
 $pdf->cvLanguage($langName,$langspeaking,$langReading,$langwriting);
-$pdf->cvReference($name,$Phone,$Email);
+$pdf->cvReference($name,$Phone,$mbox);
 $pdf->Output();
 
 ?>
