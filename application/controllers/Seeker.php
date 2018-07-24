@@ -220,11 +220,10 @@ class Seeker extends CI_Controller {
                 {             
                   $file_data = $this->upload->data();
                   $data['img'] = base_url().'/assets/UserPhoto/' .$file_data['file_name'];
+                  $this->load->model('user_model');
+                  $this->user_model->edit_image($id,$data['img']);
+                  $this->session->set_userdata('user_photo',$data['img']);
                 }
-                    
-          $this->load->model('user_model');
-          $this->user_model->edit_image($id,$data['img']);
-          $this->session->set_userdata('user_photo',$data['img']);
         
         $xml->save('cv.xml') or die('XML Create Error');   
 
