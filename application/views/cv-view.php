@@ -33,32 +33,26 @@
                 <!--Back Side-->
                 <div class="face back">
                     <!--Content-->
-                    <h4>About:</h4>
+                    <h4>About</h4>
                     <hr>
                     <strong>Last Education</strong>
                     <?php $last=count($value1['eduMajor'])-1;?>
-                    <p>Certificate Name: <?php echo $value1['eduMajor'][$last];?></p>
-                    <p>Specialization Name: <?php echo $value1['eduMinor'][$last];?></p>
-                    <p>Start Date: <?php echo $value1['eduStartDate'][$last];?></p>
-                    <p>Date of Grants: <?php echo $value1['eduGradDate'][$last];?></p>
-                    <p>Donor: <?php echo $value1['studiedIn'][$last];?></p>
-                    <p>Degree Type: <?php echo $value1['degreeType'][$last];?></p>
+                    <p><?php echo $value1['eduMajor'][$last];?> - <?php echo $value1['eduMinor'][$last];?></p>
+                    <p><?php echo $value1['studiedIn'][$last];?> - <?php echo $value1['degreeType'][$last];?></p>
                     <strong>Last Work Experience</strong>
                     <?php $last=count($value1['employedIn'])-1; ?>
-                    <p>Company Name: <?php echo $value1['employedIn'][$last];?></p>
-                    <p>Job Position: <?php echo $value1['jobTitle'][$last];?></p>
-                    <p>from: <?php echo $value1['eduStartDate'][$last];?></p>
-                    <p>to: <?php echo $value1['eduGradDate'][$last];?></p>
-                    <p>CareerLevel: <?php echo $value1['studiedIn'][$last];?></p>
-                    <p>Job Type: <?php echo $value1['degreeType'][$last];?></p>
-                    <p>Is Current: <?php echo $value1['degreeType'][$last];?></p>
+                    <p><?php echo $value1['jobTitle'][$last];?> - <?php echo $value1['employedIn'][$last];?></p>
                     <?php } ?>
-
-                    <a href="<?php echo(site_url('home/downloadCV/'.$value1['id']));?>"  class="btn btn-pink waves-effect waves-light"> <i class="fa fa-clone left"></i>Open CV PDF</a>  
+  
                     <hr>
                     <!--Social Icons-->
                     <!--Triggering button-->
+                    <div>
+                    <a href="<?php echo(site_url('home/downloadCV/'.$value1['id']));?>"  class="btn btn-pink waves-effect waves-light"> <i class="fa fa-clone left"></i>Open CV PDF</a>
+                    </div>
+                    <div>
                     <a class="rotate-btn back" id="rotate-btn-back-<?php echo $index ?>" data-card="card-<?php echo $index ?>"><i class="fa fa-undo"></i> Click here to rotate back</a>
+                    </div>
                 </div>
                 <!--/.Back Side-->
             </div>
