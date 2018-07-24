@@ -1,5 +1,6 @@
 <?php
 libxml_disable_entity_loader(false);
+ini_set('max_execution_time', 0);
 defined('BASEPATH') OR exit('No direct script access allowed');
 //this class for convert pdf to text
 include(APPPATH.'controllers/pdf2text.php');
@@ -231,6 +232,20 @@ class Seeker extends CI_Controller {
 
     }
 
+    public function WriteFile($txt,$file_path){
+                $myfile = fopen($file_path, "w") or die("Unable to open file!");
+          fwrite($myfile, $txt);
+          fclose($myfile);
+            }
+
+    public function nlp($file_path){
+    
+      shell_exec("javac -cp  C:\\nlp_lib\\*; java_Nlp\\CoreNlp.java");
+      
+      shell_exec("java -cp C:\\nlp_lib\\*;java_Nlp  CoreNlp $file_path");
+      
+    }
+
     public function UploadCv()
     {
         $this->data['pageTitle']='Upload CV';
@@ -244,7 +259,14 @@ class Seeker extends CI_Controller {
             $a = new PDF2Text();
             $a->setFilename($_FILES['userFile']['tmp_name']);
             $a->decodePDF();
-            echo $a->output();
+            $doc=$a->output();
+
+            $this->WriteFile($doc,"pdftext.txt");
+            //echo $a->output();
+
+            $this->nlp("pdftext.txt");
+
+            //redirect('/Xslt/xslt_pdf');
          }
     }
 
