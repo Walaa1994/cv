@@ -68,6 +68,8 @@ class PDF2Text {
     function output($echo = false) {
         if($echo) echo $this->decodedtext;
         else return $this->decodedtext;
+        //if(!$echo)
+           // return $this->decodedtext;
     }
 
     function setUnicode($input) {
@@ -397,4 +399,3 @@ class PDF2Text {
         return $document;
     }
 }
-?>

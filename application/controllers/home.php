@@ -551,6 +551,74 @@ class Home extends CI_Controller {
         $this->load->view('layouts/layout', $this->data);
     }
 
+    public function company_search()
+    {
+    	$query="PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>  
+        PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+        PREFIX cv: <http://rdfs.org/resume-rdf/cv.rdfs#> 
+        PREFIX vcard: <http://www.w3.org/2006/vcard/ns#>
+        PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+        select ?id
+        where {
+            ?resume cv:cvTitle ?id.
+            ?resume cv:cvIsActive \"True\".
+            ?resume cv:hasEducation ?w .
+            ?resume cv:aboutPerson ?person.
+             ";
+
+        $eduMajor=$this->input->post('cert_name');
+        if ($eduMajor!=null) {
+            $query.="?w cv:eduMajor ?description.
+            FILTER (regex(?description,\"$eduMajor\",\"i\")).";
+        }
+
+        $eduDegree=$this->input->post('degreeType');
+        if ($eduDegree!=null) {
+            $query.="?w cv:degreeType \"$eduDegree\".";
+        }
+        
+        $locality=$this->input->post('locality');
+        if ($locality!=null) {
+            $query.="  
+            ?person vcard:hasAddress ?address.
+            ?address vcard:locality ?locality.
+            FILTER regex(?locality,\"$locality\",\"i\").";
+        } 
+
+        $MaritalStatus=$this->input->post('marital_state');
+        if ($MaritalStatus!=null) {
+            $query.="
+            ?person cv:maritalStatus \"$MaritalStatus\".";
+        }
+
+        $jobTitle=$this->input->post('job_Title');
+        if ($jobTitle!=null) {
+            $query.="?resume cv:hasTarget ?target.
+		    ?target cv:targetJobDescription ?jobposition.
+		    FILTER regex(?jobposition,\"$jobTitle\",\"i\").";
+        }
+
+        $query.="}";
+        // echo '<pre>';
+        // echo "$query";
+        $dataset_path="C:\\tdbCV";
+        $this->load->library('query');
+        $query_result=$this->query->querysparql($query,$dataset_path);
+        // echo '<pre>';
+        // print_r($query_result);
+        $user_result=array();  
+        foreach ($query_result['results']['bindings'] as $value) {
+	        if (array_key_exists("id",$value))
+	            $user_result[]=$this->seeker_data($value['id']['value']);
+        }
+        // echo '<pre>';
+        // print_r($user_result); 
+        $this->data['result']=$user_result;
+        $this->data['pageTitle']='Company Home';
+        $this->data['subview'] = 'company_home';
+        $this->load->view('layouts/layout', $this->data);
+    }
+
     function cv_view()
     {
         $this->data['pageTitle']='Cv View';
