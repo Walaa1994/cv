@@ -52,6 +52,7 @@
                     <p>Job Type: <?php echo $value1['degreeType'][$last];?></p>
                     <p>Is Current: <?php echo $value1['degreeType'][$last];?></p>
                     <?php } ?>
+
                     <a href="<?php echo(site_url('home/downloadCV/'.$value1['id']));?>"  class="btn btn-pink waves-effect waves-light"> <i class="fa fa-clone left"></i>Open CV PDF</a>  
                     <hr>
                     <!--Social Icons-->
