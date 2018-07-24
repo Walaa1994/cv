@@ -15,13 +15,11 @@
 	<birthday><xsl:value-of select="sentence[@id='2']/tokens/token[@id='5']/word"/>
 				<xsl:value-of select="sentence[@id='2']/tokens/token[@id='6']/word"/>
 				<xsl:value-of select="sentence[@id='2']/tokens/token[@id='7']/word"/>
-				<xsl:value-of select="sentence[@id='2']/tokens/token[@id='8']/word"/>
-				<xsl:value-of select="sentence[@id='2']/tokens/token[@id='9']/word"/>
 	</birthday>
 
     <Nationality><xsl:value-of select="sentence[@id='3']/tokens/token[@id='3']/word"/></Nationality>
 
-    <MaritalStatus><xsl:value-of select="sentence[@id='4']/tokens/token[@id='5']/word"/></MaritalStatus>
+    <MaritalStatus><xsl:value-of select="sentence[@id='4']/tokens/token[@id='4']/word"/></MaritalStatus>
 
     <gender><xsl:value-of select="sentence[@id='5']/tokens/token[@id='3']/word"/></gender>
 
@@ -33,7 +31,7 @@
 
     <Email><xsl:value-of select="sentence[@id='7']/tokens/token[@id='3']/word"/></Email>
 
-    <Telephone><xsl:value-of select="sentence[@id='8']/tokens/token[@id='3']/word"/><xsl:value-of select="sentence[@id='8']/tokens/token[@id='4']/word"/></Telephone>
+    <Telephone><xsl:value-of select="sentence[@id='8']/tokens/token[@id='3']/word"/></Telephone>
 </PersonalInfo>
 
 <Education>
@@ -41,69 +39,71 @@
 		<eduMinor><xsl:value-of select="sentence[@id='10']/tokens/token[@id='3']/word"/>
 	              <xsl:value-of select="sentence[@id='10']/tokens/token[@id='4']/word"/></eduMinor> 
 
-        <eduStartDate><xsl:value-of select="sentence[@id='11']/tokens/token[@id='5']/word"/>
+        <eduStartDate><xsl:value-of select="sentence[@id='11']/tokens/token[@id='4']/word"/>
+				<xsl:value-of select="sentence[@id='11']/tokens/token[@id='5']/word"/>
 				<xsl:value-of select="sentence[@id='11']/tokens/token[@id='6']/word"/>
-				<xsl:value-of select="sentence[@id='11']/tokens/token[@id='7']/word"/>
-				<xsl:value-of select="sentence[@id='11']/tokens/token[@id='8']/word"/>
-				<xsl:value-of select="sentence[@id='11']/tokens/token[@id='9']/word"/>
-			    <xsl:value-of select="sentence[@id='11']/tokens/token[@id='10']/word"/></eduStartDate>     
+		</eduStartDate>     
                                                        
-		<eduGradDate><xsl:value-of select="sentence[@id='12']/tokens/token[@id='6']/word"/>
+		<eduGradDate><xsl:value-of select="sentence[@id='12']/tokens/token[@id='5']/word"/>
+				<xsl:value-of select="sentence[@id='12']/tokens/token[@id='6']/word"/>
 				<xsl:value-of select="sentence[@id='12']/tokens/token[@id='7']/word"/>
-				<xsl:value-of select="sentence[@id='12']/tokens/token[@id='8']/word"/>
-				<xsl:value-of select="sentence[@id='12']/tokens/token[@id='9']/word"/>
-				<xsl:value-of select="sentence[@id='12']/tokens/token[@id='10']/word"/></eduGradDate>
+		</eduGradDate>
 
-        <studiedIn><xsl:value-of select="sentence[@id='13']/tokens/token[@id='4']/word"/><xsl:value-of select="sentence[@id='13']/tokens/token[@id='5']/word"/></studiedIn>   
+        <studiedIn><xsl:value-of select="sentence[@id='13']/tokens/token[@id='3']/word"/>
+        		    <xsl:value-of select="sentence[@id='13']/tokens/token[@id='4']/word"/></studiedIn>   
 
-		<degreeType><xsl:value-of select="sentence[@id='14']/tokens/token[@id='5']/word"/></degreeType>         
+		<degreeType><xsl:value-of select="sentence[@id='14']/tokens/token[@id='4']/word"/></degreeType>         
 		                                               
 	</Education>
 
 	<WorkExperience>
-	    <employedIn><xsl:value-of select="sentence[@id='15']/tokens/token[@id='7']/word"/></employedIn> 
+	    <employedIn><xsl:value-of select="sentence[@id='15']/tokens/token[@id='6']/word"/></employedIn> 
 
-		<jobTitle><xsl:value-of select="sentence[@id='16']/tokens/token[@id='5']/word"/>
-	    <xsl:value-of select="sentence[@id='16']/tokens/token[@id='5']/word"/></jobTitle> 
+		<jobTitle><xsl:value-of select="sentence[@id='16']/tokens/token[@id='4']/word"/>
+	              <xsl:value-of select="sentence[@id='16']/tokens/token[@id='5']/word"/></jobTitle> 
 
-		<startDate><xsl:value-of select="sentence[@id='17']/tokens/token[@id='5']/word"/>
-				<xsl:value-of select="sentence[@id='17']/tokens/token[@id='6']/word"/>
-				<xsl:value-of select="sentence[@id='17']/tokens/token[@id='7']/word"/>
-				<xsl:value-of select="sentence[@id='17']/tokens/token[@id='8']/word"/>
-				<xsl:value-of select="sentence[@id='17']/tokens/token[@id='9']/word"/>
-		    	<xsl:value-of select="sentence[@id='17']/tokens/token[@id='10']/word"/>
-		        <xsl:value-of select="sentence[@id='17']/tokens/token[@id='11']/word"/></startDate>
+		<startDate><xsl:value-of select="sentence[@id='17']/tokens/token[@id='3']/word"/>
+				<xsl:value-of select="sentence[@id='17']/tokens/token[@id='4']/word"/>
+				<xsl:value-of select="sentence[@id='17']/tokens/token[@id='5']/word"/>
+		</startDate>
 
-	    <endDate><xsl:value-of select="sentence[@id='18']/tokens/token[@id='4']/word"/>
+	    <endDate><xsl:value-of select="sentence[@id='18']/tokens/token[@id='3']/word"/>
+				<xsl:value-of select="sentence[@id='18']/tokens/token[@id='4']/word"/>
 				<xsl:value-of select="sentence[@id='18']/tokens/token[@id='5']/word"/>
-				<xsl:value-of select="sentence[@id='18']/tokens/token[@id='6']/word"/>
-				<xsl:value-of select="sentence[@id='18']/tokens/token[@id='7']/word"/>
-				<xsl:value-of select="sentence[@id='18']/tokens/token[@id='8']/word"/></endDate>
+		</endDate>
 
-		<careerLevel><xsl:value-of select="sentence[@id='19']/tokens/token[@id='4']/word"/></careerLevel>         
+		<careerLevel><xsl:value-of select="sentence[@id='19']/tokens/token[@id='3']/word"/></careerLevel>         
 																 
-		<jobType><xsl:value-of select="sentence[@id='20']/tokens/token[@id='5']/word"/></jobType>                  
-		<isCurrent><xsl:value-of select="sentence[@id='21']/tokens/token[@id='5']/word"/></isCurrent>                 
+		<jobType><xsl:value-of select="sentence[@id='20']/tokens/token[@id='4']/word"/></jobType>                  
+		<isCurrent><xsl:value-of select="sentence[@id='21']/tokens/token[@id='4']/word"/></isCurrent>                 
 	</WorkExperience>
 
 	<PersonalSkills>
-	    <skillName><xsl:value-of select="sentence[@id='22']/tokens/token[@id='8']/word"/></skillName>
-		<skillYearsExperience><xsl:value-of select="sentence[@id='23']/tokens/token[@id='6']/word"/></skillYearsExperience>
-		<skillLevel><xsl:value-of select="sentence[@id='24']/tokens/token[@id='5']/word"/></skillLevel>                       
+	    <skillName><xsl:value-of select="sentence[@id='22']/tokens/token[@id='7']/word"/></skillName>
+		<skillYearsExperience><xsl:value-of select="sentence[@id='23']/tokens/token[@id='5']/word"/></skillYearsExperience>
+		<skillLevel><xsl:value-of select="sentence[@id='24']/tokens/token[@id='4']/word"/></skillLevel>                       
 	</PersonalSkills>
 
 	<Language>                                         
-	    <Name><xsl:value-of select="sentence[@id='25']/tokens/token[@id='7']/word"/></Name>
-		<SpokenLevel><xsl:value-of select="sentence[@id='26']/tokens/token[@id='4']/word"/></SpokenLevel>                                
-		<ReadingLevel><xsl:value-of select="sentence[@id='27']/tokens/token[@id='4']/word"/></ReadingLevel>                  
-		<WritingLevel><xsl:value-of select="sentence[@id='28']/tokens/token[@id='4']/word"/></WritingLevel>                  
+	    <Name><xsl:value-of select="sentence[@id='25']/tokens/token[@id='6']/word"/></Name>
+		<SpokenLevel><xsl:value-of select="sentence[@id='26']/tokens/token[@id='3']/word"/></SpokenLevel>                                
+		<ReadingLevel><xsl:value-of select="sentence[@id='27']/tokens/token[@id='3']/word"/></ReadingLevel>                  
+		<WritingLevel><xsl:value-of select="sentence[@id='28']/tokens/token[@id='3']/word"/></WritingLevel>                  
 	</Language>
 
 	<References>
-	<Name><xsl:value-of select="sentence[@id='29']/tokens/token[@id='5']/word"/></Name>
-	<Phone></Phone>
-	<Email></Email>
+	<Name><xsl:value-of select="sentence[@id='29']/tokens/token[@id='5']/word"/>
+          <xsl:value-of select="sentence[@id='29']/tokens/token[@id='6']/word"/></Name>
+
+	<Phone><xsl:value-of select="sentence[@id='30']/tokens/token[@id='3']/word"/></Phone>
+
+	<Email><xsl:value-of select="sentence[@id='31']/tokens/token[@id='3']/word"/></Email>
 	</References>
+
+	<IsActive><xsl:value-of select="sentence[@id='33']/tokens/token[@id='4']/word"/></IsActive>
+
+	<jobposition><xsl:value-of select="sentence[@id='32']/tokens/token[@id='6']/word"/>
+    <xsl:value-of select="sentence[@id='32']/tokens/token[@id='7']/word"/></jobposition>
 </resume>
 
 </xsl:template>
