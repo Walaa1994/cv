@@ -1,3 +1,4 @@
+<?php if ($result != null) {?>
 <div class="row">
     <script type="text/javascript">
         new WOW().init();
@@ -78,6 +79,7 @@
                      $index++;
                         } ?>
 </div>
+<?php } ?>
 
 
   

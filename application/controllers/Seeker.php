@@ -274,19 +274,23 @@ class Seeker extends CI_Controller {
     }
 
     public function DoUpload(){
-        if(isset($_FILES['userFile']))
-         {
-            $a = new PDF2Text();
-            $a->setFilename($_FILES['userFile']['tmp_name']);
-            $a->decodePDF();
-            $doc=$a->output();
+      if(isset($_FILES['userFile']))
+       {
+          $a = new PDF2Text();
+          $a->setFilename($_FILES['userFile']['tmp_name']);
+          $a->decodePDF();
+          $doc=$a->output();
 
-            $this->WriteFile($doc,"pdftext.txt");
+          $this->WriteFile($doc,"pdftext.txt");
+          //echo $a->output();
 
-            $this->nlp("pdftext.txt");
+          $this->nlp("pdftext.txt");
 
-            $this->xslt_pdf();
+          $this->xslt_pdf();
          }
+          //redirect('/Xslt/xslt_pdf');
+       }
+
     }
 
     public function BigFiveForm()

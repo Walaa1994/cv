@@ -11,7 +11,7 @@
             $("#advance_search").css("display","none");
         }
     </script>
-  <form action="<?php echo base_url().'index.php/home/cv-view';?>" method="post">
+  <form action="<?php echo base_url().'index.php/home/company_search';?>" method="post">
       <div class="col-md-10 mb-4">
         <div class="md-form" style="display: inline-flex;width: 100%;">
           <input type="text" name="cert_name" id="cert_name" class="form-control">
@@ -35,44 +35,34 @@
         </div>
     <div class="col-md-3 mb-3">
           <select name="degreeType" class="mdb-select colorful-select dropdown-primary">
-           <option >choose ...</option>
-                      <option value="EduHighSchool">High School</option>
-                      <option value="EduVocational">Vocational</option>
-                      <option value="EduCollegeCoursework">College Coursework</option>
-                      <option value="EduBachelor">Bachelor</option>
-                      <option value="EduMaster">Master</option>
-                      <option value="EduDoctorate">Doctorate</option>
-                      <option value="EduAssociate">Associate</option>
-                      <option value=" EduProfessional">Professional</option>
+            <option value="" >choose ...</option>
+            <option value="EduHighSchool">High School</option>
+            <option value="EduVocational">Vocational</option>
+            <option value="EduCollegeCoursework">College Coursework</option>
+            <option value="EduBachelor">Bachelor</option>
+            <option value="EduMaster">Master</option>
+            <option value="EduDoctorate">Doctorate</option>
+            <option value="EduAssociate">Associate</option>
+            <option value=" EduProfessional">Professional</option>
            </select>
          </div>
          <div class="col-md-3 mb-3">
             <select name="marital_state" class="mdb-select colorful-select dropdown-primary">
-             <<option >choose ...</option>
-                      <option value="Married">Married</option>
-                      <option value="Divorced">Divorced</option>
-                      <option value="Single">Single</option>
-                      <option value="Widowed">Widowed</option>
-           </select>
+            <option value="" >choose ...</option>
+            <option value="Married">Married</option>
+            <option value="Divorced">Divorced</option>
+            <option value="Single">Single</option>
+            <option value="Widowed">Widowed</option>
+            </select>
          </div>
          <div class="col-md-3 mb-3">
           <div class="md-form">
-              <input type="text" id="job_Title" class="form-control">
+              <input type="text" name="job_Title" id="job_Title" class="form-control">
               <label for="job_Title" class="">Job Title</label>
           </div>
-        </div>
-        <div class="col-md-3 mb-3">
-          <div class="md-form">
-              <input type="number" name="Experience_level" id="Experience_level" class="form-control">
-              <label for="Experience_level" class="">Experience level</label>
-          </div>
-        </div>
-        
+        </div>  
       </div>
       </div>
-      
-
-
 </form>
   <?php $this->load->view('cv-view',$result);?>
 
