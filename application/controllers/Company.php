@@ -223,24 +223,14 @@ class Company extends CI_Controller {
         redirect('/Xslt/xslt_announcement/Announcement.xml');
     }
 
-     function Company_profile (){
-        $company_id=$this->session->userdata('u_id');
-        $this->load->model('user_model');
-        $result=$this->user_model->get_company_profile($company_id);
-        /*echo '<pre>';
-        print_r($result);*/
-        $this->data['companyProfile']=$result;
-
-        $this->data['pageTitle']='Home';
-        $this->data['subview'] = 'company_profile';
-        $this->load->view('layouts/layout', $this->data);
-    }
+     
 
     public function create_company()
     {
         $this->load->model('user_model');
         $this->user_model->add_company();
-        $this->Company_profile();
+        redirect(base_url() . 'index.php/home/Company_profile');
+        //$this->Company_profile();
         //redirect()
     }
 }

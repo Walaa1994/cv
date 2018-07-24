@@ -10,9 +10,11 @@
       <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-button--accent" href="<?php echo(site_url('Company/AddCompany'));?>">
         Add Company Information
       </a>
+      <?php if ($company_check) { ?>
       <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-button--accent" href="<?php echo(site_url('Company/AddAnnouncement'));?>">
         Add Announcement .
       </a>
+      <?php } ?>
     </div>
   </div>
 </div>
@@ -131,7 +133,7 @@
     </div>
 </section>
 
-
+<?php if ($company_check) { ?>
 
   <div class="row">
                 <div class="col-md-6">
@@ -183,3 +185,4 @@
                     </div>
                 </div>
             </div>
+             <?php } ?>

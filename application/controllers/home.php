@@ -331,9 +331,12 @@ class Home extends CI_Controller {
         $company_id=$this->session->userdata('u_id');
         $this->load->model('user_model');
         $result=$this->user_model->get_company_profile($company_id);
+        $result1=$this->user_model->get_check_company($company_id);
         /*echo '<pre>';
         print_r($result);*/
         $this->data['companyProfile']=$result;
+        $this->data['company_check']=$result1;
+
 
         $this->data['pageTitle']='Home';
         $this->data['subview'] = 'company_profile';
