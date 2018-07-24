@@ -1,5 +1,5 @@
 <div class="mdl-grid site-max-width">
-	<div class="mdl-cell mdl-cell--12-col mdl-card mdl-shadow--4dp welcome-card portfolio-card">
+  <div class="mdl-cell mdl-cell--12-col mdl-card mdl-shadow--4dp welcome-card portfolio-card">
     <div class="mdl-card__title">
       <h2 class="mdl-card__title-text">Are you already have CV?</h2>
     </div>
@@ -7,11 +7,11 @@
       you can upload your cv and all data extract and re-stract with professional cv.
     </div>
     <div class="mdl-card__actions mdl-card--border">
-      <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-button--accent" href="<?php echo(site_url('seeker/uploadcv'));?>">
+      <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-button--accent" href="<?php echo(site_url('seeker/uploadcv'));?>" target="_blank">
         Upload
       </a>
        /
-      <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-button--accent" href="<?php echo(site_url('seeker/cvForm'));?>">
+      <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-button--accent" href="<?php echo(site_url('seeker/cvForm'));?>" target="_blank">
         Create Your CV.
       </a>
     </div>
@@ -20,9 +20,9 @@
 
 <section class="section--center mdl-grid site-max-width">
   <header class="section__play-btn mdl-cell mdl-cell--3-col-desktop mdl-cell--2-col-tablet mdl-cell--4-col-phone mdl-color--teal-100 mdl-color-text--white  mdl-shadow--4dp">
-   
-        <img style="width: 100%" src="<?php echo $this->session->userdata('user_photo')?>" alt="image" class="img_float_l img_frame"/>
-    
+    <div  >
+        <img src="<?php echo $this->session->userdata('user_photo')?>" alt="image" class="img_float_l img_frame"/>
+    </div>
 
   </header>
   <div class="mdl-card mdl-cell mdl-cell--9-col-desktop mdl-cell--6-col-tablet mdl-cell--4-col-phone  mdl-shadow--4dp">
@@ -185,8 +185,8 @@
             </li>
         </ul>
       </div>
-      <div class="demo-card-event mdl-cell mdl-card mdl-shadow--4dp event-card portfolio-card">
-        <div class="mdl-card__title mdl-card--expand">
+      <div style="background-color:#3f51b5" class="demo-card-event mdl-cell mdl-card mdl-shadow--4dp event-card portfolio-card">
+        <div  class="mdl-card__title mdl-card--expand">
           <h4>
             Openness : 20%<br>
             Conscientiousness : 40% <br>
