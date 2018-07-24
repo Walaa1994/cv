@@ -67,6 +67,21 @@ class User_model extends CI_Model {
         $query = $this->db->get('company');
         return  $query->result_array();
     }
+
+      public function get_check_company($company_id)
+    {
+        $this->db->select('*');
+        $this->db->where('user_id',$company_id);
+        $query = $this->db->get('company');
+        $acount =$query->num_rows();
+        if ($acount > 0) {
+            return true;
+            
+        }
+        else{
+            return false;
+        }
+    }
     
     public function edit_image($id,$path_name) 
     {
@@ -82,6 +97,7 @@ class User_model extends CI_Model {
         }
             
     }
+
 
     public function get_user_image($id)
     {
