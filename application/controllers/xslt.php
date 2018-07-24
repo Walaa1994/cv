@@ -65,6 +65,6 @@ class Xslt extends CI_Controller {
 			$proc->importStyleSheet($xsl);
 			$proc->transformToURI($xml, 'cv.xml');
 
-			$this->xslt_cv('cv.xml');
+			//$this->xslt_cv('cv.xml');
 		}
 }

@@ -220,11 +220,10 @@ class Seeker extends CI_Controller {
                 {             
                   $file_data = $this->upload->data();
                   $data['img'] = base_url().'/assets/UserPhoto/' .$file_data['file_name'];
+                  $this->load->model('user_model');
+                  $this->user_model->edit_image($id,$data['img']);
+                  $this->session->set_userdata('user_photo',$data['img']);
                 }
-                    
-          $this->load->model('user_model');
-          $this->user_model->edit_image($id,$data['img']);
-          $this->session->set_userdata('user_photo',$data['img']);
         
         $xml->save('cv.xml') or die('XML Create Error');   
 
@@ -246,6 +245,27 @@ class Seeker extends CI_Controller {
       
     }
 
+    public function xslt_pdf(){
+          $xml_path=base_url().'/java_Nlp/nlp.xml';
+          $xml = new DOMDocument;
+          $xml->load($xml_path);
+
+          // Load XSL file
+          $styleSheet_path = base_url().'/StyleSheets/pdf.xsl';
+
+          $xsl = new DOMDocument;
+          $xsl->load($styleSheet_path);
+
+          // Configure the transformer
+          $proc = new XSLTProcessor;
+
+          // Attach the xsl rules
+          $proc->importStyleSheet($xsl);
+          $proc->transformToURI($xml, 'cv.xml');
+
+          //redirect('/Xslt/xslt_cv/cv.xml');
+        }
+
     public function UploadCv()
     {
         $this->data['pageTitle']='Upload CV';
@@ -262,11 +282,10 @@ class Seeker extends CI_Controller {
             $doc=$a->output();
 
             $this->WriteFile($doc,"pdftext.txt");
-            //echo $a->output();
 
             $this->nlp("pdftext.txt");
 
-            //redirect('/Xslt/xslt_pdf');
+            $this->xslt_pdf();
          }
     }
 
