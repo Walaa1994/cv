@@ -245,40 +245,6 @@ class Seeker extends CI_Controller {
       
     }
 
-    public function xslt_pdf(){
-          $xml_path=base_url().'/java_Nlp/nlp.xml';
-          $xml = new DOMDocument;
-          $xml->load($xml_path);
-
-          // Load XSL file
-          $styleSheet_path = base_url().'/StyleSheets/pdf.xsl';
-
-          $xsl = new DOMDocument;
-          $xsl->load($styleSheet_path);
-
-          // Configure the transformer
-          $proc = new XSLTProcessor;
-
-          // Attach the xsl rules
-          $proc->importStyleSheet($xsl);
-          $proc->transformToURI($xml, 'cv.xml');
-
-
-          //redirect('/Xslt/xslt_cv/cv.xml');
-
-          $xmlold = new DOMDocument("1.0","UTF-8");
-          $xmlold->load("cv.xml");
-          $rootTag=$xmlold->getElementsByTagName("resume")->item(0);
-          $IDTag=$xmlold->createElement("ID",$this->session->userdata('u_id'));
-          $rootTag->appendChild($IDTag);
-          $xmlold->save('cv.xml');
-          //ob_start();
-          redirect('/Xslt/xslt_cv/cv.xml');
-
-          //$this->load->library('xslt');
-          //$this->xslt->xslt_cv('cv.xml');
-
-        }
 
     public function UploadCv()
     {
@@ -287,54 +253,29 @@ class Seeker extends CI_Controller {
         $this->load->view('layouts/layout', $this->data);
     }
 
-    /*public function test($doc){
-        $this->WriteFile($doc,"pdftext.txt");  
-         $this->nlp("pdftext.txt");
-         $this->xslt_pdf();
-    }*/
 
      public function pdfToText($filename)
     {
-        //The PDF2Text class is HUGE. Magical black box. See file for citations
-        //require_once "pdf2text.php";
-        /*$a = new PDF2Text();
-        $a->setFilename($filename);
-        $a->decodePDF();
-        return $a->output();*/
         include_once APPPATH.'vendor/autoload.php';
         $parser= new \Smalot\PdfParser\Parser();
         $pdf= $parser->parseFile($filename);
         $text=$pdf->getText();
-        echo "$text";
+        //echo "$text";
+        return $text;
     }
 
       public function DoUpload(){
         
         if(isset($_FILES['userFile']))
          {
+
           $doc=$this->pdfToText($_FILES['userFile']['tmp_name']);
           $this->WriteFile($doc,"pdftext.txt");  
           $this->nlp("pdftext.txt");
-          $this->xslt_pdf();
-           /* $a = new PDF2Text();
-            $a->setFilename($_FILES['userFile']['tmp_name']);
-            $a->decodePDF();
-<<<<<<< HEAD
-            $doc=$a->output();
 
-            $this->WriteFile($doc,"pdftext.txt");
-
-            $this->nlp("pdftext.txt");
-
-            $this->xslt_pdf();
-=======
-            $this->test($a->output());*/
-     
-            
-
+          redirect('/Xslt/xslt_pdf');
+    
          }
-        
-
     }
     
 
