@@ -326,7 +326,7 @@ class Seeker extends CI_Controller {
             $this->test($a->output());*/
      
             
->>>>>>> master
+
          }
         
 
