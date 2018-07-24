@@ -263,6 +263,9 @@ class Seeker extends CI_Controller {
           $proc->importStyleSheet($xsl);
           $proc->transformToURI($xml, 'cv.xml');
 
+
+          //redirect('/Xslt/xslt_cv/cv.xml');
+
           $xmlold = new DOMDocument("1.0","UTF-8");
           $xmlold->load("cv.xml");
           $rootTag=$xmlold->getElementsByTagName("resume")->item(0);
@@ -274,6 +277,7 @@ class Seeker extends CI_Controller {
 
           //$this->load->library('xslt');
           //$this->xslt->xslt_cv('cv.xml');
+
         }
 
     public function UploadCv()
@@ -315,9 +319,19 @@ class Seeker extends CI_Controller {
            /* $a = new PDF2Text();
             $a->setFilename($_FILES['userFile']['tmp_name']);
             $a->decodePDF();
+<<<<<<< HEAD
+            $doc=$a->output();
+
+            $this->WriteFile($doc,"pdftext.txt");
+
+            $this->nlp("pdftext.txt");
+
+            $this->xslt_pdf();
+=======
             $this->test($a->output());*/
      
             
+
          }
         
 

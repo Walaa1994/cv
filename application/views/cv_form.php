@@ -170,7 +170,7 @@ $(document).ready(function () {
       $('#' + delete_row).remove();
      });
 </script>
-<div class="mdl-grid site-max-width">
+<div class="mdl-grid">
   <div class="mdl-cell mdl-cell--12-col mdl-card mdl-shadow--4dp welcome-card portfolio-card">
     <div class="mdl-card__title">
       <h2 class="mdl-card__title-text">Are you already have CV?</h2>
@@ -386,11 +386,11 @@ $(document).ready(function () {
               <table class="table table-bordered" id="crud_table_education">
                 <tr>
                   <th width="20%">Certificate Name</th>
-                  <th width="10%">Specialization Name</th>
+                  <th width="20%">Specialization Name</th>
                   <th width="10%">Start Date</th>
                   <th width="10%">Date of Grants</th>
-                  <th width="10%">Donor</th>
-                  <th width="35%">Degree Type</th>
+                  <th width="20%">Donor</th>
+                  <th width="20%">Degree Type</th>
                   <th width="5%"></th>
                 </tr>
                 <tr> 
@@ -474,6 +474,7 @@ $(document).ready(function () {
                 <input type="date" id="to_date" class="form-control" name="to_date[]"/>
               </td>
               <td>
+
                 <select id="select" class="mdb-select colorful-select dropdown-primary" name="careerLevel[]">
                   <option value="">choose ...</option>
                   <option value="HighSchool">Student (high school)</option>

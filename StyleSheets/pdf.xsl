@@ -60,6 +60,7 @@
 		                                               
 	</Education>
 
+
 	<WorkExperience>
 	    <employedIn><xsl:value-of select="sentence[@id='15']/tokens/token[@id='7']/word"/></employedIn> 
 
@@ -104,6 +105,7 @@
 	<Phone></Phone>
 	<Email></Email>
 	</References>
+
 </resume>
 
 </xsl:template>
