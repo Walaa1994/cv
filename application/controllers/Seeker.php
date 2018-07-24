@@ -293,10 +293,15 @@ class Seeker extends CI_Controller {
     {
         //The PDF2Text class is HUGE. Magical black box. See file for citations
         //require_once "pdf2text.php";
-        $a = new PDF2Text();
+        /*$a = new PDF2Text();
         $a->setFilename($filename);
         $a->decodePDF();
-        return $a->output();
+        return $a->output();*/
+        include_once APPPATH.'vendor/autoload.php';
+        $parser= new \Smalot\PdfParser\Parser();
+        $pdf= $parser->parseFile($filename);
+        $text=$pdf->getText();
+        echo "$text";
     }
 
       public function DoUpload(){
