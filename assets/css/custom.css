@@ -30,6 +30,12 @@
   background: url("../img/sekeer.jpg") center/cover;
 
 }
+.welcome-card > .bigfive {
+  color: #fff;
+  height: 290px;
+  background: url("../img/bigfiveform.png") center/cover;
+
+}
 
 
 

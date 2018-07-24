@@ -1,5 +1,6 @@
 <?php
 libxml_disable_entity_loader(false);
+ini_set('max_execution_time', 0);
 defined('BASEPATH') OR exit('No direct script access allowed');
 //this class for convert pdf to text
 include(APPPATH.'controllers/pdf2text.php');
@@ -141,16 +142,16 @@ class Seeker extends CI_Controller {
             $from_dateTag=$xml->createElement("startDate",$from_date[$key]);
             $to_dateTag=$xml->createElement("endDate",$to_date[$key]);
             $careerLevelTag=$xml->createElement("careerLevel",$careerLevel[$key]);
-         // $jobTypeTag=$xml->createElement("JobType",$jobType[$key]);
-         // $isCurrentTag=$xml->createElement("isCurrent",$isCurrent[$key]);
+            $jobTypeTag=$xml->createElement("JobType",$jobType[$key]);
+            $isCurrentTag=$xml->createElement("isCurrent",$isCurrent[$key]);
 
             $ExperienceTag->appendChild($company_nameTag);
             $ExperienceTag->appendChild($job_posTag);
             $ExperienceTag->appendChild($from_dateTag);
             $ExperienceTag->appendChild($to_dateTag);
             $ExperienceTag->appendChild($careerLevelTag);
-          //$ExperienceTag->appendChild($jobTypeTag);
-          //$ExperienceTag->appendChild($isCurrentTag);
+            $ExperienceTag->appendChild($jobTypeTag);
+            $ExperienceTag->appendChild($isCurrentTag);
             $rootTag->appendChild($ExperienceTag);
         }
 
@@ -219,17 +220,51 @@ class Seeker extends CI_Controller {
                 {             
                   $file_data = $this->upload->data();
                   $data['img'] = base_url().'/assets/UserPhoto/' .$file_data['file_name'];
+                  $this->load->model('user_model');
+                  $this->user_model->edit_image($id,$data['img']);
+                  $this->session->set_userdata('user_photo',$data['img']);
                 }
-                    
-          $this->load->model('user_model');
-          $this->user_model->edit_image($id,$data['img']);
-          $this->session->set_userdata('user_photo',$data['img']);
         
         $xml->save('cv.xml') or die('XML Create Error');   
 
         redirect('/Xslt/xslt_cv/cv.xml');
 
     }
+
+    public function WriteFile($txt,$file_path){
+                $myfile = fopen($file_path, "w") or die("Unable to open file!");
+          fwrite($myfile, $txt);
+          fclose($myfile);
+            }
+
+    public function nlp($file_path){
+    
+      shell_exec("javac -cp  C:\\nlp_lib\\*; java_Nlp\\CoreNlp.java");
+      
+      shell_exec("java -cp C:\\nlp_lib\\*;java_Nlp  CoreNlp $file_path");
+      
+    }
+
+    public function xslt_pdf(){
+          $xml_path=base_url().'/java_Nlp/nlp.xml';
+          $xml = new DOMDocument;
+          $xml->load($xml_path);
+
+          // Load XSL file
+          $styleSheet_path = base_url().'/StyleSheets/pdf.xsl';
+
+          $xsl = new DOMDocument;
+          $xsl->load($styleSheet_path);
+
+          // Configure the transformer
+          $proc = new XSLTProcessor;
+
+          // Attach the xsl rules
+          $proc->importStyleSheet($xsl);
+          $proc->transformToURI($xml, 'cv.xml');
+
+          //redirect('/Xslt/xslt_cv/cv.xml');
+        }
 
     public function UploadCv()
     {
@@ -244,7 +279,13 @@ class Seeker extends CI_Controller {
             $a = new PDF2Text();
             $a->setFilename($_FILES['userFile']['tmp_name']);
             $a->decodePDF();
-            echo $a->output();
+            $doc=$a->output();
+
+            $this->WriteFile($doc,"pdftext.txt");
+
+            $this->nlp("pdftext.txt");
+
+            $this->xslt_pdf();
          }
     }
 

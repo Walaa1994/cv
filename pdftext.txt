@@ -1,0 +1,272 @@
+Curriculum vita
+e
+ 
+ 
+Personal Information
+ 
+:
+ 
+ 
+Name : 
+Ahmad khalaf
+ 
+.
+ 
+Date Of Birth : 05
+-
+10
+-
+1995 .
+ 
+Nationality : 
+Syrian
+ 
+.
+ 
+Marital Stat
+us : 
+Single .
+ 
+Gender : Male .
+ 
+Address : 
+Mazzeh , Damascus , Syria .
+ 
+Email : 
+ahmad.khalaf@gmail.com
+ 
+.
+ 
+Phone : +9639
+91963462 .
+ 
+ 
+Education :
+ 
+ 
+Certificate
+ 
+:
+ 
+ITE .
+ 
+Specialization
+ 
+:
+ 
+Software Engineering .
+ 
+Start Dat
+e
+ 
+: 
+01
+-
+09
+-
+2
+013
+ 
+.
+ 
+Date of Grant
+s
+:
+ 
+01
+-
+08
+-
+2018 .
+ 
+Dono
+r
+ 
+:
+ 
+Damascus University .
+ 
+Degree Typ
+e
+ 
+:
+ 
+Bachelor .
+ 
+ 
+Work 
+E
+xperience
+ 
+:
+ 
+ 
+Company
+ 
+:
+ 
+Syriatel
+ 
+.
+ 
+Job Positio
+n
+ 
+: 
+Web Developer .
+ 
+F
+ro
+m
+ 
+:
+ 
+01
+-
+0
+8
+-
+201
+5
+ 
+.
+ 
+T
+o
+ 
+:
+ 
+01
+-
+02
+-
+2018 .
+ 
+CareerLeve
+l
+ 
+:
+ 
+Student
+ 
+.
+ 
+Job Typ
+e
+ 
+:
+ 
+Intern
+ 
+.
+ 
+Is Curren
+t
+ 
+:
+ 
+False .
+ 
+ 
+ 
+ 
+Personal Skills :
+ 
+ 
+Skill Nam
+e
+ 
+:
+ 
+PHP
+ 
+.
+ 
+Years of experienc
+e
+ 
+:
+ 
+2
+ 
+.
+ 
+Skill Leve
+l
+ 
+:
+ 
+5
+ 
+.
+ 
+Language :
+ 
+ 
+Language Nam
+e
+ 
+:
+ 
+English
+ 
+.
+ 
+SpokenLeve
+l
+ 
+:
+ 
+5
+ 
+.
+ 
+ReadingLeve
+l
+ 
+:
+ 
+5
+ 
+.
+ 
+WritingLeve
+l
+ 
+:
+ 
+4 .
+ 
+ 
+Reference :
+ 
+Name :
+ 
+Ola Khalaf .
+ 
+Phone :
+ 
++96398857
+9
+016
+ 
+.
+ 
+Email :
+ 
+ola.khalaf@gmail.com
+ 
+.
+ 
+ 
+Others :
+ 
+ 
+Job Position :
+ 
+Android Developer .
+ 
+Is Active :
+ 
+True .
+ 

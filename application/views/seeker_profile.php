@@ -1,5 +1,5 @@
 <div class="mdl-grid site-max-width">
-	<div class="mdl-cell mdl-cell--12-col mdl-card mdl-shadow--4dp welcome-card portfolio-card">
+  <div class="mdl-cell mdl-cell--12-col mdl-card mdl-shadow--4dp welcome-card portfolio-card">
     <div class="mdl-card__title">
       <h2 class="mdl-card__title-text">Are you already have CV?</h2>
     </div>
@@ -185,8 +185,8 @@
             </li>
         </ul>
       </div>
-      <div class="demo-card-event mdl-cell mdl-card mdl-shadow--4dp event-card portfolio-card">
-        <div class="mdl-card__title mdl-card--expand">
+      <div style="background-color:#3f51b5" class="demo-card-event mdl-cell mdl-card mdl-shadow--4dp event-card portfolio-card">
+        <div  class="mdl-card__title mdl-card--expand">
           <h4>
             Openness : 20%<br>
             Conscientiousness : 40% <br>

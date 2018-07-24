@@ -52,12 +52,10 @@
   </script>
  <div class="mdl-grid site-max-width">
   <div class="mdl-cell mdl-cell--12-col mdl-card mdl-shadow--4dp welcome-card portfolio-card">
-    <div class="mdl-card__title">
-      <h2 class="mdl-card__title-text"></h2>
+    <div class="bigfive">
+      
     </div>
-    <div class="mdl-card__supporting-text">
-<!--       you can upload your cv and all data extract and re-stract with professional cv. -->
-    </div>
+  
     <div class="mdl-card__actions mdl-card-">
       <!-- cv Form -->
   <div id="form">

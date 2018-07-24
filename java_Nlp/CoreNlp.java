@@ -50,7 +50,7 @@ public class CoreNlp {
         // run all Annotators on this text
         pipeline.annotate(document);
 
-        FileOutputStream os = new FileOutputStream(new File("C:\\Users\\Roula Arab\\Desktop\\nlp.xml"));
+        FileOutputStream os = new FileOutputStream(new File("java_Nlp\\nlp.xml"));
         pipeline.xmlPrint(document, os);
         
         /*List<CoreMap> sentences = document.get(CoreAnnotations.SentencesAnnotation.class);

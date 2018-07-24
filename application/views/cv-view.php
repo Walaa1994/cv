@@ -17,14 +17,12 @@
                         <img src="<?php echo base_url();?>/assets/img/background.jpg" class="img-fluid">
                     </div>
                     <!--Avatar-->
-                    <div class="avatar"><img src="https://mdbootstrap.com/wp-content/uploads/2015/10/team-avatar-2.jpg" class="img-circle img-responsive">
+                    <div class="avatar"><img src="<?php echo $value1['image'];?>" class="img-circle img-responsive">
                     </div>
                     <!--Content-->
                     <div class="card-block">
                         <h4><?php echo $value1['first_name']." ".$value1['last_name'];?></h4>
-                        <?php foreach ($value1['jobTitle'] as $value2) {?>
-                        <strong><?php echo $value2; ?></strong>
-                        <?php }?>
+                        <p><strong><?php echo $value1['jobposition']; ?></strong></p>
                         <!--Triggering button-->
                         <a class="rotate-btn" id="rotate-btn-<?php echo $index ?>" data-card="card-<?php echo $index ?>">
                         <i class="fa fa-repeat"></i> Click here to rotate</a>
@@ -34,43 +32,28 @@
                 <!--Back Side-->
                 <div class="face back">
                     <!--Content-->
-                    <h4>About me</h4>
+                    <h4>About:</h4>
                     <hr>
-                    <strong>Personal Information</strong>
-                    <p>First Name: <?php echo $value1['first_name'];?></p>
-                    <p>Last Name: <?php echo $value1['last_name'];?></p>
-                    <p>Birthdate: <?php echo $value1['birthday'];?></p>
-                    <p>Gender: <?php echo $value1['gender'];?></p>
-                    <p>Nationality: <?php echo $value1['Nationality'];?></p>
-                    <p>Marital Status: <?php echo $value1['MaritalStatus'];?></p>
-                    <p><?php echo $value1['Phone'];?></p>
-                    <p><?php echo $value1['Email'];?></p>
-                    <p>Country: <?php echo $value1['Country'];?></p>
-                    <p>City: <?php echo $value1['City'];?></p>
-                    <p>Street: <?php echo $value1['Street'];?></p>
-                    <p> </p>
-                    <strong>Education</strong>
-                    <?php for ($i=0; $i < count($value1['eduMajor']) ; $i++) { ?>
-                    <p>Certificate Name: <?php echo $value1['eduMajor'][$i];?></p>
-                    <p>Specialization Name: <?php echo $value1['eduMinor'][$i];?></p>
-                    <p>Start Date: <?php echo $value1['eduStartDate'][$i];?></p>
-                    <p>Date of Grants: <?php echo $value1['eduGradDate'][$i];?></p>
-                    <p>Donor: <?php echo $value1['studiedIn'][$i];?></p>
-                    <p>Degree Type: <?php echo $value1['degreeType'][$i];?></p>
-                    <p> </p>
+                    <strong>Last Education</strong>
+                    <?php $last=count($value1['eduMajor'])-1;?>
+                    <p>Certificate Name: <?php echo $value1['eduMajor'][$last];?></p>
+                    <p>Specialization Name: <?php echo $value1['eduMinor'][$last];?></p>
+                    <p>Start Date: <?php echo $value1['eduStartDate'][$last];?></p>
+                    <p>Date of Grants: <?php echo $value1['eduGradDate'][$last];?></p>
+                    <p>Donor: <?php echo $value1['studiedIn'][$last];?></p>
+                    <p>Degree Type: <?php echo $value1['degreeType'][$last];?></p>
+                    <strong>Last Work Experience</strong>
+                    <?php $last=count($value1['employedIn'])-1; ?>
+                    <p>Company Name: <?php echo $value1['employedIn'][$last];?></p>
+                    <p>Job Position: <?php echo $value1['jobTitle'][$last];?></p>
+                    <p>from: <?php echo $value1['eduStartDate'][$last];?></p>
+                    <p>to: <?php echo $value1['eduGradDate'][$last];?></p>
+                    <p>CareerLevel: <?php echo $value1['studiedIn'][$last];?></p>
+                    <p>Job Type: <?php echo $value1['degreeType'][$last];?></p>
+                    <p>Is Current: <?php echo $value1['degreeType'][$last];?></p>
                     <?php } ?>
-                    <strong>Work Experience</strong>
-                    <?php for ($i=0; $i < count($value1['employedIn']) ; $i++) { ?>
-                    <p>Company Name: <?php echo $value1['employedIn'][$i];?></p>
-                    <p>Job Position: <?php echo $value1['jobTitle'][$i];?></p>
-                    <p>from: <?php echo $value1['eduStartDate'][$i];?></p>
-                    <p>to: <?php echo $value1['eduGradDate'][$i];?></p>
-                    <p>CareerLevel: <?php echo $value1['studiedIn'][$i];?></p>
-                    <p>Job Type: <?php echo $value1['degreeType'][$i];?></p>
-                    <p>Is Current: <?php echo $value1['degreeType'][$i];?></p>
-                    <p> </p>
-                    <?php } ?>
-                    <?php } ?>
+
+                    <a href="<?php echo(site_url('home/downloadCV/'.$value1['id']));?>"  class="btn btn-pink waves-effect waves-light"> <i class="fa fa-clone left"></i>Open CV PDF</a>  
                     <hr>
                     <!--Social Icons-->
                     <!--Triggering button-->

@@ -64,7 +64,7 @@ class Home extends CI_Controller {
             $City=$query_result['results']['bindings'][0]['City']['value'];
             $Street=$query_result['results']['bindings'][0]['Street']['value'];
         
-        
+        	$this->data['id']=$id;
             $this->data['first_name']=$first_name;
             $this->data['last_name']=$last_name;
             $this->data['birthday']=$birthday;
@@ -273,7 +273,6 @@ class Home extends CI_Controller {
         {
     
             $name=$ref_result['results']['bindings'][0]['name']['value'];
-            echo $name ;
             $phone=$ref_result['results']['bindings'][0]['phone']['value'];
             $mbox=$ref_result['results']['bindings'][0]['mbox']['value'];
            
@@ -286,6 +285,32 @@ class Home extends CI_Controller {
             $this->data['phone']="Phone : ";
             $this->data['mbox']="Email : ";
         }
+
+        $Target="PREFIX cv: <http://rdfs.org/resume-rdf/cv.rdfs#> 
+                    PREFIX vcard: <http://www.w3.org/2006/vcard/ns#>
+                    PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+                    select ?jobposition  
+                    where {
+                     ?resume cv:cvTitle \"$id\".
+                     ?resume cv:hasTarget ?q .
+                     ?q cv:targetJobDescription ?jobposition.
+                    }";
+        $this->load->library('query');
+        $target_result=$this->query->querysparql($Target,$Dataset_path);
+
+        if($target_result['results']['bindings']!= null)
+        {
+    
+            $jobposition=$target_result['results']['bindings'][0]['jobposition']['value']; 
+           
+            $this->data['jobposition']=$jobposition;
+        }
+        else{
+            $this->data['jobposition']=" ";
+        }
+        $this->load->model('user_model');
+        $res=$this->user_model->get_user_image($id);
+        $this->data['image']=$res->Image;
 
         //merg all data in one array and return it
         $result[] = $this->data;
@@ -321,7 +346,8 @@ class Home extends CI_Controller {
         $result = json_decode(htmlspecialchars_decode($dataJson), true);
         /*echo '<pre>';
         print_r($result);*/
-    $query="PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>  
+
+    	$query="PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>  
         PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
         PREFIX cv: <http://rdfs.org/resume-rdf/cv.rdfs#> 
         PREFIX vcard: <http://www.w3.org/2006/vcard/ns#>
@@ -355,8 +381,13 @@ class Home extends CI_Controller {
 
         foreach ($result['basic']['results']['bindings'] as  $value1){
             $locality=$value1['locality']['value'];
+            $jobTitle=$value1['description']['value'];
             $query.="?address vcard:locality ?locality.
-            FILTER regex(?locality,\"$locality\",\"i\").";
+            FILTER regex(?locality,\"$locality\",\"i\").
+            ?resume cv:hasTarget ?target.
+		    ?target cv:targetJobDescription ?jobposition.
+		    FILTER regex(?jobposition,\"$jobTitle\",\"i\").
+            ";
         }
 
         foreach ($result['education']['results']['bindings'] as $value2) {
@@ -525,9 +556,9 @@ class Home extends CI_Controller {
     }
 
     //to download cv as pdf
-    function downloadCV()
+    function downloadCV($id)
     {
-        $this->seeker_data();
+        $this->seeker_data($id);
         $this->load->library('fpdf_gen');
         $this->load->view('cv',$this->data);
     }

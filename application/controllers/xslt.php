@@ -46,4 +46,25 @@ class Xslt extends CI_Controller {
 
 			redirect('/RDFStore/jenaTDB_announcement/rdf.xml');
 		}
+
+		public function xslt_pdf(){
+			$xml_path=base_url().'/java_Nlp/nlp.xml';
+			$xml = new DOMDocument;
+			$xml->load($xml_path);
+
+			// Load XSL file
+			$styleSheet_path = base_url().'/StyleSheets/pdf.xsl';
+
+			$xsl = new DOMDocument;
+			$xsl->load($styleSheet_path);
+
+			// Configure the transformer
+			$proc = new XSLTProcessor;
+
+			// Attach the xsl rules
+			$proc->importStyleSheet($xsl);
+			$proc->transformToURI($xml, 'cv.xml');
+
+			//$this->xslt_cv('cv.xml');
+		}
 }

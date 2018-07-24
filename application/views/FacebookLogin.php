@@ -13,7 +13,7 @@
        
       </a>
        /
-      <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-button--accent" href="<?php echo(site_url('seeker/cvForm'));?>" target="_blank">
+      <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-button--accent" href="<?php echo(site_url('Seeker/BigFiveform'));?>" target="_blank">
         Personality Traits From StarSoft Form..
       </a>
     </div>
