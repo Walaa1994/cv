@@ -49,7 +49,8 @@ class Home extends CI_Controller {
             }    ";
         $this->load->library('query');
         $query_result=$this->query->querysparql($personalInfo,$Dataset_path);
-    
+         /*echo '<pre>';
+         print_r($query_result);*/
         if($query_result['results']['bindings']!= null)
         {
             $first_name=$query_result['results']['bindings'][0]['FirstName']['value'];
@@ -284,6 +285,58 @@ class Home extends CI_Controller {
             $this->data['name']="Name : ";
             $this->data['phone']="Phone : ";
             $this->data['mbox']="Email : ";
+        }
+
+        $personality="PREFIX cv: <http://rdfs.org/resume-rdf/cv.rdfs#> 
+                      PREFIX vcard: <http://www.w3.org/2001/vcard-rdf/3.0#>
+                      PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+                      select ?percentile1  ?percentile2 ?percentile3 ?percentile4 ?percentile5
+                      where {
+                        ?resume cv:cvTitle \"$id\".
+                        ?resume cv:hasOtherInfo ?a.
+                        ?a cv:otherInfoType \"openness\".
+                        ?a cv:otherInfoDescription ?percentile1.
+
+                        ?resume cv:hasOtherInfo ?b.
+                        ?b cv:otherInfoType \"conscientiousness\".
+                        ?b cv:otherInfoDescription ?percentile2.
+
+                        ?resume cv:hasOtherInfo ?c.
+                        ?c cv:otherInfoType \"extraversion\".
+                        ?c cv:otherInfoDescription ?percentile3.
+
+                        ?resume cv:hasOtherInfo ?d.
+                        ?d cv:otherInfoType \"agreeableness\".
+                        ?d cv:otherInfoDescription ?percentile4.
+
+                        ?resume cv:hasOtherInfo ?e.
+                        ?e cv:otherInfoType \"neuroticism\".
+                        ?e cv:otherInfoDescription ?percentile5.  
+                      }";
+
+        $this->load->library('query');
+        $per_result=$this->query->querysparql($personality,$Dataset_path);
+        if($per_result['results']['bindings']!= null)
+        {
+    
+            $openness=$per_result['results']['bindings'][0]['percentile1']['value'];
+            $conscientiousness=$per_result['results']['bindings'][0]['percentile2']['value'];
+            $extraversion=$per_result['results']['bindings'][0]['percentile3']['value'];
+            $agreeableness=$per_result['results']['bindings'][0]['percentile4']['value'];
+            $neuroticism=$per_result['results']['bindings'][0]['percentile5']['value'];
+           
+            $this->data['openness']=$openness;
+            $this->data['conscientiousness']=$conscientiousness;
+            $this->data['extraversion']=$extraversion;
+            $this->data['agreeableness']=$agreeableness;
+            $this->data['neuroticism']=$neuroticism;
+        }
+        else{
+            $this->data['openness']=" ";
+            $this->data['conscientiousness']=" ";
+            $this->data['extraversion']=" ";
+            $this->data['agreeableness']=" ";
+            $this->data['neuroticism']=" ";
         }
 
         $Target="PREFIX cv: <http://rdfs.org/resume-rdf/cv.rdfs#> 
