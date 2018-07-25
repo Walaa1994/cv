@@ -604,55 +604,6 @@ class Home extends CI_Controller {
         /*$this->load->view('blank');*/
     }
 
-    function tt(){
-        $cars = Array
-(
-    "1" => Array
-        (
-            "0" => "php"
-        ),
-
-    "2" => Array
-        (
-            "1" => "java"
-        ),
-
-    "3" => Array
-        (
-            "0" => "php",
-            "1" => "java"
-        ),
-
-    "4" => Array
-        (
-            "2" => "english"
-        ),
-
-    "5" => Array
-        (
-            "0" => "php",
-            "2" => "english"
-        ),
-
-    "6" => Array
-        (
-            "1" => "java",
-            "2" => "english"
-        ),
-
-    "7" => Array
-        (
-            "0" => "php",
-            "1" => "java",
-            "2" => "english"
-        )
-
-);
-arsort($cars);
-echo "<pre>";
-  print_r($cars) ;
-    }
-
     function seeker_search(){
         $query="PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>  
                 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
