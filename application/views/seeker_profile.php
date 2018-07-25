@@ -212,7 +212,9 @@
                       $neuroticism>$agreeableness)
                       echo "Neuroticism is a trait characterized by sadness, moodiness, and emotional instability . Individuals who are high in this trait tend to be experience mood swings, anxiety, irritability and sadness.Those low in this trait tend to be more stable and emotionally resilient .";
 
-
+                    echo "<br>";
+                    if($warning_message != " ")
+                    echo "Note : ".$warning_message;
                  ?>
                 </span>
               </span>

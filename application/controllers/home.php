@@ -376,6 +376,9 @@ class Home extends CI_Controller {
         if ($warning_message!=null) {
             $this->data['warning_message']=$warning_message;
         }
+        else {
+          $this->data['warning_message']=" " ;
+        }
         $this->seeker_data();
         $this->data['pageTitle']='Home';
         $this->data['subview'] = 'seeker_profile';
