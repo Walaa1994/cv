@@ -344,28 +344,23 @@ class Seeker extends CI_Controller {
 
 
         $Agreeableness=round(((($q2+$q7+$q12+$q17+$q22+$q27+$q32+$q37+$q42)/9)*100)/5);
-        echo'Agreeableness= '.$Agreeableness.'  ';
 
         $Openness=round(((($q5+$q10+$q15+$q20+$q25+$q30+$q35+$q40+$q41+$q44)/10)*100)/5);
-        echo'Openness= '.$Openness.'  ';
 
         $Conscientiousness=round(((($q3+$q8+$q13+$q18+$q23+$q23+$q28+$q33+$q43)/9)*100)/5);
-        echo'Conscientiousness= '.$Conscientiousness.'  ';
 
         $Extraversion=round(((($q1+$q6+$q11+$q16+$q21+$q26+$q31+$q36)/8)*100)/5);
-         echo'Extraversion= '.$Extraversion.'  ';
 
         $Neuroticism=round(((($q4+$q9+$q14+$q19+$q24+$q29+$q34+$q39)/8)*100)/5);
-          echo'Neuroticism= '.$Neuroticism.'  ';
 
-          $id=$this->session->userdata('u_id');
-          $this->updatesparql($Openness,$Conscientiousness, $Extraversion,$Agreeableness,$Neuroticism,$id);
+        $id=$this->session->userdata('u_id');
+        $this->updatesparql($Openness,$Conscientiousness, $Extraversion,$Agreeableness,$Neuroticism,$id);
 
-      echo(max($Agreeableness.'trust, altruism, kindness, affection, and other prosocial behaviors. People who are high in agreeableness tend to be more cooperative while those low in this trait tend to be more competitive and even manipulative',$Openness.'People who are high in this trait tend to be more adventurous and creative. People low in this trait are often much more traditional and may struggle with abstract thinking.,Very creative ,
+      /*echo(max($Agreeableness.'trust, altruism, kindness, affection, and other prosocial behaviors. People who are high in agreeableness tend to be more cooperative while those low in this trait tend to be more competitive and even manipulative',$Openness.'People who are high in this trait tend to be more adventurous and creative. People low in this trait are often much more traditional and may struggle with abstract thinking.,Very creative ,
           Open to trying new things
          ,Focused on tackling new challenges
         ,Happy to think about abstract concepts'
-       ,$Conscientiousness.'Standard features of this dimension include high levels of thoughtfulness, with good impulse control and goal-directed behaviors. Highly conscientiousness tend to be organized and mindful of details , Spend time preparing , Finish important tasks right away , Pay attention to details',$Extroversion.'Extraversion is characterized by excitability, sociability, talkativeness, assertiveness, and high amounts of emotional expressiveness. People who are high in extraversion are outgoing and tend to gain energy in social situations. ',$Neuroticism.'Neuroticism is a trait characterized by sadness, moodiness, and emotional instability. Individuals who are high in this trait tend to experience mood swings, anxiety, irritability and sadness. Those low in this trait tend to be more stable and emotionally resilient') . "<br>");
+       ,$Conscientiousness.'Standard features of this dimension include high levels of thoughtfulness, with good impulse control and goal-directed behaviors. Highly conscientiousness tend to be organized and mindful of details , Spend time preparing , Finish important tasks right away , Pay attention to details',$Extraversion.'Extraversion is characterized by excitability, sociability, talkativeness, assertiveness, and high amounts of emotional expressiveness. People who are high in extraversion are outgoing and tend to gain energy in social situations. ',$Neuroticism.'Neuroticism is a trait characterized by sadness, moodiness, and emotional instability. Individuals who are high in this trait tend to experience mood swings, anxiety, irritability and sadness. Those low in this trait tend to be more stable and emotionally resilient') . "<br>");*/
 
 
   }
@@ -398,10 +393,12 @@ class Seeker extends CI_Controller {
                   ?resume cv:cvTitle \"$id\".
                 }";
 
-            $this->WriteFile($query);
+            $this->WriteFile($query,"savequery.txt");
             shell_exec("javac -cp  java_RDFStore\\*; java_RDFStore\\UpdateSparql.java");
 
             shell_exec("java -cp java_RDFStore\\*;java_RDFStore  UpdateSparql $filename $Dataset_path");  
+
+            redirect('/home/seeker_profile');
 
         }
 
