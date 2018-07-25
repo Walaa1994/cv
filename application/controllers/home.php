@@ -315,6 +315,8 @@ class Home extends CI_Controller {
         //merg all data in one array and return it
         $result[] = $this->data;
         return $result;
+        /*echo "<pre>";
+        print_r($result);*/
     }
 
     function seeker_profile ($warning_message=null){
@@ -357,7 +359,6 @@ class Home extends CI_Controller {
         PREFIX foaf: <http://xmlns.com/foaf/0.1/>
         select ?id
         where {
-            {
             ?resume cv:cvTitle ?id.
             ?resume cv:cvIsActive \"True\".
             ?resume cv:hasEducation ?w .
@@ -393,7 +394,7 @@ class Home extends CI_Controller {
             ";
         }
 
-        foreach ($result['education']['results']['bindings'] as $value2) {
+        /*foreach ($result['education']['results']['bindings'] as $value2) {
             $eduMinor=$value2['eduMinor']['value'];
             $query.="
             }
@@ -403,7 +404,7 @@ class Home extends CI_Controller {
               ?education cv:eduMinor \"$eduMinor\".     
             }
         }";
-        }
+        }*/
 
         //echo "$query";
         $dataset_path="C:\\tdbCV";
@@ -449,6 +450,130 @@ class Home extends CI_Controller {
         $this->load->view('layouts/layout', $this->data);
     }
 
+    public function combination($words)
+    {   
+      $num = count($words); 
+      //The total number of possible combinations 
+      $total = pow(2, $num);
+      //Loop through each possible combination  
+
+      for ($i = 0; $i < $total; $i++) {  
+
+          //For each combination check if each bit is set 
+
+          for ($j = 0; $j < $num; $j++) { 
+
+             //Is bit $j set in $i? 
+
+              if (pow(2, $j) & $i) 
+                $result[$i][$j]=$words[$j] ;      
+
+          } 
+      }
+      /*echo "<pre>";
+      print_r($result);*/
+      return $result;
+    }
+
+
+
+    public function find_job($id)
+    {
+      $seeker=$this->seeker_data($id);
+      $jobposition=$seeker[0]['jobposition'];
+      $locality=$seeker[0]['City'];
+      $eduMajor=$seeker[0]['eduMajor'];
+      $eduDegree=$seeker[0]['degreeType'];
+      $skills=$seeker[0]['skillName'];
+
+      $comb=$this->combination($skills);
+      arsort($comb);
+
+      $FirstEduMajor=$seeker[0]['eduMajor'][0];
+      $FirstEduDegree=$seeker[0]['degreeType'][0];
+      $query="PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>  
+              PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+              PREFIX cv: <http://rdfs.org/resume-rdf/cv.rdfs#> 
+              PREFIX vcard: <http://www.w3.org/2006/vcard/ns#>
+              PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+              select distinct ?id ?company ?description
+              where {
+                {
+                ?ann cv:hasTarget ?w . 
+                ?w cv:targetCompanyDescription ?company.
+                ?ann cv:cvTitle ?id.
+                ?ann cv:aboutPerson ?person.
+                ?person vcard:locality ?locality.
+                FILTER regex(?locality,\"$locality\",\"i\").
+                ?ann cv:hasTarget ?target . 
+                ?target cv:targetJobDescription ?description.
+                FILTER regex(?description,\"$jobposition\",\"i\").
+                ?ann cv:hasEducation ?edu.
+                ?edu cv:eduMajor ?eduMajor.
+                FILTER regex(?eduMajor,\"$FirstEduMajor\",\"i\").
+                ?edu cv:degreeType \"$FirstEduDegree\".";
+      $i=1;
+      foreach ($skills as $value) {
+        $query.="?ann cv:hasSkill ?skill$i.
+                ?skill cv:skillName ?skillName$i.
+                FILTER regex(?skillName$i,\"$value\",\"i\").
+                ";
+        $i++;
+      }
+      $query.="}";
+      foreach ($comb as $value1) {
+      for ($i=0; $i < sizeof($eduMajor) ; $i++) {
+        $major=$eduMajor[$i];
+        $degree=$eduDegree[$i];
+        $query.="
+            union
+            {
+              ?ann cv:hasTarget ?w . 
+              ?w cv:targetCompanyDescription ?company.
+              ?ann cv:cvTitle ?id.
+              ?ann cv:aboutPerson ?person.
+              ?person vcard:locality ?locality.
+              FILTER regex(?locality,\"$locality\",\"i\").
+              ?ann cv:hasTarget ?target . 
+              ?target cv:targetJobDescription ?description.
+              FILTER regex(?description,\"$jobposition\",\"i\").
+              ?ann cv:hasEducation ?edu.
+              ?edu cv:eduMajor ?eduMajor.
+              FILTER regex(?eduMajor,\"$major\",\"i\").
+              ?edu cv:degreeType \"$degree\".
+            ";
+        $i=1;
+       
+          foreach ($value1 as $value2) {
+            $query.="?ann cv:hasSkill ?skill$i.
+                ?skill cv:skillName ?skillName$i.
+                FILTER regex(?skillName$i,\"$value\",\"i\").
+                ";
+            $i++;
+          }
+        }
+      $query.="}";
+      }
+      $query.="}";
+
+     /* echo "<pre>";
+      echo "$query";*/
+
+      $dataset_path="C:\\tdbAnnouncement";
+      $this->load->library('query');
+      $this->data['result']=$this->query->querysparql($query,$dataset_path);
+
+      foreach ($this->data['result']['results']['bindings'] as $key => $value){ 
+            $id=$value['company']['value'];
+            $this->load->model('user_model');
+            $en_name=$this->user_model->get_company($id)->en_name;
+            $this->data['result']['results']['bindings'][$key]['company']['value']= $en_name;    
+        }
+      $this->data['pageTitle']='Announcement Search';
+      $this->data['subview'] = 'announcement_search';
+      $this->load->view('layouts/layout', $this->data);
+    }
+ 
     function About_Us (){
 
         $this->data['pageTitle']='About Us';
@@ -480,7 +605,52 @@ class Home extends CI_Controller {
     }
 
     function tt(){
-        echo $this->input->post('koko');
+        $cars = Array
+(
+    "1" => Array
+        (
+            "0" => "php"
+        ),
+
+    "2" => Array
+        (
+            "1" => "java"
+        ),
+
+    "3" => Array
+        (
+            "0" => "php",
+            "1" => "java"
+        ),
+
+    "4" => Array
+        (
+            "2" => "english"
+        ),
+
+    "5" => Array
+        (
+            "0" => "php",
+            "2" => "english"
+        ),
+
+    "6" => Array
+        (
+            "1" => "java",
+            "2" => "english"
+        ),
+
+    "7" => Array
+        (
+            "0" => "php",
+            "1" => "java",
+            "2" => "english"
+        )
+
+);
+arsort($cars);
+echo "<pre>";
+  print_r($cars) ;
     }
 
     function seeker_search(){

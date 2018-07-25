@@ -41,7 +41,7 @@
            echo "Address : ".$Country."-".$City."-".$Street; ?>
     </div>
     <div class="mdl-card__actions  mdl-card--border">
-      <a href="#" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-button--accent">
+      <a href="<?php echo(site_url('home/find_job/'.$this->session->userdata('u_id')));?>" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-button--accent">
         Find Job
       </a>
     </div>
