@@ -106,7 +106,7 @@
 			<cv:startDate> <xsl:value-of select="startDate"/> </cv:startDate>
 			<cv:endDate> <xsl:value-of select="endDate"/> </cv:endDate>
 			<cv:careerLevel><xsl:value-of select="careerLevel"/></cv:careerLevel>
-			<cv:jobType><xsl:value-of select="jobType"/></cv:jobType>
+			<cv:jobType><xsl:value-of select="JobType"/></cv:jobType>
 			<cv:isCurrent><xsl:value-of select="isCurrent"/></cv:isCurrent>
         </rdf:Description>
 		
