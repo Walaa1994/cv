@@ -36,4 +36,6 @@ class Query {
 		    $json = json_decode($str, true);
 		    return $json;
 		}
+
+		
 }
