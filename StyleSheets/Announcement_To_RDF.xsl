@@ -19,11 +19,12 @@
 			
 			<xsl:for-each  select="announcement/Education">
 			    <xsl:variable name="edudeg"><xsl:value-of select="degreeType"/></xsl:variable>
-			    <cv:hasEducation rdf:resource="http://rdfs.org/resume-rdf/cv.rdfs/Education#{$id}_{$edudeg}"/>
+			    <xsl:variable name="major"><xsl:value-of select="cert_code"/></xsl:variable>
+			    <cv:hasEducation rdf:resource="http://rdfs.org/resume-rdf/cv.rdfs/Education#{$id}_{$edudeg}_{$major}"/>
 			</xsl:for-each>
 			
 			<xsl:for-each  select="announcement/PersonalSkills">
-			    <xsl:variable name="skillName"><xsl:value-of select="skillName"/></xsl:variable>
+			    <xsl:variable name="skillName"><xsl:value-of select="skill_code"/></xsl:variable>
 			    <cv:hasSkill rdf:resource="http://rdfs.org/resume-rdf/cv.rdfs/Skill#{$id}_{$skillName}"/>
 			</xsl:for-each>
 			
@@ -63,8 +64,9 @@
 	    <!-- education -->
 		<xsl:for-each  select="announcement/Education">
 		<xsl:variable name="edudeg"><xsl:value-of select="degreeType"/></xsl:variable>
+		<xsl:variable name="major"><xsl:value-of select="cert_code"/></xsl:variable>
 		
-		<rdf:Description rdf:about="http://rdfs.org/resume-rdf/cv.rdfs/Education#{$id}_{$edudeg}">
+		<rdf:Description rdf:about="http://rdfs.org/resume-rdf/cv.rdfs/Education#{$id}_{$edudeg}_{$major}">
             <cv:eduMajor> <xsl:value-of select="eduMajor"/> </cv:eduMajor>
 			<cv:eduMinor> <xsl:value-of select="eduMinor"/> </cv:eduMinor>          
 			<cv:degreeType><xsl:value-of select="degreeType"/></cv:degreeType>
@@ -74,7 +76,7 @@
 		
 		<!-- Personal Skills -->
 		<xsl:for-each  select="announcement/PersonalSkills">
-		<xsl:variable name="skillName"><xsl:value-of select="skillName"/></xsl:variable>
+		<xsl:variable name="skillName"><xsl:value-of select="skill_code"/></xsl:variable>
 		
 		<rdf:Description rdf:about="http://rdfs.org/resume-rdf/cv.rdfs/Skill#{$id}_{$skillName}">
 		    <cv:skillName> <xsl:value-of select="skillName"/> </cv:skillName>
