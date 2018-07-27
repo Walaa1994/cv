@@ -428,7 +428,7 @@ class Home extends CI_Controller {
         /*echo '<pre>';
         print_r($result);*/
         $this->load->library('babelnet');
-    	$query="PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>  
+    	  $query="PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>  
         PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
         PREFIX cv: <http://rdfs.org/resume-rdf/cv.rdfs#> 
         PREFIX vcard: <http://www.w3.org/2006/vcard/ns#>
@@ -512,8 +512,11 @@ class Home extends CI_Controller {
               ";}
         }
 
-        $query.="}
-        union
+        $query.="}";
+        $comb=$this->combination($result['skills']['results']['bindings']);
+        arsort($comb);
+        foreach ($comb as $array) {
+        "union
             {
               ?resume cv:cvTitle ?id.
               ?resume cv:cvIsActive \"True\".
@@ -527,7 +530,8 @@ class Home extends CI_Controller {
         }
 
         $i=1;
-        foreach ($result['skills']['results']['bindings'] as $value5){
+       
+        foreach ($array as $value5) {
             $skillName1=$value5['skillName']['value'];
             $query.="?resume cv:hasSkill ?q$i.
             ?q$i cv:skillName ?l$i.
@@ -585,7 +589,9 @@ class Home extends CI_Controller {
               FILTER(xsd:integer(?neuroticism) >= $big_five->Neuroticism).
               ";}
         }
-        $query.="}}";
+        $query.="}";
+      }
+        $query.="}";
         /*echo "<pre>";
         echo "$query";*/
         $dataset_path="C:\\tdbCV";
