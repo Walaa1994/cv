@@ -121,6 +121,13 @@ class User_model extends CI_Model {
         $query = $this->db->get('user');
         return  $query->row();
     }
-    
 
+
+    public function get_big_five($jobPosition)
+    {
+        $this->db->select('*');
+        $this->db->where('job', $jobPosition);
+        $query = $this->db->get('big_five');
+        return  $query->row();
+    }
 }
