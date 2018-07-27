@@ -153,7 +153,7 @@
 </section>
 
 <section class="section--center mdl-grid site-max-width homepage-portfolio">
-    <a class="mdl-button mdl-button--raised mdl-js-button mdl-js-ripple-effect mdl-button--accent" href="http://localhost/cv/index.php/home/downloadCV">
+    <a class="mdl-button mdl-button--raised mdl-js-button mdl-js-ripple-effect mdl-button--accent" href="http://localhost/cv/index.php/home/downloadCV" target="blank">
       Download CV
     </a>
 </section>
