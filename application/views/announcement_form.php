@@ -342,7 +342,7 @@ $(document).ready(function () {
           <div id="phase3">
             <h3>Personal Skills</h3>
             <div class="table-responsive">
-            <table class="table table-bordered" id="crud_table_experience">
+            <table class="table table-bordered" id="crud_table_skill">
             <tr>
               <th width="50%">Skill Name</th>
               <th width="50%">Years of experience</th>

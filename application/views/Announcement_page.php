@@ -12,12 +12,12 @@
                         <div class="text-white text-center align-items-center py-5 px-4 rounded " style="background-color: ##dddee075;">
                             <div>
                                 <h5 class="black-text">
-                                    <i class="fa fa-bullhorn"></i> Announcement</h5>
-                                <h3 style="color: #696969" class="py-3 font-weight-bold">
+                                    <i  class="fa fa-bullhorn"></i> Announcement</h5>
+                                <h3 style="color: #B4B4B4" class="py-3 font-weight-bold">
                                     <strong><?php echo $company->en_name; ?></strong>
                                 </h3>
 
-                                <p style="color: #696969"><?php echo $value['job']['value'];?></p>
+                                <h4 style="color: #B4B4B4"><?php echo $value['job']['value'];?></h4>
 
                                 <a href="<?php echo(site_url('company/oneAnnouncement/'.$value['id']['value']));?>"  class="btn btn-pink waves-effect waves-light">
 
