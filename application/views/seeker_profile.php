@@ -7,11 +7,11 @@
       you can upload your cv and all data extract and re-stract with professional cv.
     </div>
     <div class="mdl-card__actions mdl-card--border">
-      <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-button--accent" href="<?php echo(site_url('seeker/uploadcv'));?>" target="_blank">
+      <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-button--accent" href="<?php echo(site_url('seeker/uploadcv'));?>">
         Upload
       </a>
        /
-      <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-button--accent" href="<?php echo(site_url('seeker/cvForm'));?>" target="_blank">
+      <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-button--accent" href="<?php echo(site_url('seeker/cvForm'));?>">
         Create Your CV.
       </a>
     </div>
