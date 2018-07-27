@@ -123,7 +123,7 @@ class Company extends CI_Controller {
         where {
             ?ann cv:hasSkill ?skill.
             ?skill cv:skillName ?skillName.
-            ?skills cv:skillYearsExperience ?skillExperience.
+            ?skill cv:skillYearsExperience ?skillExperience.
             ?ann cv:cvTitle \"$id\".
         } " ;
         $dataset_path="C:\\tdbAnnouncement";
