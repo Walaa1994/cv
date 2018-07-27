@@ -428,12 +428,13 @@ class Home extends CI_Controller {
         /*echo '<pre>';
         print_r($result);*/
         $this->load->library('babelnet');
-    	$query="PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>  
+    	  $query="PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>  
         PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
         PREFIX cv: <http://rdfs.org/resume-rdf/cv.rdfs#> 
         PREFIX vcard: <http://www.w3.org/2006/vcard/ns#>
         PREFIX foaf: <http://xmlns.com/foaf/0.1/>
-        select ?id
+        prefix xsd: <http://www.w3.org/2001/XMLSchema#>
+        select distinct ?id
         where {
           {
             ?resume cv:cvTitle ?id.
@@ -469,7 +470,7 @@ class Home extends CI_Controller {
 
         $query.="?resume cv:aboutPerson ?person.  
             ?person vcard:hasAddress ?address.";
-
+        $this->load->model('user_model');
         foreach ($result['basic']['results']['bindings'] as  $value3){
             $locality=$value3['locality']['value'];
             $jobTitle=$value3['description']['value'];
@@ -486,10 +487,36 @@ class Home extends CI_Controller {
               }
             }
             $query.=").";
+            $big_five=$this->user_model->get_big_five($jobTitle);
+            if ($big_five!=null) {
+              $query.="?resume cv:hasOtherInfo ?info1.
+              ?info1 cv:otherInfoType \"openness\".
+              ?info1 cv:otherInfoDescription ?openness.
+              FILTER(xsd:integer(?openness) >= $big_five->Openness).
+              ?resume cv:hasOtherInfo ?info2.
+              ?info2 cv:otherInfoType \"extraversion\".
+              ?info2 cv:otherInfoDescription ?extraversion.
+              FILTER(xsd:integer(?extraversion) >= $big_five->Extraversion).
+              ?resume cv:hasOtherInfo ?info3.
+              ?info3 cv:otherInfoType \"conscientiousness\".
+              ?info3 cv:otherInfoDescription ?conscientiousness.
+              FILTER(xsd:integer(?conscientiousness) >= $big_five->Conscientiousness).
+              ?resume cv:hasOtherInfo ?info4.
+              ?info4 cv:otherInfoType \"agreeableness\".
+              ?info4 cv:otherInfoDescription ?agreeableness.
+              FILTER(xsd:integer(?agreeableness) >= $big_five->Agreeableness).
+              ?resume cv:hasOtherInfo ?info5.
+              ?info5 cv:otherInfoType \"neuroticism\".
+              ?info5 cv:otherInfoDescription ?neuroticism.
+              FILTER(xsd:integer(?neuroticism) >= $big_five->Neuroticism).
+              ";}
         }
 
-        $query.="}
-        union
+        $query.="}";
+        $comb=$this->combination($result['skills']['results']['bindings']);
+        arsort($comb);
+        foreach ($comb as $array) {
+        "union
             {
               ?resume cv:cvTitle ?id.
               ?resume cv:cvIsActive \"True\".
@@ -503,7 +530,8 @@ class Home extends CI_Controller {
         }
 
         $i=1;
-        foreach ($result['skills']['results']['bindings'] as $value5){
+       
+        foreach ($array as $value5) {
             $skillName1=$value5['skillName']['value'];
             $query.="?resume cv:hasSkill ?q$i.
             ?q$i cv:skillName ?l$i.
@@ -537,26 +565,52 @@ class Home extends CI_Controller {
               }
             }
             $query.=").";
+
+            $big_five=$this->user_model->get_big_five($jobTitle);
+            if ($big_five!=null) {
+              $query.="?resume cv:hasOtherInfo ?info1.
+              ?info1 cv:otherInfoType \"openness\".
+              ?info1 cv:otherInfoDescription ?openness.
+              FILTER(xsd:integer(?openness) >= $big_five->Openness).
+              ?resume cv:hasOtherInfo ?info2.
+              ?info2 cv:otherInfoType \"extraversion\".
+              ?info2 cv:otherInfoDescription ?extraversion.
+              FILTER(xsd:integer(?extraversion) >= $big_five->Extraversion).
+              ?resume cv:hasOtherInfo ?info3.
+              ?info3 cv:otherInfoType \"conscientiousness\".
+              ?info3 cv:otherInfoDescription ?conscientiousness.
+              FILTER(xsd:integer(?conscientiousness) >= $big_five->Conscientiousness).
+              ?resume cv:hasOtherInfo ?info4.
+              ?info4 cv:otherInfoType \"agreeableness\".
+              ?info4 cv:otherInfoDescription ?agreeableness.
+              FILTER(xsd:integer(?agreeableness) >= $big_five->Agreeableness).
+              ?resume cv:hasOtherInfo ?info5.
+              ?info5 cv:otherInfoType \"neuroticism\".
+              ?info5 cv:otherInfoDescription ?neuroticism.
+              FILTER(xsd:integer(?neuroticism) >= $big_five->Neuroticism).
+              ";}
         }
-        $query.="}}";
-        echo "<pre>";
-        echo "$query";
+        $query.="}";
+      }
+        $query.="}";
+        /*echo "<pre>";
+        echo "$query";*/
         $dataset_path="C:\\tdbCV";
         $this->load->library('query');
         $query_result=$this->query->querysparql($query,$dataset_path);
-        echo '<pre>';
-        print_r($query_result);
-        /*$user_result=array();  
+        /*echo '<pre>';
+        print_r($query_result);*/
+        $user_result=array();  
         foreach ($query_result['results']['bindings'] as $value) {
           if (array_key_exists("id",$value))
             $user_result[]=$this->seeker_data($value['id']['value']);
-        }*/
+        }
         /*echo '<pre>';
         print_r($result); */ 
-        /*$this->data['result']=$user_result;
+        $this->data['result']=$user_result;
         $this->data['pageTitle']='Cv View';
         $this->data['subview'] = 'cv-view';
-        $this->load->view('layouts/layout', $this->data);*/
+        $this->load->view('layouts/layout', $this->data);
 
   }
 
@@ -570,7 +624,7 @@ class Home extends CI_Controller {
             PREFIX cv: <http://rdfs.org/resume-rdf/cv.rdfs#> 
             PREFIX vcard: <http://www.w3.org/2006/vcard/ns#>
             PREFIX foaf: <http://xmlns.com/foaf/0.1/>
-            select ?job ?id
+            select distinct ?job ?id
             where {
                 ?ann cv:hasTarget ?w . 
                 ?w cv:targetCompanyDescription \"$id\".
@@ -632,6 +686,7 @@ class Home extends CI_Controller {
               PREFIX cv: <http://rdfs.org/resume-rdf/cv.rdfs#> 
               PREFIX vcard: <http://www.w3.org/2006/vcard/ns#>
               PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+              prefix xsd: <http://www.w3.org/2001/XMLSchema#>
               select distinct ?id ?company ?description
               where {
                 {
@@ -775,7 +830,7 @@ class Home extends CI_Controller {
                 PREFIX vcard: <http://www.w3.org/2006/vcard/ns#>
                 PREFIX foaf: <http://xmlns.com/foaf/0.1/>
                 prefix xsd: <http://www.w3.org/2001/XMLSchema#>
-                select ?company ?id ?description
+                select distinct ?company ?id ?description
                 where {
                     ?ann cv:cvIsActive \"True\".
                     ?ann cv:cvTitle ?id.
@@ -845,12 +900,14 @@ class Home extends CI_Controller {
 
     public function company_search()
     {
+      $this->load->model('user_model');
     	$query="PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>  
         PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
         PREFIX cv: <http://rdfs.org/resume-rdf/cv.rdfs#> 
         PREFIX vcard: <http://www.w3.org/2006/vcard/ns#>
         PREFIX foaf: <http://xmlns.com/foaf/0.1/>
-        select ?id
+        prefix xsd: <http://www.w3.org/2001/XMLSchema#>
+        select distinct ?id
         where {
             ?resume cv:cvTitle ?id.
             ?resume cv:cvIsActive \"True\".
@@ -884,6 +941,7 @@ class Home extends CI_Controller {
         }
 
         $jobTitle=$this->input->post('job_Title');
+
         if ($jobTitle!=null) {
             $query.="?resume cv:hasTarget ?target.
     		    ?target cv:targetJobDescription ?jobposition.
@@ -895,6 +953,30 @@ class Home extends CI_Controller {
               }
             }
             $query.=").";
+            $big_five=$this->user_model->get_big_five($jobTitle);
+            if ($big_five!=null) {
+              $query.="?resume cv:hasOtherInfo ?info1.
+              ?info1 cv:otherInfoType \"openness\".
+              ?info1 cv:otherInfoDescription ?openness.
+              FILTER(xsd:integer(?openness) >= $big_five->Openness).
+              ?resume cv:hasOtherInfo ?info2.
+              ?info2 cv:otherInfoType \"extraversion\".
+              ?info2 cv:otherInfoDescription ?extraversion.
+              FILTER(xsd:integer(?extraversion) >= $big_five->Extraversion).
+              ?resume cv:hasOtherInfo ?info3.
+              ?info3 cv:otherInfoType \"conscientiousness\".
+              ?info3 cv:otherInfoDescription ?conscientiousness.
+              FILTER(xsd:integer(?conscientiousness) >= $big_five->Conscientiousness).
+              ?resume cv:hasOtherInfo ?info4.
+              ?info4 cv:otherInfoType \"agreeableness\".
+              ?info4 cv:otherInfoDescription ?agreeableness.
+              FILTER(xsd:integer(?agreeableness) >= $big_five->Agreeableness).
+              ?resume cv:hasOtherInfo ?info5.
+              ?info5 cv:otherInfoType \"neuroticism\".
+              ?info5 cv:otherInfoDescription ?neuroticism.
+              FILTER(xsd:integer(?neuroticism) >= $big_five->Neuroticism).
+              ";
+            }   
         }
 
         $query.="}";
@@ -933,9 +1015,8 @@ class Home extends CI_Controller {
         $this->load->view('cv',$this->data);
     }
 
-    function lolo()
+    function rdfStore()
     {
-      
       $query="PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>  
             PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
             PREFIX cv: <http://rdfs.org/resume-rdf/cv.rdfs#> 
