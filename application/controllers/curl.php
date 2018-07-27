@@ -1,4 +1,6 @@
-<?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+<?php  
+ini_set('max_execution_time', 0);
+if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 //error_reporting(E_ALL); ini_set('display_errors', 'On');
 class Curl extends CI_Controller {
     public function __construct() {
@@ -28,24 +30,39 @@ class Curl extends CI_Controller {
       $response2 = curl_exec( $ch2 );
       //var_dump(curl_error($ch2));
       $decoded = json_decode($response2, true);
+
+      /*echo '<pre>' ;
+      print_r($decoded);*/
+
+      if(array_key_exists('error', $decoded)){
       if ($decoded['error']!=null) {
           $error_message=$decoded['error'];
           redirect('seeker/ErrorBigFiveAPI/'.$error_message);
       }
-      /*echo '<pre>' ;
-      print_r($decoded);*/
-      $Openness = $decoded['personality'][0]['percentile'];
-      $Conscientiousness = $decoded['personality'][1]['percentile'];
-      $Extraversion = $decoded['personality'][2]['percentile'];
-      $Agreeableness = $decoded['personality'][3]['percentile'];
-      $neuroticism = $decoded['personality'][4]['percentile'];
+    }
+    else {
+      
+        $Openness = round($decoded['personality'][0]['percentile']*100);
+        //echo $Openness;
+        $Conscientiousness = round($decoded['personality'][1]['percentile']*100);
+        //echo $Conscientiousness;
+        $Extraversion = round($decoded['personality'][2]['percentile']*100);
+        //echo $Extraversion;
+        $Agreeableness = round($decoded['personality'][3]['percentile']*100);
+        //echo  $Agreeableness;
+        $neuroticism = round($decoded['personality'][4]['percentile']*100);
+        //echo $neuroticism;
 
-      $id=$this->session->userdata('u_id');
-      $this->updatesparql($Openness,$Conscientiousness, $Extraversion,$Agreeableness,$neuroticism,$id);
-      if ($decoded['word_count']<600) {
-          $warning_message=$decoded['word_count_message'];
-          redirect('home/seeker_profile/'.$warning_message);
-      }
+        $id=$this->session->userdata('u_id');
+        $this->updatesparql($Openness,$Conscientiousness, $Extraversion,$Agreeableness,$neuroticism,$id);
+
+        if ($decoded['word_count']<600) {
+            $warning_message=$decoded['word_count_message'];
+            redirect('home/seeker_profile/'.$warning_message);
+        }
+        else
+        redirect('/home/seeker_profile');
+    }
     }
 
     public function updatesparql($one,$two,$three,$four,$five,$id){

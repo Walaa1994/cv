@@ -41,7 +41,7 @@
            echo "Address : ".$Country."-".$City."-".$Street; ?>
     </div>
     <div class="mdl-card__actions  mdl-card--border">
-      <a href="#" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-button--accent">
+      <a href="<?php echo(site_url('home/find_job/'.$this->session->userdata('u_id')));?>" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-button--accent">
         Find Job
       </a>
     </div>
@@ -162,19 +162,64 @@
   <section class="mdl-grid site-max-width">
       <div class="mdl-cell mdl-card mdl-cell--8-col mdl-cell--4-col-tablet  mdl-shadow--4dp portfolio-card">
         <div class="mdl-card__title">
-            <h2 class="mdl-card__title-text">Your Personal test result</h2>
+            <h2 class="mdl-card__title-text">Your Personal Test Result</h2>
         </div>
         <ul class="demo-list-three mdl-list">
-            <li class="mdl-list__item mdl-list__item--three-line">
-              <span class="mdl-list__item-primary-content">
+            <li class="mdl-list__item mdl-list__item--three-line" style="height: 122px;">
+              <span class="mdl-list__item-primary-content" style="height: 90px;">
                 <i class="material-icons mdl-list__item-avatar">person</i>
-                <span>Amazing people, always ready to help!</span>
-                <span class="mdl-list__item-text-body">
-                  Bryan Cranston, CEO, Amazing.com
+                <span>
+                  <?php
+                    if($openness>$conscientiousness && $openness>$extraversion && $openness>$agreeableness &&
+                     $openness>$neuroticism )
+                      echo "Openness";
+
+                    if($conscientiousness>$openness && $conscientiousness>$extraversion && $conscientiousness>$agreeableness &&
+                        $conscientiousness>$neuroticism)
+                        echo "Conscientiousness";
+
+                    if($extraversion>$openness && $extraversion>$conscientiousness && $extraversion>$agreeableness && 
+                      $extraversion>$neuroticism)
+                      echo "Extraversion";
+
+                    if($agreeableness>$openness && $agreeableness>$conscientiousness && $agreeableness>$extraversion && 
+                      $agreeableness>$neuroticism)
+                      echo "Agreeableness";
+
+                    if($neuroticism>$openness && $neuroticism>$conscientiousness && $neuroticism>$extraversion &&
+                      $neuroticism>$agreeableness)
+                      echo "Neuroticism";
+                  ?>
+                </span>
+                <span class="mdl-list__item-text-body" style="height: 90px; padding-left: 56px;">
+                 <?php
+                    if($openness>$conscientiousness && $openness>$extraversion && $openness>$agreeableness &&
+                     $openness>$neuroticism )
+                      echo "People who are high in this trait tend to be more adventurous and creative. People low in this trait are often much more traditional and may struggle with abstract thinking ,Very creative , Open to trying new things , Focused on tackling new challenges , Happy to think about abstract concepts .";
+
+                     if($conscientiousness>$openness && $conscientiousness>$extraversion && $conscientiousness>$agreeableness && $conscientiousness>$neuroticism) 
+                      echo "Standard features of this dimension include high levels of thoughtfulness, with good impulse control and goal-directed behaviors. Highly conscientiousness tend to be organized and mindful of details , Spend time preparing , Finish important tasks right away , Pay attention to details .";
+
+                    if($extraversion>$openness && $extraversion>$conscientiousness && $extraversion>$agreeableness && 
+                      $extraversion>$neuroticism)
+                      echo "Extraversion is characterized by excitability, sociability, talkativeness, assertiveness, and high amounts of emotional expressiveness. People who are high in extraversion are outgoing and tend to gain energy in social situations.";
+
+                    if($agreeableness>$openness && $agreeableness>$conscientiousness && $agreeableness>$extraversion && 
+                      $agreeableness>$neuroticism)
+                      echo "trust, altruism, kindness, affection, and other prosocial behaviors. People who are high in agreeableness tend to be more cooperative while those low in this trait tend to be more competitive and even manipulative .";
+
+                    if($neuroticism>$openness && $neuroticism>$conscientiousness && $neuroticism>$extraversion &&
+                      $neuroticism>$agreeableness)
+                      echo "Neuroticism is a trait characterized by sadness, moodiness, and emotional instability . Individuals who are high in this trait tend to be experience mood swings, anxiety, irritability and sadness.Those low in this trait tend to be more stable and emotionally resilient .";
+
+                    echo "<br>";
+                    if($warning_message != " ")
+                    echo "Note : ".$warning_message;
+                 ?>
                 </span>
               </span>
             </li>
-            <li class="mdl-list__item mdl-list__item--three-line">
+            <!--<li class="mdl-list__item mdl-list__item--three-line">
               <span class="mdl-list__item-primary-content">
                 <i class="material-icons  mdl-list__item-avatar">person</i>
                 <span>Awesome work, they can do almost anything..</span>
@@ -182,18 +227,28 @@
                 Aaron Paul, Marketing Lead, Awesome.com
                 </span>
               </span>
-            </li>
+            </li>-->
         </ul>
       </div>
       <div style="background-color:#3f51b5" class="demo-card-event mdl-cell mdl-card mdl-shadow--4dp event-card portfolio-card">
-        <div  class="mdl-card__title mdl-card--expand">
-          <h4>
+        <div  class="mdl-card__title mdl-card--expand" style="width: 292px;">
+        <h4>
+         <?php
+           echo "Openness : ".$openness."%"."<br>";
+           echo "Conscientiousness :".$conscientiousness."%"."<br>";
+           echo "Extraversion : ".$extraversion."%"."<br>";
+           echo "Agreeableness : ".$agreeableness."%"."<br>";
+           echo "Neuroticism : ".$neuroticism."%"."<br>";
+
+         ?>
+        </h4>
+          <!--<h4>
             Openness : 20%<br>
             Conscientiousness : 40% <br>
             Extraversion : 30%<br>
             Agreeableness : 79%<br>
             Neuroticism : 70%
-          </h4>
+          </h4>-->
         </div>
         <div class="mdl-card__actions mdl-card--border">
           <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-button--accent" href="<?php echo(site_url('FacebookLogin/index')); ?>">

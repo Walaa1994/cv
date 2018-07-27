@@ -69,7 +69,8 @@ class Home extends CI_Controller {
             }    ";
         $this->load->library('query');
         $query_result=$this->query->querysparql($personalInfo,$Dataset_path);
-    
+         /*echo '<pre>';
+         print_r($query_result);*/
         if($query_result['results']['bindings']!= null)
         {
             $first_name=$query_result['results']['bindings'][0]['FirstName']['value'];
@@ -306,6 +307,58 @@ class Home extends CI_Controller {
             $this->data['mbox']="Email : ";
         }
 
+        $personality="PREFIX cv: <http://rdfs.org/resume-rdf/cv.rdfs#> 
+                      PREFIX vcard: <http://www.w3.org/2001/vcard-rdf/3.0#>
+                      PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+                      select ?percentile1  ?percentile2 ?percentile3 ?percentile4 ?percentile5
+                      where {
+                        ?resume cv:cvTitle \"$id\".
+                        ?resume cv:hasOtherInfo ?a.
+                        ?a cv:otherInfoType \"openness\".
+                        ?a cv:otherInfoDescription ?percentile1.
+
+                        ?resume cv:hasOtherInfo ?b.
+                        ?b cv:otherInfoType \"conscientiousness\".
+                        ?b cv:otherInfoDescription ?percentile2.
+
+                        ?resume cv:hasOtherInfo ?c.
+                        ?c cv:otherInfoType \"extraversion\".
+                        ?c cv:otherInfoDescription ?percentile3.
+
+                        ?resume cv:hasOtherInfo ?d.
+                        ?d cv:otherInfoType \"agreeableness\".
+                        ?d cv:otherInfoDescription ?percentile4.
+
+                        ?resume cv:hasOtherInfo ?e.
+                        ?e cv:otherInfoType \"neuroticism\".
+                        ?e cv:otherInfoDescription ?percentile5.  
+                      }";
+
+        $this->load->library('query');
+        $per_result=$this->query->querysparql($personality,$Dataset_path);
+        if($per_result['results']['bindings']!= null)
+        {
+    
+            $openness=$per_result['results']['bindings'][0]['percentile1']['value'];
+            $conscientiousness=$per_result['results']['bindings'][0]['percentile2']['value'];
+            $extraversion=$per_result['results']['bindings'][0]['percentile3']['value'];
+            $agreeableness=$per_result['results']['bindings'][0]['percentile4']['value'];
+            $neuroticism=$per_result['results']['bindings'][0]['percentile5']['value'];
+           
+            $this->data['openness']=$openness;
+            $this->data['conscientiousness']=$conscientiousness;
+            $this->data['extraversion']=$extraversion;
+            $this->data['agreeableness']=$agreeableness;
+            $this->data['neuroticism']=$neuroticism;
+        }
+        else{
+            $this->data['openness']=" ";
+            $this->data['conscientiousness']=" ";
+            $this->data['extraversion']=" ";
+            $this->data['agreeableness']=" ";
+            $this->data['neuroticism']=" ";
+        }
+
         $Target="PREFIX cv: <http://rdfs.org/resume-rdf/cv.rdfs#> 
                     PREFIX vcard: <http://www.w3.org/2006/vcard/ns#>
                     PREFIX foaf: <http://xmlns.com/foaf/0.1/>
@@ -335,11 +388,16 @@ class Home extends CI_Controller {
         //merg all data in one array and return it
         $result[] = $this->data;
         return $result;
+        /*echo "<pre>";
+        print_r($result);*/
     }
 
     function seeker_profile ($warning_message=null){
         if ($warning_message!=null) {
             $this->data['warning_message']=$warning_message;
+        }
+        else {
+          $this->data['warning_message']=" " ;
         }
         $this->seeker_data();
         $this->data['pageTitle']='Home';
@@ -377,7 +435,6 @@ class Home extends CI_Controller {
         PREFIX foaf: <http://xmlns.com/foaf/0.1/>
         select ?id
         where {
-            {
             ?resume cv:cvTitle ?id.
             ?resume cv:cvIsActive \"True\".
             ?resume cv:hasEducation ?w .
@@ -413,7 +470,7 @@ class Home extends CI_Controller {
             ";
         }
 
-        foreach ($result['education']['results']['bindings'] as $value2) {
+        /*foreach ($result['education']['results']['bindings'] as $value2) {
             $eduMinor=$value2['eduMinor']['value'];
             $query.="
             }
@@ -423,7 +480,7 @@ class Home extends CI_Controller {
               ?education cv:eduMinor \"$eduMinor\".     
             }
         }";
-        }
+        }*/
 
         //echo "$query";
         $dataset_path="C:\\tdbCV";
@@ -469,6 +526,130 @@ class Home extends CI_Controller {
         $this->load->view('layouts/layout', $this->data);
     }
 
+    public function combination($words)
+    {   
+      $num = count($words); 
+      //The total number of possible combinations 
+      $total = pow(2, $num);
+      //Loop through each possible combination  
+
+      for ($i = 0; $i < $total; $i++) {  
+
+          //For each combination check if each bit is set 
+
+          for ($j = 0; $j < $num; $j++) { 
+
+             //Is bit $j set in $i? 
+
+              if (pow(2, $j) & $i) 
+                $result[$i][$j]=$words[$j] ;      
+
+          } 
+      }
+      /*echo "<pre>";
+      print_r($result);*/
+      return $result;
+    }
+
+
+
+    public function find_job($id)
+    {
+      $seeker=$this->seeker_data($id);
+      $jobposition=$seeker[0]['jobposition'];
+      $locality=$seeker[0]['City'];
+      $eduMajor=$seeker[0]['eduMajor'];
+      $eduDegree=$seeker[0]['degreeType'];
+      $skills=$seeker[0]['skillName'];
+
+      $comb=$this->combination($skills);
+      arsort($comb);
+
+      $FirstEduMajor=$seeker[0]['eduMajor'][0];
+      $FirstEduDegree=$seeker[0]['degreeType'][0];
+      $query="PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>  
+              PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+              PREFIX cv: <http://rdfs.org/resume-rdf/cv.rdfs#> 
+              PREFIX vcard: <http://www.w3.org/2006/vcard/ns#>
+              PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+              select distinct ?id ?company ?description
+              where {
+                {
+                ?ann cv:hasTarget ?w . 
+                ?w cv:targetCompanyDescription ?company.
+                ?ann cv:cvTitle ?id.
+                ?ann cv:aboutPerson ?person.
+                ?person vcard:locality ?locality.
+                FILTER regex(?locality,\"$locality\",\"i\").
+                ?ann cv:hasTarget ?target . 
+                ?target cv:targetJobDescription ?description.
+                FILTER regex(?description,\"$jobposition\",\"i\").
+                ?ann cv:hasEducation ?edu.
+                ?edu cv:eduMajor ?eduMajor.
+                FILTER regex(?eduMajor,\"$FirstEduMajor\",\"i\").
+                ?edu cv:degreeType \"$FirstEduDegree\".";
+      $i=1;
+      foreach ($skills as $value) {
+        $query.="?ann cv:hasSkill ?skill$i.
+                ?skill cv:skillName ?skillName$i.
+                FILTER regex(?skillName$i,\"$value\",\"i\").
+                ";
+        $i++;
+      }
+      $query.="}";
+      foreach ($comb as $value1) {
+      for ($i=0; $i < sizeof($eduMajor) ; $i++) {
+        $major=$eduMajor[$i];
+        $degree=$eduDegree[$i];
+        $query.="
+            union
+            {
+              ?ann cv:hasTarget ?w . 
+              ?w cv:targetCompanyDescription ?company.
+              ?ann cv:cvTitle ?id.
+              ?ann cv:aboutPerson ?person.
+              ?person vcard:locality ?locality.
+              FILTER regex(?locality,\"$locality\",\"i\").
+              ?ann cv:hasTarget ?target . 
+              ?target cv:targetJobDescription ?description.
+              FILTER regex(?description,\"$jobposition\",\"i\").
+              ?ann cv:hasEducation ?edu.
+              ?edu cv:eduMajor ?eduMajor.
+              FILTER regex(?eduMajor,\"$major\",\"i\").
+              ?edu cv:degreeType \"$degree\".
+            ";
+        $i=1;
+       
+          foreach ($value1 as $value2) {
+            $query.="?ann cv:hasSkill ?skill$i.
+                ?skill cv:skillName ?skillName$i.
+                FILTER regex(?skillName$i,\"$value\",\"i\").
+                ";
+            $i++;
+          }
+        }
+      $query.="}";
+      }
+      $query.="}";
+
+     /* echo "<pre>";
+      echo "$query";*/
+
+      $dataset_path="C:\\tdbAnnouncement";
+      $this->load->library('query');
+      $this->data['result']=$this->query->querysparql($query,$dataset_path);
+
+      foreach ($this->data['result']['results']['bindings'] as $key => $value){ 
+            $id=$value['company']['value'];
+            $this->load->model('user_model');
+            $en_name=$this->user_model->get_company($id)->en_name;
+            $this->data['result']['results']['bindings'][$key]['company']['value']= $en_name;    
+        }
+      $this->data['pageTitle']='Announcement Search';
+      $this->data['subview'] = 'announcement_search';
+      $this->load->view('layouts/layout', $this->data);
+    }
+ 
     function About_Us (){
 
         $this->data['pageTitle']='About Us';
@@ -497,10 +678,6 @@ class Home extends CI_Controller {
         $this->data['result'] = '';
         $this->load->view('layouts/layout', $this->data);
         /*$this->load->view('blank');*/
-    }
-
-    function tt(){
-        echo $this->input->post('koko');
     }
 
     function seeker_search(){

@@ -39,15 +39,18 @@ class Seeker extends CI_Controller {
 
         //Education
         $cert_name = $this->input->post('cert_name');
+        $cert_code= str_replace(' ','',$cert_name);
         $spe_name = $this->input->post('spe_name');
         $start_date = $this->input->post('start_date');
         $grants_date = $this->input->post('grants_date');
         $donor = $this->input->post('donor');
+        $donor_code= str_replace(' ','',$donor);
         $degreeType = $this->input->post('degreeType');
         
 
         //Work Experience
         $company_name = $this->input->post('company_name');
+        $company_code= str_replace(' ','',$company_name);
         $job_pos = $this->input->post('job_pos');
         $from_date = $this->input->post('from_date');
         $to_date = $this->input->post('to_date');
@@ -59,6 +62,7 @@ class Seeker extends CI_Controller {
 
         //Personal Skills
         $skill_name = $this->input->post('skill_name');
+        $skill_code= str_replace(' ','',$skill_name);
         $year_exp = $this->input->post('year_exp');
         $SkillLevel=$this->input->post('SkillLevel');
 
@@ -126,12 +130,17 @@ class Seeker extends CI_Controller {
             $grants_dateTag=$xml->createElement("eduGradDate",$grants_date[$key]);
             $donorTag=$xml->createElement("studiedIn",$donor[$key]);
             $degreeTypeTag=$xml->createElement("degreeType",$degreeType[$key]);
+            $cert_codeTag=$xml->createElement("cert_code",$cert_code[$key]);
+            $donor_codeTag=$xml->createElement("donor_code",$donor_code[$key]);
+
             $EducationTag->appendChild($cert_nameTag);
             $EducationTag->appendChild($spe_nameTag);
             $EducationTag->appendChild($start_dateTag);
             $EducationTag->appendChild($grants_dateTag);  
             $EducationTag->appendChild($donorTag);
             $EducationTag->appendChild($degreeTypeTag);
+            $EducationTag->appendChild($cert_codeTag);
+            $EducationTag->appendChild($donor_codeTag);
             $rootTag->appendChild($EducationTag);
         }
  
@@ -144,6 +153,7 @@ class Seeker extends CI_Controller {
             $careerLevelTag=$xml->createElement("careerLevel",$careerLevel[$key]);
             $jobTypeTag=$xml->createElement("JobType",$jobType[$key]);
             $isCurrentTag=$xml->createElement("isCurrent",$isCurrent[$key]);
+            $company_codeTag=$xml->createElement("company_code",$company_code[$key]);
 
             $ExperienceTag->appendChild($company_nameTag);
             $ExperienceTag->appendChild($job_posTag);
@@ -152,6 +162,7 @@ class Seeker extends CI_Controller {
             $ExperienceTag->appendChild($careerLevelTag);
             $ExperienceTag->appendChild($jobTypeTag);
             $ExperienceTag->appendChild($isCurrentTag);
+            $ExperienceTag->appendChild($company_codeTag);
             $rootTag->appendChild($ExperienceTag);
         }
 
@@ -161,10 +172,12 @@ class Seeker extends CI_Controller {
             $skill_nameTag=$xml->createElement("skillName",$value);
             $year_expTag=$xml->createElement("skillYearsExperience",$year_exp[$key]);
             $SkillLevelTag=$xml->createElement("skillLevel",$SkillLevel[$key]);
+            $skill_codeTag=$xml->createElement("skill_code",$skill_code[$key]);
 
             $PersonalSkillsTag->appendChild($skill_nameTag);
             $PersonalSkillsTag->appendChild($year_expTag);
             $PersonalSkillsTag->appendChild($SkillLevelTag);
+            $PersonalSkillsTag->appendChild($skill_codeTag);
             $rootTag->appendChild($PersonalSkillsTag);
         }
 
@@ -245,40 +258,6 @@ class Seeker extends CI_Controller {
       
     }
 
-    public function xslt_pdf(){
-          $xml_path=base_url().'/java_Nlp/nlp.xml';
-          $xml = new DOMDocument;
-          $xml->load($xml_path);
-
-          // Load XSL file
-          $styleSheet_path = base_url().'/StyleSheets/pdf.xsl';
-
-          $xsl = new DOMDocument;
-          $xsl->load($styleSheet_path);
-
-          // Configure the transformer
-          $proc = new XSLTProcessor;
-
-          // Attach the xsl rules
-          $proc->importStyleSheet($xsl);
-          $proc->transformToURI($xml, 'cv.xml');
-
-
-          //redirect('/Xslt/xslt_cv/cv.xml');
-
-          $xmlold = new DOMDocument("1.0","UTF-8");
-          $xmlold->load("cv.xml");
-          $rootTag=$xmlold->getElementsByTagName("resume")->item(0);
-          $IDTag=$xmlold->createElement("ID",$this->session->userdata('u_id'));
-          $rootTag->appendChild($IDTag);
-          $xmlold->save('cv.xml');
-          //ob_start();
-          redirect('/Xslt/xslt_cv/cv.xml');
-
-          //$this->load->library('xslt');
-          //$this->xslt->xslt_cv('cv.xml');
-
-        }
 
     public function UploadCv()
     {
@@ -287,54 +266,30 @@ class Seeker extends CI_Controller {
         $this->load->view('layouts/layout', $this->data);
     }
 
-    /*public function test($doc){
-        $this->WriteFile($doc,"pdftext.txt");  
-         $this->nlp("pdftext.txt");
-         $this->xslt_pdf();
-    }*/
 
      public function pdfToText($filename)
     {
-        //The PDF2Text class is HUGE. Magical black box. See file for citations
-        //require_once "pdf2text.php";
-        /*$a = new PDF2Text();
-        $a->setFilename($filename);
-        $a->decodePDF();
-        return $a->output();*/
+
         include_once APPPATH.'vendor/autoload.php';
         $parser= new \Smalot\PdfParser\Parser();
         $pdf= $parser->parseFile($filename);
         $text=$pdf->getText();
-        echo "$text";
+        //echo "$text";
+        return $text;
     }
 
       public function DoUpload(){
         
         if(isset($_FILES['userFile']))
          {
+
           $doc=$this->pdfToText($_FILES['userFile']['tmp_name']);
           $this->WriteFile($doc,"pdftext.txt");  
           $this->nlp("pdftext.txt");
-          $this->xslt_pdf();
-           /* $a = new PDF2Text();
-            $a->setFilename($_FILES['userFile']['tmp_name']);
-            $a->decodePDF();
-<<<<<<< HEAD
-            $doc=$a->output();
 
-            $this->WriteFile($doc,"pdftext.txt");
-
-            $this->nlp("pdftext.txt");
-
-            $this->xslt_pdf();
-=======
-            $this->test($a->output());*/
-     
-            
-
+          redirect('/Xslt/xslt_pdf');
+    
          }
-        
-
     }
     
 
@@ -403,28 +358,23 @@ class Seeker extends CI_Controller {
 
 
         $Agreeableness=round(((($q2+$q7+$q12+$q17+$q22+$q27+$q32+$q37+$q42)/9)*100)/5);
-        echo'Agreeableness= '.$Agreeableness.'  ';
 
         $Openness=round(((($q5+$q10+$q15+$q20+$q25+$q30+$q35+$q40+$q41+$q44)/10)*100)/5);
-        echo'Openness= '.$Openness.'  ';
 
         $Conscientiousness=round(((($q3+$q8+$q13+$q18+$q23+$q23+$q28+$q33+$q43)/9)*100)/5);
-        echo'Conscientiousness= '.$Conscientiousness.'  ';
 
         $Extraversion=round(((($q1+$q6+$q11+$q16+$q21+$q26+$q31+$q36)/8)*100)/5);
-         echo'Extraversion= '.$Extraversion.'  ';
 
         $Neuroticism=round(((($q4+$q9+$q14+$q19+$q24+$q29+$q34+$q39)/8)*100)/5);
-          echo'Neuroticism= '.$Neuroticism.'  ';
 
-          $id=$this->session->userdata('u_id');
-          $this->updatesparql($Openness,$Conscientiousness, $Extraversion,$Agreeableness,$Neuroticism,$id);
+        $id=$this->session->userdata('u_id');
+        $this->updatesparql($Openness,$Conscientiousness, $Extraversion,$Agreeableness,$Neuroticism,$id);
 
-      echo(max($Agreeableness.'trust, altruism, kindness, affection, and other prosocial behaviors. People who are high in agreeableness tend to be more cooperative while those low in this trait tend to be more competitive and even manipulative',$Openness.'People who are high in this trait tend to be more adventurous and creative. People low in this trait are often much more traditional and may struggle with abstract thinking.,Very creative ,
+      /*echo(max($Agreeableness.'trust, altruism, kindness, affection, and other prosocial behaviors. People who are high in agreeableness tend to be more cooperative while those low in this trait tend to be more competitive and even manipulative',$Openness.'People who are high in this trait tend to be more adventurous and creative. People low in this trait are often much more traditional and may struggle with abstract thinking.,Very creative ,
           Open to trying new things
          ,Focused on tackling new challenges
         ,Happy to think about abstract concepts'
-       ,$Conscientiousness.'Standard features of this dimension include high levels of thoughtfulness, with good impulse control and goal-directed behaviors. Highly conscientiousness tend to be organized and mindful of details , Spend time preparing , Finish important tasks right away , Pay attention to details',$Extroversion.'Extraversion is characterized by excitability, sociability, talkativeness, assertiveness, and high amounts of emotional expressiveness. People who are high in extraversion are outgoing and tend to gain energy in social situations. ',$Neuroticism.'Neuroticism is a trait characterized by sadness, moodiness, and emotional instability. Individuals who are high in this trait tend to experience mood swings, anxiety, irritability and sadness. Those low in this trait tend to be more stable and emotionally resilient') . "<br>");
+       ,$Conscientiousness.'Standard features of this dimension include high levels of thoughtfulness, with good impulse control and goal-directed behaviors. Highly conscientiousness tend to be organized and mindful of details , Spend time preparing , Finish important tasks right away , Pay attention to details',$Extraversion.'Extraversion is characterized by excitability, sociability, talkativeness, assertiveness, and high amounts of emotional expressiveness. People who are high in extraversion are outgoing and tend to gain energy in social situations. ',$Neuroticism.'Neuroticism is a trait characterized by sadness, moodiness, and emotional instability. Individuals who are high in this trait tend to experience mood swings, anxiety, irritability and sadness. Those low in this trait tend to be more stable and emotionally resilient') . "<br>");*/
 
 
   }
@@ -457,10 +407,12 @@ class Seeker extends CI_Controller {
                   ?resume cv:cvTitle \"$id\".
                 }";
 
-            $this->WriteFile($query);
+            $this->WriteFile($query,"savequery.txt");
             shell_exec("javac -cp  java_RDFStore\\*; java_RDFStore\\UpdateSparql.java");
 
             shell_exec("java -cp java_RDFStore\\*;java_RDFStore  UpdateSparql $filename $Dataset_path");  
+
+            redirect('/home/seeker_profile');
 
         }
 
@@ -1068,7 +1020,7 @@ class Seeker extends CI_Controller {
 
         }
        
-
+        
         
     
 

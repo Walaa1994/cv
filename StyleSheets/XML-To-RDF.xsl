@@ -18,17 +18,21 @@
 			
 			<xsl:for-each  select="resume/Education">
 			    <xsl:variable name="edudeg"><xsl:value-of select="degreeType"/></xsl:variable>
-			    <cv:hasEducation rdf:resource="http://rdfs.org/resume-rdf/cv.rdfs/Education#{$id}_{$edudeg}"/>
+			    <xsl:variable name="major"><xsl:value-of select="cert_code"/></xsl:variable>
+			    <xsl:variable name="donor"><xsl:value-of select="donor_code"/></xsl:variable>
+
+			    <cv:hasEducation rdf:resource="http://rdfs.org/resume-rdf/cv.rdfs/Education#{$id}_{$edudeg}_{$major}_{$donor}"/>
 			</xsl:for-each>
 		
 		    <xsl:for-each  select="resume/WorkExperience">
 			    <xsl:variable name="stdate"><xsl:value-of select="startDate"/></xsl:variable>
-			    <cv:hasWorkHistory rdf:resource="http://rdfs.org/resume-rdf/cv.rdfs/WorkHistory#{$id}_{$stdate}"/>
+			    <xsl:variable name="com"><xsl:value-of select="company_code"/></xsl:variable>
+			    <cv:hasWorkHistory rdf:resource="http://rdfs.org/resume-rdf/cv.rdfs/WorkHistory#{$id}_{$com}_{$stdate}"/>
 			</xsl:for-each>
 		    
 			
 			<xsl:for-each  select="resume/PersonalSkills">
-			    <xsl:variable name="skillName"><xsl:value-of select="skillName"/></xsl:variable>
+			    <xsl:variable name="skillName"><xsl:value-of select="skill_code"/></xsl:variable>
 			    <cv:hasSkill rdf:resource="http://rdfs.org/resume-rdf/cv.rdfs/Skill#{$id}_{$skillName}"/>
 			</xsl:for-each>
 			
@@ -82,8 +86,10 @@
 	    <!-- education -->
 		<xsl:for-each  select="resume/Education">
 		<xsl:variable name="edudeg"><xsl:value-of select="degreeType"/></xsl:variable>
+        <xsl:variable name="major"><xsl:value-of select="cert_code"/></xsl:variable>
+	    <xsl:variable name="donor"><xsl:value-of select="donor_code"/></xsl:variable>
 
-		<rdf:Description rdf:about="http://rdfs.org/resume-rdf/cv.rdfs/Education#{$id}_{$edudeg}">
+		<rdf:Description rdf:about="http://rdfs.org/resume-rdf/cv.rdfs/Education#{$id}_{$edudeg}_{$major}_{$donor}">
             <cv:eduMajor> <xsl:value-of select="eduMajor"/> </cv:eduMajor>
 			<cv:eduMinor> <xsl:value-of select="eduMinor"/> </cv:eduMinor>
 			<cv:eduStartDate> <xsl:value-of select="eduStartDate"/> </cv:eduStartDate>
@@ -98,15 +104,16 @@
 		
 		<xsl:for-each  select="resume/WorkExperience">
 		<xsl:variable name="startdate"><xsl:value-of select="startDate"/></xsl:variable>
+		<xsl:variable name="company"><xsl:value-of select="company_code"/></xsl:variable>
 		
-		<rdf:Description rdf:about="http://rdfs.org/resume-rdf/cv.rdfs/WorkHistory#{$id}_{$startdate}">
+		<rdf:Description rdf:about="http://rdfs.org/resume-rdf/cv.rdfs/WorkHistory#{$id}_{$company}_{$startdate}">
 		
 		    <cv:employedIn> <xsl:value-of select="employedIn"/> </cv:employedIn>      
 			<cv:jobTitle> <xsl:value-of select="jobTitle"/> </cv:jobTitle>
 			<cv:startDate> <xsl:value-of select="startDate"/> </cv:startDate>
 			<cv:endDate> <xsl:value-of select="endDate"/> </cv:endDate>
 			<cv:careerLevel><xsl:value-of select="careerLevel"/></cv:careerLevel>
-			<cv:jobType><xsl:value-of select="jobType"/></cv:jobType>
+			<cv:jobType><xsl:value-of select="JobType"/></cv:jobType>
 			<cv:isCurrent><xsl:value-of select="isCurrent"/></cv:isCurrent>
         </rdf:Description>
 		
@@ -114,7 +121,7 @@
 		
 		<!-- Personal Skills -->
 		<xsl:for-each  select="resume/PersonalSkills">
-		<xsl:variable name="skillName"><xsl:value-of select="skillName"/></xsl:variable>
+		<xsl:variable name="skillName"><xsl:value-of select="skill_code"/></xsl:variable>
 		
 		<rdf:Description rdf:about="http://rdfs.org/resume-rdf/cv.rdfs/Skill#{$id}_{$skillName}">
 		    <cv:skillName> <xsl:value-of select="skillName"/> </cv:skillName>

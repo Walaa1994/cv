@@ -65,6 +65,13 @@ class Xslt extends CI_Controller {
 			$proc->importStyleSheet($xsl);
 			$proc->transformToURI($xml, 'cv.xml');
 
-			//$this->xslt_cv('cv.xml');
+            $xmlold = new DOMDocument("1.0","UTF-8");
+            $xmlold->load("cv.xml");
+            $rootTag=$xmlold->getElementsByTagName("resume")->item(0);
+            $IDTag=$xmlold->createElement("ID",$this->session->userdata('u_id'));
+            $rootTag->appendChild($IDTag);
+            $xmlold->save('cv.xml');
+
+			$this->xslt_cv('cv.xml');
 		}
 }
