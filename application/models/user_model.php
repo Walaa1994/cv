@@ -52,6 +52,10 @@ class User_model extends CI_Model {
         $this->db->insert('company',$company);
     }
 
+     function add_cv_ann($data){
+    $this->db->insert('announcement-cvs',$data);
+    }
+
     public function get_company($company_id)
     {
         $this->db->select('en_name');
@@ -60,11 +64,22 @@ class User_model extends CI_Model {
         return  $query->row();
     }
 
+
+
     public function get_company_profile($company_id)
     {
         $this->db->select('*');
         $this->db->where('user_id',$company_id);
         $query = $this->db->get('company');
+        return  $query->result_array();
+    }
+
+    public function get_cv($ann_id)
+    {
+
+        $this->db->select('cv_id');
+        $this->db->where('ann_id',$ann_id);
+        $query = $this->db->get('announcement-cvs');
         return  $query->result_array();
     }
 

@@ -18,6 +18,26 @@ class Home extends CI_Controller {
         $this->load->view('company_page');
     }
 
+    function view_ann_cvs(){
+        $ann_id=$this->input->post('ann_id');
+        $this->load->model('user_model');
+        $data=$this->user_model->get_cv($ann_id);
+        
+        foreach ($data as $key => $value) {
+
+           
+            $cvs[$key]=$this->seeker_data($value["cv_id"]);
+        }
+         $this->data['result']=$cvs;
+
+        $this->data['pageTitle']='Cv View';
+        $this->data['subview'] = 'cv-view';
+        $this->load->view('layouts/layout', $this->data); 
+
+  
+  
+    }
+
     //function that hold all data ... Enas
     function seeker_data($seeker_id=null)
     {

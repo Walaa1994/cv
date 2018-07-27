@@ -25,8 +25,15 @@ class Company extends CI_Controller {
         $this->data['subview'] = 'announcement_form';
         $this->load->view('layouts/layout', $this->data);
     }
+
+   
+
+
+
     function oneAnnouncement($id,$company_name=null)
     {
+
+        
         /*$query="PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>  
             PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
             PREFIX cv: <http://rdfs.org/resume-rdf/cv.rdfs#> 
@@ -122,6 +129,7 @@ class Company extends CI_Controller {
         $dataset_path="C:\\tdbAnnouncement";
         $this->load->library('query');
         $query_result['skills']=$this->query->querysparql($query,$dataset_path);
+        $query_result['Announcement_id']=$id;
 
         /*echo '<pre>';
         print_r($query_result);*/
@@ -233,5 +241,20 @@ class Company extends CI_Controller {
         //$this->Company_profile();
         //redirect()
     }
+
+    function send_cv(){
+        $data = array('cv_id' => $this->input->post('cv_id'),
+                'ann_id'=> $this->input->post('ann_id'));
+        $this->load->model('user_model');
+        $this->user_model->add_cv_ann($data);
+        redirect(base_url() . 'index.php/home/sekeer_home');
+
+    }
+
+      
+
+       
+
+
 }
 

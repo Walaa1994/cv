@@ -269,6 +269,7 @@ class Seeker extends CI_Controller {
 
      public function pdfToText($filename)
     {
+
         include_once APPPATH.'vendor/autoload.php';
         $parser= new \Smalot\PdfParser\Parser();
         $pdf= $parser->parseFile($filename);

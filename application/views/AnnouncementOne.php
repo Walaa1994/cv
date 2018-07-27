@@ -82,9 +82,25 @@
               </form>
               <?php } ?>
               <?php if (!$flag){ ?>
-                <div class="row">
-                <button type="button" class="btn btn-primary btn-rounded waves-effect waves-light">Send CV</button>
+
+                <div  class="row">
+                <form action="<?php echo base_url();?>index.php/Company/send_cv" method="post" >
+                    <input type="hidden" name="ann_id" value="<?php echo $result['Announcement_id'];?>">
+                    <input type="hidden" name="cv_id" value="<?php echo $this->session->userdata('u_id')?>">
+                    <button type="submit" class="btn btn-primary btn-rounded waves-effect waves-light">Send CV</button>
+                    </form>
                 </div>
+                
+              <?php } ?>
+
+              <?php if ($flag) {?>
+              <div class="row">
+               <form action="<?php echo base_url();?>index.php/home/view_ann_cvs" method="post" >
+               <input type="hidden" name="ann_id" value="<?php echo $result['Announcement_id'];?>">
+                <button style="margin-left: auto" type="submit" class="btn btn-primary btn-rounded waves-effect waves-light">Resumes submitted</button>
+                 </form>
+                </div>
+               
               <?php } ?>
 
             </div>

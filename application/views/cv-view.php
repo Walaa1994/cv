@@ -47,10 +47,11 @@
                     <hr>
                     <!--Social Icons-->
                     <!--Triggering button-->
-                    <div>
+                  <div >
                     <a href="<?php echo(site_url('home/downloadCV/'.$value1['id']));?>"  class="btn btn-pink waves-effect waves-light"> <i class="fa fa-clone left"></i>Open CV PDF</a>
                     </div>
-                    <div>
+                   
+                    <div style="margin-top: 50px;" >
                     <a class="rotate-btn back" id="rotate-btn-back-<?php echo $index ?>" data-card="card-<?php echo $index ?>"><i class="fa fa-undo"></i> Click here to rotate back</a>
                     </div>
                 </div>

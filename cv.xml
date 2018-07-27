@@ -1,23 +1,54 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <resume>
-  <ID/>
-  <IsActive/>
+  <ID>82</ID>
+  <IsActive>True</IsActive>
   <PersonalInfo>
-    <firstName/>
-    <lastName/>
-    <birthday/>
-    <Nationality/>
-    <MaritalStatus/>
-    <gender/>
-    <country-name/>
-    <locality/>
-    <street-address/>
-    <Email/>
-    <Telephone/>
+    <firstName>hanan</firstName>
+    <lastName>ali</lastName>
+    <birthday>2018-07-31</birthday>
+    <Nationality>syrian</Nationality>
+    <MaritalStatus>Married</MaritalStatus>
+    <gender>Male</gender>
+    <country-name>damascus</country-name>
+    <locality>syria</locality>
+    <street-address>sahnaya</street-address>
+    <Email>batoulalsharef386@gmail.com</Email>
+    <Telephone>1234</Telephone>
   </PersonalInfo>
+  <Education>
+    <eduMajor>ite</eduMajor>
+    <eduMinor>software</eduMinor>
+    <eduStartDate>2018-07-10</eduStartDate>
+    <eduGradDate>2018-07-28</eduGradDate>
+    <studiedIn>damas</studiedIn>
+    <degreeType>EduCollegeCoursework</degreeType>
+  </Education>
+  <WorkExperience>
+    <employedIn>monkez</employedIn>
+    <jobTitle>web developer</jobTitle>
+    <startDate>2018-07-03</startDate>
+    <endDate>2018-07-13</endDate>
+    <careerLevel>SeniorExecutive</careerLevel>
+    <JobType>Contractor</JobType>
+    <isCurrent>True</isCurrent>
+  </WorkExperience>
+  <PersonalSkills>
+    <skillName>php</skillName>
+    <skillYearsExperience>3</skillYearsExperience>
+    <skillLevel>2</skillLevel>
+  </PersonalSkills>
+  <Language>
+    <Name>english</Name>
+    <SpokenLevel>2</SpokenLevel>
+    <ReadingLevel>3</ReadingLevel>
+    <WritingLevel>2</WritingLevel>
+  </Language>
   <References>
-    <Name/>
-    <Phone/>
-    <Email/>
+    <Name>maish</Name>
+    <Phone>1233</Phone>
+    <Email>batol@gmail.com</Email>
   </References>
+  <Target>
+    <jobposition>web developer</jobposition>
+  </Target>
 </resume>
