@@ -404,7 +404,7 @@ class Home extends CI_Controller {
         $result = json_decode(htmlspecialchars_decode($dataJson), true);
         /*echo '<pre>';
         print_r($result);*/
-
+        $this->load->library('babelnet');
     	$query="PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>  
         PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
         PREFIX cv: <http://rdfs.org/resume-rdf/cv.rdfs#> 
@@ -412,69 +412,128 @@ class Home extends CI_Controller {
         PREFIX foaf: <http://xmlns.com/foaf/0.1/>
         select ?id
         where {
+          {
             ?resume cv:cvTitle ?id.
             ?resume cv:cvIsActive \"True\".
             ?resume cv:hasEducation ?w .
              ";
 
-        foreach ($result['education']['results']['bindings'] as $value2) {
-            $eduMajor=$value2['eduMajor']['value'];
-            $eduDegree=$value2['eduDegree']['value'];
+        foreach ($result['education']['results']['bindings'] as $value1) {
+            $eduMajor=$value1['eduMajor']['value'];
+            $eduMinor=$value1['eduMinor']['value'];
+            $eduDegree=$value1['eduDegree']['value'];
+            
             $query.="?w cv:eduMajor \"$eduMajor\".
+            ?w cv:eduMinor \"$eduMinor\".
             ?w cv:degreeType \"$eduDegree\".";
         }
 
         $i=1;
-        foreach ($result['skills']['results']['bindings'] as $value3){
-            $skillName=$value3['skillName']['value'];
+        foreach ($result['skills']['results']['bindings'] as $value2){
+            $skillName=$value2['skillName']['value'];
             $query.="?resume cv:hasSkill ?q$i.
             ?q$i cv:skillName ?l$i.
-            FILTER (regex(?l$i,\"$skillName\",\"i\")).";
+            FILTER (regex(?l$i,\"$skillName\",\"i\")";
+            $skill_syn=$this->babelnet->synonymous($skillName);
+            if ($skill_syn!=null) {
+              foreach ($skill_syn as $syn2) {
+                $query.="|| regex(?l$i,\"$syn2\",\"i\")";
+              }
+            }
+            $query.=").";
             $i++;
         }
 
         $query.="?resume cv:aboutPerson ?person.  
             ?person vcard:hasAddress ?address.";
 
-        foreach ($result['basic']['results']['bindings'] as  $value1){
-            $locality=$value1['locality']['value'];
-            $jobTitle=$value1['description']['value'];
+        foreach ($result['basic']['results']['bindings'] as  $value3){
+            $locality=$value3['locality']['value'];
+            $jobTitle=$value3['description']['value'];
             $query.="?address vcard:locality ?locality.
             FILTER regex(?locality,\"$locality\",\"i\").
             ?resume cv:hasTarget ?target.
-		    ?target cv:targetJobDescription ?jobposition.
-		    FILTER regex(?jobposition,\"$jobTitle\",\"i\").
+    		    ?target cv:targetJobDescription ?jobposition.
+    		    FILTER (regex(?jobposition,\"$jobTitle\",\"i\")
             ";
+            $job_title_syn=$this->babelnet->synonymous($jobTitle);
+            if ($job_title_syn!=null) {
+              foreach ($job_title_syn as $syn) {
+                $query.="|| regex(?description,\"$syn\",\"i\")";
+              }
+            }
+            $query.=").";
         }
 
-        /*foreach ($result['education']['results']['bindings'] as $value2) {
-            $eduMinor=$value2['eduMinor']['value'];
-            $query.="
-            }
-            union
+        $query.="}
+        union
             {
-              ?resume cv:hasEducation ?education . 
-              ?education cv:eduMinor \"$eduMinor\".     
-            }
-        }";
-        }*/
+              ?resume cv:cvTitle ?id.
+              ?resume cv:cvIsActive \"True\".
+              ?resume cv:hasEducation ?w .";
 
-        //echo "$query";
+        foreach ($result['education']['results']['bindings'] as $value4) {
+            $eduMajor1=$value4['eduMajor']['value'];
+            $eduDegree1=$value4['eduDegree']['value'];
+            $query.="?w cv:eduMajor \"$eduMajor1\".
+            ?w cv:degreeType \"$eduDegree1\".";
+        }
+
+        $i=1;
+        foreach ($result['skills']['results']['bindings'] as $value5){
+            $skillName1=$value5['skillName']['value'];
+            $query.="?resume cv:hasSkill ?q$i.
+            ?q$i cv:skillName ?l$i.
+            FILTER (regex(?l$i,\"$skillName1\",\"i\")";
+             $skill_syn1=$this->babelnet->synonymous($skillName1);
+            if ($skill_syn1!=null) {
+              foreach ($skill_syn1 as $syn3) {
+                $query.="|| regex(?l$i,\"$syn3\",\"i\")";
+              }
+            }
+            $query.=").";
+            $i++;
+        }
+
+        $query.="?resume cv:aboutPerson ?person.  
+                ?person vcard:hasAddress ?address.";
+
+        foreach ($result['basic']['results']['bindings'] as  $value6){
+            $locality1=$value6['locality']['value'];
+            $jobTitle1=$value6['description']['value'];
+            $query.="?address vcard:locality ?locality.
+            FILTER regex(?locality,\"$locality1\",\"i\").
+            ?resume cv:hasTarget ?target.
+            ?target cv:targetJobDescription ?jobposition.
+            FILTER (regex(?jobposition,\"$jobTitle1\",\"i\")
+            ";
+            $job_title_syn1=$this->babelnet->synonymous($jobTitle1);
+            if ($job_title_syn1!=null) {
+              foreach ($job_title_syn1 as $syn1) {
+                $query.="|| regex(?description,\"$syn1\",\"i\")";
+              }
+            }
+            $query.=").";
+        }
+        $query.="}}";
+        echo "<pre>";
+        echo "$query";
         $dataset_path="C:\\tdbCV";
         $this->load->library('query');
         $query_result=$this->query->querysparql($query,$dataset_path);
-        /*echo '<pre>';
-        print_r($query_result);*/
+        echo '<pre>';
+        print_r($query_result);
+        /*$user_result=array();  
         foreach ($query_result['results']['bindings'] as $value) {
           if (array_key_exists("id",$value))
             $user_result[]=$this->seeker_data($value['id']['value']);
-        }
+        }*/
         /*echo '<pre>';
         print_r($result); */ 
-        $this->data['result']=$user_result;
+        /*$this->data['result']=$user_result;
         $this->data['pageTitle']='Cv View';
         $this->data['subview'] = 'cv-view';
-        $this->load->view('layouts/layout', $this->data); 
+        $this->load->view('layouts/layout', $this->data);*/
 
   }
 
@@ -544,6 +603,7 @@ class Home extends CI_Controller {
 
       $FirstEduMajor=$seeker[0]['eduMajor'][0];
       $FirstEduDegree=$seeker[0]['degreeType'][0];
+
       $query="PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>  
               PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
               PREFIX cv: <http://rdfs.org/resume-rdf/cv.rdfs#> 
@@ -558,9 +618,17 @@ class Home extends CI_Controller {
                 ?ann cv:aboutPerson ?person.
                 ?person vcard:locality ?locality.
                 FILTER regex(?locality,\"$locality\",\"i\").
-                ?ann cv:hasTarget ?target . 
+                ?ann cv:hasTarget ?target. 
                 ?target cv:targetJobDescription ?description.
-                FILTER regex(?description,\"$jobposition\",\"i\").
+                FILTER(regex(?description,\"$jobposition\",\"i\")";
+        $this->load->library('babelnet');
+        $jobposition_syn1=$this->babelnet->synonymous($jobposition);
+        if ($jobposition_syn1!=null) {
+          foreach ($jobposition_syn1 as $syn1) {
+            $query.="|| regex(?description,\"$syn1\",\"i\")";
+          }
+        }
+      $query.=").
                 ?ann cv:hasEducation ?edu.
                 ?edu cv:eduMajor ?eduMajor.
                 FILTER regex(?eduMajor,\"$FirstEduMajor\",\"i\").
@@ -569,8 +637,14 @@ class Home extends CI_Controller {
       foreach ($skills as $value) {
         $query.="?ann cv:hasSkill ?skill$i.
                 ?skill cv:skillName ?skillName$i.
-                FILTER regex(?skillName$i,\"$value\",\"i\").
-                ";
+                FILTER(regex(?skillName$i,\"$value\",\"i\")";
+        $skill_syn1=$this->babelnet->synonymous($value);
+        if ($skill_syn1!=null) {
+            foreach ($skill_syn1 as $syn2) {
+              $query.="|| regex(?skillName$i,\"$syn2\",\"i\")";
+            }
+          }
+      $query.=").";
         $i++;
       }
       $query.="}";
@@ -589,7 +663,14 @@ class Home extends CI_Controller {
               FILTER regex(?locality,\"$locality\",\"i\").
               ?ann cv:hasTarget ?target . 
               ?target cv:targetJobDescription ?description.
-              FILTER regex(?description,\"$jobposition\",\"i\").
+              FILTER(regex(?description,\"$jobposition\",\"i\")";
+        $jobposition_syn2=$this->babelnet->synonymous($jobposition);
+        if ($jobposition_syn2!=null) {
+          foreach ($jobposition_syn2 as $syn3) {
+            $query.="|| regex(?description,\"$syn3\",\"i\")";
+          }
+        }
+        $query.=").
               ?ann cv:hasEducation ?edu.
               ?edu cv:eduMajor ?eduMajor.
               FILTER regex(?eduMajor,\"$major\",\"i\").
@@ -600,8 +681,15 @@ class Home extends CI_Controller {
           foreach ($value1 as $value2) {
             $query.="?ann cv:hasSkill ?skill$i.
                 ?skill cv:skillName ?skillName$i.
-                FILTER regex(?skillName$i,\"$value\",\"i\").
+                FILTER( regex(?skillName$i,\"$value2\",\"i\")
                 ";
+            $skill_syn2=$this->babelnet->synonymous($value2);
+            if ($skill_syn2!=null) {
+              foreach ($skill_syn2 as $syn4) {
+                $query.="|| regex(?skillName$i,\"$syn4\",\"i\")";
+              }
+            }
+            $query.=").";
             $i++;
           }
         }
@@ -609,7 +697,7 @@ class Home extends CI_Controller {
       }
       $query.="}";
 
-     /* echo "<pre>";
+      /*echo "<pre>";
       echo "$query";*/
 
       $dataset_path="C:\\tdbAnnouncement";
@@ -674,7 +762,14 @@ class Home extends CI_Controller {
                 ";  
         $job_title=$this->input->post('job_title');
         if ($job_title!=null) {
-            $query.="FILTER (regex(?description,\"$job_title\",\"i\")).";
+            $query.="FILTER (regex(?description,\"$job_title\",\"i\")";
+            $job_title_syn=$this->babelnet->synonymous($job_title);
+            if ($job_title_syn!=null) {
+              foreach ($job_title_syn as $syn) {
+                $query.="|| regex(?description,\"$syn\",\"i\")";
+              }
+            }
+            $query.=").";
         }
         $job_mode=$this->input->post('job_mode');
         if ($job_mode!=null) {
@@ -768,8 +863,15 @@ class Home extends CI_Controller {
         $jobTitle=$this->input->post('job_Title');
         if ($jobTitle!=null) {
             $query.="?resume cv:hasTarget ?target.
-		    ?target cv:targetJobDescription ?jobposition.
-		    FILTER regex(?jobposition,\"$jobTitle\",\"i\").";
+    		    ?target cv:targetJobDescription ?jobposition.
+    		    FILTER(regex(?jobposition,\"$jobTitle\",\"i\")";
+            $job_title_syn=$this->babelnet->synonymous($jobTitle);
+            if ($job_title_syn!=null) {
+              foreach ($job_title_syn as $syn) {
+                $query.="|| regex(?description,\"$syn\",\"i\")";
+              }
+            }
+            $query.=").";
         }
 
         $query.="}";
@@ -806,5 +908,26 @@ class Home extends CI_Controller {
         $this->seeker_data($id);
         $this->load->library('fpdf_gen');
         $this->load->view('cv',$this->data);
+    }
+
+    function lolo()
+    {
+      
+      $query="PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>  
+            PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+            PREFIX cv: <http://rdfs.org/resume-rdf/cv.rdfs#> 
+            PREFIX vcard: <http://www.w3.org/2006/vcard/ns#>
+            PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+            prefix xsd: <http://www.w3.org/2001/XMLSchema#>
+            select ?s ?p ?o 
+            where {
+                ?s ?p ?o.}";
+        echo '<pre>';
+        echo "$query";
+        $dataset_path="C:\\tdbCV";
+        $this->load->library('query');
+        $this->data['result']=$this->query->querysparql($query,$dataset_path);
+        echo '<pre>';
+        print_r($this->data['result']);
     }
 }
