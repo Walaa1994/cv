@@ -3,7 +3,7 @@ PREFIX cv: <http://rdfs.org/resume-rdf/cv.rdfs#>
                     PREFIX foaf: <http://xmlns.com/foaf/0.1/>
                     select ?jobposition  
                     where {
-                     ?resume cv:cvTitle "78".
+                     ?resume cv:cvTitle "93".
                      ?resume cv:hasTarget ?q .
                      ?q cv:targetJobDescription ?jobposition.
                     }

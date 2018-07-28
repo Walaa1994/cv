@@ -1,54 +1,70 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <resume>
-  <ID>82</ID>
+  <ID>90</ID>
   <IsActive>True</IsActive>
   <PersonalInfo>
-    <firstName>hanan</firstName>
-    <lastName>ali</lastName>
-    <birthday>2018-07-31</birthday>
-    <Nationality>syrian</Nationality>
-    <MaritalStatus>Married</MaritalStatus>
-    <gender>Male</gender>
-    <country-name>damascus</country-name>
-    <locality>syria</locality>
-    <street-address>sahnaya</street-address>
-    <Email>batoulalsharef386@gmail.com</Email>
-    <Telephone>1234</Telephone>
+    <firstName>Hamida</firstName>
+    <lastName>Abo Rshid</lastName>
+    <birthday>1993-04-09</birthday>
+    <Nationality>Syrian</Nationality>
+    <MaritalStatus>Single</MaritalStatus>
+    <gender>Female</gender>
+    <country-name>Syria</country-name>
+    <locality>Damascus</locality>
+    <street-address>Midan</street-address>
+    <Email>hamida.aborshid@hotmail.com</Email>
+    <Telephone>0934534657</Telephone>
   </PersonalInfo>
   <Education>
     <eduMajor>ite</eduMajor>
-    <eduMinor>software</eduMinor>
-    <eduStartDate>2018-07-10</eduStartDate>
-    <eduGradDate>2018-07-28</eduGradDate>
-    <studiedIn>damas</studiedIn>
-    <degreeType>EduCollegeCoursework</degreeType>
+    <eduMinor>software Engineering</eduMinor>
+    <eduStartDate>2013-01-15</eduStartDate>
+    <eduGradDate>2018-07-30</eduGradDate>
+    <studiedIn>Damascus university</studiedIn>
+    <degreeType>EduBachelor</degreeType>
+    <cert_code>ite</cert_code>
+    <donor_code>Damascusuniversity</donor_code>
   </Education>
   <WorkExperience>
-    <employedIn>monkez</employedIn>
+    <employedIn>ATC</employedIn>
     <jobTitle>web developer</jobTitle>
-    <startDate>2018-07-03</startDate>
-    <endDate>2018-07-13</endDate>
-    <careerLevel>SeniorExecutive</careerLevel>
-    <JobType>Contractor</JobType>
+    <startDate>2018-04-18</startDate>
+    <endDate>2018-07-28</endDate>
+    <careerLevel>Student</careerLevel>
+    <JobType>Emplyee</JobType>
     <isCurrent>True</isCurrent>
+    <company_code>ATC</company_code>
   </WorkExperience>
   <PersonalSkills>
-    <skillName>php</skillName>
+    <skillName>PHP</skillName>
     <skillYearsExperience>3</skillYearsExperience>
-    <skillLevel>2</skillLevel>
+    <skillLevel>3</skillLevel>
+    <skill_code>PHP</skill_code>
+  </PersonalSkills>
+  <PersonalSkills>
+    <skillName>MYSQL</skillName>
+    <skillYearsExperience>3</skillYearsExperience>
+    <skillLevel>4 year</skillLevel>
+    <skill_code>MYSQL</skill_code>
+  </PersonalSkills>
+  <PersonalSkills>
+    <skillName>Teamwork</skillName>
+    <skillYearsExperience>5</skillYearsExperience>
+    <skillLevel>4 year</skillLevel>
+    <skill_code>Teamwork</skill_code>
   </PersonalSkills>
   <Language>
-    <Name>english</Name>
-    <SpokenLevel>2</SpokenLevel>
+    <Name>English</Name>
+    <SpokenLevel>3</SpokenLevel>
     <ReadingLevel>3</ReadingLevel>
-    <WritingLevel>2</WritingLevel>
+    <WritingLevel>3</WritingLevel>
   </Language>
   <References>
-    <Name>maish</Name>
-    <Phone>1233</Phone>
-    <Email>batol@gmail.com</Email>
+    <Name>Walaa Albaghdadi</Name>
+    <Phone>0933172903</Phone>
+    <Email>walaa.albaghdadi@hotmail.com</Email>
   </References>
   <Target>
-    <jobposition>web developer</jobposition>
+    <jobposition>software developer</jobposition>
   </Target>
 </resume>

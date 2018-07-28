@@ -827,6 +827,7 @@ class Home extends CI_Controller {
     }
 
     function seeker_search(){
+      $this->load->library('babelnet');
         $query="PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>  
                 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
                 PREFIX cv: <http://rdfs.org/resume-rdf/cv.rdfs#> 
@@ -903,6 +904,7 @@ class Home extends CI_Controller {
 
     public function company_search()
     {
+      $this->load->library('babelnet');
       $this->load->model('user_model');
     	$query="PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>  
         PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>

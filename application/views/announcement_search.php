@@ -14,10 +14,11 @@
                 <div>
                     <h5 class="black-text">
                         <i class="fa fa-bullhorn"></i> Announcement</h5>
-                    <h3 class="py-3 font-weight-bold">
-                        <strong  style="color: #696969"><?php echo $value['company']['value']; ?></strong>
-                    </h3>
-                        <p class="pb-3"  style="color: #696969"><?php echo $value['description']['value'];?></p>
+                    
+                        <h3 class="pb-3"  style="color: #CCCCCC"><strong  style="color: #CCCCCC"><?php echo $value['description']['value'];?></strong></h3>
+                        <h5 class="py-3 font-weight-bold">
+                        <?php echo $value['company']['value']; ?>
+                    </h5>
 
                         <a href="<?php echo(site_url('company/oneAnnouncement/'.$value['id']['value'].'/'. $value['company']['value']));?>"  class="btn btn-pink waves-effect waves-light">
 
