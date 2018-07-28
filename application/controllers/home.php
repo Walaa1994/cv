@@ -954,7 +954,7 @@ class Home extends CI_Controller {
             $job_title_syn=$this->babelnet->synonymous($jobTitle);
             if ($job_title_syn!=null) {
               foreach ($job_title_syn as $syn) {
-                $query.="|| regex(?description,\"$syn\",\"i\")";
+                $query.="|| regex(?jobposition,\"$syn\",\"i\")";
               }
             }
             $query.=").";
