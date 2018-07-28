@@ -1,5 +1,5 @@
 <?php
-
+ini_set('max_execution_time', 0);
 class Home extends CI_Controller {
     
     function index()
@@ -447,8 +447,10 @@ class Home extends CI_Controller {
             $eduMinor=$value1['eduMinor']['value'];
             $eduDegree=$value1['eduDegree']['value'];
             
-            $query.="?w cv:eduMajor \"$eduMajor\".
-            ?w cv:eduMinor \"$eduMinor\".
+            $query.="?w cv:eduMajor ?major.
+            FILTER (regex(?major,\"$eduMajor\",\"i\")).
+            ?w cv:eduMinor ?minor.
+            FILTER (regex(?minor,\"$eduMinor\",\"i\")).
             ?w cv:degreeType \"$eduDegree\".";
         }
 
@@ -483,7 +485,7 @@ class Home extends CI_Controller {
             $job_title_syn=$this->babelnet->synonymous($jobTitle);
             if ($job_title_syn!=null) {
               foreach ($job_title_syn as $syn) {
-                $query.="|| regex(?description,\"$syn\",\"i\")";
+                $query.="|| regex(?jobposition,\"$syn\",\"i\")";
               }
             }
             $query.=").";
@@ -516,7 +518,7 @@ class Home extends CI_Controller {
         $comb=$this->combination($result['skills']['results']['bindings']);
         arsort($comb);
         foreach ($comb as $array) {
-        "union
+        $query.="union
             {
               ?resume cv:cvTitle ?id.
               ?resume cv:cvIsActive \"True\".
@@ -525,7 +527,8 @@ class Home extends CI_Controller {
         foreach ($result['education']['results']['bindings'] as $value4) {
             $eduMajor1=$value4['eduMajor']['value'];
             $eduDegree1=$value4['eduDegree']['value'];
-            $query.="?w cv:eduMajor \"$eduMajor1\".
+            $query.="?w cv:eduMajor ?major.
+            FILTER (regex(?major,\"$eduMajor\",\"i\")).
             ?w cv:degreeType \"$eduDegree1\".";
         }
 
@@ -561,7 +564,7 @@ class Home extends CI_Controller {
             $job_title_syn1=$this->babelnet->synonymous($jobTitle1);
             if ($job_title_syn1!=null) {
               foreach ($job_title_syn1 as $syn1) {
-                $query.="|| regex(?description,\"$syn1\",\"i\")";
+                $query.="|| regex(?jobposition,\"$syn1\",\"i\")";
               }
             }
             $query.=").";
