@@ -30,10 +30,12 @@
         <h2 class="mdl-card__title-text">
         <?php
            echo $first_name." ".$last_name;
-        ?></h2>
+        ?></h2><br/>
+        
     </div>
     <div class="mdl-card__supporting-text">
-     <?php echo $gender.' - '.$birthday; echo "<br>";
+     <?php echo "Job position : ". $jobposition; echo "<br>";
+          echo $gender.' - '.$birthday; echo "<br>";
            echo "Nationality : ".$Nationality; echo "<br>";
            echo "Marital Status : ".$MaritalStatus; echo "<br>";
            echo $Phone; echo "<br>";
