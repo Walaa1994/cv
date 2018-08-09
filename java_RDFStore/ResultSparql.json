@@ -5,7 +5,11 @@
   "results": {
     "bindings": [
       {
+<<<<<<< HEAD
         "jobposition": { "type": "literal" , "value": "web developer" }
+=======
+        "jobposition": { "type": "literal" , "value": "Software Developer" }
+>>>>>>> EnasBranch
       }
     ]
   }

@@ -1016,8 +1016,8 @@ class Home extends CI_Controller {
     function downloadCV($id)
     {
         $this->seeker_data($id);
-        $this->load->library('fpdf_gen');
-        $this->load->view('cv',$this->data);
+        $this->load->library('Pdf');
+        $this->load->view('cvtcpdf',$this->data);
     }
 
     function rdfStore()
