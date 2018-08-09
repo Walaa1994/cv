@@ -7,11 +7,11 @@
       you can upload your cv and all data extract and re-stract with professional cv.
     </div>
     <div class="mdl-card__actions mdl-card--border">
-      <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-button--accent" href="<?php echo(site_url('seeker/uploadcv'));?>" target="_blank">
+      <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-button--accent" href="<?php echo(site_url('seeker/uploadcv'));?>">
         Upload
       </a>
        /
-      <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-button--accent" href="<?php echo(site_url('seeker/cvForm'));?>" target="_blank">
+      <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-button--accent" href="<?php echo(site_url('seeker/cvForm'));?>">
         Create Your CV.
       </a>
     </div>
@@ -30,10 +30,12 @@
         <h2 class="mdl-card__title-text">
         <?php
            echo $first_name." ".$last_name;
-        ?></h2>
+        ?></h2><br/>
+        
     </div>
     <div class="mdl-card__supporting-text">
-     <?php echo $gender.' - '.$birthday; echo "<br>";
+     <?php echo "Job position : ". $jobposition; echo "<br>";
+          echo $gender.' - '.$birthday; echo "<br>";
            echo "Nationality : ".$Nationality; echo "<br>";
            echo "Marital Status : ".$MaritalStatus; echo "<br>";
            echo $Phone; echo "<br>";
@@ -153,7 +155,7 @@
 </section>
 
 <section class="section--center mdl-grid site-max-width homepage-portfolio">
-    <a class="mdl-button mdl-button--raised mdl-js-button mdl-js-ripple-effect mdl-button--accent" href="http://localhost/cv/index.php/home/downloadCV">
+    <a class="mdl-button mdl-button--raised mdl-js-button mdl-js-ripple-effect mdl-button--accent" href="http://localhost/cv/index.php/home/downloadCV" target="blank">
       Download CV
     </a>
 </section>

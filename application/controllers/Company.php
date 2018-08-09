@@ -25,8 +25,15 @@ class Company extends CI_Controller {
         $this->data['subview'] = 'announcement_form';
         $this->load->view('layouts/layout', $this->data);
     }
+
+   
+
+
+
     function oneAnnouncement($id,$company_name=null)
     {
+
+        
         /*$query="PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>  
             PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
             PREFIX cv: <http://rdfs.org/resume-rdf/cv.rdfs#> 
@@ -116,12 +123,13 @@ class Company extends CI_Controller {
         where {
             ?ann cv:hasSkill ?skill.
             ?skill cv:skillName ?skillName.
-            ?skills cv:skillYearsExperience ?skillExperience.
+            ?skill cv:skillYearsExperience ?skillExperience.
             ?ann cv:cvTitle \"$id\".
         } " ;
         $dataset_path="C:\\tdbAnnouncement";
         $this->load->library('query');
         $query_result['skills']=$this->query->querysparql($query,$dataset_path);
+        $query_result['Announcement_id']=$id;
 
         /*echo '<pre>';
         print_r($query_result);*/
@@ -138,10 +146,12 @@ class Company extends CI_Controller {
         $employment_type = $this->input->post('employment_type');
         $locality = $this->input->post('locality');
         $cert_name = $this->input->post('cert_name');
+        $cert_code= str_replace(' ','',$cert_name);
         $spe_name = $this->input->post('spe_name');
         $degreeType = $this->input->post('degreeType');
         $salary = $this->input->post('salary');
         $skill_name = $this->input->post('skill_name');
+        $skill_code= str_replace(' ','',$skill_name);
         $year_exp = $this->input->post('year_exp');
         $characteristic = $this->input->post('characteristic');
         $characteristic_degree = $this->input->post('characteristic_degree');
@@ -190,11 +200,13 @@ class Company extends CI_Controller {
         foreach ($cert_name as $key => $value) {
             $EducationTag=$xml->createElement("Education");
             $cert_nameTag=$xml->createElement("eduMajor", $value);
+            $cert_codeTag=$xml->createElement("cert_code", $cert_code[$key]);
             $spe_nameTag=$xml->createElement("eduMinor",$spe_name[$key]);
             $degreeTypeTag=$xml->createElement("degreeType",$degreeType[$key]);
             $EducationTag->appendChild($cert_nameTag);
             $EducationTag->appendChild($spe_nameTag);
             $EducationTag->appendChild($degreeTypeTag);
+            $EducationTag->appendChild($cert_codeTag);
             $rootTag->appendChild($EducationTag);
         }
         //end education
@@ -204,8 +216,10 @@ class Company extends CI_Controller {
             $PersonalSkillsTag=$xml->createElement("PersonalSkills");
             $skill_nameTag=$xml->createElement("skillName",$value);
             $year_expTag=$xml->createElement("skillYearsExperience",$year_exp[$key]);
+            $skill_codeTag=$xml->createElement("skill_code",$skill_code[$key]);
             $PersonalSkillsTag->appendChild($skill_nameTag);
-            $PersonalSkillsTag->appendChild($year_expTag);;
+            $PersonalSkillsTag->appendChild($year_expTag);
+            $PersonalSkillsTag->appendChild($skill_codeTag);
             $rootTag->appendChild($PersonalSkillsTag);
             }
         //endskills
@@ -233,5 +247,20 @@ class Company extends CI_Controller {
         //$this->Company_profile();
         //redirect()
     }
+
+    function send_cv(){
+        $data = array('cv_id' => $this->input->post('cv_id'),
+                'ann_id'=> $this->input->post('ann_id'));
+        $this->load->model('user_model');
+        $this->user_model->add_cv_ann($data);
+        redirect(base_url() . 'index.php/home/sekeer_home');
+
+    }
+
+      
+
+       
+
+
 }
 

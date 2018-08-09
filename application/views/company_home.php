@@ -17,8 +17,8 @@
           <input type="text" name="cert_name" id="cert_name" class="form-control">
           <label for="cert_name" class="">Certificate Name</label>
           <div>
-            <input type="submit" class="fa-lg p-2 m-2">
-              <i class="fa fa-search"> </i>
+            <input type="submit" value="Search" class="fa fa-search">
+              <!-- <i class="fa fa-search"> </i> -->
             </input>
             <a href="#" id="more" class="fa-lg p-2 m-2" onclick="taggle();">
              <i class="fa fa-bars" style="color: #000;"> </i>

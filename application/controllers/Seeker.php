@@ -39,15 +39,18 @@ class Seeker extends CI_Controller {
 
         //Education
         $cert_name = $this->input->post('cert_name');
+        $cert_code= str_replace(' ','',$cert_name);
         $spe_name = $this->input->post('spe_name');
         $start_date = $this->input->post('start_date');
         $grants_date = $this->input->post('grants_date');
         $donor = $this->input->post('donor');
+        $donor_code= str_replace(' ','',$donor);
         $degreeType = $this->input->post('degreeType');
         
 
         //Work Experience
         $company_name = $this->input->post('company_name');
+        $company_code= str_replace(' ','',$company_name);
         $job_pos = $this->input->post('job_pos');
         $from_date = $this->input->post('from_date');
         $to_date = $this->input->post('to_date');
@@ -59,6 +62,7 @@ class Seeker extends CI_Controller {
 
         //Personal Skills
         $skill_name = $this->input->post('skill_name');
+        $skill_code= str_replace(' ','',$skill_name);
         $year_exp = $this->input->post('year_exp');
         $SkillLevel=$this->input->post('SkillLevel');
 
@@ -126,12 +130,17 @@ class Seeker extends CI_Controller {
             $grants_dateTag=$xml->createElement("eduGradDate",$grants_date[$key]);
             $donorTag=$xml->createElement("studiedIn",$donor[$key]);
             $degreeTypeTag=$xml->createElement("degreeType",$degreeType[$key]);
+            $cert_codeTag=$xml->createElement("cert_code",$cert_code[$key]);
+            $donor_codeTag=$xml->createElement("donor_code",$donor_code[$key]);
+
             $EducationTag->appendChild($cert_nameTag);
             $EducationTag->appendChild($spe_nameTag);
             $EducationTag->appendChild($start_dateTag);
             $EducationTag->appendChild($grants_dateTag);  
             $EducationTag->appendChild($donorTag);
             $EducationTag->appendChild($degreeTypeTag);
+            $EducationTag->appendChild($cert_codeTag);
+            $EducationTag->appendChild($donor_codeTag);
             $rootTag->appendChild($EducationTag);
         }
  
@@ -144,6 +153,7 @@ class Seeker extends CI_Controller {
             $careerLevelTag=$xml->createElement("careerLevel",$careerLevel[$key]);
             $jobTypeTag=$xml->createElement("JobType",$jobType[$key]);
             $isCurrentTag=$xml->createElement("isCurrent",$isCurrent[$key]);
+            $company_codeTag=$xml->createElement("company_code",$company_code[$key]);
 
             $ExperienceTag->appendChild($company_nameTag);
             $ExperienceTag->appendChild($job_posTag);
@@ -152,6 +162,7 @@ class Seeker extends CI_Controller {
             $ExperienceTag->appendChild($careerLevelTag);
             $ExperienceTag->appendChild($jobTypeTag);
             $ExperienceTag->appendChild($isCurrentTag);
+            $ExperienceTag->appendChild($company_codeTag);
             $rootTag->appendChild($ExperienceTag);
         }
 
@@ -161,10 +172,12 @@ class Seeker extends CI_Controller {
             $skill_nameTag=$xml->createElement("skillName",$value);
             $year_expTag=$xml->createElement("skillYearsExperience",$year_exp[$key]);
             $SkillLevelTag=$xml->createElement("skillLevel",$SkillLevel[$key]);
+            $skill_codeTag=$xml->createElement("skill_code",$skill_code[$key]);
 
             $PersonalSkillsTag->appendChild($skill_nameTag);
             $PersonalSkillsTag->appendChild($year_expTag);
             $PersonalSkillsTag->appendChild($SkillLevelTag);
+            $PersonalSkillsTag->appendChild($skill_codeTag);
             $rootTag->appendChild($PersonalSkillsTag);
         }
 
@@ -256,6 +269,7 @@ class Seeker extends CI_Controller {
 
      public function pdfToText($filename)
     {
+
         include_once APPPATH.'vendor/autoload.php';
         $parser= new \Smalot\PdfParser\Parser();
         $pdf= $parser->parseFile($filename);

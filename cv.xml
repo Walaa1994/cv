@@ -1,23 +1,58 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <resume>
-  <ID/>
-  <IsActive/>
+  <ID>117</ID>
+  <IsActive>True</IsActive>
   <PersonalInfo>
-    <firstName/>
-    <lastName/>
-    <birthday/>
-    <Nationality/>
-    <MaritalStatus/>
-    <gender/>
-    <country-name/>
-    <locality/>
-    <street-address/>
-    <Email/>
-    <Telephone/>
+    <firstName>hanan</firstName>
+    <lastName>aljadallah</lastName>
+    <birthday>1969-07-10</birthday>
+    <Nationality>syrian</Nationality>
+    <MaritalStatus>Married</MaritalStatus>
+    <gender>Female</gender>
+    <country-name>syria</country-name>
+    <locality>Damascus</locality>
+    <street-address>sahnaya</street-address>
+    <Email>hanan@gmail.com</Email>
+    <Telephone>0988636524</Telephone>
   </PersonalInfo>
+  <Education>
+    <eduMajor>ite</eduMajor>
+    <eduMinor>web developer</eduMinor>
+    <eduStartDate>2018-07-02</eduStartDate>
+    <eduGradDate>2018-07-18</eduGradDate>
+    <studiedIn>Damascus university</studiedIn>
+    <degreeType>EduVocational</degreeType>
+    <cert_code>ite</cert_code>
+    <donor_code>Damascusuniversity</donor_code>
+  </Education>
+  <WorkExperience>
+    <employedIn>almonkez</employedIn>
+    <jobTitle>developer</jobTitle>
+    <startDate>2018-07-04</startDate>
+    <endDate>2018-07-27</endDate>
+    <careerLevel>HighSchool</careerLevel>
+    <JobType>Contractor</JobType>
+    <isCurrent>True</isCurrent>
+    <company_code>almonkez</company_code>
+  </WorkExperience>
+  <PersonalSkills>
+    <skillName>php</skillName>
+    <skillYearsExperience>3</skillYearsExperience>
+    <skillLevel>4</skillLevel>
+    <skill_code>php</skill_code>
+  </PersonalSkills>
+  <Language>
+    <Name>english</Name>
+    <SpokenLevel>3</SpokenLevel>
+    <ReadingLevel>5</ReadingLevel>
+    <WritingLevel>3</WritingLevel>
+  </Language>
   <References>
-    <Name/>
-    <Phone/>
-    <Email/>
+    <Name>batoul</Name>
+    <Phone>11726635</Phone>
+    <Email>batol@gmail.com</Email>
   </References>
+  <Target>
+    <jobposition>web developer</jobposition>
+  </Target>
 </resume>

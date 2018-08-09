@@ -188,6 +188,7 @@ iframe {
   border-radius: 10px;
   overflow: hidden;
   position: relative;
+  border: 1px solid #B1B0B0;
 }
 
 /*==================================================================
