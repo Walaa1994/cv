@@ -239,9 +239,12 @@ class Seeker extends CI_Controller {
                 }
         
         $xml->save('cv.xml') or die('XML Create Error');  
-
+       
         $this->load->model('User_model');
         $this->data['result1']=$this->User_model->edit_has_cv(); 
+
+        $session_data = array('has_cv'=>'true');
+        $this->session->set_userdata($session_data);
 
         redirect('/Xslt/xslt_cv/cv.xml');
 
@@ -408,8 +411,12 @@ class Seeker extends CI_Controller {
 
         $id=$this->session->userdata('u_id');
 
-        $this->personality($Openness,$Conscientiousness, $Extraversion,$Agreeableness,$Neuroticism);
-        //$this->updatesparql($Openness,$Conscientiousness, $Extraversion,$Agreeableness,$Neuroticism,$id);
+        if($this->session->userdata('has_cv') == "true"){
+          $this->updatesparql($Openness,$Conscientiousness, $Extraversion,$Agreeableness,$Neuroticism,$id);
+        }
+        else
+          $this->personality($Openness,$Conscientiousness, $Extraversion,$Agreeableness,$Neuroticism);
+      
 
       /*echo(max($Agreeableness.'trust, altruism, kindness, affection, and other prosocial behaviors. People who are high in agreeableness tend to be more cooperative while those low in this trait tend to be more competitive and even manipulative',$Openness.'People who are high in this trait tend to be more adventurous and creative. People low in this trait are often much more traditional and may struggle with abstract thinking.,Very creative ,
           Open to trying new things

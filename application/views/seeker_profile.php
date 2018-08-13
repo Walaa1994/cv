@@ -172,47 +172,59 @@
                 <i class="material-icons mdl-list__item-avatar">person</i>
                 <span>
                   <?php
-                    if($openness>$conscientiousness && $openness>$extraversion && $openness>$agreeableness &&
-                     $openness>$neuroticism )
-                      echo "Openness";
+                    if($openness>=$conscientiousness && $openness>=$extraversion && $openness>=$agreeableness &&
+                     $openness>=$neuroticism && $openness!=" "){
+                      echo "Openness ";
+                  }
 
-                    if($conscientiousness>$openness && $conscientiousness>$extraversion && $conscientiousness>$agreeableness &&
-                        $conscientiousness>$neuroticism)
-                        echo "Conscientiousness";
+                    if($conscientiousness>=$openness && $conscientiousness>=$extraversion && $conscientiousness>=$agreeableness &&
+                        $conscientiousness>=$neuroticism && $conscientiousness!=" ")
+                        echo "Conscientiousness ";
 
-                    if($extraversion>$openness && $extraversion>$conscientiousness && $extraversion>$agreeableness && 
-                      $extraversion>$neuroticism)
-                      echo "Extraversion";
+                    if($extraversion>=$openness && $extraversion>=$conscientiousness && $extraversion>=$agreeableness && 
+                      $extraversion>=$neuroticism && $extraversion!=" ")
+                      echo "Extraversion ";
 
-                    if($agreeableness>$openness && $agreeableness>$conscientiousness && $agreeableness>$extraversion && 
-                      $agreeableness>$neuroticism)
-                      echo "Agreeableness";
+                    if($agreeableness>=$openness && $agreeableness>=$conscientiousness && $agreeableness>=$extraversion && 
+                      $agreeableness>=$neuroticism && $agreeableness!=" ")
+                      echo "Agreeableness ";
 
-                    if($neuroticism>$openness && $neuroticism>$conscientiousness && $neuroticism>$extraversion &&
-                      $neuroticism>$agreeableness)
-                      echo "Neuroticism";
+                    if($neuroticism>=$openness && $neuroticism>=$conscientiousness && $neuroticism>=$extraversion &&
+                      $neuroticism>=$agreeableness && $neuroticism!=" ")
+                      echo "Neuroticism ";
                   ?>
                 </span>
                 <span class="mdl-list__item-text-body" style="height: 90px; padding-left: 56px;">
                  <?php
-                    if($openness>$conscientiousness && $openness>$extraversion && $openness>$agreeableness &&
-                     $openness>$neuroticism )
+                    if($openness>=$conscientiousness && $openness>=$extraversion && $openness>=$agreeableness &&
+                     $openness>=$neuroticism && $openness!=" "){
                       echo "People who are high in this trait tend to be more adventurous and creative. People low in this trait are often much more traditional and may struggle with abstract thinking ,Very creative , Open to trying new things , Focused on tackling new challenges , Happy to think about abstract concepts .";
+                      echo "<br>";
+                    }
 
-                     if($conscientiousness>$openness && $conscientiousness>$extraversion && $conscientiousness>$agreeableness && $conscientiousness>$neuroticism) 
+                     if($conscientiousness>=$openness && $conscientiousness>=$extraversion && $conscientiousness>=$agreeableness && 
+                      $conscientiousness>=$neuroticism && $conscientiousness!=" "){ 
                       echo "Standard features of this dimension include high levels of thoughtfulness, with good impulse control and goal-directed behaviors. Highly conscientiousness tend to be organized and mindful of details , Spend time preparing , Finish important tasks right away , Pay attention to details .";
+                      echo "<br>";
+                    }
 
-                    if($extraversion>$openness && $extraversion>$conscientiousness && $extraversion>$agreeableness && 
-                      $extraversion>$neuroticism)
+                    if($extraversion>=$openness && $extraversion>=$conscientiousness && $extraversion>=$agreeableness && 
+                      $extraversion>=$neuroticism && $extraversion!=" "){
                       echo "Extraversion is characterized by excitability, sociability, talkativeness, assertiveness, and high amounts of emotional expressiveness. People who are high in extraversion are outgoing and tend to gain energy in social situations.";
+                      echo "<br>";
+                    }
 
-                    if($agreeableness>$openness && $agreeableness>$conscientiousness && $agreeableness>$extraversion && 
-                      $agreeableness>$neuroticism)
+                    if($agreeableness>=$openness && $agreeableness>=$conscientiousness && $agreeableness>=$extraversion && 
+                      $agreeableness>=$neuroticism && $agreeableness!=" "){
                       echo "trust, altruism, kindness, affection, and other prosocial behaviors. People who are high in agreeableness tend to be more cooperative while those low in this trait tend to be more competitive and even manipulative .";
+                      echo "<br>";
+                    }
 
-                    if($neuroticism>$openness && $neuroticism>$conscientiousness && $neuroticism>$extraversion &&
-                      $neuroticism>$agreeableness)
+                    if($neuroticism>=$openness && $neuroticism>=$conscientiousness && $neuroticism>=$extraversion &&
+                      $neuroticism>=$agreeableness && $neuroticism!=" "){
                       echo "Neuroticism is a trait characterized by sadness, moodiness, and emotional instability . Individuals who are high in this trait tend to be experience mood swings, anxiety, irritability and sadness.Those low in this trait tend to be more stable and emotionally resilient .";
+                      echo "<br>";
+                    }
 
                     echo "<br>";
                     if($warning_message != " ")
