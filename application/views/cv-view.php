@@ -5,7 +5,6 @@
     </script>
     <?php $index=1;
         foreach ($result as $value) {
-            foreach ($value as $value1) {
     ?>
     <div class="col-lg-4 col-md-12 mb-4">
         <!--Rotating card-->
@@ -18,12 +17,12 @@
                         <img src="<?php echo base_url();?>/assets/img/background.jpg" class="img-fluid">
                     </div>
                     <!--Avatar-->
-                    <div class="avatar"><img src="<?php echo $value1['image'];?>" class="img-circle img-responsive">
+                    <div class="avatar"><img src="<?php echo $value['image'];?>" class="img-circle img-responsive">
                     </div>
                     <!--Content-->
                     <div class="card-block">
-                        <h4><?php echo $value1['first_name']." ".$value1['last_name'];?></h4>
-                        <p><strong><?php echo $value1['jobposition']; ?></strong></p>
+                        <h4><?php echo $value['first_name']." ".$value['last_name'];?></h4>
+                        <p><strong><?php echo $value['jobposition']; ?></strong></p>
                         <!--Triggering button-->
                         <a class="rotate-btn" id="rotate-btn-<?php echo $index ?>" data-card="card-<?php echo $index ?>">
                         <i class="fa fa-repeat"></i> Click here to rotate</a>
@@ -36,19 +35,18 @@
                     <h4>About</h4>
                     <hr>
                     <strong>Last Education</strong>
-                    <?php $last=count($value1['eduMajor'])-1;?>
-                    <p><?php echo $value1['eduMajor'][$last];?> - <?php echo $value1['eduMinor'][$last];?></p>
-                    <p><?php echo $value1['studiedIn'][$last];?> - <?php echo $value1['degreeType'][$last];?></p>
+                    <?php $last=count($value['eduMajor'])-1;?>
+                    <p><?php echo $value['eduMajor'][$last];?> - <?php echo $value['eduMinor'][$last];?></p>
+                    <p><?php echo $value['studiedIn'][$last];?> - <?php echo $value['degreeType'][$last];?></p>
                     <strong>Last Work Experience</strong>
-                    <?php $last=count($value1['employedIn'])-1; ?>
-                    <p><?php echo $value1['jobTitle'][$last];?> - <?php echo $value1['employedIn'][$last];?></p>
-                    <?php } ?>
+                    <?php $last=count($value['employedIn'])-1; ?>
+                    <p><?php echo $value['jobTitle'][$last];?> - <?php echo $value['employedIn'][$last];?></p>
   
                     <hr>
                     <!--Social Icons-->
                     <!--Triggering button-->
                   <div >
-                    <a href="<?php echo(site_url('home/downloadCV/'.$value1['id']));?>"  class="btn btn-pink waves-effect waves-light"> <i class="fa fa-clone left"></i>Open CV PDF</a>
+                    <a href="<?php echo(site_url('home/downloadCV/'.$value['id']));?>"  class="btn btn-pink waves-effect waves-light"> <i class="fa fa-clone left"></i>Open CV PDF</a>
                     </div>
                    
                     <div style="margin-top: 50px;" >
