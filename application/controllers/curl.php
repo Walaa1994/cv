@@ -54,14 +54,15 @@ class Curl extends CI_Controller {
         //echo $neuroticism;
 
         $id=$this->session->userdata('u_id');
-        $this->updatesparql($Openness,$Conscientiousness, $Extraversion,$Agreeableness,$neuroticism,$id);
+        //$this->updatesparql($Openness,$Conscientiousness, $Extraversion,$Agreeableness,$neuroticism,$id);
+        $this->personality($Openness,$Conscientiousness, $Extraversion,$Agreeableness,$neuroticism);
 
-        if ($decoded['word_count']<600) {
+        /*if ($decoded['word_count']<600) {
             $warning_message=$decoded['word_count_message'];
             redirect('home/seeker_profile/'.$warning_message);
         }
         else
-        redirect('/home/seeker_profile');
+        redirect('/home/seeker_profile');*/
     }
     }
 
@@ -97,12 +98,42 @@ class Curl extends CI_Controller {
       shell_exec("javac -cp  java_RDFStore\\*; java_RDFStore\\UpdateSparql.java");
 
       shell_exec("java -cp java_RDFStore\\*;java_RDFStore  UpdateSparql $filename $Dataset_path"); 
+
+      redirect('/home/seeker_profile');
     }
 
     public function WriteFile($txt){
       $myfile = fopen("savequery.txt", "w") or die("Unable to open file!");
       fwrite($myfile, $txt);
       fclose($myfile);
+    }
+
+    public function personality($one,$two,$three,$four,$five){
+       $xml = new DOMDocument("1.0","UTF-8");
+        $xml->formatOutput = true;
+
+        //append root tag
+        $rootTag = $xml->createElement('resume');
+        $xml->appendChild($rootTag);
+        
+        $IDTag=$xml->createElement("ID",$this->session->userdata('u_id'));
+        $rootTag->appendChild($IDTag);
+
+        $opennessTag=$xml->createElement("openness",$one);
+        $conscientiousnessTag=$xml->createElement("conscientiousness",$two);
+        $extraversionTag=$xml->createElement("extraversion",$three);
+        $agreeablenessTag=$xml->createElement("agreeableness",$four);
+        $neuroticismTag=$xml->createElement("neuroticism",$five);
+
+        $rootTag->appendChild($opennessTag);
+        $rootTag->appendChild($conscientiousnessTag);
+        $rootTag->appendChild($extraversionTag);
+        $rootTag->appendChild($agreeablenessTag);
+        $rootTag->appendChild($neuroticismTag);
+          
+        $xml->save('personality.xml') or die('XML Create Error');   
+
+        redirect('/Xslt/xslt_personality/personality.xml');
     }
 }
 ?>

@@ -74,4 +74,28 @@ class Xslt extends CI_Controller {
 
 			$this->xslt_cv('cv.xml');
 		}
+
+		public function xslt_personality($xml_path){
+			$xml = new DOMDocument;
+			$xml->load($xml_path);
+
+			// Load XSL file
+			$styleSheet_path = base_url().'/StyleSheets/rdf-personality.xsl';
+
+			$xsl = new DOMDocument;
+			$xsl->load($styleSheet_path);
+
+			// Configure the transformer
+			$proc = new XSLTProcessor;
+
+			// Attach the xsl rules
+			$proc->importStyleSheet($xsl);
+
+			//$target_path = 'RDF_Generated/'.$this->session->userdata('u_id').'.xml';
+			$proc->transformToURI($xml, 'rdf.xml');
+
+			 //redirect('/RDFStore/jenaTDB/localhost/cv/RDF_Generated/'.$this->session->userdata('u_id').'.xml');
+			
+			redirect('/RDFStore/jenaTDB_cv/rdf.xml');
+		} 
 }
