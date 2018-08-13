@@ -238,7 +238,10 @@ class Seeker extends CI_Controller {
                   $this->session->set_userdata('user_photo',$data['img']);
                 }
         
-        $xml->save('cv.xml') or die('XML Create Error');   
+        $xml->save('cv.xml') or die('XML Create Error');  
+
+        $this->load->model('User_model');
+        $this->data['result1']=$this->User_model->edit_has_cv(); 
 
         redirect('/Xslt/xslt_cv/cv.xml');
 
@@ -291,6 +294,14 @@ class Seeker extends CI_Controller {
     
          }
     }
+
+     public function BigFiveForm_ar()
+    {
+
+        $this->data['pageTitle']='Personal Test Form';
+        $this->data['subview'] = 'bigfive_form_ar';
+        $this->load->view('layouts/layout', $this->data);
+    }
     
 
     public function BigFiveForm()
@@ -307,6 +318,34 @@ class Seeker extends CI_Controller {
         $this->data['pageTitle']='Create Resume';
         $this->data['subview'] = 'error_page';
         $this->load->view('layouts/layout', $this->data);
+    }
+
+    public function personality($one,$two,$three,$four,$five){
+       $xml = new DOMDocument("1.0","UTF-8");
+        $xml->formatOutput = true;
+
+        //append root tag
+        $rootTag = $xml->createElement('resume');
+        $xml->appendChild($rootTag);
+        
+        $IDTag=$xml->createElement("ID",$this->session->userdata('u_id'));
+        $rootTag->appendChild($IDTag);
+
+        $opennessTag=$xml->createElement("openness",$one);
+        $conscientiousnessTag=$xml->createElement("conscientiousness",$two);
+        $extraversionTag=$xml->createElement("extraversion",$three);
+        $agreeablenessTag=$xml->createElement("agreeableness",$four);
+        $neuroticismTag=$xml->createElement("neuroticism",$five);
+
+        $rootTag->appendChild($opennessTag);
+        $rootTag->appendChild($conscientiousnessTag);
+        $rootTag->appendChild($extraversionTag);
+        $rootTag->appendChild($agreeablenessTag);
+        $rootTag->appendChild($neuroticismTag);
+          
+        $xml->save('personality.xml') or die('XML Create Error');   
+
+        redirect('/Xslt/xslt_personality/personality.xml');
     }
     
     public function BigFiveCalcu()
@@ -368,7 +407,9 @@ class Seeker extends CI_Controller {
         $Neuroticism=round(((($q4+$q9+$q14+$q19+$q24+$q29+$q34+$q39)/8)*100)/5);
 
         $id=$this->session->userdata('u_id');
-        $this->updatesparql($Openness,$Conscientiousness, $Extraversion,$Agreeableness,$Neuroticism,$id);
+
+        $this->personality($Openness,$Conscientiousness, $Extraversion,$Agreeableness,$Neuroticism);
+        //$this->updatesparql($Openness,$Conscientiousness, $Extraversion,$Agreeableness,$Neuroticism,$id);
 
       /*echo(max($Agreeableness.'trust, altruism, kindness, affection, and other prosocial behaviors. People who are high in agreeableness tend to be more cooperative while those low in this trait tend to be more competitive and even manipulative',$Openness.'People who are high in this trait tend to be more adventurous and creative. People low in this trait are often much more traditional and may struggle with abstract thinking.,Very creative ,
           Open to trying new things

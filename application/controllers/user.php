@@ -19,6 +19,8 @@ class User extends CI_Controller {
         $this->form_validation->set_rules('Email','Email','trim|required');
         $this->form_validation->set_rules('seek_com','seek_com','trim|required');
         $data['img']=base_url().'/assets/UserPhoto/default_photo.jpg';
+        /*$data['has_cv']=$this->input->post('false');*/
+
 
         if($this->form_validation->run()==false){
                 $this->index();
@@ -30,7 +32,9 @@ class User extends CI_Controller {
                     'password'=> $this->input->post('password'),
                     'Email'=>    $this->input->post('Email'),
                     'type'=>$this->input->post('seek_com'),
-                    'Image'=>$data['img']
+                    'Image'=>$data['img'],
+                    /*'has_cv'=>$data['has_cv']*/
+                    'has_cv'  => 'false'
                     );    
             $this->User_model->add_user($user);
             redirect('User/login');
@@ -67,6 +71,7 @@ class User extends CI_Controller {
 
 	public function user_page(){
 		if($this->session->userdata('type')== "seeker")
+			
 			redirect(base_url() . 'index.php/home/seeker_profile');
 		else
 			redirect(base_url() . 'index.php/home/Company_profile');

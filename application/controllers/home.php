@@ -434,12 +434,15 @@ class Home extends CI_Controller {
         PREFIX vcard: <http://www.w3.org/2006/vcard/ns#>
         PREFIX foaf: <http://xmlns.com/foaf/0.1/>
         prefix xsd: <http://www.w3.org/2001/XMLSchema#>
-        select distinct ?id
+        select distinct ?id ?FirstName ?LastName ?jobposition ?major ?minor ?degree ?studiedIn ?employedIn ?jobTitle
         where {
           {
             ?resume cv:cvTitle ?id.
             ?resume cv:cvIsActive \"True\".
             ?resume cv:hasEducation ?w .
+            ?resume cv:hasWorkHistory ?q .
+             ?q cv:employedIn ?employedIn.
+             ?q cv:jobTitle ?jobTitle.
              ";
 
         foreach ($result['education']['results']['bindings'] as $value1) {
@@ -451,7 +454,9 @@ class Home extends CI_Controller {
             FILTER (regex(?major,\"$eduMajor\",\"i\")).
             ?w cv:eduMinor ?minor.
             FILTER (regex(?minor,\"$eduMinor\",\"i\")).
-            ?w cv:degreeType \"$eduDegree\".";
+            ?w cv:degreeType ?degree.
+            FILTER (regex(?degree,\"$eduDegree\",\"i\")).
+            ?w cv:studiedIn ?studiedIn.";
         }
 
         $i=1;
@@ -470,7 +475,9 @@ class Home extends CI_Controller {
             $i++;
         }
 
-        $query.="?resume cv:aboutPerson ?person.  
+        $query.="?resume cv:aboutPerson ?person. 
+            ?person foaf:firstName ?FirstName .
+            ?person foaf:lastName  ?LastName . 
             ?person vcard:hasAddress ?address.";
         $this->load->model('user_model');
         foreach ($result['basic']['results']['bindings'] as  $value3){
@@ -522,14 +529,20 @@ class Home extends CI_Controller {
             {
               ?resume cv:cvTitle ?id.
               ?resume cv:cvIsActive \"True\".
+              ?resume cv:hasWorkHistory ?q .
+              ?q cv:employedIn ?employedIn.
+              ?q cv:jobTitle ?jobTitle.
               ?resume cv:hasEducation ?w .";
 
         foreach ($result['education']['results']['bindings'] as $value4) {
             $eduMajor1=$value4['eduMajor']['value'];
             $eduDegree1=$value4['eduDegree']['value'];
             $query.="?w cv:eduMajor ?major.
-            FILTER (regex(?major,\"$eduMajor\",\"i\")).
-            ?w cv:degreeType \"$eduDegree1\".";
+            FILTER (regex(?major,\"$eduMajor1\",\"i\")).
+            ?w cv:eduMinor ?minor.
+            ?w cv:degreeType ?degree.
+            FILTER (regex(?degree,\"$eduDegree1\",\"i\")).
+            ?w cv:studiedIn ?studiedIn.";
         }
 
         $i=1;
@@ -549,7 +562,9 @@ class Home extends CI_Controller {
             $i++;
         }
 
-        $query.="?resume cv:aboutPerson ?person.  
+        $query.="?resume cv:aboutPerson ?person.
+                ?person foaf:firstName ?FirstName .
+                ?person foaf:lastName  ?LastName .   
                 ?person vcard:hasAddress ?address.";
 
         foreach ($result['basic']['results']['bindings'] as  $value6){
@@ -604,11 +619,32 @@ class Home extends CI_Controller {
         /*echo '<pre>';
         print_r($query_result);*/
         $user_result=array();  
+        $this->load->model('user_model');
+        
         foreach ($query_result['results']['bindings'] as $value) {
-          if (array_key_exists("id",$value))
-            $user_result[]=$this->seeker_data($value['id']['value']);
+          if (array_key_exists("id",$value)){
+            $this->data['id']=$value['id']['value'];
+            $this->data['first_name']=$value['FirstName']['value'];
+            $this->data['last_name']=$value['LastName']['value'];
+            $this->data['jobposition']=$value['jobposition']['value'];
+            $Major[]=$value['major']['value'];
+            $Minor[]=$value['minor']['value'];
+            $studiedIn[]=$value['studiedIn']['value'];
+            $degree[]=$value['degree']['value'];
+            $this->data['eduMajor']=$Major;
+            $this->data['eduMinor']=$Minor;
+            $this->data['studiedIn']=$studiedIn;
+            $this->data['degreeType']=$degree;
+            $employedIn[]=$value['employedIn']['value'];
+            $job[]=$value['jobTitle']['value'];
+            $this->data['employedIn']=$employedIn;
+            $this->data['jobTitle']=$job;
+            $res=$this->user_model->get_user_image($this->data['id']);
+            $this->data['image']=$res->Image;
+            $user_result[] = $this->data;
+          }
         }
-        /*echo '<pre>';
+       /* echo '<pre>';
         print_r($result); */ 
         $this->data['result']=$user_result;
         $this->data['pageTitle']='Cv View';
@@ -912,23 +948,35 @@ class Home extends CI_Controller {
         PREFIX vcard: <http://www.w3.org/2006/vcard/ns#>
         PREFIX foaf: <http://xmlns.com/foaf/0.1/>
         prefix xsd: <http://www.w3.org/2001/XMLSchema#>
-        select distinct ?id
+        select distinct ?id ?FirstName ?LastName ?jobposition ?major ?minor ?degree ?studiedIn ?employedIn ?jobTitle
         where {
             ?resume cv:cvTitle ?id.
             ?resume cv:cvIsActive \"True\".
             ?resume cv:hasEducation ?w .
+            ?w cv:eduMajor ?major.
+            ?w cv:eduMinor ?minor.
+            ?w cv:degreeType ?degree.
+            ?w cv:studiedIn ?studiedIn.
+            ?resume cv:hasTarget ?target.
+            ?target cv:targetJobDescription ?jobposition.
             ?resume cv:aboutPerson ?person.
+            ?person foaf:firstName ?FirstName .
+            ?person foaf:lastName  ?LastName .
+            ?resume cv:hasWorkHistory ?q .
+            ?q cv:employedIn ?employedIn.
+            ?q cv:jobTitle ?jobTitle.
              ";
 
         $eduMajor=$this->input->post('cert_name');
         if ($eduMajor!=null) {
-            $query.="?w cv:eduMajor ?description.
-            FILTER (regex(?description,\"$eduMajor\",\"i\")).";
+            $query.="
+            FILTER (regex(?major,\"$eduMajor\",\"i\")).";
         }
 
         $eduDegree=$this->input->post('degreeType');
         if ($eduDegree!=null) {
-            $query.="?w cv:degreeType \"$eduDegree\".";
+            $query.="
+            FILTER (regex(?degree,\"$eduDegree\",\"i\")).";
         }
         
         $locality=$this->input->post('locality');
@@ -948,8 +996,7 @@ class Home extends CI_Controller {
         $jobTitle=$this->input->post('job_Title');
 
         if ($jobTitle!=null) {
-            $query.="?resume cv:hasTarget ?target.
-    		    ?target cv:targetJobDescription ?jobposition.
+            $query.="
     		    FILTER(regex(?jobposition,\"$jobTitle\",\"i\")";
             $job_title_syn=$this->babelnet->synonymous($jobTitle);
             if ($job_title_syn!=null) {
@@ -994,8 +1041,27 @@ class Home extends CI_Controller {
         // print_r($query_result);
         $user_result=array();  
         foreach ($query_result['results']['bindings'] as $value) {
-	        if (array_key_exists("id",$value))
-	            $user_result[]=$this->seeker_data($value['id']['value']);
+	        if (array_key_exists("id",$value)){
+            $this->data['id']=$value['id']['value'];
+            $this->data['first_name']=$value['FirstName']['value'];
+            $this->data['last_name']=$value['LastName']['value'];
+            $this->data['jobposition']=$value['jobposition']['value'];
+            $eduMajor[]=$value['major']['value'];
+            $eduMinor[]=$value['minor']['value'];
+            $studiedIn[]=$value['studiedIn']['value'];
+            $degreeType[]=$value['degree']['value'];
+            $this->data['eduMajor']=$eduMajor;
+            $this->data['eduMinor']=$eduMinor;
+            $this->data['studiedIn']=$studiedIn;
+            $this->data['degreeType']=$degreeType;
+            $employedIn[]=$value['employedIn']['value'];
+            $jobTitle[]=$value['jobTitle']['value'];
+            $this->data['employedIn']=$employedIn;
+            $this->data['jobTitle']=$jobTitle;
+            $res=$this->user_model->get_user_image($this->data['id']);
+            $this->data['image']=$res->Image;
+            $user_result[] = $this->data;
+          }
         }
         // echo '<pre>';
         // print_r($user_result); 
@@ -1016,8 +1082,8 @@ class Home extends CI_Controller {
     function downloadCV($id)
     {
         $this->seeker_data($id);
-        $this->load->library('fpdf_gen');
-        $this->load->view('cv',$this->data);
+        $this->load->library('Pdf');
+        $this->load->view('batoul1',$this->data);
     }
 
     function rdfStore()
