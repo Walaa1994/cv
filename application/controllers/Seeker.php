@@ -19,6 +19,8 @@ class Seeker extends CI_Controller {
     {
         $this->data['pageTitle']='Create Resume';
         $this->data['subview'] = 'cv_form';
+        $this->load->model('User_model');
+        $this->data['result1']=$this->User_model->edit_has_cv();
         $this->load->view('layouts/layout', $this->data);
     }
 
@@ -290,6 +292,14 @@ class Seeker extends CI_Controller {
           redirect('/Xslt/xslt_pdf');
     
          }
+    }
+
+     public function BigFiveForm_ar()
+    {
+
+        $this->data['pageTitle']='Personal Test Form';
+        $this->data['subview'] = 'bigfive_form_ar';
+        $this->load->view('layouts/layout', $this->data);
     }
     
 

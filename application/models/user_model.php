@@ -15,7 +15,8 @@ class User_model extends CI_Model {
                             'username' => $username,
                             'email'=>$value->Email,
                             'type'=>$value->type,
-                            'user_photo'=>$value->Image
+                            'user_photo'=>$value->Image,
+                            'has_cv'=>$value->has_cv
                             );
             $this->session->set_userdata($session_data);
             }
@@ -129,5 +130,14 @@ class User_model extends CI_Model {
         $this->db->where('job', $jobPosition);
         $query = $this->db->get('big_five');
         return  $query->row();
+    }
+
+    public function edit_has_cv()
+    {
+        $id=$this->session->userdata('u_id');
+        $has_cv = array('has_cv' => 'true' );
+        $this->db->where('u_id',$id);
+        $query=$this->db->update('user',$has_cv);
+        return $query;
     }
 }

@@ -1017,7 +1017,7 @@ class Home extends CI_Controller {
     {
         $this->seeker_data($id);
         $this->load->library('Pdf');
-        $this->load->view('cvtcpdf',$this->data);
+        $this->load->view('batoul1',$this->data);
     }
 
     function rdfStore()

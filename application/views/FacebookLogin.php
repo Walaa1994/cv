@@ -13,9 +13,11 @@
        
       </a>
        /
-      <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-button--accent" href="<?php echo(site_url('Seeker/BigFiveform'));?>" target="_blank">
-        Personality Traits From StarSoft Form..
+      <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-button--accent" href="#" target="_blank">
+        Personality Traits From StarSoft Form <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-button--accent" href="<?php echo(site_url('Seeker/BigFiveform_ar'));?>" target="_blank">
+        Arabic</a>  <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-button--accent" href="<?php echo(site_url('Seeker/BigFiveform'));?>" target="_blank">English</a> 
       </a>
+
     </div>
 
 
