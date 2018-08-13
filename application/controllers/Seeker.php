@@ -19,8 +19,6 @@ class Seeker extends CI_Controller {
     {
         $this->data['pageTitle']='Create Resume';
         $this->data['subview'] = 'cv_form';
-        $this->load->model('User_model');
-        $this->data['result1']=$this->User_model->edit_has_cv();
         $this->load->view('layouts/layout', $this->data);
     }
 
@@ -240,7 +238,10 @@ class Seeker extends CI_Controller {
                   $this->session->set_userdata('user_photo',$data['img']);
                 }
         
-        $xml->save('cv.xml') or die('XML Create Error');   
+        $xml->save('cv.xml') or die('XML Create Error');  
+
+        $this->load->model('User_model');
+        $this->data['result1']=$this->User_model->edit_has_cv(); 
 
         redirect('/Xslt/xslt_cv/cv.xml');
 
